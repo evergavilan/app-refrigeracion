@@ -1,0 +1,88 @@
+{
+  "marcas": [
+    {
+      "marca": "Carrier / BGH",
+      "icono": "❄️",
+      "codigos": [
+        { "codigo": "E1",  "descripcion": "Falla sensor temperatura interior (evaporador)", "accion": "Medí el NTC del evaporador: sano = 5-10kΩ a 25°C. Si da ∞ o 0 → reemplazarlo." },
+        { "codigo": "E2",  "descripcion": "Falla sensor temperatura ambiente (retorno)", "accion": "Mismo procedimiento que E1 pero sensor de retorno de aire. Ubicado en la entrada de aire del evaporador." },
+        { "codigo": "E3",  "descripcion": "Alta presión — compresor parado por protección", "accion": "Apagá y esperá 5 min. Revisá condensador (sucio, ventilador detenido) antes de reiniciar." },
+        { "codigo": "E4",  "descripcion": "Baja presión — posible falta de gas", "accion": "Conectá manómetro. Si PSI bajo: buscar fuga antes de cargar gas." },
+        { "codigo": "E5",  "descripcion": "Protección de corriente del compresor", "accion": "Verificá tensión de red (debe ser 220V ±10%) y capacitor. Amperaje elevado sostenido." },
+        { "codigo": "E6",  "descripcion": "Error de comunicación unidad interior-exterior", "accion": "Revisá cableado de señal entre unidades (cable fino de comunicación). Verificá tensión de alimentación." },
+        { "codigo": "F1",  "descripcion": "Falla sensor descarga compresor", "accion": "Sensor ubicado en la línea de descarga del compresor. Medir resistencia, comparar con tabla del fabricante." },
+        { "codigo": "F3",  "descripcion": "Error de inverter / módulo de potencia", "accion": "En splits inverter. Verificá tensión de entrada al módulo de potencia (IPM). Puede ser el módulo o la placa." },
+        { "codigo": "H6",  "descripcion": "Motor del ventilador exterior sin feedback", "accion": "Verificar alimentación del ventilador. Si recibe tensión y no gira → motor quemado o trabado." }
+      ]
+    },
+    {
+      "marca": "Rheem / Rheem Inverter",
+      "icono": "🔵",
+      "codigos": [
+        { "codigo": "E1",  "descripcion": "Falla sensor temperatura interior", "accion": "Sensor NTC. Medir a temperatura conocida y comparar con tabla del fabricante (Rheem publica curvas)." },
+        { "codigo": "E2",  "descripcion": "Falla sensor temperatura exterior", "accion": "Sensor NTC en unidad exterior. Mismo procedimiento." },
+        { "codigo": "E3",  "descripcion": "Falla sensor temperatura de descarga", "accion": "Sensor en la línea caliente del compresor. Si da error sin problema real: conector flojo o cable pinchado." },
+        { "codigo": "E5",  "descripcion": "Protección de sobrecorriente", "accion": "Verificá capacitor, tensión y condensador. Si sigue: compresor con devanado en falla incipiente." },
+        { "codigo": "E6",  "descripcion": "Error de comunicación (I/O)", "accion": "Revisar cable de señal (usualmente 3 hilos entre unidades). Verificar continuidad del cable." },
+        { "codigo": "EC",  "descripcion": "Limpieza de filtros requerida (recordatorio)", "accion": "No es falla — es recordatorio de mantenimiento. Limpiá el filtro y reseteá el contador desde el control remoto." },
+        { "codigo": "P1",  "descripcion": "Protección de alta tensión de red", "accion": "Tensión de entrada mayor a 250V. Verificar la red eléctrica del local." },
+        { "codigo": "P2",  "descripcion": "Protección de baja tensión de red", "accion": "Tensión de entrada menor a 190V. Problema de red — informar al cliente." }
+      ]
+    },
+    {
+      "marca": "Gree / Electra",
+      "icono": "🟢",
+      "codigos": [
+        { "codigo": "E1",  "descripcion": "Protección de alta presión", "accion": "Presostato de alta disparado. Revisá condensador y ventilador exterior antes de resetear." },
+        { "codigo": "E2",  "descripcion": "Protección de temperatura de descarga", "accion": "Temperatura de descarga del compresor muy alta. Verificar gas (puede ser bajo), condensador y ventilación." },
+        { "codigo": "E3",  "descripcion": "Falla sensor temperatura interior", "accion": "NTC evaporador. Verificar resistencia y conector en la placa." },
+        { "codigo": "E4",  "descripcion": "Falla sensor temperatura exterior", "accion": "NTC unidad exterior. Mismo procedimiento que E3." },
+        { "codigo": "E5",  "descripcion": "Protección de sobrecorriente compresor", "accion": "Amperaje excesivo. Verificar capacitor, condensador limpio, tensión de red." },
+        { "codigo": "E6",  "descripcion": "Error comunicación inter-unidades", "accion": "Verificar cable de señal. En Gree suelen ser 3 hilos (A, B, tierra). Medir continuidad." },
+        { "codigo": "F0",  "descripcion": "Error módulo inverter (IPM fault)", "accion": "Falla en el módulo de potencia del inverter. Requiere diagnóstico con osciloscopio o reemplazo del módulo." },
+        { "codigo": "H3",  "descripcion": "Protección del compresor (térmica interna)", "accion": "Klixon interno del compresor disparado. Apagá, esperá 30 min. Si vuelve a disparar → compresor con problema." },
+        { "codigo": "C5",  "descripcion": "Falla cable de comunicación", "accion": "Ruptura o mal contacto en el cable de señal entre unidades. Verificar en ambos extremos." }
+      ]
+    },
+    {
+      "marca": "Samsung (splits)",
+      "icono": "🔷",
+      "codigos": [
+        { "codigo": "E1",  "descripcion": "Falla sensor indoor (interior)", "accion": "Sensor NTC de temperatura ambiente interior. Verificar resistencia y conector en placa." },
+        { "codigo": "E2",  "descripcion": "Falla sensor serpentín interior", "accion": "Sensor NTC sobre el evaporador. Si el equipo sopla caliente en modo frío sin este código: confirmás que el sensor está ok." },
+        { "codigo": "E3",  "descripcion": "Falla sensor serpentín exterior", "accion": "Sensor NTC en la unidad exterior. Verificar resistencia a temperatura conocida." },
+        { "codigo": "E4",  "descripcion": "Protección de alta descarga", "accion": "Temperatura de descarga del compresor muy alta. Gas bajo o condensador tapado." },
+        { "codigo": "E5",  "descripcion": "Protección de sobrecorriente DC (inverter)", "accion": "Corriente excesiva en el inverter. Verificar módulo de potencia y compresor." },
+        { "codigo": "E6",  "descripcion": "Error de comunicación", "accion": "Verificar cable de señal entre unidades. Samsung usa protocolo propio — verificar con equipo Samsung compatible." },
+        { "codigo": "E9",  "descripcion": "Protección de baja presión (gas)", "accion": "Baja presión detectada. Conectá manómetro y verificar. Probable fuga o falta de gas." }
+      ]
+    },
+    {
+      "marca": "LG",
+      "icono": "🔴",
+      "codigos": [
+        { "codigo": "CH01", "descripcion": "Falla sensor temperatura interior (retorno)", "accion": "Sensor NTC en retorno de aire interior. Medir y comparar con tabla LG." },
+        { "codigo": "CH02", "descripcion": "Falla sensor serpentín interior", "accion": "Sensor NTC en el evaporador. Verificar conector y resistencia." },
+        { "codigo": "CH03", "descripcion": "Falla sensor temperatura exterior", "accion": "Sensor NTC en unidad exterior. Verificar resistencia a temperatura ambiente." },
+        { "codigo": "CH04", "descripcion": "Falla sensor serpentín exterior", "accion": "Sensor NTC en el condensador. Verificar conector y valor." },
+        { "codigo": "CH05", "descripcion": "Falla sensor descarga compresor", "accion": "Sensor en línea de descarga caliente. Si el compresor está muy caliente: puede ser real." },
+        { "codigo": "CH21", "descripcion": "Protección compresor — sobrecarga", "accion": "Amperaje excesivo del compresor. Verificar capacitor, condensador, tensión de red." },
+        { "codigo": "CH38", "descripcion": "Error módulo inverter", "accion": "Falla en el módulo de potencia IPM. Requiere diagnóstico avanzado o reemplazo del módulo." },
+        { "codigo": "CH67", "descripcion": "Error comunicación inter-unidades", "accion": "Verificar cable de señal. LG usa 3 hilos (1, 2, tierra/shield). Verificar continuidad y ausencia de corto." }
+      ]
+    },
+    {
+      "marca": "Philco / BGH (línea económica)",
+      "icono": "⚪",
+      "codigos": [
+        { "codigo": "E0",  "descripcion": "Error EEPROM (memoria de la placa)", "accion": "Falla en la memoria de la placa de control. Intentar resetear quitando la alimentación 10 minutos. Si persiste: placa." },
+        { "codigo": "E1",  "descripcion": "Falla sensor temperatura interior", "accion": "NTC interior. Verificar resistencia. En Philco suele ser 10kΩ a 25°C." },
+        { "codigo": "E2",  "descripcion": "Falla sensor serpentín interior", "accion": "NTC evaporador. Verificar valor y conector flojo." },
+        { "codigo": "E3",  "descripcion": "Falla sensor temperatura exterior", "accion": "NTC unidad exterior. Mismo procedimiento." },
+        { "codigo": "E4",  "descripcion": "Protección de alta presión", "accion": "Verificar condensador y ventilador exterior. Posible exceso de gas si fue cargado recientemente." },
+        { "codigo": "E5",  "descripcion": "Protección de sobrecorriente", "accion": "Verificar tensión de red, capacitor y condensador limpio." },
+        { "codigo": "E6",  "descripcion": "Error comunicación interior-exterior", "accion": "Verificar continuidad del cable de señal entre unidades." }
+      ]
+    }
+  ]
+}

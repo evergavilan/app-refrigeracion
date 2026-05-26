@@ -1,0 +1,104 @@
+{
+  "modulos": [
+    {
+      "id": "ciclo-refrigeracion",
+      "titulo": "El ciclo de refrigeración",
+      "icono": "🔄",
+      "subtitulo": "Por qué el gas enfría — el fundamento de todo",
+      "intro": "La refrigeración no es 'producir frío' — es mover calor de un lugar a otro. El refrigerante es el vehículo que transporta ese calor. Todo el diagnóstico HVAC se basa en entender esto.",
+      "conceptos": [
+        {
+          "titulo": "¿Por qué el gas enfría?",
+          "detalle": "Cuando un líquido se evapora, absorbe calor del entorno. Cuando un gas se condensa, libera ese calor. El sistema de refrigeración fuerza este ciclo artificialmente usando el compresor. El evaporador es donde el refrigerante evapora y absorbe calor (interior). El condensador es donde el refrigerante condensa y libera calor (exterior)."
+        },
+        {
+          "titulo": "La presión cambia todo",
+          "detalle": "La temperatura a la que un refrigerante evapora depende de su presión. Con más presión, necesita más calor para evaporar (temperatura más alta). Con menos presión, evapora a temperatura más baja. Por eso el capilar baja la presión antes del evaporador — para que el refrigerante evapore a -5°C o -10°C y pueda absorber calor del interior a 20°C."
+        },
+        {
+          "titulo": "El ciclo completo",
+          "detalle": "1) El compresor toma gas frío a baja presión y lo comprime → sale gas caliente a alta presión. 2) El condensador enfría ese gas caliente → se convierte en líquido caliente a alta presión. 3) El capilar o válvula de expansión reduce drásticamente la presión → el líquido se expande y se enfría. 4) El evaporador recibe ese refrigerante frío → absorbe calor del interior → sale como gas frío. 5) El compresor lo toma de nuevo → repite."
+        },
+        {
+          "titulo": "¿Qué mide el manómetro?",
+          "detalle": "El manómetro de baja mide la presión del refrigerante en el evaporador. Baja presión → temperatura de evaporación baja → puede absorber más calor. Pero si cae demasiado → el refrigerante se expande demasiado antes de llegar al evaporador (fuga, restricción). El manómetro de alta mide la presión en el condensador. Alta presión → gas difícil de condensar → el compresor trabaja forzado."
+        }
+      ]
+    },
+    {
+      "id": "delta-t",
+      "titulo": "Delta T — el indicador más honesto",
+      "icono": "🌡️",
+      "subtitulo": "Cómo leer la salud del sistema con un termómetro",
+      "intro": "El Delta T (diferencia de temperatura entre el aire que entra y el que sale del evaporador) es el indicador más confiable de que el sistema está transfiriendo calor correctamente. Podés diagnosticar mucho sin manómetro si sabés leer el Delta T.",
+      "conceptos": [
+        {
+          "titulo": "¿Qué es el Delta T?",
+          "detalle": "Es la diferencia de temperatura entre el aire que entra al evaporador y el que sale. Si entra a 28°C y sale a 16°C, el Delta T es 12°C. En un split funcionando correctamente, debe ser entre 8°C y 14°C."
+        },
+        {
+          "titulo": "Delta T bajo (menos de 8°C)",
+          "detalle": "El sistema no está transfiriendo bien el calor del aire al refrigerante. Causas más comunes: filtro o evaporador sucio (el más frecuente), turbina con poco caudal, gas al límite inferior, o evaporador congelado que bloquea el paso de aire. Importante: Delta T bajo NO siempre es falta de gas."
+        },
+        {
+          "titulo": "Delta T alto (más de 14°C)",
+          "detalle": "El sistema está absorbiendo mucho calor del aire. Puede ser: exceso de gas, válvula de expansión mal calibrada, o muy poco caudal de aire (filtro muy tapado con baja velocidad de turbina). También puede ser normal en ambientes muy húmedos donde hay mucha carga de enfriamiento."
+        },
+        {
+          "titulo": "Cómo medirlo en campo",
+          "detalle": "Usá un termómetro de pinche o un infrarrojo. Medí la temperatura del aire en la entrada del filtro (retorno) y en la salida de la rejilla delantera. Dejá el equipo funcionar 15 minutos antes de medir. Tomá 3 lecturas y promediá. Con eso tenés el Delta T real del equipo."
+        }
+      ]
+    },
+    {
+      "id": "ntc-sensores",
+      "titulo": "Sensores NTC — cómo funcionan y cómo medirlos",
+      "icono": "📡",
+      "subtitulo": "El termómetro de la placa electrónica",
+      "intro": "Los sensores NTC (Negative Temperature Coefficient) son termistores — resistencias que cambian su valor según la temperatura. Casi todos los splits y heladeras modernas usan NTC para medir temperatura. Saber medirlos ahorra cambiar placas innecesariamente.",
+      "conceptos": [
+        {
+          "titulo": "¿Cómo funciona un NTC?",
+          "detalle": "A mayor temperatura → menor resistencia. A menor temperatura → mayor resistencia. Es el comportamiento opuesto a los metales comunes. Un NTC típico de 10kΩ mide exactamente 10kΩ a 25°C. A 10°C puede medir 16-20kΩ. A 40°C puede medir 6-7kΩ."
+        },
+        {
+          "titulo": "Cómo medirlo",
+          "detalle": "Desconectá el conector del sensor de la placa. Medí la resistencia entre los dos cables con el multímetro en Ω. Tomá la temperatura ambiente del lugar donde está el sensor (con otro termómetro). Comparás el valor medido con la curva del fabricante o con una tabla NTC genérica de 10kΩ."
+        },
+        {
+          "titulo": "Valores típicos de referencia (NTC 10kΩ)",
+          "detalle": "0°C = 32kΩ aprox. 10°C = 20kΩ aprox. 20°C = 12kΩ aprox. 25°C = 10kΩ (nominal). 30°C = 8kΩ aprox. 40°C = 5.5kΩ aprox. 50°C = 3.6kΩ aprox. Si el sensor mide muy diferente a estos valores → está fallado. Si mide ∞ → circuito abierto. Si mide 0Ω → cortocircuito."
+        },
+        {
+          "titulo": "El sensor da error pero el valor es correcto",
+          "detalle": "Si el multímetro dice que el sensor está bien (resistencia correcta para la temperatura) pero la placa sigue dando error, revisá el conector. La oxidación en los pines del conector es la causa más frecuente de falsos errores de sensor. Limpiá con limpia contactos y reconectá firme."
+        }
+      ]
+    },
+    {
+      "id": "inverter-vs-onoff",
+      "titulo": "Inverter vs ON/OFF — diferencias clave",
+      "icono": "⚡",
+      "subtitulo": "Por qué el inverter es más complejo de diagnosticar",
+      "intro": "Los splits inverter dominan el mercado argentino actual. Entender la diferencia con el ON/OFF clásico es esencial para no diagnosticar mal y no romper lo que funciona.",
+      "conceptos": [
+        {
+          "titulo": "Split ON/OFF — cómo funciona",
+          "detalle": "El compresor trabaja a velocidad fija (50 Hz siempre). Cuando llega a la temperatura, se apaga completamente. Cuando vuelve a subir, arranca de nuevo. El capacitor es esencial para el arranque porque la corriente de arranque es muy alta. Simple de diagnosticar: o funciona o no funciona."
+        },
+        {
+          "titulo": "Split Inverter — cómo funciona",
+          "detalle": "El compresor trabaja a velocidad variable (20 Hz a 120 Hz). El módulo inverter (IPM) convierte la corriente de red en corriente de frecuencia variable para el compresor. El compresor de un inverter NO lleva capacitor externo — el módulo IPM maneja el arranque internamente. Si le ponés capacitor a un compresor inverter, lo rompés."
+        },
+        {
+          "titulo": "Diferencias en el diagnóstico",
+          "detalle": "En ON/OFF: buscás capacitor, Klixon, devanados, relay. En inverter: buscás módulo IPM, sensores NTC, alimentación del módulo, comunicación entre placa y módulo. El amperaje en inverter varía según la demanda — no es fijo como en ON/OFF. Un inverter puede correr con 2A en mantenimiento y 10A en plena potencia."
+        },
+        {
+          "titulo": "Error frecuente con inverter",
+          "detalle": "El error más común en campo es diagnosticar 'compresor muerto' en un inverter porque el compresor no arranca. Antes de eso: verificá el módulo IPM (tensión de entrada y salida), los sensores NTC y la comunicación entre placa y módulo. En Argentina, el 60% de los 'compresores muertos' inverter resultan ser el módulo IPM."
+        }
+      ]
+    }
+  ]
+}

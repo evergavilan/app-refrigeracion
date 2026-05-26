@@ -1,0 +1,27 @@
+{
+  "conversiones": {
+    "psi_a_bar":   0.0689476,
+    "bar_a_psi":   14.5038,
+    "psi_a_kpa":   6.89476,
+    "kpa_a_psi":   0.145038,
+    "bar_a_kpa":   100,
+    "kpa_a_bar":   0.01
+  },
+  "gases_carga": [
+    { "id": "r410a", "nombre": "R410A", "fase": "liquida",  "nota": "Siempre en fase líquida (botella invertida). Mezcla azeotrópica." },
+    { "id": "r32",   "nombre": "R32",   "fase": "liquida",  "nota": "Fase líquida. Inflamable A2L — no usar llama cerca." },
+    { "id": "r22",   "nombre": "R22",   "fase": "gaseosa",  "nota": "Puede cargarse en fase gaseosa por baja. Gas en desuso." },
+    { "id": "r134a", "nombre": "R134a", "fase": "gaseosa",  "nota": "Fase gaseosa por baja. Heladeras domésticas." },
+    { "id": "r600a", "nombre": "R600a", "fase": "liquida",  "nota": "Fase líquida. ALTAMENTE INFLAMABLE — sin llama, espacio ventilado." },
+    { "id": "r404a", "nombre": "R404A", "fase": "liquida",  "nota": "Fase líquida. Comercial / cámaras. En etapa de reemplazo." }
+  ],
+  "deltaT": {
+    "rangos": [
+      { "min": 0,  "max": 5,  "estado": "critico_bajo", "label": "Crítico — Sin transferencia", "color": "#ff5252", "msg": "El evaporador prácticamente no está absorbiendo calor. Revisá si el compresor está corriendo y si hay gas suficiente." },
+      { "min": 5,  "max": 8,  "estado": "bajo",          "label": "Bajo — Transferencia insuficiente", "color": "#ff9b42", "msg": "Debajo del rango normal. Causas más comunes: filtro sucio, turbina lenta, evaporador congelado o gas al límite inferior." },
+      { "min": 8,  "max": 14, "estado": "normal",        "label": "Normal — Sistema OK", "color": "#00d9ff", "msg": "Delta T en rango ideal. El sistema está transfiriendo calor correctamente." },
+      { "min": 14, "max": 20, "estado": "alto",          "label": "Alto — Revisar caudal o gas", "color": "#ff9b42", "msg": "Por encima del rango. Posible exceso de gas, poco caudal de aire o válvula de expansión fuera de calibración." },
+      { "min": 20, "max": 999,"estado": "critico_alto",  "label": "Crítico — Delta T muy alto", "color": "#ff5252", "msg": "Diferencia extrema. Revisá urgente el caudal de aire (turbina, filtro) y la carga de gas." }
+    ]
+  }
+}

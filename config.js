@@ -1,0 +1,20 @@
+// =====================================================
+// HVAC PRO ARGENTINA
+// CONFIG.JS — Fuente única de verdad
+// =====================================================
+
+const APP_CONFIG = {
+
+  version: "1.0.0",
+  name: "Ever PRO Argentina",
+  debug: false,
+
+  // Rutas centralizadas — si cambiás la estructura, solo tocás acá
+  paths: {
+    data:       "./",
+    assets:     "./",
+    modules:    "./",
+    referencias:"./"
+  }
+
+};

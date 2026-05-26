@@ -1,0 +1,274 @@
+{
+  "categorias": [
+    {
+      "id": "gases",
+      "titulo": "Gases refrigerantes",
+      "icono": "💨",
+      "color": "#ff9b42",
+      "gases": [
+        {
+          "nombre": "R600a — Isobutano",
+          "clasificacion": "A3 — Altamente inflamable",
+          "color_alerta": "rojo",
+          "presente_en": "Heladeras domésticas modernas (Whirlpool, Samsung, LG, Mabe post-2010)",
+          "carga_tipica": "60 a 120 gramos",
+          "reglas": [
+            "APAGÁ todo lo que pueda generar chispa antes de abrir el sistema: celular, herramientas eléctricas, interruptores.",
+            "Ventilá el espacio de trabajo mínimo 10 minutos antes de empezar. El R600a es más liviano que el aire — sube y se acumula en el techo.",
+            "NO soldés con el equipo conectado ni con el sistema presurizado.",
+            "NO usés llama abierta en el ambiente donde trabajás.",
+            "Usá detector de gas o al menos olfateás — el R600a tiene olor característico.",
+            "Si sentís olor a gas en el ambiente: salí, ventilá, esperá. No accionés ningún interruptor.",
+            "Cargá siempre por peso — nunca a ojo. La carga exacta reduce el tiempo con el sistema abierto.",
+            "Tené un matafuego cerca cuando trabajás con R600a. No es exageración."
+          ],
+          "que_hacer_si_fuga": "Salir inmediatamente. No accionés ningún interruptor eléctrico (ni para apagar la luz). Ventilá el espacio desde afuera. Esperá 15 minutos antes de volver a entrar.",
+          "que_no_hacer": [
+            "Fumar o tener llama abierta en el espacio de trabajo",
+            "Usar herramientas eléctricas que generen chispa",
+            "Abrir el sistema en espacios cerrados sin ventilación",
+            "Descargar el gas a la atmósfera sin recuperadora"
+          ]
+        },
+        {
+          "nombre": "R32",
+          "clasificacion": "A2L — Levemente inflamable",
+          "color_alerta": "naranja",
+          "presente_en": "Splits inverter modernos (Carrier, Gree, Daikin, Samsung post-2018)",
+          "carga_tipica": "500 a 1200 gramos",
+          "reglas": [
+            "Ventilá bien el espacio antes de trabajar — aunque es menos inflamable que el R600a, sigue siendo A2L.",
+            "No acumulés gas en espacios cerrados — la concentración necesaria para ignición es baja.",
+            "Cargá en fase líquida (botella invertida) — es mezcla pura, no se fracciona pero igual se recomienda líquido.",
+            "NO soldés sin ventilar previamente.",
+            "Usá herramientas dieléctricas certificadas para refrigerantes inflamables.",
+            "Tené buena ventilación durante toda la carga."
+          ],
+          "que_hacer_si_fuga": "Ventilar el espacio. Evitar cualquier fuente de ignición. El R32 tiene un límite inferior de inflamabilidad más alto que el R600a, pero igual hay que ser cuidadoso.",
+          "que_no_hacer": [
+            "Trabajar en espacios completamente cerrados sin ventilación",
+            "Soldar sin ventilar previamente",
+            "Ignorar el riesgo de inflamabilidad por ser 'levemente' inflamable"
+          ]
+        },
+        {
+          "nombre": "R410A",
+          "clasificacion": "A1 — No inflamable",
+          "color_alerta": "verde",
+          "presente_en": "Splits 2000-2020 (la mayoría de los equipos actuales en Argentina)",
+          "carga_tipica": "600 a 2000 gramos según equipo",
+          "reglas": [
+            "No es inflamable pero igual puede desplazar el oxígeno en espacios muy cerrados — ventilá.",
+            "Cargá SIEMPRE en fase líquida (botella invertida) — es mezcla azeotrópica y se fracciona si cargás en gas.",
+            "NO purgues a la atmósfera — es HFC con alto GWP y en Argentina hay regulaciones.",
+            "Usá guantes y protección ocular — el refrigerante líquido a alta presión puede causar quemaduras por frío.",
+            "El cilindro puede explotar si se calienta — nunca dejés la botella al sol o cerca de calor."
+          ],
+          "que_hacer_si_fuga": "Ventilar el espacio. No es peligro de incendio pero en concentraciones altas puede producir asfixia por desplazamiento de oxígeno.",
+          "que_no_hacer": [
+            "Cargar en fase gaseosa — se fracciona y el equipo no va a funcionar bien",
+            "Purgar a la atmósfera sin recuperadora",
+            "Dejar la botella al sol o cerca de fuentes de calor",
+            "Soldar cerca de refrigerante — produce gases tóxicos al quemarse"
+          ]
+        },
+        {
+          "nombre": "R22",
+          "clasificacion": "A1 — No inflamable (pero tóxico al quemarse)",
+          "color_alerta": "naranja",
+          "presente_en": "Equipos anteriores a 2015 aproximadamente. En desuso pero muy presente en Argentina",
+          "carga_tipica": "500 a 3000 gramos",
+          "reglas": [
+            "No es inflamable en condiciones normales, pero al contacto con llama produce fosgeno — gas altamente tóxico.",
+            "NUNCA soldés cerca de R22 gaseoso — el gas que queda en las líneas puede generar fosgeno al soldar.",
+            "Purgá las líneas con nitrógeno antes de soldar.",
+            "Usá máscara con filtro si trabajás en espacios cerrados con probable gas en el ambiente.",
+            "El R22 está en proceso de eliminación — no podés comprarlo nuevo en Argentina desde 2020. Solo se puede usar gas recuperado."
+          ],
+          "que_hacer_si_fuga": "Ventilar. El R22 tiene olor detectable. Principal riesgo es si hay llama — produce gases tóxicos.",
+          "que_no_hacer": [
+            "Soldar en líneas con R22 sin purgar primero con nitrógeno",
+            "Comprar R22 nuevo — está prohibida su importación",
+            "Descargar a la atmósfera — es CFC y destruye la capa de ozono"
+          ]
+        },
+        {
+          "nombre": "R404A",
+          "clasificacion": "A1 — No inflamable",
+          "color_alerta": "verde",
+          "presente_en": "Refrigeración comercial (exhibidoras, cámaras). En transición a R448A",
+          "carga_tipica": "500 a 5000 gramos según el equipo",
+          "reglas": [
+            "Cargá siempre en fase líquida — es mezcla no azeotrópica y se fracciona en gas.",
+            "Alto GWP — recuperá siempre el gas antes de abrir el sistema.",
+            "Presiones de trabajo altas — usá manómetros y mangueras certificadas para estas presiones.",
+            "En cámaras grandes, el volumen de gas es importante — ventilá bien el espacio."
+          ],
+          "que_hacer_si_fuga": "Ventilar. No hay riesgo de incendio pero puede desplazar oxígeno en espacios cerrados grandes.",
+          "que_no_hacer": [
+            "Cargar en fase gaseosa",
+            "Descargar sin recuperadora — alto impacto ambiental",
+            "Usar mangueras de baja presión — el R404A trabaja a presiones más altas que el R134a"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "electrica",
+      "titulo": "Seguridad eléctrica",
+      "icono": "⚡",
+      "color": "#ff5252",
+      "items": [
+        {
+          "titulo": "Antes de tocar cualquier componente eléctrico",
+          "nivel": "CRÍTICO",
+          "reglas": [
+            "DESCONECTÁ el equipo del tomacorriente — no alcanza con apagarlo por el control remoto.",
+            "Verificá con el tester que no hay tensión en los terminales antes de tocar.",
+            "Los capacitores guardan carga aunque el equipo esté desconectado — descargalos siempre con un destornillador aislado antes de tocar.",
+            "En equipos trifásicos: verificá las 3 fases. La ausencia de una fase no significa que no hay tensión.",
+            "Usá herramientas con mango aislado (1000V mínimo)."
+          ]
+        },
+        {
+          "titulo": "Capacitores — el peligro más subestimado",
+          "nivel": "ALTO",
+          "reglas": [
+            "Un capacitor de split puede almacenar 400-440V aunque el equipo lleve horas apagado.",
+            "El toque de un capacitor cargado puede causar fibrilación ventricular — es mortal.",
+            "Descarga siempre: ponés la hoja de un destornillador aislado entre los dos terminales durante 2-3 segundos.",
+            "Si el capacitor está bombeado (tapa abultada), NO lo toques — podría explotar. Cortá la alimentación y alejate.",
+            "Después de descargar, verificá con el tester que no hay tensión residual."
+          ]
+        },
+        {
+          "titulo": "Trabajo con el equipo encendido (mediciones)",
+          "nivel": "ALTO",
+          "reglas": [
+            "Cuando medís amperaje o tensión con el equipo funcionando, estás trabajando con tensión viva.",
+            "Usá pinza amperimétrica — nunca pongas el tester en serie con el circuito de 220V.",
+            "Mantené una sola mano en el equipo cuando sea posible — si hay descarga, el circuito no pasa por el corazón.",
+            "No trabajés parado en agua o en superficies húmedas.",
+            "Asegurate de que el cliente o cualquier otra persona no encienda el equipo mientras trabajás sin tensión."
+          ]
+        },
+        {
+          "titulo": "Instalaciones eléctricas deficientes",
+          "nivel": "MEDIO",
+          "reglas": [
+            "Medí siempre la tensión de red antes de arrancar — en Argentina puede estar entre 190V y 250V.",
+            "Verificá el estado de la puesta a tierra. Un equipo sin tierra es un riesgo para el usuario.",
+            "Si el tomacorriente está quemado o flojo, no pongas en marcha el equipo — indicalo al cliente.",
+            "Un diferencial (disyuntor diferencial) en buen estado puede salvar vidas — chequeá que esté presente y funcionando."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "herramientas",
+      "titulo": "Uso seguro de herramientas",
+      "icono": "🔧",
+      "color": "#ff9b42",
+      "items": [
+        {
+          "titulo": "Manómetros y mangueras",
+          "nivel": "MEDIO",
+          "reglas": [
+            "Verificá la presión máxima de trabajo de tus mangueras — no todas sirven para R410A y R404A.",
+            "Las mangueras viejas o con grietas pueden reventar a alta presión — causan lesiones graves.",
+            "Cuando desconectés una manguera con presión: purgarla lentamente, nunca de golpe.",
+            "Usá protección ocular cuando trabajás con sistemas presurizados.",
+            "El refrigerante líquido que sale a presión puede causar quemaduras criogénicas en piel y ojos."
+          ]
+        },
+        {
+          "titulo": "Soplete y soldadura",
+          "nivel": "ALTO",
+          "reglas": [
+            "NUNCA soldés con gas en las líneas. Purgá siempre con nitrógeno antes.",
+            "El nitrógeno que usás para purgar también protege el cobre internamente durante la soldadura — es doble función.",
+            "Tené un matafuego al alcance cuando usás soplete.",
+            "Protegé las superficies inflamables cercanas antes de encender el soplete.",
+            "Usá gafas de soldadura — nunca mirés la llama sin protección.",
+            "Después de soldar, esperá que enfríe antes de presurizar — el cobre caliente puede deformarse."
+          ]
+        },
+        {
+          "titulo": "Bomba de vacío",
+          "nivel": "BAJO",
+          "reglas": [
+            "Verificá el nivel y estado del aceite de la bomba antes de cada uso.",
+            "Una bomba con aceite contaminado no alcanza el vacío necesario y puede contaminar el sistema.",
+            "Las bombas de vacío no son recuperadoras — no aspires refrigerante con la bomba de vacío.",
+            "Ventilá si usás la bomba en espacios cerrados — el aceite caliente genera vapores."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primeros_auxilios",
+      "titulo": "Primeros auxilios básicos",
+      "icono": "🚑",
+      "color": "#ff5252",
+      "items": [
+        {
+          "titulo": "Contacto con refrigerante líquido",
+          "nivel": "URGENTE",
+          "reglas": [
+            "El refrigerante líquido puede causar quemaduras por frío (criogénicas) en piel y ojos.",
+            "En piel: lavá con agua tibia (no caliente) durante 15 minutos. No frotés.",
+            "En ojos: lavá con agua corriente durante 20 minutos. Buscá atención médica inmediatamente.",
+            "No rompas ampollas de quemadura — aumenta el riesgo de infección."
+          ]
+        },
+        {
+          "titulo": "Descarga eléctrica",
+          "nivel": "URGENTE",
+          "reglas": [
+            "Antes de tocar a la víctima: cortá la fuente de electricidad o alejá el cable con un objeto no conductor.",
+            "Nunca toques directamente a alguien que sigue en contacto con la corriente.",
+            "Si la persona está inconsciente y no respira: RCP y llamar al SAME (107) o emergencias locales.",
+            "Una descarga puede causar fibrilación ventricular que no es inmediatamente evidente — siempre ir al médico."
+          ]
+        },
+        {
+          "titulo": "Inhalación de gas refrigerante",
+          "nivel": "ALTO",
+          "reglas": [
+            "Llevá a la persona a aire fresco inmediatamente.",
+            "Si está inconsciente: posición de recuperación y llamar al 107.",
+            "Si respiró gas caliente o descompuesto (R22 quemado): puede haber daño pulmonar — atención médica urgente.",
+            "No ingreses al espacio contaminado sin protección respiratoria adecuada."
+          ]
+        },
+        {
+          "titulo": "Incendio con gas refrigerante inflamable",
+          "nivel": "URGENTE",
+          "reglas": [
+            "Evacuá el área inmediatamente — no intentés apagar si el fuego involucra gas a presión.",
+            "Llamá a bomberos (100) — informales que hay gas refrigerante inflamable.",
+            "Si es un incendio pequeño y controlado: CO2 o polvo químico seco. NUNCA agua en equipos eléctricos.",
+            "Nunca volvás a entrar a un espacio incendiado sin autorización de bomberos."
+          ]
+        }
+      ]
+    }
+  ],
+
+  "checklist_previa": {
+    "titulo": "Checklist antes de empezar",
+    "descripcion": "Verificá estos puntos antes de iniciar cualquier trabajo de refrigeración",
+    "items": [
+      { "id": "c1",  "texto": "Identifiqué el tipo de gas del equipo (plaqueta)" },
+      { "id": "c2",  "texto": "Verifiqué si el gas es inflamable (R600a, R32)" },
+      { "id": "c3",  "texto": "El espacio de trabajo está ventilado" },
+      { "id": "c4",  "texto": "No hay fuentes de ignición cerca (si el gas es inflamable)" },
+      { "id": "c5",  "texto": "Desconecté el equipo del tomacorriente" },
+      { "id": "c6",  "texto": "Verifiqué tensión 0V en terminales con el tester" },
+      { "id": "c7",  "texto": "Descargué los capacitores si voy a tocar la parte eléctrica" },
+      { "id": "c8",  "texto": "Tengo las herramientas correctas para este trabajo" },
+      { "id": "c9",  "texto": "Informé al cliente que el equipo va a estar fuera de servicio" },
+      { "id": "c10", "texto": "Sé dónde está el matafuego más cercano" }
+    ]
+  }
+}

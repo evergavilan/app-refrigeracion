@@ -1,0 +1,33 @@
+{
+  "split": [
+    { "frigorias": "2250", "capacitor": "25+2",   "amp": "3 a 5",  "refrigerante": "R410A", "psi": "110-125 PSI" },
+    { "frigorias": "3000", "capacitor": "35+5",   "amp": "4 a 6",  "refrigerante": "R410A", "psi": "110-130 PSI" },
+    { "frigorias": "4500", "capacitor": "45+5",   "amp": "7 a 9",  "refrigerante": "R410A", "psi": "120-135 PSI" },
+    { "frigorias": "6000", "capacitor": "55+7.5", "amp": "9 a 12", "refrigerante": "R410A", "psi": "125-145 PSI" }
+  ],
+  "quickStart": [
+    { "motor": "1/4 HP", "modelo": "QD 1/4" },
+    { "motor": "1/3 HP", "modelo": "QD 1/3" },
+    { "motor": "1/2 HP", "modelo": "QD 1/2" },
+    { "motor": "3/4 HP", "modelo": "QD 3/4" }
+  ],
+  "pt": [
+    { "gas": "R410A", "temp": "0°C",  "psi": "102 PSI" },
+    { "gas": "R410A", "temp": "10°C", "psi": "118 PSI" },
+    { "gas": "R410A", "temp": "20°C", "psi": "145 PSI" },
+    { "gas": "R410A", "temp": "30°C", "psi": "174 PSI" },
+    { "gas": "R134a", "temp": "0°C",  "psi": "14 PSI"  },
+    { "gas": "R134a", "temp": "10°C", "psi": "28 PSI"  },
+    { "gas": "R134a", "temp": "20°C", "psi": "43 PSI"  }
+  ],
+  "commonFailures": [
+    "Capacitor fatigado",
+    "Condensador tapado",
+    "Evaporador sucio",
+    "Falta vacío",
+    "Flare defectuoso",
+    "Sensor ambiente",
+    "Relay/PTC",
+    "Ventilador trabado"
+  ]
+}

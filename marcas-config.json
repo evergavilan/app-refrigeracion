@@ -1,0 +1,31 @@
+{
+  "splits": {
+    "Carrier":  { "tipo": "inverter", "codigos_marca": "Carrier / BGH", "color": "#003087", "nota": "Usualmente R410A o R32 en modelos post-2018. Verificar plaqueta." },
+    "BGH":      { "tipo": "mixto",    "codigos_marca": "Carrier / BGH", "color": "#e30613", "nota": "Línea económica ON/OFF y línea Sky inverter. Verificar si tiene capacitor." },
+    "Rheem":    { "tipo": "inverter", "codigos_marca": "Rheem / Rheem Inverter", "color": "#0055a5", "nota": "Buena confiabilidad. Falla más frecuente: sensor NTC exterior." },
+    "Gree":     { "tipo": "inverter", "codigos_marca": "Gree / Electra", "color": "#009966", "nota": "Base de muchas marcas blancas argentinas. Módulo IPM es la falla más común en inverter." },
+    "Samsung":  { "tipo": "inverter", "codigos_marca": "Samsung (splits)", "color": "#1428a0", "nota": "Inverter puro. Sin capacitor externo. Módulo IPM y placas propietarias." },
+    "LG":       { "tipo": "inverter", "codigos_marca": "LG", "color": "#a50034", "nota": "Inverter. Códigos CH. Falla frecuente: CH38 (módulo IPM)." },
+    "Philco":   { "tipo": "mixto",    "codigos_marca": "Philco / BGH (línea económica)", "color": "#0033a0", "nota": "Línea económica. ON/OFF con capacitor dual estándar." },
+    "Electra":  { "tipo": "inverter", "codigos_marca": "Gree / Electra", "color": "#cc0000", "nota": "Basada en plataforma Gree. Mismos códigos de error." },
+    "Daikin":   { "tipo": "inverter", "codigos_marca": null, "color": "#009ee0", "nota": "Alta confiabilidad. Inverter de alta eficiencia. Servicio técnico especializado recomendado." },
+    "otra":     { "tipo": "desconocido", "codigos_marca": null, "color": "#445566", "nota": "Sin información específica de marca. Verificar plaqueta para gas y carga." }
+  },
+  "heladeras": {
+    "Whirlpool":  { "gas_tipico": "R600a", "nota": "La mayoría post-2010 usa R600a. Verificar plaqueta. PTC Embraco estándar." },
+    "Mabe":       { "gas_tipico": "R134a", "nota": "Generalmente R134a. Compresores Embraco/Tecumseh. PTC estándar." },
+    "Samsung":    { "gas_tipico": "R600a", "nota": "No Frost mayoritariamente R600a. Evaporador en freezer trasero." },
+    "LG":         { "gas_tipico": "R600a", "nota": "R600a en modelos modernos. No Frost con compresor lineal en modelos premium." },
+    "Electrolux": { "gas_tipico": "R134a", "nota": "R134a en mayoría de modelos. No Frost con sistema de deshielo estándar." },
+    "Drean":      { "gas_tipico": "R134a", "nota": "R134a. Fabricación nacional. Compresores Embraco." },
+    "Patrick":    { "gas_tipico": "R134a", "nota": "R134a. Marca local. Partes compatibles con Mabe/Whirlpool en algunos modelos." },
+    "otra":       { "gas_tipico": "verificar", "nota": "Verificar siempre la plaqueta del equipo." }
+  },
+  "comercial": {
+    "Tecumseh":  { "nota": "Compresor confiable. Repuestos disponibles en Argentina. Klixon estándar." },
+    "Embraco":   { "nota": "Muy común en Argentina. Excelente disponibilidad de repuestos." },
+    "Copeland":  { "nota": "Alta calidad. Scroll en equipos grandes. Requiere diagnóstico con manifold de alta precisión." },
+    "Bitzer":    { "nota": "Semihermético. Mantenimiento de válvulas posible. Servicio especializado recomendado." },
+    "otra":      { "nota": "Verificar plaqueta y buscar hoja técnica del compresor." }
+  }
+}

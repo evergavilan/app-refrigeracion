@@ -1,0 +1,2260 @@
+/* ===================================================== */
+/* HVAC PRO ARGENTINA V3 */
+/* DASHBOARD.CSS */
+/* ===================================================== */
+
+.module-back{
+
+width:54px;
+
+height:54px;
+
+border-radius:18px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+background:
+
+linear-gradient(
+135deg,
+rgba(0,217,255,.18),
+rgba(30,144,255,.18)
+);
+
+font-size:24px;
+
+cursor:pointer;
+
+box-shadow:
+
+0 0 20px rgba(0,217,255,.15);
+
+}
+
+/* ===================================================== */
+/* HVAC INPUTS */
+/* ===================================================== */
+
+.hvac-input{
+
+width:95px;
+
+height:52px;
+
+border:none;
+
+outline:none;
+
+border-radius:16px;
+
+background:#0a1422;
+
+border:
+
+1px solid #1f3248;
+
+color:#fff;
+
+font-size:18px;
+
+font-weight:700;
+
+text-align:center;
+
+padding:10px;
+
+}
+
+.hvac-input::placeholder{
+
+color:#5d7287;
+
+}
+
+/* ===================================================== */
+/* HVAC SELECT */
+/* ===================================================== */
+
+.hvac-select{
+
+width:110px;
+
+height:48px;
+
+border:none;
+
+outline:none;
+
+border-radius:14px;
+
+background:#0a1422;
+
+border:
+
+1px solid #1f3248;
+
+color:#fff;
+
+font-size:15px;
+
+padding:0 12px;
+
+}
+
+/* ===================================================== */
+/* BEHAVIOR CARD */
+/* ===================================================== */
+
+.behavior-card{
+
+padding:18px 20px;
+
+}
+
+/* ===================================================== */
+/* ANALYZE BUTTON */
+/* ===================================================== */
+
+.btn-primary{
+
+margin:
+
+28px 0;
+
+font-size:18px;
+
+letter-spacing:.5px;
+
+}
+
+/* ===================================================== */
+/* HVAC RESULT */
+/* ===================================================== */
+
+#mentorResult{
+
+margin-top:10px;
+
+}
+
+#mentorResult .mentor-text{
+
+white-space:pre-line;
+
+}
+
+/* ===================================================== */
+/* HVAC GLOW */
+/* ===================================================== */
+
+.module-card:hover{
+
+border-color:
+
+rgba(0,217,255,.25);
+
+box-shadow:
+
+0 0 20px rgba(0,217,255,.08);
+
+}
+
+/* ===================================================== */
+/* REFERENCES */
+/* ===================================================== */
+
+.references-card{
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.references-card::before{
+
+content:"";
+
+position:absolute;
+
+top:-60px;
+
+right:-60px;
+
+width:140px;
+
+height:140px;
+
+background:
+
+rgba(0,217,255,.05);
+
+border-radius:50%;
+
+}
+
+/* ===================================================== */
+/* HVAC STATUS */
+/* ===================================================== */
+
+.status-badge{
+
+display:flex;
+
+align-items:center;
+
+gap:6px;
+
+}
+
+/* ===================================================== */
+/* MOBILE */
+/* ===================================================== */
+
+@media(max-width:480px){
+
+.hvac-input{
+
+width:85px;
+
+height:48px;
+
+font-size:16px;
+
+}
+
+.hvac-select{
+
+width:100px;
+
+font-size:14px;
+
+}
+
+.module-card{
+
+padding:18px;
+
+}
+
+.module-title{
+
+font-size:17px;
+
+}
+
+.module-description{
+
+font-size:13px;
+
+}
+
+}
+/* ===================================================
+   FUNCIONES TÉCNICAS — TABS Y CARDS PREMIUM
+   =================================================== */
+
+/* --- TABS PRINCIPALES --- */
+.ft-tabs {
+  display: flex;
+  gap: 8px;
+  padding: 16px 16px 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.ft-tabs::-webkit-scrollbar { display: none; }
+
+.ft-tab {
+  flex: 1;
+  min-width: 70px;
+  padding: 10px 8px;
+  border-radius: 14px;
+  border: 1.5px solid rgba(0,217,255,.2);
+  background: rgba(0,217,255,.04);
+  color: #8899aa;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all .2s;
+  white-space: nowrap;
+}
+.ft-tab.active {
+  background: rgba(0,217,255,.15);
+  border-color: #00d9ff;
+  color: #00d9ff;
+}
+
+/* --- SUBTABS --- */
+.ft-subtabs {
+  display: flex;
+  gap: 8px;
+  padding: 12px 16px 4px;
+}
+.ft-subtab {
+  flex: 1;
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,.1);
+  background: rgba(255,255,255,.04);
+  color: #8899aa;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .2s;
+}
+.ft-subtab.active {
+  background: rgba(0,217,255,.12);
+  border-color: rgba(0,217,255,.4);
+  color: #00d9ff;
+}
+
+/* --- GAS SELECTOR PT --- */
+.ft-gas-selector {
+  display: flex;
+  gap: 6px;
+  padding: 12px 16px 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.ft-gas-selector::-webkit-scrollbar { display: none; }
+
+.ft-gas-btn {
+  flex-shrink: 0;
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: 1.5px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.04);
+  color: #8899aa;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all .2s;
+}
+.ft-gas-btn.active {
+  background: rgba(0,217,255,.18);
+  border-color: #00d9ff;
+  color: #00d9ff;
+}
+
+/* --- INFO BADGE --- */
+.ft-info-badge {
+  margin: 10px 16px 4px;
+  padding: 9px 14px;
+  border-radius: 10px;
+  background: rgba(255,200,0,.07);
+  border: 1px solid rgba(255,200,0,.2);
+  color: #ffc800;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* --- CARDS --- */
+.ft-card {
+  margin: 10px 16px 0;
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(0,217,255,.1);
+}
+.ft-card:last-child { margin-bottom: 20px; }
+
+.ft-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.ft-card-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: #fff;
+}
+.ft-card-badge {
+  font-size: 11px;
+  font-weight: 700;
+  color: #00d9ff;
+  background: rgba(0,217,255,.12);
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+/* --- GRID 3 COLUMNAS (amperaje por gas) --- */
+.ft-grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.ft-data-block {
+  padding: 10px 8px;
+  border-radius: 12px;
+  text-align: center;
+}
+.ft-r22   { background: rgba(255,107,107,.1); border: 1px solid rgba(255,107,107,.25); }
+.ft-r410  { background: rgba(0,217,255,.08);  border: 1px solid rgba(0,217,255,.2);   }
+.ft-r32   { background: rgba(100,255,150,.08);border: 1px solid rgba(100,255,150,.2); }
+
+.ft-gas-label {
+  font-size: 11px;
+  font-weight: 800;
+  color: #8899aa;
+  margin-bottom: 4px;
+}
+.ft-amp-value {
+  font-size: 13px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.2;
+}
+.ft-amp-max {
+  font-size: 10px;
+  color: #ff9b42;
+  margin-top: 3px;
+}
+
+/* --- FILAS DE DATOS --- */
+.ft-row-data {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.ft-row-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+}
+.ft-row-item:last-child { border-bottom: none; }
+.ft-row-label {
+  font-size: 12px;
+  color: #7788aa;
+  font-weight: 500;
+}
+.ft-row-value {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+}
+.ft-highlight { color: #00d9ff; }
+.ft-warn      { color: #ff9b42; }
+.ft-danger    { color: #ff5252; }
+.ft-cold      { color: #64d8ff; }
+.ft-hot       { color: #ff7043; }
+
+/* --- NOTA --- */
+.ft-nota {
+  font-size: 11.5px;
+  color: #5577aa;
+  font-style: italic;
+  border-top: 1px solid rgba(255,255,255,.05);
+  padding-top: 8px;
+}
+
+/* --- TABLA P/T --- */
+.ft-table-wrapper {
+  margin: 10px 16px 20px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(0,217,255,.15);
+}
+.ft-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.ft-table thead {
+  background: rgba(0,217,255,.12);
+}
+.ft-table th {
+  padding: 10px 12px;
+  color: #00d9ff;
+  font-weight: 700;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: .5px;
+}
+.ft-table td {
+  padding: 9px 12px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+  color: #ddeeff;
+}
+.ft-table tr:last-child td { border-bottom: none; }
+.ft-table tr:nth-child(even) { background: rgba(255,255,255,.02); }
+.ft-table tr:hover { background: rgba(0,217,255,.05); }
+.ft-psi { color: #00d9ff; font-weight: 700; }
+.ft-bar { color: #64d8ff; font-weight: 600; }
+
+/* ===================================================
+   DIAGNÓSTICO CLÍNICO — ESTILOS
+   =================================================== */
+
+/* --- ETAPAS --- */
+.dx-etapa-label {
+  margin: 18px 16px 8px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: #00d9ff;
+  text-transform: uppercase;
+}
+
+/* --- CARD DE ENTRADA --- */
+.dx-card {
+  margin: 0 16px 12px;
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(0,217,255,.1);
+}
+
+.dx-field { margin-bottom: 12px; }
+.dx-field:last-child { margin-bottom: 0; }
+
+.dx-field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.dx-label {
+  display: block;
+  font-size: 12px;
+  color: #7788aa;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.dx-hint {
+  font-size: 11.5px;
+  color: #556677;
+  font-style: italic;
+  margin-top: 8px;
+}
+
+/* --- CHECKBOXES --- */
+.dx-checks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dx-check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.07);
+  cursor: pointer;
+  transition: background .15s;
+}
+
+.dx-check:has(input:checked) {
+  background: rgba(0,217,255,.08);
+  border-color: rgba(0,217,255,.3);
+}
+
+.dx-check input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #00d9ff;
+  flex-shrink: 0;
+}
+
+.dx-check span {
+  font-size: 13px;
+  color: #ccd9ee;
+  font-weight: 500;
+}
+
+/* --- RESULTADO --- */
+.dx-result-card {
+  margin: 16px 16px 24px;
+  padding: 20px;
+  border-radius: 20px;
+  background: rgba(7,17,31,.8);
+  border: 1.5px solid rgba(0,217,255,.25);
+}
+
+.dx-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.dx-icono {
+  font-size: 32px;
+  flex-shrink: 0;
+}
+
+.dx-title-block { flex: 1; }
+
+.dx-titulo {
+  font-size: 16px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+
+/* Barra de certeza */
+.dx-certeza-bar {
+  height: 4px;
+  background: rgba(255,255,255,.1);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+
+.dx-certeza-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width .5s ease;
+}
+
+.dx-certeza-txt {
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* Causa explicada */
+.dx-causa {
+  font-size: 13.5px;
+  color: #aabbcc;
+  line-height: 1.6;
+  margin-bottom: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255,255,255,.07);
+}
+
+/* Grid de datos medidos */
+.dx-datos-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.dx-dato {
+  padding: 10px;
+  border-radius: 12px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.dx-ok   { background: rgba(0,217,255,.08);  border: 1px solid rgba(0,217,255,.25);  }
+.dx-alto { background: rgba(255,82,82,.1);   border: 1px solid rgba(255,82,82,.3);   }
+.dx-bajo { background: rgba(255,155,66,.1);  border: 1px solid rgba(255,155,66,.3);  }
+
+.dx-dato-label { font-size: 10px; color: #7788aa; font-weight: 600; }
+.dx-dato-val   { font-size: 18px; font-weight: 800; color: #fff; }
+.dx-dato-ref   { font-size: 10px; color: #556677; }
+.dx-ok   .dx-dato-val { color: #00d9ff; }
+.dx-alto .dx-dato-val { color: #ff5252; }
+.dx-bajo .dx-dato-val { color: #ff9b42; }
+
+/* Alerta */
+.dx-alerta {
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(255,155,66,.1);
+  border: 1px solid rgba(255,155,66,.3);
+  color: #ff9b42;
+  font-size: 12.5px;
+  font-weight: 600;
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+
+/* Pasos */
+.dx-pasos-titulo {
+  font-size: 12px;
+  font-weight: 700;
+  color: #00d9ff;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: .8px;
+}
+
+.dx-paso {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(255,255,255,.04);
+}
+.dx-paso:last-child { border-bottom: none; }
+
+.dx-paso-num {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  border-radius: 50%;
+  background: rgba(0,217,255,.15);
+  color: #00d9ff;
+  font-size: 11px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dx-paso-txt {
+  font-size: 13px;
+  color: #ccd9ee;
+  line-height: 1.5;
+  flex: 1;
+}
+
+/* ===================================================
+   BIBLIOTECA TÉCNICA — REFERENCIAS HVAC v2
+   =================================================== */
+
+/* --- BUSCADOR --- */
+.ref-search-wrap {
+  padding: 12px 16px 4px;
+}
+.ref-search {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: 1.5px solid rgba(0,217,255,.2);
+  background: rgba(0,217,255,.05);
+  color: #fff;
+  font-size: 14px;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color .2s;
+}
+.ref-search:focus {
+  border-color: #00d9ff;
+  background: rgba(0,217,255,.08);
+}
+.ref-search::placeholder { color: #556677; }
+
+/* --- MÓDULO CARD --- */
+.ref-module-card {
+  margin: 8px 16px 0;
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(0,217,255,.1);
+  cursor: pointer;
+  transition: background .15s, border-color .15s;
+}
+.ref-module-card:last-child { margin-bottom: 20px; }
+.ref-module-card:active {
+  background: rgba(0,217,255,.08);
+  border-color: rgba(0,217,255,.3);
+}
+
+.ref-module-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.ref-module-icono {
+  font-size: 26px;
+  flex-shrink: 0;
+}
+.ref-module-titulo {
+  font-size: 14px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.3;
+}
+.ref-module-sub {
+  font-size: 12px;
+  color: #6688aa;
+  margin-top: 2px;
+}
+.ref-arrow {
+  font-size: 22px;
+  color: #00d9ff;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+/* --- PREVIEW TEXTO --- */
+.ref-module-preview {
+  font-size: 12.5px;
+  color: #7788aa;
+  line-height: 1.5;
+  margin-bottom: 10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* --- CHIPS DE CONCEPTOS --- */
+.ref-module-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.ref-chip {
+  font-size: 11px;
+  font-weight: 600;
+  color: #00d9ff;
+  background: rgba(0,217,255,.08);
+  border: 1px solid rgba(0,217,255,.2);
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+/* --- PROC META --- */
+.ref-proc-meta {
+  display: flex;
+  gap: 6px;
+  margin-top: 4px;
+}
+.ref-badge-nivel {
+  font-size: 11px;
+  font-weight: 700;
+  color: #ff9b42;
+  background: rgba(255,155,66,.1);
+  border: 1px solid rgba(255,155,66,.25);
+  padding: 3px 8px;
+  border-radius: 20px;
+}
+.ref-badge-tiempo {
+  font-size: 11px;
+  font-weight: 600;
+  color: #6688aa;
+  background: rgba(255,255,255,.05);
+  padding: 3px 8px;
+  border-radius: 20px;
+}
+
+/* --- HERRAMIENTAS --- */
+.ref-herramientas {
+  font-size: 12px;
+  color: #556677;
+  margin-top: 4px;
+  font-style: italic;
+}
+.ref-herramientas-full {
+  background: rgba(0,217,255,.05);
+  border: 1px solid rgba(0,217,255,.15);
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 4px;
+  font-size: 13px;
+  color: #aabbcc;
+  line-height: 1.8;
+}
+.ref-herramienta-item {
+  display: inline-block;
+  margin-right: 12px;
+}
+
+/* --- INTRO CARD (teoría detalle) --- */
+.ref-intro-card {
+  padding: 14px;
+  border-radius: 14px;
+  background: rgba(0,217,255,.06);
+  border: 1px solid rgba(0,217,255,.15);
+  font-size: 13.5px;
+  color: #aabbcc;
+  line-height: 1.6;
+  margin-bottom: 4px;
+}
+
+/* --- CONCEPTO CARD --- */
+.ref-concepto-card {
+  margin: 10px 16px 0;
+  padding: 16px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.07);
+}
+.ref-concepto-card:last-child { margin-bottom: 24px; }
+.ref-concepto-num {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(0,217,255,.15);
+  color: #00d9ff;
+  font-size: 12px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+.ref-concepto-titulo {
+  font-size: 14px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.ref-concepto-detalle {
+  font-size: 13px;
+  color: #9aabbf;
+  line-height: 1.7;
+}
+
+/* --- PASO CARD (procedimiento) --- */
+.ref-paso-card {
+  margin: 10px 16px 0;
+  padding: 16px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.03);
+  border-left: 3px solid rgba(0,217,255,.4);
+  border-top: 1px solid rgba(255,255,255,.06);
+  border-right: 1px solid rgba(255,255,255,.06);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.ref-paso-card:last-of-type { margin-bottom: 4px; }
+.ref-paso-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.ref-paso-num {
+  width: 26px;
+  height: 26px;
+  min-width: 26px;
+  border-radius: 50%;
+  background: rgba(0,217,255,.2);
+  color: #00d9ff;
+  font-size: 12px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ref-paso-titulo {
+  font-size: 14px;
+  font-weight: 800;
+  color: #fff;
+}
+.ref-paso-detalle {
+  font-size: 13px;
+  color: #9aabbf;
+  line-height: 1.7;
+}
+
+/* --- ALERTAS PROCEDIMIENTO --- */
+.ref-alerta-item {
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: rgba(255,155,66,.08);
+  border: 1px solid rgba(255,155,66,.2);
+  color: #ff9b42;
+  font-size: 12.5px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+/* --- MARCAS ERRORES --- */
+.ref-marca-section {
+  margin: 12px 16px 0;
+}
+.ref-marca-section:last-child { margin-bottom: 20px; }
+.ref-marca-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0 8px;
+  border-bottom: 1px solid rgba(0,217,255,.15);
+  margin-bottom: 8px;
+}
+.ref-marca-icono { font-size: 20px; }
+.ref-marca-nombre {
+  font-size: 14px;
+  font-weight: 800;
+  color: #00d9ff;
+}
+
+/* --- ERROR CARD --- */
+.ref-error-card {
+  padding: 12px;
+  border-radius: 14px;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.07);
+  margin-bottom: 8px;
+}
+.ref-error-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.ref-error-code {
+  background: rgba(0,217,255,.15);
+  color: #00d9ff;
+  font-size: 13px;
+  font-weight: 900;
+  padding: 4px 10px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+.ref-error-desc {
+  font-size: 13px;
+  font-weight: 600;
+  color: #ddeeff;
+  line-height: 1.4;
+}
+.ref-error-accion {
+  font-size: 12.5px;
+  color: #8899aa;
+  line-height: 1.5;
+}
+.ref-error-accion-label {
+  color: #00d9ff;
+  font-weight: 700;
+}
+
+/* --- EMPTY STATE --- */
+.ref-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  color: #445566;
+  gap: 12px;
+}
+.ref-empty span { font-size: 40px; }
+.ref-empty p { font-size: 14px; text-align: center; }
+
+/* ===================================================
+   HISTORIAL DE BÚSQUEDAS
+   =================================================== */
+
+/* --- Buscador con botón historial --- */
+.ref-search-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.ref-search-row .ref-search { flex: 1; }
+
+.ref-hist-btn {
+  width: 46px;
+  height: 46px;
+  min-width: 46px;
+  border-radius: 14px;
+  border: 1.5px solid rgba(0,217,255,.25);
+  background: rgba(0,217,255,.08);
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .15s;
+  flex-shrink: 0;
+}
+.ref-hist-btn:active { background: rgba(0,217,255,.2); }
+
+/* --- Botón home --- */
+.hist-home-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% - 32px);
+  margin: 10px 16px 0;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px dashed rgba(0,217,255,.25);
+  background: rgba(0,217,255,.04);
+  color: #6688aa;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .15s, color .15s;
+}
+.hist-home-btn:active {
+  background: rgba(0,217,255,.1);
+  color: #00d9ff;
+}
+
+/* --- Acciones export --- */
+.hist-actions {
+  display: flex;
+  gap: 8px;
+  padding: 12px 16px 4px;
+  flex-wrap: wrap;
+}
+
+.hist-export-btn {
+  flex: 1;
+  min-width: 120px;
+  padding: 11px 10px;
+  border-radius: 14px;
+  border: 1.5px solid rgba(0,217,255,.25);
+  background: rgba(0,217,255,.08);
+  color: #00d9ff;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .15s;
+}
+.hist-export-btn:active { background: rgba(0,217,255,.2); }
+
+.hist-export-csv {
+  border-color: rgba(100,255,150,.25);
+  background: rgba(100,255,150,.06);
+  color: #64ff96;
+}
+.hist-export-csv:active { background: rgba(100,255,150,.15); }
+
+.hist-clear-btn {
+  padding: 11px 16px;
+  border-radius: 14px;
+  border: 1.5px solid rgba(255,82,82,.2);
+  background: rgba(255,82,82,.06);
+  color: #ff5252;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .15s;
+}
+.hist-clear-btn:active { background: rgba(255,82,82,.15); }
+
+/* --- Stats --- */
+.hist-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin: 8px 16px 4px;
+}
+.hist-stat {
+  padding: 12px 8px;
+  border-radius: 14px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.07);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.hist-stat-val {
+  font-size: 15px;
+  font-weight: 800;
+  color: #00d9ff;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.hist-stat-label {
+  font-size: 10px;
+  color: #556677;
+  font-weight: 600;
+}
+
+/* --- Grupos por fecha --- */
+.hist-group {
+  margin: 10px 16px 0;
+}
+.hist-group:last-child { margin-bottom: 24px; }
+
+.hist-group-label {
+  font-size: 11px;
+  font-weight: 800;
+  color: #445566;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 8px 0 6px;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+  margin-bottom: 6px;
+}
+
+/* --- Item de búsqueda --- */
+.hist-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px 12px;
+  border-radius: 14px;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.06);
+  margin-bottom: 6px;
+  cursor: pointer;
+  transition: background .15s;
+  gap: 10px;
+}
+.hist-item:active { background: rgba(0,217,255,.07); }
+
+.hist-item-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+}
+
+.hist-item-icono {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.hist-item-query {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ddeeff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hist-item-meta {
+  font-size: 11px;
+  color: #445566;
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hist-item-del {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,82,82,.1);
+  color: #ff5252;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background .15s;
+}
+.hist-item-del:active { background: rgba(255,82,82,.25); }
+
+/* --- Toast notification --- */
+.hvac-toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: rgba(0,20,40,.95);
+  border: 1.5px solid rgba(0,217,255,.3);
+  color: #00d9ff;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 12px 24px;
+  border-radius: 24px;
+  opacity: 0;
+  transition: opacity .25s, transform .25s;
+  z-index: 9999;
+  white-space: nowrap;
+  backdrop-filter: blur(10px);
+}
+.hvac-toast-show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ===================================================
+   DX HISTORIAL + BOTONES ACCIÓN
+   =================================================== */
+
+/* Botón PDF inline */
+/* Botón row — 3 botones iguales en una fila */
+.dx-btn-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  padding: 4px 16px 8px;
+}
+
+/* Resetear herencia de btn-primary dentro del row */
+.dx-btn-row .hvac-btn {
+  margin: 0 !important;
+  padding: 13px 8px;
+  font-size: 13px;
+  letter-spacing: 0;
+  border-radius: 16px;
+  font-weight: 700;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Limpiar — outline oscuro */
+.dx-btn-row .btn-secondary {
+  background: rgba(255,255,255,.05);
+  border: 1.5px solid rgba(255,255,255,.12);
+  color: #7788aa;
+}
+.dx-btn-row .btn-secondary:active {
+  background: rgba(255,255,255,.1);
+}
+
+/* Diagnosticar — azul sólido */
+.dx-btn-row .btn-primary {
+  background: #00d9ff;
+  border: none;
+  color: #07111f;
+}
+.dx-btn-row .btn-primary:active {
+  background: #00b8d9;
+}
+
+/* Descargar PDF — outline cyan */
+.dx-pdf-btn {
+  padding: 13px 8px;
+  border-radius: 16px;
+  border: 1.5px solid rgba(0,217,255,.35);
+  background: rgba(0,217,255,.07);
+  color: #00d9ff;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .15s;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+}
+.dx-pdf-btn:active { background: rgba(0,217,255,.18); }
+.dx-hist-badge {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  border: 1.5px solid rgba(0,217,255,.2);
+  background: rgba(0,217,255,.07);
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+/* Botón row */
+.dx-btn-row {
+  display: flex;
+  gap: 10px;
+  padding: 4px 16px 8px;
+}
+.dx-btn-row .hvac-btn { flex: 1; }
+
+/* === TABS DX HISTORIAL === */
+.dxh-tabs {
+  display: flex;
+  gap: 6px;
+  padding: 10px 16px 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.dxh-tabs::-webkit-scrollbar { display: none; }
+
+.dxh-tab {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: 1.5px solid rgba(255,255,255,.1);
+  background: rgba(255,255,255,.04);
+  color: #8899aa;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all .2s;
+}
+.dxh-tab.active {
+  background: rgba(0,217,255,.15);
+  border-color: #00d9ff;
+  color: #00d9ff;
+}
+
+.dxh-count {
+  background: rgba(255,255,255,.1);
+  color: #556677;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 10px;
+}
+.dxh-tab.active .dxh-count {
+  background: rgba(0,217,255,.2);
+  color: #00d9ff;
+}
+
+/* === ITEMS DX === */
+.dxh-item {
+  margin: 8px 16px 0;
+  padding: 14px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.07);
+  cursor: pointer;
+  transition: background .15s;
+}
+.dxh-item:last-child { margin-bottom: 24px; }
+.dxh-item:active { background: rgba(0,217,255,.06); }
+
+.dxh-item-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.dxh-modulo-badge {
+  font-size: 11px;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+.dxh-split    { background:rgba(0,217,255,.12);  color:#00d9ff;  }
+.dxh-ciclica  { background:rgba(100,200,255,.1); color:#64c8ff;  }
+.dxh-nofrost  { background:rgba(100,255,200,.1); color:#64ffc8;  }
+.dxh-comercial{ background:rgba(255,180,50,.1);  color:#ffb432;  }
+
+.dxh-fecha {
+  font-size: 11px;
+  color: #445566;
+  margin-left: auto;
+}
+
+.dxh-titulo {
+  font-size: 14px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.dxh-certeza {
+  font-size: 11px;
+  color: #00d9ff;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.dxh-datos-mini {
+  font-size: 12px;
+  color: #556677;
+}
+
+/* ===================================================
+   CALCULADORAS TÉCNICAS
+   =================================================== */
+
+.calc-card {
+  margin: 10px 16px 0;
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(0,217,255,.12);
+}
+
+.calc-field {
+  margin-bottom: 14px;
+}
+.calc-field:last-of-type { margin-bottom: 0; }
+
+.calc-label {
+  display: block;
+  font-size: 12px;
+  color: #7788aa;
+  font-weight: 600;
+  margin-bottom: 7px;
+}
+
+.calc-btn {
+  width: 100%;
+  margin-top: 16px;
+  padding: 14px;
+  border-radius: 16px;
+  border: none;
+  background: #00d9ff;
+  color: #07111f;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background .15s;
+  letter-spacing: .3px;
+}
+.calc-btn:active { background: #00b8d9; }
+
+/* Resultado de calculadora */
+.calc-result {
+  margin-top: 14px;
+  padding: 18px;
+  border-radius: 16px;
+  background: rgba(0,0,0,.3);
+  border: 2px solid rgba(0,217,255,.3);
+}
+
+.calc-result-val {
+  font-size: 36px;
+  font-weight: 900;
+  text-align: center;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.calc-result-label {
+  font-size: 12px;
+  color: #556677;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.calc-result-estado {
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+  padding: 8px;
+  border-radius: 10px;
+  background: rgba(255,255,255,.05);
+  margin-bottom: 10px;
+}
+
+.calc-result-consejo {
+  font-size: 12.5px;
+  color: #7788aa;
+  line-height: 1.6;
+  font-style: italic;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255,255,255,.06);
+  margin-top: 10px;
+}
+
+/* Referencia de calculadora */
+.calc-ref-card {
+  margin: 10px 16px 20px;
+  padding: 16px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.07);
+}
+
+.calc-ref-title {
+  font-size: 12px;
+  font-weight: 800;
+  color: #00d9ff;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.calc-ref-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+}
+.calc-ref-row:last-child { border-bottom: none; }
+
+.calc-ref-label {
+  font-size: 12px;
+  color: #556677;
+}
+.calc-ref-val {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* Colores semáforo */
+.calc-ok     { color: #00d9ff; }
+.calc-warn   { color: #ff9b42; }
+.calc-danger { color: #ff5252; }
+
+/* Error inline */
+.calc-error {
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(255,82,82,.08);
+  border: 1px solid rgba(255,82,82,.25);
+  color: #ff5252;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* ===================================================
+   TIMER INTEGRADO EN PROCEDIMIENTOS
+   =================================================== */
+
+/* Aviso de que el proc tiene timers */
+.proc-timer-aviso {
+  margin: 10px 16px 4px;
+  padding: 11px 14px;
+  border-radius: 12px;
+  background: rgba(0,217,255,.06);
+  border: 1px solid rgba(0,217,255,.2);
+  color: #6699bb;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+/* Paso con timer — borde izquierdo destacado */
+.ref-paso-con-timer {
+  border-left-color: #00d9ff;
+  border-left-width: 3px;
+}
+
+/* Badge ⏱ en el título del paso */
+.paso-timer-badge {
+  font-size: 14px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+/* === WIDGET DEL TIMER === */
+.timer-widget {
+  margin-top: 14px;
+  padding: 16px;
+  border-radius: 16px;
+  background: rgba(0,217,255,.04);
+  border: 1.5px solid rgba(0,217,255,.2);
+  transition: border-color .3s, background .3s;
+}
+
+.timer-widget.timer-urgente {
+  border-color: #ff5252;
+  background: rgba(255,82,82,.06);
+  animation: timer-pulse 1s ease-in-out infinite;
+}
+
+.timer-widget.timer-done {
+  border-color: #00ff88;
+  background: rgba(0,255,136,.06);
+}
+
+@keyframes timer-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: .7; }
+}
+
+.timer-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #00d9ff;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.timer-display {
+  font-size: 48px;
+  font-weight: 900;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 2px;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 10px;
+  line-height: 1;
+}
+
+.timer-widget.timer-urgente .timer-display { color: #ff5252; }
+.timer-widget.timer-done    .timer-display { color: #00ff88; font-size: 28px; padding: 10px 0; }
+
+/* Barra de progreso */
+.timer-progress-wrap {
+  height: 6px;
+  background: rgba(255,255,255,.08);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+
+.timer-progress-bar {
+  height: 100%;
+  border-radius: 3px;
+  background: #00d9ff;
+  transition: width .9s linear, background .5s;
+}
+
+/* Botones del timer */
+.timer-btns {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.timer-btn {
+  padding: 10px 24px;
+  border-radius: 12px;
+  border: none;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .15s, transform .1s;
+}
+
+.timer-btn:active { transform: scale(.97); }
+
+.timer-start {
+  background: #00d9ff;
+  color: #07111f;
+  min-width: 120px;
+}
+.timer-start:active { background: #00b8d9; }
+
+.timer-pause {
+  background: rgba(255,155,66,.15);
+  color: #ff9b42;
+  border: 1.5px solid rgba(255,155,66,.3);
+  min-width: 120px;
+}
+.timer-pause:active { background: rgba(255,155,66,.25); }
+
+.timer-reset {
+  background: rgba(255,255,255,.06);
+  color: #7788aa;
+  border: 1px solid rgba(255,255,255,.1);
+}
+.timer-reset:active { background: rgba(255,255,255,.12); }
+
+/* Alerta del timer */
+.timer-alerta {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(255,155,66,.1);
+  border: 1px solid rgba(255,155,66,.25);
+  color: #ff9b42;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+/* ===================================================
+   MENTOR CONTEXTUAL — BLOQUE EN DIAGNÓSTICO
+   =================================================== */
+
+.mentor-dx-card {
+  margin-top: 16px;
+  padding: 16px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(0,217,255,.06), rgba(0,100,150,.08));
+  border: 1.5px solid rgba(0,217,255,.2);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Línea decorativa izquierda */
+.mentor-dx-card::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, #00d9ff, rgba(0,217,255,.2));
+  border-radius: 3px 0 0 3px;
+}
+
+.mentor-dx-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.mentor-dx-avatar {
+  font-size: 28px;
+  line-height: 1;
+}
+
+.mentor-dx-nombre {
+  font-size: 13px;
+  font-weight: 800;
+  color: #00d9ff;
+}
+
+.mentor-dx-subtitulo {
+  font-size: 11px;
+  color: #445566;
+  margin-top: 1px;
+}
+
+.mentor-dx-frase {
+  font-size: 13.5px;
+  color: #ccd9ee;
+  line-height: 1.7;
+  font-style: italic;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+.mentor-dx-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mentor-dx-consejo,
+.mentor-dx-error {
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.mentor-dx-consejo-label {
+  color: #00d9ff;
+  font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.mentor-dx-consejo-txt {
+  color: #9aabbf;
+}
+
+.mentor-dx-error-label {
+  color: #ff9b42;
+  font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.mentor-dx-error-txt {
+  color: #7788aa;
+}
+
+/* ===================================================
+   MÓDULO DE SEGURIDAD
+   =================================================== */
+
+/* Checklist header */
+.seg-checklist-header {
+  margin: 12px 16px 4px;
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+}
+.seg-checklist-titulo {
+  font-size: 15px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 6px;
+}
+.seg-checklist-desc {
+  font-size: 12px;
+  color: #556677;
+  margin-bottom: 12px;
+}
+.seg-progress-wrap {
+  height: 6px;
+  background: rgba(255,255,255,.08);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+.seg-progress-bar {
+  height: 100%;
+  border-radius: 3px;
+  transition: width .4s ease, background .4s;
+}
+.seg-progress-txt {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Check items */
+.seg-check-list {
+  padding: 4px 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.seg-check-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 14px;
+  border-radius: 14px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.07);
+  cursor: pointer;
+  transition: background .15s, border-color .15s;
+}
+.seg-check-item.seg-check-done {
+  background: rgba(0,255,136,.06);
+  border-color: rgba(0,255,136,.2);
+}
+.seg-check-input {
+  width: 20px;
+  height: 20px;
+  accent-color: #00ff88;
+  flex-shrink: 0;
+}
+.seg-check-texto {
+  font-size: 13px;
+  color: #ccd9ee;
+  line-height: 1.4;
+}
+.seg-check-done .seg-check-texto {
+  color: #6699aa;
+  text-decoration: line-through;
+}
+
+.seg-reset-btn {
+  padding: 10px 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.05);
+  color: #7788aa;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.seg-listo-badge {
+  flex: 1;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: rgba(0,255,136,.1);
+  border: 1px solid rgba(0,255,136,.25);
+  color: #00ff88;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Gas cards */
+.seg-gas-card {
+  margin: 10px 16px 0;
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.07);
+}
+.seg-gas-card:last-child { margin-bottom: 20px; }
+.seg-gas-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  border-left: 3px solid;
+  padding-left: 12px;
+  margin-bottom: 12px;
+}
+.seg-gas-nombre {
+  font-size: 15px;
+  font-weight: 800;
+  color: #fff;
+}
+.seg-gas-clasif {
+  font-size: 11px;
+  font-weight: 700;
+  margin-top: 2px;
+}
+.seg-gas-badge {
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.seg-gas-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.seg-gas-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.seg-gas-meta-label {
+  font-size: 10px;
+  color: #445566;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.seg-gas-meta-val {
+  font-size: 12.5px;
+  color: #9aabbf;
+}
+
+/* Reglas */
+.seg-reglas-titulo {
+  font-size: 11px;
+  font-weight: 800;
+  color: #00d9ff;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.seg-regla {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,.04);
+}
+.seg-regla:last-of-type { border-bottom: none; }
+.seg-regla-num {
+  min-width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(0,217,255,.15);
+  color: #00d9ff;
+  font-size: 11px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.seg-regla-txt {
+  font-size: 13px;
+  color: #ccd9ee;
+  line-height: 1.5;
+}
+
+/* Si hay fuga */
+.seg-fuga-card {
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(255,82,82,.08);
+  border: 1px solid rgba(255,82,82,.25);
+}
+.seg-fuga-titulo {
+  font-size: 12px;
+  font-weight: 800;
+  color: #ff5252;
+  margin-bottom: 6px;
+}
+.seg-fuga-txt {
+  font-size: 12.5px;
+  color: #ffaaaa;
+  line-height: 1.5;
+}
+
+/* No hacer */
+.seg-no-hacer-titulo {
+  font-size: 11px;
+  font-weight: 800;
+  color: #ff5252;
+  letter-spacing: .8px;
+  margin: 12px 0 6px;
+}
+.seg-no-hacer {
+  font-size: 12.5px;
+  color: #aa7777;
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(255,255,255,.04);
+  line-height: 1.4;
+}
+
+/* Item cards (eléctrica, herramientas, auxilios) */
+.seg-item-card {
+  margin: 10px 16px 0;
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.07);
+}
+.seg-item-card:last-child { margin-bottom: 20px; }
+.seg-item-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.seg-item-titulo {
+  font-size: 14px;
+  font-weight: 800;
+  color: #fff;
+  flex: 1;
+  line-height: 1.3;
+}
+.seg-item-nivel {
+  font-size: 10px;
+  font-weight: 800;
+  padding: 4px 8px;
+  border-radius: 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Teléfonos de emergencia */
+.seg-tel-card {
+  margin: 10px 16px 0;
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(255,82,82,.06);
+  border: 1.5px solid rgba(255,82,82,.2);
+}
+.seg-tel-titulo {
+  font-size: 13px;
+  font-weight: 800;
+  color: #ff5252;
+  margin-bottom: 12px;
+}
+.seg-tel-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.seg-tel-btn {
+  display: block;
+  padding: 13px;
+  border-radius: 14px;
+  background: rgba(255,82,82,.12);
+  border: 1px solid rgba(255,82,82,.25);
+  color: #ff8888;
+  font-size: 15px;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  transition: background .15s;
+}
+.seg-tel-btn:active { background: rgba(255,82,82,.25); }
+.seg-tel-bomberos { background: rgba(255,155,66,.1); border-color: rgba(255,155,66,.25); color: #ff9b42; }
+.seg-tel-policia  { background: rgba(0,217,255,.08); border-color: rgba(0,217,255,.2);   color: #00d9ff; }
+
+/* Botón seguridad en home */
+.seg-home-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: calc(100% - 32px);
+  margin: 10px 16px 0;
+  padding: 14px;
+  border-radius: 16px;
+  border: 1.5px solid rgba(255,82,82,.3);
+  background: rgba(255,82,82,.06);
+  color: #ff7777;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .15s;
+}
+.seg-home-btn:active { background: rgba(255,82,82,.15); }
+
+/* ===================================================
+   MARCA-DX — Bloque de marca en resultado diagnóstico
+   =================================================== */
+
+.mdx-card {
+  margin-top: 14px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.09);
+}
+
+.mdx-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.mdx-marca-nombre {
+  font-size: 14px;
+  font-weight: 800;
+  color: #fff;
+}
+
+.mdx-tipo-tag {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: rgba(0,217,255,.1);
+  border: 1px solid rgba(0,217,255,.2);
+  color: #00d9ff;
+  white-space: nowrap;
+}
+
+.mdx-nota {
+  font-size: 12.5px;
+  color: #7788aa;
+  line-height: 1.5;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
+/* Aviso inverter */
+.mdx-inverter-aviso {
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(255,155,66,.08);
+  border: 1px solid rgba(255,155,66,.25);
+  color: #ffb86c;
+  font-size: 12px;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+/* Códigos de error */
+.mdx-codigos-wrap {
+  border-top: 1px solid rgba(255,255,255,.06);
+  padding-top: 10px;
+}
+
+.mdx-codigos-titulo {
+  font-size: 11px;
+  font-weight: 800;
+  color: #ff9b42;
+  letter-spacing: .5px;
+  margin-bottom: 8px;
+}
+
+.mdx-codigo-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,.04);
+}
+.mdx-codigo-item:last-child { border-bottom: none; }
+
+.mdx-codigo-tag {
+  background: rgba(255,155,66,.15);
+  color: #ff9b42;
+  font-size: 12px;
+  font-weight: 900;
+  padding: 3px 9px;
+  border-radius: 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+
+.mdx-codigo-desc {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #ddeeff;
+  margin-bottom: 3px;
+  line-height: 1.3;
+}
+
+.mdx-codigo-accion {
+  font-size: 11.5px;
+  color: #6688aa;
+  line-height: 1.4;
+}

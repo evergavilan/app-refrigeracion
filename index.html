@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="theme-color" content="#07111f"/>
+
+<title>Ever PRO ARGENTINA 🇦🇷</title>
+
+<!-- ===================================================== -->
+<!-- CSS                                                    -->
+<!-- ===================================================== -->
+
+<link rel="stylesheet" href="mobile.css"/>
+<link rel="stylesheet" href="dashboard.css"/>
+<link rel="stylesheet" href="animations.css"/>
+
+<!-- ===================================================== -->
+<!-- PWA                                                    -->
+<!-- ===================================================== -->
+
+<link rel="manifest" href="manifest.json"/>
+
+</head>
+
+<body>
+
+<!-- ===================================================== -->
+<!-- APP ROOT                                               -->
+<!-- ===================================================== -->
+
+<div id="app"></div>
+
+<!-- ===================================================== -->
+<!-- SCRIPTS — Orden importante:                           -->
+<!-- 1. config.js  (fuente única de versión y rutas)       -->
+<!-- 2. version.js (usa APP_CONFIG)                        -->
+<!-- 3. módulos (engines + pro)                            -->
+<!-- 4. referencias                                         -->
+<!-- 5. app.js (router + init)                        -->
+<!-- 6. pwa.js (service worker)                       -->
+<!-- ===================================================== -->
+
+<!-- CONFIG — siempre primero -->
+<script src="config.js" defer></script>
+<script src="version.js" defer></script>
+
+<!-- ===================================================== -->
+<!-- ENGINES                                               -->
+<!-- ===================================================== -->
+
+<script src="split-engine.js"         defer></script>
+<script src="ciclica-engine.js"     defer></script>
+<script src="nofrost-engine.js"     defer></script>
+<script src="comercial-engine.js" defer></script>
+
+<!-- ===================================================== -->
+<!-- MÓDULOS PRO                                           -->
+<!-- ===================================================== -->
+
+<script src="split-pro.js"            defer></script>
+<script src="ciclica-pro.js"        defer></script>
+<script src="nofrost-pro.js"        defer></script>
+<script src="comercial-pro.js"    defer></script>
+
+<!-- ===================================================== -->
+<!-- REFERENCIAS HVAC                                      -->
+<!-- ===================================================== -->
+
+<script src="referencias-hvac.js"           defer></script>
+<script src="referencias.js"                defer></script>
+<script src="funciones-tecnicas.js"         defer></script>
+<script src="split-refrigeracion-ref.js"    defer></script>
+<script src="split-electrica-ref.js"        defer></script>
+<script src="ciclica-refrigeracion-ref.js"  defer></script>
+<script src="ciclica-electrica-ref.js"      defer></script>
+<script src="nofrost-refrigeracion-ref.js"  defer></script>
+<script src="nofrost-electrica-ref.js"      defer></script>
+
+<script src="seguridad.js"         defer></script>
+
+<!-- ===================================================== -->
+<!-- CORE — siempre al final                               -->
+<!-- ===================================================== -->
+
+<script src="timer.js" defer></script>
+<script src="mentor.js" defer></script>
+<script src="marca-dx.js" defer></script>
+<script src="dx-actions.js" defer></script>
+<script src="app.js" defer></script>
+<script src="historial.js" defer></script>
+<script src="pwa.js" defer></script>
+
+<!-- ===================================================== -->
+<!-- SERVICE WORKER — registrado desde la raíz             -->
+<!-- Debe estar aquí (no en core/) para que el scope sea / -->
+<!-- ===================================================== -->
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function () {
+      navigator.serviceWorker
+        .register("service-worker.js")
+        .then(function (reg) {
+          console.log("✅ SW registrado, scope:", reg.scope);
+          // Notificar cuando hay nueva versión
+          navigator.serviceWorker.addEventListener("controllerchange", function () {
+            var btn = document.createElement("button");
+            btn.style.cssText = "position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:9999;padding:12px 24px;border-radius:24px;background:#ff9b42;color:#fff;font-weight:800;border:none;cursor:pointer;font-size:14px;";
+            btn.textContent = "🔄 Nueva versión — tocá para actualizar";
+            btn.onclick = function () { window.location.reload(); };
+            document.body.appendChild(btn);
+          });
+        })
+        .catch(function (err) {
+          console.warn("SW no disponible:", err.message || err);
+        });
+    });
+  }
+</script>
+
+</body>
+
+</html>

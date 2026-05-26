@@ -1,0 +1,325 @@
+{
+  "procedimientos": [
+    {
+      "id": "vacio",
+      "titulo": "Cómo hacer vacío correctamente",
+      "icono": "💨",
+      "nivel": "Esencial",
+      "tiempo": "45-60 min",
+      "herramientas": [
+        "Bomba de vacío",
+        "Manifold con vacuómetro o micrómetro",
+        "Llaves allen"
+      ],
+      "pasos": [
+        {
+          "n": 1,
+          "titulo": "Preparar el sistema",
+          "detalle": "Cerrá las válvulas de servicio del equipo. Conectá el manifold: manguera azul en baja (línea gruesa), manguera roja en alta (línea fina), manguera amarilla en la bomba de vacío."
+        },
+        {
+          "n": 2,
+          "titulo": "Verificar la bomba",
+          "detalle": "Chequeá el aceite de la bomba — debe estar limpio y en nivel correcto. Una bomba con aceite sucio no hace vacío profundo. Cambiá el aceite cada 20-30 horas de uso."
+        },
+        {
+          "n": 3,
+          "titulo": "Encender la bomba",
+          "detalle": "Abrí ambas válvulas del manifold (azul y roja). Encendé la bomba. La aguja del manómetro de baja debe comenzar a bajar hacia vacío.",
+          "timer_segundos": 1800,
+          "timer_label": "Vacío mínimo",
+          "timer_alerta": "¡No apures el vacío! 30 minutos es el mínimo absoluto."
+        },
+        {
+          "n": 4,
+          "titulo": "Tiempo mínimo de vacío",
+          "detalle": "Mínimo 30 minutos para equipos chicos (split hasta 4500 FG, heladeras). 45-60 minutos para equipos grandes o si el sistema estuvo abierto mucho tiempo. El objetivo es llegar a 500 micrones o menos."
+        },
+        {
+          "n": 5,
+          "titulo": "Prueba de retención",
+          "detalle": "Cerrá las válvulas del manifold y APAGÁ la bomba. Esperá 5 minutos. Si el vacuómetro sube (la presión aumenta), hay una fuga en el sistema o en las conexiones del manifold. No cargues gas si no pasa esta prueba.",
+          "timer_segundos": 300,
+          "timer_label": "Prueba de retención",
+          "timer_alerta": "Si el vacuómetro sube en este tiempo → hay fuga. No cargues gas."
+        },
+        {
+          "n": 6,
+          "titulo": "Cargar gas",
+          "detalle": "Si el vacío se mantiene, ya podés cargar el gas. Conectá la botella en la manguera amarilla, purgá la manguera brevemente, y empezá la carga según el método (por presión o por peso)."
+        }
+      ],
+      "alertas": [
+        "Nunca hagas vacío con gas en el sistema — el vacío no sirve para eliminar gas.",
+        "Si tardás más de 5 minutos en llegar a vacío, la bomba puede estar gastada o hay una fuga importante.",
+        "El vacío con manómetro de mercurio da lecturas más precisas que el manómetro del manifold."
+      ],
+      "timer_total_segundos": 2700,
+      "timer_total_label": "Tiempo total estimado de vacío"
+    },
+    {
+      "id": "carga-peso",
+      "titulo": "Carga de gas por peso",
+      "icono": "⚖️",
+      "nivel": "Recomendado",
+      "tiempo": "20-30 min",
+      "herramientas": [
+        "Balanza electrónica (mínimo 0.1g resolución)",
+        "Manifold",
+        "Llave de botella"
+      ],
+      "pasos": [
+        {
+          "n": 1,
+          "titulo": "Verificar la plaqueta del equipo",
+          "detalle": "Buscá la plaqueta del fabricante — indica el gas y la carga exacta en gramos. Es el único dato 100% confiable. Si la plaqueta no se lee, buscá el modelo online."
+        },
+        {
+          "n": 2,
+          "titulo": "Pesar la botella",
+          "detalle": "Colocá la botella en la balanza y anotá el peso inicial. Necesitás saber cuántos gramos tenés que quitar de la botella."
+        },
+        {
+          "n": 3,
+          "titulo": "Conectar y purgar",
+          "detalle": "Conectá la botella en la manguera amarilla del manifold. Purgá brevemente la manguera para sacar el aire (abrí un instante la válvula de la botella con la manguera desconectada del equipo)."
+        },
+        {
+          "n": 4,
+          "titulo": "Cargar en fase líquida",
+          "detalle": "Para R410A y R404A SIEMPRE cargá en fase líquida (botella invertida). Para R22 y R134a podés cargar en fase gaseosa por baja presión. La carga líquida es más precisa."
+        },
+        {
+          "n": 5,
+          "titulo": "Monitorear el peso",
+          "detalle": "Abrí la válvula de baja lentamente mientras mirás la balanza. Cerrá cuando la balanza marque exactamente los gramos requeridos. No te apures — la carga lenta es más precisa.",
+          "timer_segundos": 300,
+          "timer_label": "Estabilización",
+          "timer_alerta": "Esperá 5 minutos después de cargar antes de verificar PSI y AMP."
+        },
+        {
+          "n": 6,
+          "titulo": "Verificar parámetros",
+          "detalle": "Con la carga completa: verificá PSI (debe estar en rango para el gas), amperaje del compresor, y Delta T del aire (entrada - salida debe ser 8-14°C en split). Todos deben estar en rango.",
+          "timer_segundos": 900,
+          "timer_label": "Régimen del sistema",
+          "timer_alerta": "15 minutos en régimen para verificar parámetros reales."
+        }
+      ],
+      "alertas": [
+        "Nunca cargues R410A en fase gaseosa — es una mezcla azeotrópica y se fracciona.",
+        "Una balanza de cocina NO es suficiente — necesitás resolución de al menos 0.1g.",
+        "Si el equipo tiene fuga y lo cargás igual, el gas se va a escapar. Siempre primero la fuga."
+      ],
+      "timer_total_segundos": 1800,
+      "timer_total_label": "Tiempo total estimado de carga"
+    },
+    {
+      "id": "devanados",
+      "titulo": "Medir devanados del compresor",
+      "icono": "🔌",
+      "nivel": "Intermedio",
+      "tiempo": "10 min",
+      "herramientas": [
+        "Multímetro en modo Ω (ohms)"
+      ],
+      "pasos": [
+        {
+          "n": 1,
+          "titulo": "Identificar los pines",
+          "detalle": "El compresor monofásico tiene 3 pines: C (Common/Común), S (Start/Arranque) y R (Run/Marcha). Generalmente están marcados. Si no: C es el que tiene resistencia con los otros dos.",
+          "timer_segundos": 60,
+          "timer_label": "Descarga del sistema",
+          "timer_alerta": "Esperá 1 minuto después de desconectar la alimentación antes de medir."
+        },
+        {
+          "n": 2,
+          "titulo": "Medir C-R (devanado de marcha)",
+          "detalle": "Ponés las puntas en C y R. La resistencia debe ser la más baja de las tres mediciones. Típico: 1-8 Ω según el tamaño del compresor."
+        },
+        {
+          "n": 3,
+          "titulo": "Medir C-S (devanado de arranque)",
+          "detalle": "Puntas en C y S. Resistencia media — siempre mayor que C-R. Típico: 3-20 Ω."
+        },
+        {
+          "n": 4,
+          "titulo": "Verificar R-S",
+          "detalle": "La resistencia entre R y S debe ser aproximadamente igual a la suma de C-R + C-S. Ejemplo: si C-R=3Ω y C-S=8Ω, entonces R-S debe ser ~11Ω. Si no cuadra, hay un devanado en corto."
+        },
+        {
+          "n": 5,
+          "titulo": "Verificar aislación a masa",
+          "detalle": "Medí entre cualquier pin y la carcasa metálica del compresor. Debe ser infinito (∞). Si hay continuidad o resistencia baja → devanado quemado a masa. Compresor muerto."
+        },
+        {
+          "n": 6,
+          "titulo": "Interpretar resultados",
+          "detalle": "Continuidad en todos los pines entre sí + infinito a masa = compresor eléctricamente sano. Infinito entre algún par de pines = devanado abierto (quemado). Continuidad a masa = quemado a tierra."
+        }
+      ],
+      "alertas": [
+        "Desconectá el compresor de la alimentación antes de medir — siempre.",
+        "También desconectá el capacitor — su carga puede darte lecturas falsas.",
+        "Un compresor eléctricamente sano puede igual tener baja compresión mecánica — son dos fallas distintas."
+      ]
+    },
+    {
+      "id": "capacitor",
+      "titulo": "Medir y verificar capacitor",
+      "icono": "🔋",
+      "nivel": "Básico",
+      "tiempo": "5 min",
+      "herramientas": [
+        "Multímetro con función capacitancia (µF)",
+        "Destornillador aislado para descargar"
+      ],
+      "pasos": [
+        {
+          "n": 1,
+          "titulo": "Descargar el capacitor",
+          "detalle": "ANTES de tocarlo: colocá la hoja de un destornillador aislado entre los terminales para descargar. Un capacitor cargado puede darte un golpe serio aunque el equipo esté apagado.",
+          "timer_segundos": 30,
+          "timer_label": "Descarga del capacitor",
+          "timer_alerta": "Siempre descargá el capacitor antes de tocarlo."
+        },
+        {
+          "n": 2,
+          "titulo": "Inspección visual",
+          "detalle": "Revisá la carcasa: si tiene la tapa superior bombeada (hinchada), aceite o quemaduras → está muerto sin necesidad de medirlo. Reemplazalo directo."
+        },
+        {
+          "n": 3,
+          "titulo": "Desconectar cables",
+          "detalle": "Fotografiá la conexión antes de sacar los cables — vas a necesitar reconectar igual. En dual: HERM va al compresor, FAN al ventilador, C es el común."
+        },
+        {
+          "n": 4,
+          "titulo": "Medir con capacímetro",
+          "detalle": "Poné el multímetro en modo µF (microfarads). Conectá las puntas en los terminales. En dual medís primero HERM-C y después FAN-C por separado."
+        },
+        {
+          "n": 5,
+          "titulo": "Comparar con el valor nominal",
+          "detalle": "El valor medido debe estar dentro del ±10% del nominal impreso en el capacitor. Ejemplo: capacitor 45µF debe medir entre 40.5 y 49.5µF. Si está fuera de ese rango → reemplazalo."
+        },
+        {
+          "n": 6,
+          "titulo": "Reemplazar",
+          "detalle": "El capacitor nuevo debe tener el mismo valor en µF (o muy cercano, dentro del ±5%) y el mismo voltaje o mayor (nunca menor). Un 370V puede reemplazarse con uno de 440V del mismo µF."
+        }
+      ],
+      "alertas": [
+        "Nunca toques los terminales de un capacitor sin descargarlo primero — 400V pueden matar.",
+        "El voltaje del reemplazo puede ser igual o mayor, NUNCA menor al original.",
+        "Un capacitor muerto hace que el compresor zumbe, consuma más y eventualmente se queme."
+      ]
+    },
+    {
+      "id": "ptc-klixon",
+      "titulo": "Verificar PTC y Klixon",
+      "icono": "🌡️",
+      "nivel": "Básico",
+      "tiempo": "10 min",
+      "herramientas": [
+        "Multímetro en modo Ω"
+      ],
+      "pasos": [
+        {
+          "n": 1,
+          "titulo": "Identificar los componentes",
+          "detalle": "El PTC (relay de arranque) es el componente de plástico que se encaja en los pines del compresor. El Klixon (protector térmico) es el botón bimetálico que va sobre el compresor o junto al PTC."
+        },
+        {
+          "n": 2,
+          "titulo": "Retirar en frío",
+          "detalle": "Apagá el equipo y esperá que el compresor esté completamente frío (mínimo 20 minutos). Retirá el PTC y el Klixon de los pines del compresor.",
+          "timer_segundos": 1200,
+          "timer_label": "Enfriamiento del compresor",
+          "timer_alerta": "El compresor debe estar completamente frío antes de medir."
+        },
+        {
+          "n": 3,
+          "titulo": "Medir el Klixon",
+          "detalle": "En frío debe tener continuidad (0Ω o valor muy bajo). Si está abierto (∞) en frío → está quemado. Si cierra en frío pero se abre cuando se calienta el compresor → el compresor consume demasiado."
+        },
+        {
+          "n": 4,
+          "titulo": "Medir el PTC en frío",
+          "detalle": "Un PTC funcional mide alta resistencia en frío (pueden ser cientos a miles de ohms). Si mide 0Ω en frío → está cortocircuitado (muerto). Si mide ∞ siempre → está abierto (muerto)."
+        },
+        {
+          "n": 5,
+          "titulo": "Prueba en caliente del PTC",
+          "detalle": "Conectá el equipo brevemente (10-15 segundos). Retirá el PTC inmediatamente. Medí la resistencia — debe haber subido mucho (miles de Ω). Esto confirma que el PTC funciona: arranque en frío y bloqueo en caliente.",
+          "timer_segundos": 15,
+          "timer_label": "Arranque breve del equipo",
+          "timer_alerta": "Solo 10-15 segundos. Apagá el equipo y retirá el PTC inmediatamente."
+        },
+        {
+          "n": 6,
+          "titulo": "Reemplazar",
+          "detalle": "El PTC se reemplaza por el mismo código o equivalente. Los Klixon tienen estampado el amperaje y temperatura de corte — reemplazá con los mismos valores. Un Klixon de mayor amperaje no protege bien al compresor."
+        }
+      ],
+      "alertas": [
+        "No intentes arrancar el equipo más de 3 veces seguidas — el Klixon se dispara y tarda en resetear.",
+        "Un PTC que mide 0Ω en frío va a arrancar el compresor pero sin el torque necesario — se puede quemar.",
+        "Si el Klixon abre seguido con uno nuevo: el problema es el compresor consumiendo de más, no el Klixon."
+      ]
+    },
+    {
+      "id": "bimetal-resistencia",
+      "titulo": "Verificar sistema de deshielo (No Frost)",
+      "icono": "🧊",
+      "nivel": "Intermedio",
+      "tiempo": "20 min",
+      "herramientas": [
+        "Multímetro en modo Ω y voltaje AC"
+      ],
+      "pasos": [
+        {
+          "n": 1,
+          "titulo": "Hacer deshielo manual primero",
+          "detalle": "Desconectá el equipo 24-48 horas con puertas abiertas. Esto descongela el evaporador. Si después de esto el equipo anda bien por unos días y vuelve a fallar → confirmás que es el sistema de deshielo.",
+          "timer_segundos": 86400,
+          "timer_label": "Deshielo manual completo",
+          "timer_alerta": "24 horas mínimo con puertas abiertas y sin corriente."
+        },
+        {
+          "n": 2,
+          "titulo": "Acceder al evaporador",
+          "detalle": "Retirá los cajones del freezer y el panel trasero interior para acceder al evaporador y los componentes del deshielo. Fotografiá antes de desconectar cualquier cosa."
+        },
+        {
+          "n": 3,
+          "titulo": "Medir la resistencia de deshielo",
+          "detalle": "Desconectá los cables de la resistencia. Medí en Ω: una resistencia sana mide entre 20 y 60Ω según el modelo. Si mide ∞ (infinito) → está abierta (quemada). Reemplazala."
+        },
+        {
+          "n": 4,
+          "titulo": "Medir el bimetal",
+          "detalle": "El bimetal es el termostato de seguridad del deshielo. En frío debe tener continuidad (0Ω). Si está abierto en frío → está quemado. Si cierra en frío pero no se abre cuando la resistencia calienta → también está muerto."
+        },
+        {
+          "n": 5,
+          "titulo": "Verificar el timer o placa",
+          "detalle": "Si la resistencia y el bimetal están bien, el problema está en quién inicia el deshielo. En heladeras antiguas: timer mecánico (verificá que gire). En modernas: placa electrónica (más complejo)."
+        },
+        {
+          "n": 6,
+          "titulo": "Prueba final",
+          "detalle": "Con todo reemplazado y armado: el equipo debe hacer un ciclo de deshielo cada 8-12 horas. El evaporador se calienta por 20-30 minutos, se descongela, y el compresor arranca de nuevo. Si el ciclo ocurre normalmente, el sistema de deshielo funciona.",
+          "timer_segundos": 1800,
+          "timer_label": "Ciclo de deshielo observado",
+          "timer_alerta": "El ciclo dura 20-30 min. Si no ocurre en 12 horas → el sistema de deshielo falla."
+        }
+      ],
+      "alertas": [
+        "Nunca uses soplete ni secador de pelo directamente sobre el evaporador — podés romper los tubos.",
+        "El agua de deshielo debe escurrir correctamente — verificá que el desagüe no esté tapado.",
+        "En modelos con placa electrónica, el timer suele ser un componente interno de la placa — no es reemplazable por separado."
+      ]
+    }
+  ]
+}
