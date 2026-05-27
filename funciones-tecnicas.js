@@ -45,7 +45,8 @@ const FuncionesTecnicas = {
   <button class="ft-tab ${startTab==='quickstart'?'active':''}"  data-tab="quickstart">⚡ QS</button>
   <button class="ft-tab ${startTab==='resistencias'?'active':''}" data-tab="resistencias">🌀 RES</button>
   <button class="ft-tab ${startTab==='relay'?'active':''}"       data-tab="relay">🔴 RELAY</button>
-  <button class="ft-tab ${startTab==='calc'?'active':''}"        data-tab="calc">🧮 CALC</button>
+  <button class="ft-tab ${startTab==='calc'?'active':''}"		data-tab="calc">🧮 CALC</button>
+  <button class="ft-tab ${startTab==='shsc'?'active':''}"		data-tab="shsc">🌡️ SH/SC</button>
 </div>
 
 <div id="ft-content">
@@ -65,7 +66,9 @@ const FuncionesTecnicas = {
       case "quickstart":   return this.renderQuickStart();
       case "resistencias": return this.renderResistencias();
       case "relay":        return this.renderRelay();
+      case "shsc":         return this.renderSHSC();
       case "calc":         return this.renderCalc();
+      case "shsc":         return this.renderSHSC();
       default:             return this.renderAmp();
     }
   },
@@ -407,6 +410,130 @@ ${d.bimetal.map(b => `
   },
 
 
+
+  // ═══════════════════════════════════════════════
+  // SH / SC — CALCULADORAS
+  // ═══════════════════════════════════════════════
+
+  renderSHSC() {
+    const sub = ["sh","sc","patron"].includes(this.activeSubTab) ? this.activeSubTab : "sh";
+    return `
+<div class="ft-subtabs">
+  <button class="ft-subtab ${sub==="sh"?"active":""}"     data-sub="sh">🌡️ SH — Sobrecalent.</button>
+  <button class="ft-subtab ${sub==="sc"?"active":""}"     data-sub="sc">❄️ SC — Subenfriamiento</button>
+  <button class="ft-subtab ${sub==="patron"?"active":""}" data-sub="patron">🔍 Patrones dx</button>
+</div>
+${this["shsc_"+sub]()}`;
+  },
+
+  shsc_sh() {
+    return `
+<div class="ft-info-badge">
+  🌡️ SH = Temp. succión medida − Temp. saturación a PSI de baja<br>
+  <span style="color:#445566;">Rango normal splits: <strong style="color:#00d9ff;">5°C a 12°C</strong></span>
+</div>
+<div class="calc-card">
+  <div class="calc-field">
+    <label class="calc-label">Gas refrigerante</label>
+    <select id="shGas" class="hvac-select">
+      <option value="r410a">R410A</option>
+      <option value="r32">R32</option>
+      <option value="r22">R22</option>
+      <option value="r134a">R134a</option>
+      <option value="r404a">R404A</option>
+    </select>
+  </div>
+  <div class="calc-field-row" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+    <div class="calc-field">
+      <label class="calc-label">📉 PSI de BAJA (manómetro)</label>
+      <input type="number" id="shPsiBaja" class="hvac-input" placeholder="ej: 120" step="1"/>
+    </div>
+    <div class="calc-field">
+      <label class="calc-label">🌡️ Temp. succión °C (termómetro contacto)</label>
+      <input type="number" id="shTempSuccion" class="hvac-input" placeholder="ej: 12" step="0.5"/>
+    </div>
+  </div>
+  <button class="calc-btn" id="calcSH">Calcular SH</button>
+  <div id="calcSHResult"></div>
+</div>
+<div class="calc-ref-card">
+  <div class="calc-ref-title">📋 Cómo medir la temperatura de succión</div>
+  <div style="font-size:12.5px;color:#9aabbf;line-height:1.8;">
+    • Termómetro de contacto (pinza o sonda) en el tubo <strong style="color:#fff;">grueso</strong><br>
+    • Lo más cerca posible del compresor<br>
+    • Bien apoyado sobre el cobre, aislado del ambiente<br>
+    • Esperá 2 minutos que se estabilice antes de leer
+  </div>
+</div>`;
+  },
+
+  shsc_sc() {
+    return `
+<div class="ft-info-badge">
+  ❄️ SC = Temp. saturación a PSI de alta − Temp. línea de líquido medida<br>
+  <span style="color:#445566;">Rango normal splits: <strong style="color:#00d9ff;">4°C a 8°C</strong></span>
+</div>
+<div class="calc-card">
+  <div class="calc-field">
+    <label class="calc-label">Gas refrigerante</label>
+    <select id="scGas" class="hvac-select">
+      <option value="r410a">R410A</option>
+      <option value="r32">R32</option>
+      <option value="r22">R22</option>
+      <option value="r134a">R134a</option>
+      <option value="r404a">R404A</option>
+    </select>
+  </div>
+  <div class="calc-field-row" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+    <div class="calc-field">
+      <label class="calc-label">📈 PSI de ALTA (manómetro)</label>
+      <input type="number" id="scPsiAlta" class="hvac-input" placeholder="ej: 330" step="1"/>
+    </div>
+    <div class="calc-field">
+      <label class="calc-label">❄️ Temp. línea líquido °C (termómetro contacto)</label>
+      <input type="number" id="scTempLiquido" class="hvac-input" placeholder="ej: 32" step="0.5"/>
+    </div>
+  </div>
+  <button class="calc-btn" id="calcSC">Calcular SC</button>
+  <div id="calcSCResult"></div>
+</div>
+<div class="calc-ref-card">
+  <div class="calc-ref-title">📋 Cómo medir la temperatura de línea de líquido</div>
+  <div style="font-size:12.5px;color:#9aabbf;line-height:1.8;">
+    • Termómetro de contacto en el tubo <strong style="color:#fff;">fino</strong><br>
+    • Después del condensador, antes del capilar o TXV<br>
+    • Bien apoyado sobre el cobre, aislado del ambiente<br>
+    • Esperá 2 minutos que se estabilice antes de leer
+  </div>
+</div>`;
+  },
+
+  shsc_patron() {
+    const patrones = [
+      { sh:"ALTO",   sc:"BAJO",   psi_baja:"BAJO",   psi_alta:"BAJO",   dx:"💨 Fuga de gas",          color:"#ff5252", desc:"El sistema perdió refrigerante. Buscá la fuga antes de cargar." },
+      { sh:"BAJO",   sc:"ALTO",   psi_baja:"ALTO",   psi_alta:"ALTO",   dx:"⛽ Exceso de gas",         color:"#ff9b42", desc:"Se cargó más gas del necesario. Purgar de a poco." },
+      { sh:"ALTO",   sc:"ALTO",   psi_baja:"BAJO",   psi_alta:"ALTO",   dx:"🔒 Restricción",           color:"#ff9b42", desc:"Capilar tapado, filtro deshidratador o TXV cerrada." },
+      { sh:"BAJO",   sc:"BAJO",   psi_baja:"ALTO",   psi_alta:"ALTO",   dx:"🔥 Condensador sobrecargado", color:"#ff9b42", desc:"Condensador sucio o sin ventilación. Limpiar primero." },
+      { sh:"NORMAL", sc:"NORMAL", psi_baja:"NORMAL", psi_alta:"NORMAL", dx:"✅ Sistema en rango",        color:"#00d9ff", desc:"El problema no está en el sistema refrigerante." },
+      { sh:"BAJO",   sc:"NORMAL", psi_baja:"NORMAL", psi_alta:"NORMAL", dx:"🌬️ Airflow insuficiente",   color:"#ff9b42", desc:"Evaporador inundado por poco calor de retorno. Revisar filtro." },
+    ];
+    return `
+<div class="ft-info-badge">🔍 Combiná SH + SC + PSI para identificar la falla</div>
+${patrones.map(p => `
+<div class="ft-card" style="border-left:3px solid ${p.color};">
+  <div class="ft-card-header">
+    <span class="ft-card-title" style="color:${p.color};">${p.dx}</span>
+  </div>
+  <div class="ft-row-data">
+    <div class="ft-row-item"><span class="ft-row-label">SH</span><span class="ft-row-value" style="color:${p.sh==="NORMAL"?"#00d9ff":p.sh==="ALTO"?"#ff5252":"#ff9b42"};">${p.sh}</span></div>
+    <div class="ft-row-item"><span class="ft-row-label">SC</span><span class="ft-row-value" style="color:${p.sc==="NORMAL"?"#00d9ff":p.sc==="ALTO"?"#ff5252":"#ff9b42"};">${p.sc}</span></div>
+    <div class="ft-row-item"><span class="ft-row-label">PSI baja</span><span class="ft-row-value">${p.psi_baja}</span></div>
+    <div class="ft-row-item"><span class="ft-row-label">PSI alta</span><span class="ft-row-value">${p.psi_alta}</span></div>
+  </div>
+  <div class="ft-nota">💡 ${p.desc}</div>
+</div>`).join("")}`;
+  },
+
   // ═══════════════════════════════════════════════
   // CALCULADORAS TÉCNICAS
   // ═══════════════════════════════════════════════
@@ -598,6 +725,175 @@ ${this["calc_" + sub]()}
 </div>`;
   },
 
+
+  // ═══════════════════════════════════════════════
+  // SH / SC — SOBRECALENTAMIENTO Y SUBENFRIAMIENTO
+  // ═══════════════════════════════════════════════
+
+  renderSHSC() {
+    const sub = ["sh","sc","combinado"].includes(this.activeSubTab)
+                ? this.activeSubTab : "sh";
+    return `
+<div class="ft-subtabs">
+  <button class="ft-subtab ${sub==="sh"?"active":""}"        data-sub="sh">🌡️ Sobrecalent.</button>
+  <button class="ft-subtab ${sub==="sc"?"active":""}"        data-sub="sc">❄️ Subenfriamiento</button>
+  <button class="ft-subtab ${sub==="combinado"?"active":""}" data-sub="combinado">📊 Combinado</button>
+</div>
+${sub === "sh" ? this.renderSH() : sub === "sc" ? this.renderSC() : this.renderSHSCCombinado()}
+`;
+  },
+
+  // ─── CALCULADORA SH ─────────────────────────────
+
+  renderSH() {
+    return `
+<div class="ft-info-badge">
+  🌡️ SH = Temp. succión medida − Temp. saturación a PSI de baja<br>
+  <span style="font-size:11px;color:#445566;">Normal en splits: 6°C a 12°C · Ideal: 8°C</span>
+</div>
+<div class="calc-card">
+  <div class="calc-field">
+    <label class="calc-label">Gas refrigerante</label>
+    <select id="shGas" class="hvac-select">
+      <option value="R410A">R410A</option>
+      <option value="R32">R32</option>
+      <option value="R22">R22</option>
+      <option value="R134a">R134a</option>
+      <option value="R404A">R404A</option>
+    </select>
+  </div>
+  <div class="calc-field">
+    <label class="calc-label">Tipo de equipo</label>
+    <select id="shTipo" class="hvac-select">
+      <option value="split">Split / Aire acondicionado</option>
+      <option value="heladera">Heladera</option>
+      <option value="comercial">Comercial</option>
+    </select>
+  </div>
+  <div class="dx-field-row">
+    <div class="calc-field">
+      <label class="calc-label">📉 PSI de BAJA (succión)</label>
+      <input type="number" id="shPsiBaja" class="hvac-input" placeholder="ej: 120" step="1"/>
+    </div>
+    <div class="calc-field">
+      <label class="calc-label">🌡️ Temp. succión medida (°C)</label>
+      <input type="number" id="shTempSuccion" class="hvac-input" placeholder="ej: 15" step="0.5"/>
+    </div>
+  </div>
+  <button class="calc-btn" id="calcSH">Calcular SH</button>
+  <div id="calcSHResult"></div>
+</div>
+<div class="calc-ref-card">
+  <div class="calc-ref-title">📋 Rangos de referencia SH</div>
+  <div class="calc-ref-row"><span class="calc-ref-label">Menos de 2°C</span><span class="calc-ref-val calc-danger">🔴 CRÍTICO — Retorno de líquido</span></div>
+  <div class="calc-ref-row"><span class="calc-ref-label">2°C a 6°C</span><span class="calc-ref-val calc-warn">🟠 Bajo — Evaporador inundado</span></div>
+  <div class="calc-ref-row"><span class="calc-ref-label">6°C a 12°C</span><span class="calc-ref-val calc-ok">✅ Normal (splits)</span></div>
+  <div class="calc-ref-row"><span class="calc-ref-label">12°C a 20°C</span><span class="calc-ref-val calc-warn">🟠 Alto — Falta gas / restricción</span></div>
+  <div class="calc-ref-row"><span class="calc-ref-label">Más de 20°C</span><span class="calc-ref-val calc-danger">🔴 Muy alto — Situación crítica</span></div>
+</div>`;
+  },
+
+  // ─── CALCULADORA SC ─────────────────────────────
+
+  renderSC() {
+    return `
+<div class="ft-info-badge">
+  ❄️ SC = Temp. saturación a PSI de alta − Temp. línea de líquido medida<br>
+  <span style="font-size:11px;color:#445566;">Normal en splits: 4°C a 10°C · Ideal: 6°C</span>
+</div>
+<div class="calc-card">
+  <div class="calc-field">
+    <label class="calc-label">Gas refrigerante</label>
+    <select id="scGas" class="hvac-select">
+      <option value="R410A">R410A</option>
+      <option value="R32">R32</option>
+      <option value="R22">R22</option>
+      <option value="R134a">R134a</option>
+      <option value="R404A">R404A</option>
+    </select>
+  </div>
+  <div class="calc-field">
+    <label class="calc-label">Tipo de equipo</label>
+    <select id="scTipo" class="hvac-select">
+      <option value="split">Split / Aire acondicionado</option>
+      <option value="heladera">Heladera</option>
+      <option value="comercial">Comercial</option>
+    </select>
+  </div>
+  <div class="dx-field-row">
+    <div class="calc-field">
+      <label class="calc-label">📈 PSI de ALTA (condensación)</label>
+      <input type="number" id="scPsiAlta" class="hvac-input" placeholder="ej: 330" step="1"/>
+    </div>
+    <div class="calc-field">
+      <label class="calc-label">❄️ Temp. línea de líquido (°C)</label>
+      <input type="number" id="scTempLiquido" class="hvac-input" placeholder="ej: 35" step="0.5"/>
+    </div>
+  </div>
+  <button class="calc-btn" id="calcSC">Calcular SC</button>
+  <div id="calcSCResult"></div>
+</div>
+<div class="calc-ref-card">
+  <div class="calc-ref-title">📋 Rangos de referencia SC</div>
+  <div class="calc-ref-row"><span class="calc-ref-label">Negativo</span><span class="calc-ref-val calc-danger">🔴 Vapor en línea de líquido</span></div>
+  <div class="calc-ref-row"><span class="calc-ref-label">0°C a 4°C</span><span class="calc-ref-val calc-warn">🟠 Bajo — Gas insuficiente</span></div>
+  <div class="calc-ref-row"><span class="calc-ref-label">4°C a 10°C</span><span class="calc-ref-val calc-ok">✅ Normal (splits)</span></div>
+  <div class="calc-ref-row"><span class="calc-ref-label">10°C a 15°C</span><span class="calc-ref-val calc-warn">🟠 Alto — Posible exceso</span></div>
+  <div class="calc-ref-row"><span class="calc-ref-label">Más de 15°C</span><span class="calc-ref-val calc-danger">🔴 Muy alto — Restricción</span></div>
+</div>`;
+  },
+
+  // ─── CALCULADORA COMBINADA ───────────────────────
+
+  renderSHSCCombinado() {
+    return `
+<div class="ft-info-badge">
+  📊 Calculá SH y SC juntos para el diagnóstico completo de carga de gas
+</div>
+<div class="calc-card">
+  <div class="calc-field">
+    <label class="calc-label">Gas refrigerante</label>
+    <select id="combGas" class="hvac-select">
+      <option value="R410A">R410A</option>
+      <option value="R32">R32</option>
+      <option value="R22">R22</option>
+      <option value="R134a">R134a</option>
+      <option value="R404A">R404A</option>
+    </select>
+  </div>
+  <div class="calc-field">
+    <label class="calc-label">Tipo de equipo</label>
+    <select id="combTipo" class="hvac-select">
+      <option value="split">Split / Aire acondicionado</option>
+      <option value="heladera">Heladera</option>
+      <option value="comercial">Comercial</option>
+    </select>
+  </div>
+  <div class="dx-field-row">
+    <div class="calc-field">
+      <label class="calc-label">📉 PSI BAJA (succión)</label>
+      <input type="number" id="combPsiBaja" class="hvac-input" placeholder="ej: 120" step="1"/>
+    </div>
+    <div class="calc-field">
+      <label class="calc-label">📈 PSI ALTA (condensación)</label>
+      <input type="number" id="combPsiAlta" class="hvac-input" placeholder="ej: 330" step="1"/>
+    </div>
+  </div>
+  <div class="dx-field-row">
+    <div class="calc-field">
+      <label class="calc-label">🌡️ Temp. succión (°C)</label>
+      <input type="number" id="combTempSuccion" class="hvac-input" placeholder="ej: 15" step="0.5"/>
+    </div>
+    <div class="calc-field">
+      <label class="calc-label">❄️ Temp. línea líquido (°C)</label>
+      <input type="number" id="combTempLiquido" class="hvac-input" placeholder="ej: 35" step="0.5"/>
+    </div>
+  </div>
+  <button class="calc-btn" id="calcCombinado">📊 Diagnóstico completo</button>
+  <div id="calcCombinadoResult"></div>
+</div>`;
+  },
+
   // ═══════════════════════════════════════════════
   // RELAY TÉRMICO
   // ═══════════════════════════════════════════════
@@ -663,7 +959,9 @@ ${d.fallas.map(f => `
                           : this.activeTab === "resistencias" ? "ciclica"
                           : this.activeTab === "relay"        ? "calibracion"
                           : this.activeTab === "ntc"          ? "10k"
+                          : this.activeTab === "shsc"         ? "sh"
                           : this.activeTab === "calc"         ? "deltat"
+                          : this.activeTab === "shsc"         ? "sh"
                           : "aires";
         document.querySelectorAll(".ft-tab").forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
@@ -686,6 +984,59 @@ ${d.fallas.map(f => `
       });
     });
 
+
+
+    // ─── CALCULADORA SH ─────────────────────────────
+    document.getElementById("calcSH")?.addEventListener("click", async () => {
+      const gas  = document.getElementById("shGas")?.value;
+      const psi  = document.getElementById("shPsiBaja")?.value;
+      const temp = document.getElementById("shTempSuccion")?.value;
+      const el   = document.getElementById("calcSHResult");
+      if (!el) return;
+      if (!psi || !temp) { el.innerHTML = '<div class="calc-error">⚠️ Ingresá PSI de baja y temperatura de succión.</div>'; return; }
+
+      await SHSCEngine.init();
+      const result = SHSCEngine.calcSH(psi, temp, gas);
+      if (!result) { el.innerHTML = '<div class="calc-error">⚠️ PSI fuera de rango para ese gas. Verificá los datos.</div>'; return; }
+
+      const diag  = SHSCEngine.diagSH(result.sh, "split");
+      el.innerHTML = `
+        <div class="calc-result" style="border-color:${diag.color};">
+          <div class="calc-result-val" style="color:${diag.color};">${result.sh}°C</div>
+          <div class="calc-result-label">SH — Sobrecalentamiento</div>
+          <div class="calc-result-estado" style="color:${diag.color};">${diag.icono} ${diag.titulo}</div>
+          <div class="calc-ref-row" style="margin-top:12px;"><span class="calc-ref-label">T° saturación baja</span><span class="calc-ref-val" style="color:#00d9ff;">${result.tsat}°C</span></div>
+          <div class="calc-ref-row"><span class="calc-ref-label">T° succión medida</span><span class="calc-ref-val">${temp}°C</span></div>
+          <div class="calc-ref-row"><span class="calc-ref-label">Rango normal splits</span><span class="calc-ref-val">5°C a 12°C</span></div>
+          <div class="calc-result-consejo">💬 ${diag.accion}</div>
+        </div>`;
+    });
+
+    // ─── CALCULADORA SC ─────────────────────────────
+    document.getElementById("calcSC")?.addEventListener("click", async () => {
+      const gas  = document.getElementById("scGas")?.value;
+      const psi  = document.getElementById("scPsiAlta")?.value;
+      const temp = document.getElementById("scTempLiquido")?.value;
+      const el   = document.getElementById("calcSCResult");
+      if (!el) return;
+      if (!psi || !temp) { el.innerHTML = '<div class="calc-error">⚠️ Ingresá PSI de alta y temperatura de línea de líquido.</div>'; return; }
+
+      await SHSCEngine.init();
+      const result = SHSCEngine.calcSC(psi, temp, gas);
+      if (!result) { el.innerHTML = '<div class="calc-error">⚠️ PSI fuera de rango para ese gas. Verificá los datos.</div>'; return; }
+
+      const diag  = SHSCEngine.diagSC(result.sc, "split");
+      el.innerHTML = `
+        <div class="calc-result" style="border-color:${diag.color};">
+          <div class="calc-result-val" style="color:${diag.color};">${result.sc}°C</div>
+          <div class="calc-result-label">SC — Subenfriamiento</div>
+          <div class="calc-result-estado" style="color:${diag.color};">${diag.icono} ${diag.titulo}</div>
+          <div class="calc-ref-row" style="margin-top:12px;"><span class="calc-ref-label">T° saturación alta</span><span class="calc-ref-val" style="color:#00d9ff;">${result.tsat}°C</span></div>
+          <div class="calc-ref-row"><span class="calc-ref-label">T° línea líquido medida</span><span class="calc-ref-val">${temp}°C</span></div>
+          <div class="calc-ref-row"><span class="calc-ref-label">Rango normal splits</span><span class="calc-ref-val">4°C a 8°C</span></div>
+          <div class="calc-result-consejo">💬 ${diag.accion}</div>
+        </div>`;
+    });
 
     // ─── CALCULADORAS ───────────────────────────────
 
@@ -848,6 +1199,129 @@ ${d.fallas.map(f => `
           <div class="calc-ref-row" style="margin-top:12px;"><span class="calc-ref-label">Rango base (25°C)</span><span class="calc-ref-val">${rango[0]} — ${rango[1]} PSI</span></div>
           <div class="calc-ref-row"><span class="calc-ref-label">Corrección por temp</span><span class="calc-ref-val" style="color:${delta>0?"#ff9b42":"#64d8ff"};">${delta > 0 ? "+" : ""}${Math.round(delta * factorMin)} a ${delta > 0 ? "+" : ""}${Math.round(delta * factorMax)} PSI</span></div>
           <div class="calc-result-consejo">💬 ${contexto}</div>
+        </div>`;
+    });
+
+
+    // ─── SH ─────────────────────────────────────────
+    document.getElementById("calcSH")?.addEventListener("click", () => {
+      const gas   = document.getElementById("shGas")?.value;
+      const tipo  = document.getElementById("shTipo")?.value || "split";
+      const psi   = parseFloat(document.getElementById("shPsiBaja")?.value);
+      const tSuc  = parseFloat(document.getElementById("shTempSuccion")?.value);
+      const el    = document.getElementById("calcSHResult");
+      if (!el) return;
+      if (isNaN(psi) || isNaN(tSuc)) { el.innerHTML = '<div class="calc-error">⚠️ Ingresá PSI de baja y temperatura de succión.</div>'; return; }
+
+      const res = SHSCEngine.calcularSH(gas, psi, tSuc);
+      if (!res) { el.innerHTML = '<div class="calc-error">⚠️ PSI fuera de rango para ese gas.</div>'; return; }
+
+      const dx = SHSCEngine.diagnosticarSH(res.sh, tipo);
+      el.innerHTML = `
+        <div class="calc-result" style="border-color:${dx.color};">
+          <div class="calc-result-val" style="color:${dx.color};">${res.sh > 0 ? "+" : ""}${res.sh}°C</div>
+          <div class="calc-result-label">Sobrecalentamiento (SH)</div>
+          <div class="calc-result-estado" style="color:${dx.color};">${dx.icono} ${dx.estado}</div>
+          <div class="calc-ref-row" style="margin-top:12px;"><span class="calc-ref-label">Temp. saturación (tabla P/T)</span><span class="calc-ref-val">${res.tempSaturacion}°C</span></div>
+          <div class="calc-ref-row"><span class="calc-ref-label">Temp. medida en succión</span><span class="calc-ref-val">${tSuc}°C</span></div>
+          <div class="calc-ref-row"><span class="calc-ref-label">PSI de baja ingresado</span><span class="calc-ref-val">${psi} PSI</span></div>
+          <div class="calc-result-consejo" style="margin-top:10px;border-top:1px solid rgba(255,255,255,.06);padding-top:10px;">
+            <strong style="display:block;margin-bottom:4px;">${dx.desc}</strong>
+            ${dx.accion}
+          </div>
+          <div class="mentor-dx-frase" style="margin-top:10px;">"${dx.mentor}"</div>
+        </div>`;
+    });
+
+    // ─── SC ─────────────────────────────────────────
+    document.getElementById("calcSC")?.addEventListener("click", () => {
+      const gas   = document.getElementById("scGas")?.value;
+      const tipo  = document.getElementById("scTipo")?.value || "split";
+      const psi   = parseFloat(document.getElementById("scPsiAlta")?.value);
+      const tLiq  = parseFloat(document.getElementById("scTempLiquido")?.value);
+      const el    = document.getElementById("calcSCResult");
+      if (!el) return;
+      if (isNaN(psi) || isNaN(tLiq)) { el.innerHTML = '<div class="calc-error">⚠️ Ingresá PSI de alta y temperatura de línea de líquido.</div>'; return; }
+
+      const res = SHSCEngine.calcularSC(gas, psi, tLiq);
+      if (!res) { el.innerHTML = '<div class="calc-error">⚠️ PSI fuera de rango para ese gas.</div>'; return; }
+
+      const dx = SHSCEngine.diagnosticarSC(res.sc, tipo);
+      el.innerHTML = `
+        <div class="calc-result" style="border-color:${dx.color};">
+          <div class="calc-result-val" style="color:${dx.color};">${res.sc > 0 ? "+" : ""}${res.sc}°C</div>
+          <div class="calc-result-label">Subenfriamiento (SC)</div>
+          <div class="calc-result-estado" style="color:${dx.color};">${dx.icono} ${dx.estado}</div>
+          <div class="calc-ref-row" style="margin-top:12px;"><span class="calc-ref-label">Temp. saturación (tabla P/T)</span><span class="calc-ref-val">${res.tempSaturacion}°C</span></div>
+          <div class="calc-ref-row"><span class="calc-ref-label">Temp. medida en línea de líquido</span><span class="calc-ref-val">${tLiq}°C</span></div>
+          <div class="calc-ref-row"><span class="calc-ref-label">PSI de alta ingresado</span><span class="calc-ref-val">${psi} PSI</span></div>
+          <div class="calc-result-consejo" style="margin-top:10px;border-top:1px solid rgba(255,255,255,.06);padding-top:10px;">
+            <strong style="display:block;margin-bottom:4px;">${dx.desc}</strong>
+            ${dx.accion}
+          </div>
+          <div class="mentor-dx-frase" style="margin-top:10px;">"${dx.mentor}"</div>
+        </div>`;
+    });
+
+    // ─── COMBINADO ──────────────────────────────────
+    document.getElementById("calcCombinado")?.addEventListener("click", () => {
+      const gas    = document.getElementById("combGas")?.value;
+      const tipo   = document.getElementById("combTipo")?.value || "split";
+      const psiBaja= parseFloat(document.getElementById("combPsiBaja")?.value);
+      const psiAlta= parseFloat(document.getElementById("combPsiAlta")?.value);
+      const tSuc   = parseFloat(document.getElementById("combTempSuccion")?.value);
+      const tLiq   = parseFloat(document.getElementById("combTempLiquido")?.value);
+      const el     = document.getElementById("calcCombinadoResult");
+      if (!el) return;
+      if (isNaN(psiBaja)||isNaN(psiAlta)||isNaN(tSuc)||isNaN(tLiq)) {
+        el.innerHTML = '<div class="calc-error">⚠️ Completá todos los campos para el diagnóstico combinado.</div>';
+        return;
+      }
+
+      const resSH = SHSCEngine.calcularSH(gas, psiBaja, tSuc);
+      const resSC = SHSCEngine.calcularSC(gas, psiAlta, tLiq);
+      if (!resSH || !resSC) { el.innerHTML = '<div class="calc-error">⚠️ PSI fuera de rango para ese gas.</div>'; return; }
+
+      const analisis = SHSCEngine.analizarCombinado(resSH.sh, resSC.sc, tipo);
+      const { dxSH, dxSC, conclusion, certeza } = analisis;
+      const barColor = certeza >= 85 ? "#00d9ff" : certeza >= 70 ? "#ff9b42" : "#8899aa";
+
+      el.innerHTML = `
+        <div class="calc-result" style="border-color:${barColor};margin-top:14px;">
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
+            <div style="padding:12px;border-radius:12px;background:${dxSH.color}15;border:1px solid ${dxSH.color}30;text-align:center;">
+              <div style="font-size:10px;color:#556677;font-weight:700;margin-bottom:4px;">SH</div>
+              <div style="font-size:24px;font-weight:900;color:${dxSH.color};">${resSH.sh > 0?"+":""}${resSH.sh}°C</div>
+              <div style="font-size:11px;color:${dxSH.color};font-weight:700;">${dxSH.icono} ${dxSH.estado}</div>
+            </div>
+            <div style="padding:12px;border-radius:12px;background:${dxSC.color}15;border:1px solid ${dxSC.color}30;text-align:center;">
+              <div style="font-size:10px;color:#556677;font-weight:700;margin-bottom:4px;">SC</div>
+              <div style="font-size:24px;font-weight:900;color:${dxSC.color};">${resSC.sc > 0?"+":""}${resSC.sc}°C</div>
+              <div style="font-size:11px;color:${dxSC.color};font-weight:700;">${dxSC.icono} ${dxSC.estado}</div>
+            </div>
+          </div>
+
+          <div style="height:4px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden;margin-bottom:6px;">
+            <div style="height:100%;width:${certeza}%;background:${barColor};border-radius:2px;"></div>
+          </div>
+          <div style="font-size:11px;color:${barColor};font-weight:700;margin-bottom:12px;">${certeza}% certeza diagnóstica</div>
+
+          <div class="calc-result-consejo" style="border-top:1px solid rgba(255,255,255,.06);padding-top:10px;">
+            <strong style="display:block;margin-bottom:6px;color:#fff;">Conclusión:</strong>
+            ${conclusion}
+          </div>
+
+          <div style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:11px;">
+            <div style="color:#7788aa;">
+              <div>Temp. sat. baja: <strong style="color:#aabbcc;">${resSH.tempSaturacion}°C</strong></div>
+              <div>Temp. sat. alta: <strong style="color:#aabbcc;">${resSC.tempSaturacion}°C</strong></div>
+            </div>
+            <div style="color:#7788aa;">
+              <div>Succión: <strong style="color:#aabbcc;">${tSuc}°C</strong></div>
+              <div>Lín. líquido: <strong style="color:#aabbcc;">${tLiq}°C</strong></div>
+            </div>
+          </div>
         </div>`;
     });
 

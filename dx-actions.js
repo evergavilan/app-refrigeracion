@@ -56,6 +56,9 @@ const DxActions = {
       fecha: new Date().toISOString()
     });
 
+    // Inyectar análisis SH/SC si hay datos de temperatura de línea
+    if (modulo === "split") SHSCEngine.inyectarEnResultado(datos);
+
     // Inyectar info de marca (códigos de error, tipo de equipo)
     MarcaDx.inyectarEnResultado(modulo, datos, titulo);
 

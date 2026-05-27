@@ -157,7 +157,7 @@ EVER
 class="hvac-subtitle"
 style="font-size:18px;letter-spacing:3px;color:#00d9ff;"
 >
-HVAC PRO TOOL
+DIAGNÓSTICOS PRO TOOL
 </p>
 </div>
 
@@ -224,9 +224,9 @@ style="width:140px;max-width:42%;display:block;object-fit:contain;"
 </a>
 </section>
 
-<!-- REFERENCIAS HVAC -->
+<!-- REFERENCIAS TECNICAS -->
 <section style="margin-top:34px;">
-<h2 class="references-title">📚 Referencias HVAC</h2>
+<h2 class="references-title">📚 Referencias Técnicas</h2>
 <div class="home-grid">
 <div class="home-card" id="openReferencias">❄️ Refrigeración</div>
 <div class="home-card" id="openElectricas">⚡ Eléctricas</div>

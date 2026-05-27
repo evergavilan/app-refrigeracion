@@ -29,6 +29,7 @@ const FILES_TO_CACHE = [
   // ===================================================
 
   "./app.js",
+  "./sh-sc.js",
   "./timer.js",
   "./mentor.js",
   "./marca-dx.js",

@@ -95,7 +95,21 @@ const SplitPRO = {
       <input type="number" class="hvac-input" id="splitTempOut" placeholder="ej: 16"/>
     </div>
   </div>
-  <div class="dx-hint">💡 Sin instrumentos igualmente podés diagnosticar con los síntomas de abajo</div>
+  <div class="dx-field-row">
+    <div class="dx-field">
+      <label class="dx-label">🌡️ Temp. succión (°C) <span style="color:#445566;font-size:10px;">para SH</span></label>
+      <input type="number" class="hvac-input" id="splitTempSuccion" placeholder="ej: 15" step="0.5"/>
+    </div>
+    <div class="dx-field">
+      <label class="dx-label">📈 PSI ALTA <span style="color:#445566;font-size:10px;">para SC</span></label>
+      <input type="number" class="hvac-input" id="splitPsiAlta" placeholder="ej: 330" step="1"/>
+    </div>
+  </div>
+  <div class="dx-field">
+    <label class="dx-label">❄️ Temp. línea de líquido (°C) <span style="color:#445566;font-size:10px;">para SC</span></label>
+    <input type="number" class="hvac-input" id="splitTempLiquido" placeholder="ej: 35" step="0.5"/>
+  </div>
+  <div class="dx-hint">💡 SH/SC opcionales pero mejoran mucho el diagnóstico. Sin instrumentos usá los síntomas de abajo.</div>
 </div>
 
 <div class="dx-etapa-label">ETAPA 3 — Síntomas observados</div>
@@ -135,7 +149,7 @@ const SplitPRO = {
     });
     document.getElementById("analyzeSplit")?.addEventListener("click", () => this.runAnalysis());
     document.getElementById("clearSplit")?.addEventListener("click", () => {
-      DxActions.clearForm(["splitAmp","splitPsi","splitTempIn","splitTempOut",
+      DxActions.clearForm(["splitAmp","splitPsi","splitTempIn","splitTempOut","splitTempSuccion","splitPsiAlta","splitTempLiquido",
         "chkFrozen","chkPocofrio","chkAirflow","chkCondSucio",
         "chkGasExceso","chkCapacitor","chkTermico","chkContinuo"]);
       Historial.showToast("✅ Campos limpiados");
@@ -151,8 +165,11 @@ const SplitPRO = {
       arranca:   document.getElementById("splitArranca").value,
       amp:       document.getElementById("splitAmp").value,
       psi:       document.getElementById("splitPsi").value,
-      tempIn:    document.getElementById("splitTempIn").value,
-      tempOut:   document.getElementById("splitTempOut").value,
+      tempIn:       document.getElementById("splitTempIn").value,
+      tempOut:      document.getElementById("splitTempOut").value,
+      tempSuccion:  document.getElementById("splitTempSuccion")?.value || "",
+      psiAlta:      document.getElementById("splitPsiAlta")?.value || "",
+      tempLiquido:  document.getElementById("splitTempLiquido")?.value || "",
       chkFrozen:    document.getElementById("chkFrozen").checked,
       chkPocofrio:  document.getElementById("chkPocofrio").checked,
       chkAirflow:   document.getElementById("chkAirflow").checked,

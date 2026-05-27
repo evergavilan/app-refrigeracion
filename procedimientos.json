@@ -58,6 +58,73 @@
       "timer_total_label": "Tiempo total estimado de vacío"
     },
     {
+      "id": "sh-sc-medicion",
+      "titulo": "Cómo medir SH y SC en campo",
+      "icono": "🌡️",
+      "nivel": "Intermedio",
+      "tiempo": "20-30 min",
+      "herramientas": [
+        "Manifold con manómetros (alta y baja presión)",
+        "Termómetro de contacto (pinza o sonda)",
+        "Tabla P/T o la calculadora de la app",
+        "Guantes y lentes de protección"
+      ],
+      "pasos": [
+        {
+          "n": 1,
+          "titulo": "Condiciones previas",
+          "detalle": "El equipo debe estar funcionando en régimen estable mínimo 15 minutos antes de medir. Si acabás de encenderlo o de limpiar el condensador, esperá. Las mediciones en arranque o transitorio no son representativas del sistema en estado normal."
+        },
+        {
+          "n": 2,
+          "titulo": "Conectar manifold",
+          "detalle": "Conectá la manguera azul en la válvula de servicio de baja (línea gruesa de succión). Conectá la manguera roja en la válvula de servicio de alta (línea fina de descarga/líquido). Abrí las válvulas del manifold despacio. Dejá que las lecturas se estabilicen 2-3 minutos."
+        },
+        {
+          "n": 3,
+          "titulo": "Medir temperatura de succión (para SH)",
+          "detalle": "Colocá el termómetro de contacto en la línea de succión (tubo grueso) lo más cerca posible del compresor — nunca en la válvula de servicio porque el contacto metálico puede dar lecturas falsas. Asegurate de que el sensor esté bien apoyado sobre el cobre y aislado del ambiente con un trapo o foam. Esperá 2 minutos para que la lectura se estabilice."
+        },
+        {
+          "n": 4,
+          "titulo": "Calcular SH",
+          "detalle": "Con el PSI de baja y el gas del equipo, buscá la temperatura de saturación en la tabla P/T (en la app, tab Funciones Técnicas → P/T, o en la calculadora SH/SC). Restá: Temp. de succión medida − Temp. de saturación a ese PSI = SH. Ejemplo R410A a 120 PSI: saturación = 2°C. Temp succión medida: 11°C. SH = 11 − 2 = 9°C → normal.",
+          "timer_segundos": 120,
+          "timer_label": "Estabilización del termómetro",
+          "timer_alerta": "Esperá que el termómetro deje de variar antes de tomar la lectura."
+        },
+        {
+          "n": 5,
+          "titulo": "Medir temperatura de línea de líquido (para SC)",
+          "detalle": "Colocá el termómetro de contacto en la línea de líquido (tubo fino) después del condensador, antes de la válvula de expansión o capilar. Igual que antes: buen contacto con el cobre, aislado del ambiente. Esperá que se estabilice."
+        },
+        {
+          "n": 6,
+          "titulo": "Calcular SC",
+          "detalle": "Con el PSI de alta y el gas del equipo, buscá la temperatura de saturación. Restá: Temp. de saturación a PSI de alta − Temp. de línea de líquido medida = SC. Ejemplo R410A a 330 PSI: saturación = 38°C. Temp línea de líquido: 32°C. SC = 38 − 32 = 6°C → normal.",
+          "timer_segundos": 120,
+          "timer_label": "Estabilización termómetro línea líquido",
+          "timer_alerta": "Asegurate que la lectura esté estable antes de calcular."
+        },
+        {
+          "n": 7,
+          "titulo": "Interpretar los resultados combinados",
+          "detalle": "Con SH y SC calculados, usá la tabla de patrones: SH alto + SC bajo = fuga. SH bajo + SC alto = exceso de gas. SH alto + SC alto = restricción. SH bajo + SC bajo = condensador sobrecargado. SH y SC normales = el problema no está en el sistema refrigerante — buscá en airflow, eléctrico o control."
+        },
+        {
+          "n": 8,
+          "titulo": "Registrar y desconectar",
+          "detalle": "Anotá todos los valores: PSI baja, PSI alta, Temp succión, Temp líquido, SH calculado, SC calculado. Son el baseline del equipo. Cerrá las válvulas del manifold antes de desconectar las mangueras. Hacelo despacio para no generar picos de presión."
+        }
+      ],
+      "alertas": [
+        "Nunca midas SH/SC con el equipo recién encendido — necesitás régimen estable de al menos 15 minutos.",
+        "El termómetro de contacto debe estar bien aislado del ambiente exterior para dar una lectura correcta.",
+        "Si el SH es menor a 3°C, apagá el equipo — riesgo de retorno de líquido al compresor.",
+        "Las tablas P/T son para refrigerante puro. Si el gas está mezclado o contaminado, los valores pueden variar."
+      ]
+    },
+    {
       "id": "carga-peso",
       "titulo": "Carga de gas por peso",
       "icono": "⚖️",
@@ -319,6 +386,71 @@
         "Nunca uses soplete ni secador de pelo directamente sobre el evaporador — podés romper los tubos.",
         "El agua de deshielo debe escurrir correctamente — verificá que el desagüe no esté tapado.",
         "En modelos con placa electrónica, el timer suele ser un componente interno de la placa — no es reemplazable por separado."
+      ]
+    },
+    {
+      "id": "sh-sc",
+      "titulo": "Medir Sobrecalentamiento y Subenfriamiento",
+      "icono": "🌡️",
+      "nivel": "Intermedio",
+      "tiempo": "20-30 min",
+      "herramientas": [
+        "Manifold con manómetros (baja y alta presión)",
+        "Termómetro de contacto o de pinche (resolución 0.1°C)",
+        "Tabla P/T del gas (o calculadora SH/SC de la app)",
+        "Pinza amperimétrica (opcional, para diagnóstico completo)"
+      ],
+      "pasos": [
+        {
+          "n": 1,
+          "titulo": "Dejar el equipo en régimen",
+          "detalle": "Encendé el equipo en modo frío al máximo. Esperá mínimo 15 minutos antes de tomar cualquier medición. Los valores de SH y SC solo son representativos cuando el sistema está estabilizado.",
+          "timer_segundos": 900,
+          "timer_label": "Estabilización del sistema",
+          "timer_alerta": "No tomes mediciones antes de que pase este tiempo. Los valores van a ser incorrectos."
+        },
+        {
+          "n": 2,
+          "titulo": "Conectar el manifold",
+          "detalle": "Manguera azul en la válvula de servicio de BAJA (línea gruesa de succión). Manguera roja en la válvula de servicio de ALTA (línea fina de líquido). Anotá ambas presiones: PSI de baja y PSI de alta."
+        },
+        {
+          "n": 3,
+          "titulo": "Medir temperatura de succión (para SH)",
+          "detalle": "Colocá el termómetro de contacto en la línea de succión (cañería gruesa) lo más cerca posible del compresor. Aislá el sensor con cinta para mejorar la precisión. Esperá 2 minutos hasta que la lectura se estabilice. Anotá: Temp succión medida.",
+          "timer_segundos": 120,
+          "timer_label": "Estabilización del sensor de succión",
+          "timer_alerta": "El sensor necesita estar bien adherido a la cañería y aislado del aire ambiente."
+        },
+        {
+          "n": 4,
+          "titulo": "Medir temperatura de línea de líquido (para SC)",
+          "detalle": "Colocá el termómetro en la línea de líquido (cañería fina) a la salida del condensador, antes del capilar o TXV. También aislá el sensor. Anotá: Temp línea de líquido medida.",
+          "timer_segundos": 120,
+          "timer_label": "Estabilización del sensor de línea de líquido",
+          "timer_alerta": "Medí siempre ANTES del capilar, nunca después."
+        },
+        {
+          "n": 5,
+          "titulo": "Calcular el SH",
+          "detalle": "Usá la calculadora SH/SC de la app (Funciones Técnicas → CALC → SH/SC). Ingresás el PSI de baja y la temperatura de succión medida. La app busca la temperatura de saturación en la tabla P/T e interpola si es necesario. SH = Temp succión − Temp saturación (baja)."
+        },
+        {
+          "n": 6,
+          "titulo": "Calcular el SC",
+          "detalle": "En la misma calculadora, ingresás el PSI de alta y la temperatura de línea de líquido medida. SC = Temp saturación (alta) − Temp línea de líquido. La app te da el diagnóstico combinado SH + SC automáticamente."
+        },
+        {
+          "n": 7,
+          "titulo": "Interpretar los resultados",
+          "detalle": "SH 6-12°C y SC 4-10°C: sistema cargado correctamente. SH alto + SC bajo: falta gas (fuga). SH bajo + SC alto: exceso de gas o TXV mal calibrada. Usá el resultado de la calculadora para determinar la acción a tomar."
+        }
+      ],
+      "alertas": [
+        "Medí siempre con el sistema en régimen (mínimo 15 minutos encendido).",
+        "El termómetro de contacto debe estar bien adherido a la cañería y aislado del aire — el aire ambiente puede falsear la lectura hasta 5°C.",
+        "Para medir SC necesitás acceso a la línea de alta — si el equipo no tiene válvula de servicio en alta, solo podés medir SH.",
+        "El SH y SC varían con la temperatura ambiente — en días muy calurosos o muy fríos los rangos normales se corren levemente."
       ]
     }
   ]

@@ -99,6 +99,101 @@
           "detalle": "El error más común en campo es diagnosticar 'compresor muerto' en un inverter porque el compresor no arranca. Antes de eso: verificá el módulo IPM (tensión de entrada y salida), los sensores NTC y la comunicación entre placa y módulo. En Argentina, el 60% de los 'compresores muertos' inverter resultan ser el módulo IPM."
         }
       ]
+    },
+    {
+      "id": "sobrecalentamiento",
+      "titulo": "Sobrecalentamiento (SH)",
+      "icono": "🌡️",
+      "subtitulo": "La medición más importante de la succión",
+      "intro": "El sobrecalentamiento (SH - Superheat) te dice cuántos grados por encima de la temperatura de saturación está el gas en la línea de succión. Es el indicador más preciso del estado del evaporador y de la carga de gas. Todo técnico profesional lo mide de rutina.",
+      "conceptos": [
+        {
+          "titulo": "¿Qué mide exactamente el SH?",
+          "detalle": "Cuando el refrigerante evapora en el evaporador, lo hace a una temperatura de saturación determinada por la presión. El SH mide cuánto calor extra absorbió el gas después de evaporarse completamente. Si el gas sale del evaporador a 15°C y la temperatura de saturación a esa presión es 5°C, el SH es 10°C."
+        },
+        {
+          "titulo": "Rango normal y qué significa",
+          "detalle": "SH normal en splits: 6°C a 12°C. Ideal: 8°C. Si el SH es muy bajo (menos de 4°C): el evaporador está inundado de líquido — riesgo de retorno de líquido al compresor, que puede destruirlo. Si el SH es muy alto (más de 15°C): el gas llega muy seco al compresor, indica falta de gas o restricción."
+        },
+        {
+          "titulo": "Cómo medirlo en campo",
+          "detalle": "Necesitás: manómetro de baja (para leer el PSI de succión) y termómetro de contacto o de pinche en la línea de succión (cañería gruesa, cerca del compresor). La fórmula es: SH = Temp medida en succión − Temp de saturación según tabla P/T para ese PSI. La tabla P/T te convierte el PSI en temperatura de saturación."
+        },
+        {
+          "titulo": "SH bajo — causa más frecuente",
+          "detalle": "SH bajo (menos de 6°C) casi siempre es una de estas dos cosas: exceso de gas (cargaron de más) o válvula de expansión termostática (TXV) abriendo de más. En sistemas con capilar fijo, si el gas está en rango y el SH es bajo, revisá la carga. En sistemas con TXV, revisá la regulación del bulbo."
+        },
+        {
+          "titulo": "SH alto — causa más frecuente",
+          "detalle": "SH alto (más de 12°C) en splits casi siempre es falta de gas por fuga. El evaporador no tiene suficiente refrigerante para llenarse y el gas que llega al compresor está muy recalentado. También puede ser restricción en el capilar o filtro deshidratador tapado. Antes de cargar gas: buscá la fuga."
+        }
+      ]
+    },
+    {
+      "id": "subenfriamiento",
+      "titulo": "Subenfriamiento (SC)",
+      "icono": "❄️",
+      "subtitulo": "La medición clave de la línea de líquido",
+      "intro": "El subenfriamiento (SC - Subcooling) mide cuántos grados por debajo de la temperatura de saturación está el líquido en la línea de líquido. Junto con el SH, forma el cuadro completo del estado termodinámico del sistema. Sin SC, el diagnóstico de carga de gas está incompleto.",
+      "conceptos": [
+        {
+          "titulo": "¿Qué mide exactamente el SC?",
+          "detalle": "Cuando el refrigerante condensa en el condensador, lo hace a una temperatura de saturación determinada por la presión de alta. El SC mide cuánto se enfrió el líquido después de condensarse. Si el líquido sale del condensador a 35°C y la temperatura de saturación a presión de alta es 45°C, el SC es 10°C."
+        },
+        {
+          "titulo": "Rango normal y qué significa",
+          "detalle": "SC normal en splits: 4°C a 10°C. Ideal: 6°C. SC bajo (menos de 4°C): posible gas insuficiente o condensador con problemas. SC negativo (el líquido está más caliente que la saturación): hay vapor en la línea de líquido — el sistema no puede funcionar bien porque al capilar llega mezcla gas-líquido en vez de líquido puro. SC alto (más de 12°C): posible exceso de gas o restricción después del condensador."
+        },
+        {
+          "titulo": "Cómo medirlo en campo",
+          "detalle": "Necesitás: manómetro de alta (para leer el PSI de condensación) y termómetro de contacto en la línea de líquido (cañería fina, a la salida del condensador). La fórmula es: SC = Temp de saturación según tabla P/T para PSI de alta − Temp medida en línea de líquido."
+        },
+        {
+          "titulo": "SC y SH juntos — el diagnóstico completo",
+          "detalle": "La combinación SH + SC te da el cuadro completo: SH alto + SC bajo = fuga (gas insuficiente). SH bajo + SC alto = exceso de gas. SH normal + SC normal = carga correcta. SH bajo + SC bajo = condensador sobrecargado o temperatura ambiente muy alta. Esta combinación es la que usan los técnicos profesionales para confirmar si hay que cargar, purgar o buscar fuga."
+        },
+        {
+          "titulo": "Vapor en la línea de líquido — el peor escenario",
+          "detalle": "Si el SC es negativo o cercano a 0, hay vapor en la línea de líquido. Esto pasa cuando el condensador no puede terminar de condensar todo el gas (por estar sucio, por temperatura ambiente muy alta, o por falta de gas). El resultado es que al capilar o TXV llega una mezcla en vez de líquido puro — la expansión es errática y el equipo enfría mal aunque tenga 'gas suficiente'."
+        }
+      ]
+    },
+    {
+      "id": "sh-sc",
+      "titulo": "Sobrecalentamiento y Subenfriamiento",
+      "icono": "🌡️",
+      "subtitulo": "Las dos métricas más importantes del sistema refrigerante",
+      "intro": "El Delta T mide el aire. El SH y el SC miden el refrigerante. Son más precisos y te dicen exactamente qué está pasando dentro del sistema. Un técnico que sabe leer SH y SC diagnostica en minutos lo que otro tarda horas en encontrar.",
+      "conceptos": [
+        {
+          "titulo": "¿Qué es el Sobrecalentamiento (SH)?",
+          "detalle": "El SH es la diferencia entre la temperatura real del gas en la línea de succión y la temperatura de saturación a esa presión. Si el gas a 120 PSI de R410A satura a 2°C y vos medís 12°C en la línea de succión, el SH es 10°C — perfectamente normal. El SH te dice si el evaporador está bien inundado. Rango normal en splits: 5°C a 12°C. Medición: manómetro en la línea de baja + termómetro de contacto en la línea de succión (línea gruesa, lo más cerca posible del compresor)."
+        },
+        {
+          "titulo": "¿Qué es el Subenfriamiento (SC)?",
+          "detalle": "El SC es la diferencia entre la temperatura de saturación a la presión de alta y la temperatura real del líquido en la línea de líquido. Si el R410A a 330 PSI satura a 38°C y el líquido está a 32°C, el SC es 6°C — normal. El SC te dice si el condensador condensó bien el gas y si hay suficiente líquido en la línea. Rango normal en splits: 4°C a 8°C. Medición: manómetro en la línea de alta + termómetro de contacto en la línea de líquido (tubo fino, después del condensador)."
+        },
+        {
+          "titulo": "SH bajo — qué significa",
+          "detalle": "SH menor a 5°C: el evaporador está inundado. Hay más refrigerante del que puede evaporar — exceso de gas, o muy poco calor (airflow insuficiente). El riesgo grave es SH negativo o cerca de cero: líquido llega al compresor (golpe de líquido). Los compresores no comprimen líquidos — si pasa, se pueden romper internamente aunque el equipo siga funcionando por un tiempo."
+        },
+        {
+          "titulo": "SH alto — qué significa",
+          "detalle": "SH mayor a 12°C: el evaporador está poco inundado. Falta refrigerante (fuga), hay una restricción (capilar, filtro deshidratador, TXV mal calibrado) o el compresor no está bombeando suficiente. Si el SH es muy alto con PSI bajo, es fuga. Si el PSI está normal o alto pero el SH está alto, sospechá de restricción."
+        },
+        {
+          "titulo": "SC bajo — qué significa",
+          "detalle": "SC menor a 4°C: el condensador no terminó de condensar bien o hay poco refrigerante. Cuando el SC es negativo, hay vapor en la línea de líquido — eso hace perder mucha eficiencia porque la expansión no puede trabajar bien con mezcla líquido-vapor. Causas: gas insuficiente, condensador muy sucio o temperatura ambiente muy alta."
+        },
+        {
+          "titulo": "SC alto — qué significa",
+          "detalle": "SC mayor a 8°C: hay demasiado líquido frío en la línea. Causas posibles: exceso de gas (alguien cargó de más), o válvula de expansión (TXV) muy cerrada que no deja pasar suficiente refrigerante al evaporador. El SC alto junto con SH alto y PSI de baja baja es el patrón clásico de TXV cerrada o filtro deshidratador tapado."
+        },
+        {
+          "titulo": "Patrones de diagnóstico SH + SC",
+          "detalle": "Los valores cobran sentido combinados: SH alto + SC bajo + PSI baja bajo = fuga de gas. SH bajo + SC alto + PSI baja normal = exceso de gas. SH alto + SC alto + PSI baja baja = restricción (capilar, filtro, TXV). SH bajo + SC bajo + PSI baja alta = condensador sobrecargado. SH normal + SC normal = sistema en rango, buscá el problema en otro lado."
+        }
+      ]
     }
   ]
 }
