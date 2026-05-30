@@ -194,6 +194,39 @@
           "detalle": "Los valores cobran sentido combinados: SH alto + SC bajo + PSI baja bajo = fuga de gas. SH bajo + SC alto + PSI baja normal = exceso de gas. SH alto + SC alto + PSI baja baja = restricción (capilar, filtro, TXV). SH bajo + SC bajo + PSI baja alta = condensador sobrecargado. SH normal + SC normal = sistema en rango, buscá el problema en otro lado."
         }
       ]
+    },
+    {
+      "id": "secuencia-arranque",
+      "titulo": "Secuencia de arranque del split",
+      "icono": "🔄",
+      "subtitulo": "Qué enciende primero, qué después y por qué — modo frío y calor",
+      "intro": "Antes de ir a revisar un aire, tenés que saber exactamente qué tiene que pasar cuando lo encendés. Si algo no ocurre en el orden correcto o en el tiempo esperado, ya tenés la pista de dónde buscar. Esto es lo que un técnico experimentado observa en los primeros 3 minutos frente al equipo.",
+      "conceptos": [
+        {
+          "titulo": "MODO FRÍO — Secuencia completa",
+          "detalle": "1) Tensión al equipo → el display interior enciende inmediatamente. Si no enciende: problema eléctrico antes de la placa (fusible, alimentación). 2) Señal del control remoto → el equipo pitea y muestra el setpoint. Si no responde al control: batería, sensor IR o placa receptora. 3) Ventilador interior arranca → primero en velocidad baja mientras el evaporador todavía no está frío. Es normal que los primeros 30-60 segundos el aire salga tibio. 4) Compresor arranca (30-60 seg después del ventilador interior) → escuchás el cambio de sonido del equipo exterior. En ON/OFF: arranque brusco con caída de tensión momentánea. En Inverter: arranque suave y progresivo. 5) Ventilador del condensador exterior arranca junto con el compresor o pocos segundos después. 6) Presión de baja empieza a caer, presión de alta empieza a subir → el sistema toma régimen en 5-10 minutos. 7) El evaporador interior se enfría → el ventilador aumenta velocidad. 8) El aire que sale empieza a bajar de temperatura → Delta T creciendo hacia 8-14°C. 9) El equipo alcanza el setpoint → el compresor se apaga (ON/OFF) o baja a mínima velocidad (Inverter). El ventilador interior sigue corriendo unos minutos más."
+        },
+        {
+          "titulo": "MODO CALOR (bomba de calor) — Secuencia completa",
+          "detalle": "1) Display enciende, el equipo recibe la señal de calor. 2) Hay una espera de 3-5 minutos si el equipo estaba en frío — protección para no invertir el ciclo de golpe. 3) Ventilador interior NO arranca inmediatamente → espera que el evaporador (que ahora actúa de condensador) se caliente. Si el ventilador soplara frío al principio, el usuario lo rechazaría. 4) Compresor arranca en modo inverso → la válvula de 4 vías invierte el ciclo. El condensador exterior ahora actúa de evaporador (absorbe calor del aire frío exterior). 5) Ventilador interior arranca recién cuando la temperatura del serpentín supera ≈30°C → ahora el aire que sale es caliente. 6) En días muy fríos (bajo 5°C exterior): el evaporador exterior puede congelarse → el equipo entra en modo deshielo automáticamente cada cierto tiempo. Durante el deshielo: el ventilador interior se detiene, puede salir un poco de vapor por la unidad exterior — es normal. 7) El equipo alcanza el setpoint → igual que en frío, el compresor reduce o se apaga."
+        },
+        {
+          "titulo": "Tiempos normales — qué esperar",
+          "detalle": "Ventilador interior: enciende inmediatamente en frío, espera 2-5 min en calor. Compresor: 30-60 segundos después del encendido en frío (protección anti-arranque rápido). En algunos modelos hasta 3 minutos — es normal. Régimen estable: 10-15 minutos desde el encendido para medir PSI y AMP representativos. Delta T completo: 15-20 minutos. En Inverter el compresor nunca se apaga del todo en régimen — corre a baja velocidad. En ON/OFF el ciclo de encendido/apagado del compresor es cada 5-15 minutos según la demanda."
+        },
+        {
+          "titulo": "Señales de arranque NORMAL vs ANORMAL",
+          "detalle": "NORMAL: pitido único al encender, ventilador interior arranca suave, compresor arranca con pequeña vibración en el exterior, el display muestra temperatura ambiente y setpoint. ANORMAL: múltiples pitidos o código de error en display → la placa detectó un problema antes de arrancar. Silencio total → problema eléctrico. Ventilador interior que arranca y se detiene a los pocos segundos → protección de la placa activada. Compresor que intenta arrancar, zumba y se apaga → capacitor o problema de compresor. Compresor que arranca y se apaga a los 2-3 minutos en frío → protección de alta o baja presión activada."
+        },
+        {
+          "titulo": "La válvula de 4 vías — el corazón del bomba de calor",
+          "detalle": "En equipos con modo calor existe la válvula de 4 vías (o inversora). Es la que invierte la dirección del refrigerante para cambiar de frío a calor. Cuando esta válvula falla o no cierra bien: el equipo puede dar frío en modo calor, calor en modo frío, o temperatura ambiente en ambos modos. El síntoma típico de válvula de 4 vías fallada es PSI de alta y baja que se igualan o se acercan mucho — el ciclo no puede separar bien las presiones. En modo calor con válvula fallada parcialmente: el equipo da algo de calor pero mucho menos que lo normal, y el PSI de baja queda más alto de lo esperado."
+        },
+        {
+          "titulo": "Qué observar en los primeros 3 minutos frente al equipo",
+          "detalle": "Un técnico experimentado hace esto al llegar: 1) Enciende el equipo y mira el display — ¿hay código de error? 2) Escucha si el ventilador interior arranca y cómo suena. 3) Va a la unidad exterior y escucha el compresor arrancar — ¿arranca limpio o zumba? 4) Toca la línea de succión a los 2 minutos — ¿empieza a enfriarse? 5) Observa si el ventilador del condensador gira. Con esos 5 datos, antes de conectar el manómetro, ya tiene el 60% del diagnóstico."
+        }
+      ]
     }
   ]
 }

@@ -1,0 +1,197 @@
+{
+  "rangos": {
+    "ciclica": {
+      "freezer":   { "min": -20, "max": -12, "optimo": -16 },
+      "heladera":  { "min": 2,   "max": 8,   "optimo": 4  },
+      "cuerpo_compresor": { "min": 40, "max": 70, "max_critico": 80 }
+    },
+    "nofrost": {
+      "freezer":   { "min": -22, "max": -12, "optimo": -18 },
+      "heladera":  { "min": 2,   "max": 8,   "optimo": 4  },
+      "cuerpo_compresor": { "min": 40, "max": 75, "max_critico": 85 }
+    },
+    "comercial_frio": {
+      "interior":  { "min": -2,  "max": 6,   "optimo": 2  },
+      "cuerpo_compresor": { "min": 45, "max": 80, "max_critico": 95 }
+    },
+    "comercial_freezer": {
+      "interior":  { "min": -25, "max": -15, "optimo": -18 },
+      "cuerpo_compresor": { "min": 45, "max": 80, "max_critico": 95 }
+    }
+  },
+
+  "diagnosticos": [
+
+    {
+      "id": "sin-frio-ninguno",
+      "condicion": "freezer_alto && heladera_alto",
+      "titulo": "Sin frío en ningún lado",
+      "certeza": 85,
+      "icono": "🔴",
+      "color": "#ff5252",
+      "causas_probables": [
+        "Compresor que no arranca o arranca y no bombea",
+        "Fuga severa de gas — sin refrigerante no hay frío",
+        "Termostato desconectado o en modo vacaciones",
+        "Problema eléctrico — el compresor no recibe tensión"
+      ],
+      "pasos": [
+        "Verificá si el compresor está funcionando — ponele la mano, debe vibrar levemente y estar tibio.",
+        "Escuchá si arranca y para seguido — puede ser el Klixon disparándose por sobrecalentamiento.",
+        "Revisá que el termostato no esté en la posición '0' o modo vacaciones.",
+        "Si el compresor no arranca: ir a diagnóstico por módulo (Cíclica o No Frost PRO).",
+        "Si arranca pero no enfría: probable fuga severa — medí PSI si tenés manómetro."
+      ],
+      "mentor": "Sin frío en ningún lado con el compresor corriendo casi siempre es fuga. Sin el compresor corriendo, empezá por lo eléctrico — termostato, Klixon, tensión. No asumas nada hasta saber si el compresor arranca."
+    },
+
+    {
+      "id": "freezer-bien-heladera-no",
+      "condicion": "freezer_ok && heladera_alto",
+      "titulo": "Freezer frío — heladera sin frío",
+      "certeza": 90,
+      "icono": "🧊❌",
+      "color": "#ff9b42",
+      "causas_probables": [
+        "Acumulación de hielo en el evaporador bloqueando el paso de aire (No Frost y Cíclica)",
+        "Capilar restringido — el refrigerante no llega al evaporador de la heladera",
+        "Ventilador del evaporador detenido (No Frost) — el frío no circula",
+        "Damper de temperatura cerrado — no deja pasar aire frío al compartimento inferior"
+      ],
+      "pasos": [
+        "PRIMERO: deshielo manual de 24-48 horas con puertas abiertas y sin corriente.",
+        "Si después del deshielo enfría abajo aunque sea un par de días → sistema de deshielo fallado (No Frost) o capilar con hielo (Cíclica).",
+        "Si no mejora con el deshielo → capilar restringido o damper cerrado.",
+        "En No Frost: verificar que el ventilador del evaporador gire con la puerta cerrada.",
+        "En Cíclica: revisar capilar y filtro deshidratador."
+      ],
+      "mentor": "Freezer frío y heladera caliente es el diagnóstico más claro que existe. El 85% de las veces es hielo bloqueando el paso de aire. El deshielo manual de 24 horas es gratis y confirma o descarta esa causa. Hacelo antes de tocar cualquier componente."
+    },
+
+    {
+      "id": "freezer-no-heladera-bien",
+      "condicion": "freezer_alto && heladera_ok",
+      "titulo": "Heladera fría — freezer sin frío",
+      "certeza": 80,
+      "icono": "🌡️❌",
+      "color": "#ff9b42",
+      "causas_probables": [
+        "Termostato del freezer mal calibrado o roto",
+        "Resistencia de deshielo del evaporador del freezer fallada",
+        "En dos compresores: compresor del freezer fallado",
+        "Gas muy bajo — solo alcanza para enfriar parcialmente"
+      ],
+      "pasos": [
+        "Verificá la temperatura real del freezer con el termómetro — ¿cuánto marca exactamente?",
+        "Chequeá si el freezer tiene su propio control de temperatura separado.",
+        "En equipos con dos compresores: verificar que el compresor del freezer arranque.",
+        "Si el gas es muy bajo: el evaporador puede estar enfriando solo la heladera por configuración del capilar."
+      ],
+      "mentor": "Heladera fría y freezer caliente es menos común. En equipos con un solo compresor, si la heladera enfría, el gas está circulando — el problema está en el control de temperatura del freezer o en el sistema de deshielo de ese compartimento específico."
+    },
+
+    {
+      "id": "ambos-algo-frio",
+      "condicion": "freezer_bajo_limite && heladera_algo",
+      "titulo": "Enfría poco en ambos lados",
+      "certeza": 78,
+      "icono": "🌡️⬇️",
+      "color": "#ff9b42",
+      "causas_probables": [
+        "Gas bajo por fuga lenta — el sistema trabaja pero con menos capacidad",
+        "Condensador muy sucio — el calor no se disipa bien",
+        "Compresor con baja compresión — bombea pero con poca eficiencia",
+        "Temperatura ambiente muy alta — verano extremo puede afectar la capacidad"
+      ],
+      "pasos": [
+        "Limpiá el condensador trasero o inferior — pelusa acumulada baja mucho la capacidad.",
+        "Verificá que la heladera tenga espacio libre atrás y arriba para ventilar.",
+        "Medí la temperatura ambiente del lugar — con 35°C o más es normal que rinda menos.",
+        "Si el condensador está limpio y hay buena ventilación: probable gas bajo — medí PSI.",
+        "Si el PSI está bien: compresor con baja compresión — evaluá reemplazo."
+      ],
+      "mentor": "Poco frío en ambos lados con el compresor corriendo — antes de tocar el gas, limpiá el condensador. El 40% de las heladeras que 'enfrían poco' en Argentina se resuelven con una limpieza del condensador. Es lo más barato y lo más ignorado."
+    },
+
+    {
+      "id": "freezer-muy-frio",
+      "condicion": "freezer_muy_bajo && heladera_ok",
+      "titulo": "Freezer demasiado frío",
+      "certeza": 75,
+      "icono": "🥶",
+      "color": "#00d9ff",
+      "causas_probables": [
+        "Termostato mal calibrado — pide más frío del necesario",
+        "Sensor NTC de temperatura descalibrado o en mala posición",
+        "Damper de aire atascado en posición abierta — entra demasiado frío al freezer",
+        "En heladeras viejas: termostato mecánico que perdió calibración"
+      ],
+      "pasos": [
+        "Verificá la posición del termostato — ¿alguien lo giró al máximo?",
+        "Ajustá el termostato a una posición media y observá si la temperatura se normaliza.",
+        "En heladeras con control electrónico: verificar que el sensor NTC esté bien ubicado.",
+        "Si el termostato está al mínimo y sigue muy frío: termostato descalibrado o roto."
+      ],
+      "mentor": "El freezer demasiado frío casi siempre es el termostato. Antes de diagnosticar el sensor o la placa, preguntale al cliente si alguien tocó los controles. Muchas veces el 'problema' lo creó el mismo usuario."
+    },
+
+    {
+      "id": "ok-todo",
+      "condicion": "freezer_ok && heladera_ok",
+      "titulo": "Temperaturas en rango normal",
+      "certeza": 92,
+      "icono": "✅",
+      "color": "#00ff88",
+      "causas_probables": [],
+      "pasos": [
+        "El sistema está funcionando dentro de los rangos normales.",
+        "Si el cliente tiene quejas, verificá el contenido: ¿está sobrecargada? ¿hay comida caliente adentro?",
+        "Revisá el sellado del burlete — una pérdida pequeña puede hacer que el cliente sienta 'poco frío' aunque el sistema esté bien.",
+        "Anotá las temperaturas como baseline para futuras comparaciones.",
+        "Realizá mantenimiento preventivo: limpieza de condensador y verificación del burlete."
+      ],
+      "mentor": "Temperaturas normales y el cliente se queja — revisá el burlete. Un burlete que no sella bien hace que la heladera trabaje más de lo necesario y que el cliente sienta que 'no enfría como antes'. Pasale un papel por todo el borde con la puerta cerrada."
+    },
+
+    {
+      "id": "compresor-caliente",
+      "condicion": "compresor_caliente",
+      "titulo": "Compresor demasiado caliente",
+      "certeza": 82,
+      "icono": "🔥",
+      "color": "#ff5252",
+      "causas_probables": [
+        "Condensador muy sucio — el calor no se disipa",
+        "Gas bajo — el compresor trabaja con poca carga y se sobrecalienta",
+        "Ventilación insuficiente alrededor de la heladera",
+        "Compresor con desgaste interno — mayor fricción genera más calor"
+      ],
+      "pasos": [
+        "Limpiá el condensador inmediatamente — es la causa más común.",
+        "Verificá que la heladera tenga al menos 5cm de espacio atrás y 10cm arriba.",
+        "Si el condensador está limpio y el compresor sigue muy caliente: medí PSI.",
+        "Con PSI bajo: gas insuficiente. Con PSI normal: problema mecánico del compresor.",
+        "Un compresor que quema a la mano (más de 80°C) puede disparar el Klixon — riesgo de daño."
+      ],
+      "mentor": "Un compresor que quema la mano está al límite. No lo dejes funcionando así. Primero limpiá el condensador y dale ventilación. Si sigue así después de eso, es un problema más serio — gas o compresor."
+    }
+  ],
+
+  "referencia_rapida": {
+    "ciclica": [
+      { "zona": "Freezer",   "normal": "-12°C a -20°C", "preocuparse": "Sobre -10°C o bajo -22°C" },
+      { "zona": "Heladera",  "normal": "2°C a 8°C",     "preocuparse": "Sobre 10°C o bajo 0°C" },
+      { "zona": "Compresor", "normal": "40°C a 70°C",   "preocuparse": "Sobre 80°C" }
+    ],
+    "nofrost": [
+      { "zona": "Freezer",   "normal": "-12°C a -22°C", "preocuparse": "Sobre -10°C o bajo -24°C" },
+      { "zona": "Heladera",  "normal": "2°C a 8°C",     "preocuparse": "Sobre 10°C o bajo 0°C" },
+      { "zona": "Compresor", "normal": "40°C a 75°C",   "preocuparse": "Sobre 85°C" }
+    ],
+    "comercial": [
+      { "zona": "Interior (frío)", "normal": "-2°C a 6°C",   "preocuparse": "Sobre 8°C" },
+      { "zona": "Interior (freezer)", "normal": "-15°C a -25°C", "preocuparse": "Sobre -12°C" },
+      { "zona": "Compresor", "normal": "45°C a 80°C",   "preocuparse": "Sobre 95°C" }
+    ]
+  }
+}

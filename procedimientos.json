@@ -1,6 +1,92 @@
 {
   "procedimientos": [
     {
+      "id": "primera-inspeccion-split",
+      "titulo": "Primera inspección al llegar — Split",
+      "icono": "🔍",
+      "nivel": "Esencial",
+      "tiempo": "15-20 min",
+      "herramientas": [
+        "Multímetro",
+        "Pinza amperimétrica",
+        "Termómetro infrarrojo o de contacto",
+        "Control remoto del equipo"
+      ],
+      "pasos": [
+        {
+          "n": 1,
+          "titulo": "Verificar alimentación antes de encender",
+          "detalle": "Medí la tensión en el tomacorriente del equipo. Argentina: debe estar entre 210V y 230V. Con menos de 200V el compresor puede no arrancar o arrancar con dificultad. Anotá el valor — es parte del diagnóstico."
+        },
+        {
+          "n": 2,
+          "titulo": "Inspección visual de la unidad interior",
+          "detalle": "Antes de encender: revisá el filtro de aire (¿cuándo fue la última limpieza?), inspeccioná las aletas del evaporador (¿están sucias, dobladas, con hielo?), revisá que la bandeja de condensado no esté desbordando. Todo esto te da contexto antes de ver cómo funciona."
+        },
+        {
+          "n": 3,
+          "titulo": "Inspección visual de la unidad exterior",
+          "detalle": "Revisá el condensador exterior: ¿está tapado de pelusa, hojas o suciedad? ¿Tiene espacio libre para ventilar (mínimo 30cm alrededor)? ¿El ventilador del condensador gira libremente? ¿Hay aceite visible en las conexiones de las cañerías (indicio de fuga)? Anotá todo antes de encender."
+        },
+        {
+          "n": 4,
+          "titulo": "Encender en modo FRÍO y observar el arranque",
+          "detalle": "Encendé el equipo en modo frío a la temperatura más baja posible (16°C). Observá en orden: ¿el display enciende? ¿pitea correctamente? ¿hay código de error? ¿el ventilador interior arranca? Prestá atención al sonido — el ventilador debe arrancar suave sin ruidos extraños.",
+          "timer_segundos": 60,
+          "timer_label": "Observar arranque del ventilador interior",
+          "timer_alerta": "En 60 seg debe haber arrancado el ventilador interior. Si no → problema eléctrico o de placa."
+        },
+        {
+          "n": 5,
+          "titulo": "Verificar arranque del compresor",
+          "detalle": "Andá a la unidad exterior. En 30-90 segundos debe arrancar el compresor. En ON/OFF lo escuchás claramente. En Inverter es más suave. Verificá que el ventilador del condensador gire. Medí el amperaje con la pinza apenas arranca el compresor — el amperaje de arranque es el más alto, luego baja al valor de trabajo.",
+          "timer_segundos": 90,
+          "timer_label": "Tiempo de espera arranque del compresor",
+          "timer_alerta": "Si a los 90 seg no arrancó el compresor → protección activada o problema eléctrico."
+        },
+        {
+          "n": 6,
+          "titulo": "Esperar régimen estable y tomar medidas",
+          "detalle": "Dejá el equipo funcionar 15 minutos antes de conectar el manómetro y tomar medidas definitivas. Las mediciones en frío o en transitorio no son representativas. Usá este tiempo para hablar con el cliente sobre el problema, cuándo empezó y qué síntomas observó.",
+          "timer_segundos": 900,
+          "timer_label": "Régimen estable del sistema",
+          "timer_alerta": "Recién a los 15 min el sistema está en régimen. Ahora podés medir PSI y AMP representativos."
+        },
+        {
+          "n": 7,
+          "titulo": "Medir PSI, AMP y Delta T en régimen",
+          "detalle": "Con el equipo estabilizado: conectá el manómetro y medí PSI de baja. Medí amperaje del compresor con la pinza. Medí temperatura de entrada y salida del evaporador con el termómetro. Calculá el Delta T. Si tenés termómetro de contacto, medí también la línea de succión para calcular el SH."
+        },
+        {
+          "n": 8,
+          "titulo": "Probar modo CALOR (si el equipo lo tiene)",
+          "detalle": "Si el cliente reporta problemas en calor, o como verificación completa: apagá el equipo, esperá 3 minutos, encendé en modo calor. Observá que el ventilador interior NO arranque de inmediato — debe esperar a que el serpentín se caliente (2-5 min). Si arranca frío inmediatamente → puede ser válvula de 4 vías fallada. El aire caliente debe salir en 3-5 minutos.",
+          "timer_segundos": 300,
+          "timer_label": "Espera arranque ventilador en modo calor",
+          "timer_alerta": "En modo calor el ventilador interior tarda hasta 5 min en arrancar. Es normal."
+        },
+        {
+          "n": 9,
+          "titulo": "Verificar modo calor en régimen",
+          "detalle": "Con el modo calor estabilizado: el PSI de baja debe ser más alto que en frío (el evaporador exterior absorbe calor del ambiente). El PSI de alta puede ser similar o algo menor. La temperatura del aire que sale debe superar los 35°C. Si el Delta T en calor es bajo → válvula de 4 vías con fuga interna o sistema con poco gas.",
+          "timer_segundos": 600,
+          "timer_label": "Régimen modo calor",
+          "timer_alerta": "10 min para régimen estable en modo calor. Recién ahí las medidas son representativas."
+        },
+        {
+          "n": 10,
+          "titulo": "Diagnóstico y comunicación con el cliente",
+          "detalle": "Con todos los datos relevados: corré el diagnóstico en la app (Split PRO). Explicale al cliente lo que encontraste en términos simples. Antes de hacer cualquier reparación, describí el problema, la solución propuesta y el costo aproximado. Un técnico honesto que comunica bien construye clientes que vuelven."
+        }
+      ],
+      "alertas": [
+        "Nunca des un diagnóstico antes de los 15 minutos de régimen — los datos previos no son representativos.",
+        "Si el compresor arranca y se apaga en 2-3 minutos: no lo rearranques repetidamente — dejá que enfríe y diagnosticá la causa.",
+        "En modo calor: el vapor que sale de la unidad exterior durante el deshielo es normal — no es humo.",
+        "Anotá siempre la tensión de red medida — es parte del diagnóstico y puede ser la causa del problema."
+      ]
+    },
+    {
       "id": "vacio",
       "titulo": "Cómo hacer vacío correctamente",
       "icono": "💨",

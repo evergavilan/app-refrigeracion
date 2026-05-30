@@ -19,6 +19,19 @@ const CiclicaEngine = {
     // Amperajes normales heladera doméstica
     const ampMin = 0.8, ampMax = 2.2;
 
+    // Temperaturas reales medidas con termómetro
+    const tFreezer  = d.tempFreezer  !== "" && d.tempFreezer  !== undefined ? Number(d.tempFreezer)  : null;
+    const tHeladera = d.tempHeladera !== "" && d.tempHeladera !== undefined ? Number(d.tempHeladera) : null;
+
+    // Rangos normales
+    const freezerNormal = tFreezer  !== null && tFreezer  >= -18 && tFreezer  <= -5;
+    const freezerBien   = tFreezer  !== null && tFreezer  < -5;
+    const freezerMal    = tFreezer  !== null && tFreezer  >= -5;
+    const heladeraNormal= tHeladera !== null && tHeladera >= 3   && tHeladera <= 8;
+    const heladeraBien  = tHeladera !== null && tHeladera < 12;
+    const heladeraMal   = tHeladera !== null && tHeladera >= 12;
+    const ambosTemps    = tFreezer !== null && tHeladera !== null;
+
     const psiAlto  = psi > rango.psiMax + 3;
     const psiBajo  = psi < rango.psiMin - 2;
     const psiVacio = psi < rango.psiVacio;
@@ -172,6 +185,74 @@ const CiclicaEngine = {
         "Verificá el sellado de puertas (burlete): si pierde frío el compresor nunca alcanza la temperatura.",
         "Revisá que la heladera no esté sobrecargada o con comida caliente adentro.",
         "Si el termostato es mecánico (perilla): probá girarlo hacia menos frío y ver si corta."
+      ],
+      alerta: null,
+      datos: { psi, a, rango }
+    });
+
+    // ═══════════════════════════════════════════════
+    // DIAGNÓSTICO POR TEMPERATURA REAL (sin manómetro)
+    // ═══════════════════════════════════════════════
+
+    // FREEZER BIEN, HELADERA MAL — con temperatura real
+    if (ambosTemps && freezerBien && heladeraMal && !psi && !a) return this.dx({
+      icono: "🧊❌",
+      titulo: `Freezer ${tFreezer}°C ✅ — Heladera ${tHeladera}°C ❌`,
+      certeza: 88,
+      causa: `El freezer está a ${tFreezer}°C (bien), pero la heladera está a ${tHeladera}°C — sobre los 8°C normales. Con el compresor funcionando, esto indica restricción: el gas llega al freezer pero no al evaporador de abajo.`,
+      pasos: [
+        "Hacé deshielo manual completo: desconectá 24 horas con puertas abiertas.",
+        "Si después del deshielo la heladera vuelve a enfriar bien por unos días → era hielo tapando el capilar.",
+        "Si no mejora: revisá el capilar y el filtro deshidratador.",
+        "El capilar tapado es más frecuente en heladeras de más de 10 años."
+      ],
+      alerta: "⚠️ Hacé el deshielo manual antes de tocar el gas — ahorra trabajo y confirma el diagnóstico.",
+      datos: { psi, a, rango }
+    });
+
+    // AMBOS MAL — con temperatura real
+    if (ambosTemps && freezerMal && heladeraMal && !psi && !a) return this.dx({
+      icono: "❌❌",
+      titulo: `Sin frío — Freezer ${tFreezer}°C, Heladera ${tHeladera}°C`,
+      certeza: 82,
+      causa: `Ni el freezer ni la heladera están fríos. El freezer a ${tFreezer}°C y la heladera a ${tHeladera}°C — ambos sobre la temperatura normal. Esto indica problema del compresor, fuga total de gas, o falla eléctrica.`,
+      pasos: [
+        "Verificá que el compresor esté arrancando y funcionando.",
+        "Si el compresor funciona: conectá manómetro para determinar si hay gas.",
+        "Si el PSI es casi 0: fuga total — buscar fuga antes de cargar gas.",
+        "Si el compresor no funciona: seguir el diagnóstico eléctrico (PTC, Klixon, tensión)."
+      ],
+      alerta: d.gas === "R600a" ? "🔴 R600a es INFLAMABLE. Ventilá antes de trabajar." : null,
+      datos: { psi, a, rango }
+    });
+
+    // FREEZER DEMASIADO FRÍO / HELADERA BIEN — termostato
+    if (ambosTemps && tFreezer < -20 && heladeraNormal && !psi && !a) return this.dx({
+      icono: "🌡️",
+      titulo: `Freezer demasiado frío (${tFreezer}°C) — Termostato`,
+      certeza: 78,
+      causa: `El freezer está a ${tFreezer}°C — más frío de lo necesario. El termostato no está cortando el compresor a tiempo. Puede ser termostato descalibrado o con contactos pegados.`,
+      pasos: [
+        "Girá el termostato hacia una posición menos fría y verificá si el compresor corta.",
+        "Si el compresor nunca para aunque el termostato esté en mínimo: termostato con contactos pegados.",
+        "Un freezer demasiado frío también puede congelar la parte de heladera en algunas cíclicas.",
+        "Reemplazar el termostato mecánico si no responde al ajuste."
+      ],
+      alerta: null,
+      datos: { psi, a, rango }
+    });
+
+    // BURLETE + TEMPERATURA ALTA EN HELADERA
+    if (d.chkBurleteRoto && tHeladera !== null && tHeladera > 8 && !psi) return this.dx({
+      icono: "🚪🌡️",
+      titulo: `Burlete deteriorado — Heladera a ${tHeladera}°C`,
+      certeza: 85,
+      causa: `La heladera está a ${tHeladera}°C con burlete deteriorado. El burlete que no sella permite la entrada constante de aire caliente — el compresor trabaja continuo sin poder bajar la temperatura.`,
+      pasos: [
+        "Verificá el burlete en todo el perímetro: debe adherirse a la heladera cuando cerrás la puerta.",
+        "Prueba del papel: cerrá la puerta sobre un papel — si sale fácil, el burlete no sella.",
+        "Si el burlete está duro, agrietado o deformado: reemplazarlo.",
+        "Un burlete deteriorado puede aumentar el consumo eléctrico hasta un 30%."
       ],
       alerta: null,
       datos: { psi, a, rango }

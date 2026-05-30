@@ -151,6 +151,8 @@ Generado por Ever PRO Argentina v${APP_CONFIG.version}
     if (d.hp)        lineas.push(`  Potencia:    ${d.hp} HP`);
     if (d.arranca)   lineas.push(`  Compresor:   ${d.arranca === "si" ? "Arranca" : "No arranca"}`);
     if (d.amp)       lineas.push(`  Amperaje:    ${d.amp} A`);
+    if (d.tempFreezer)   lineas.push(`  Temp. freezer:   ${d.tempFreezer}°C (normal: -12 a -18°C)`);
+    if (d.tempHeladera)  lineas.push(`  Temp. heladera:  ${d.tempHeladera}°C (normal: 3 a 8°C)`);
     if (d.psi)       lineas.push(`  PSI:         ${d.psi}`);
     if (d.tempIn)    lineas.push(`  Temp. entrada: ${d.tempIn}°C`);
     if (d.tempOut)   lineas.push(`  Temp. salida:  ${d.tempOut}°C`);

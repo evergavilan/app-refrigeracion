@@ -29,6 +29,7 @@ const FILES_TO_CACHE = [
   // ===================================================
 
   "./app.js",
+  "./btu-calc.js",
   "./sh-sc.js",
   "./timer.js",
   "./mentor.js",
@@ -50,6 +51,11 @@ const FILES_TO_CACHE = [
   "./comercial-engine.js",
   "./comercial-pro.js",
   "./seguridad.js",
+  "./ruidos.js",
+  "./ruidos.json",
+  "./instalacion.js",
+  "./instalacion.json",
+  "./heladera-temp.js",
 
   // ===================================================
   // REFERENCIAS
@@ -83,6 +89,13 @@ const FILES_TO_CACHE = [
   // ASSETS
   // ===================================================
 
+  "./diagnostico-historial.js",
+  "./referencias-data.js",
+  "./sh-sc-engine.js",
+  "./temp-heladera.js",
+
+  "./calculadoras.json",
+  "./temp-heladera.json",
   "./icon-192.png",
   "./icon-512.png",
   "./logo-dyf.png",

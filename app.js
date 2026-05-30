@@ -23,7 +23,11 @@ const Router = {
     "calc":       ()      => FuncionesTecnicas.render("calc"),
     "historial":  ()      => Historial.render(),
     "dx-historial": ()    => DxHistorial.render(),
-    "seguridad":  ()      => SeguridadPRO.render()
+    "seguridad":  ()      => SeguridadPRO.render(),
+    "ruidos":     ()      => RuidosDx.render(),
+    "instalacion":()      => InstalacionDx.render(),
+    "btu":        ()      => BTUCalc.render(),
+    "heladera-temp":()    => HeladeraTempDx.render()
   },
 
   go(route) {
@@ -157,7 +161,7 @@ EVER
 class="hvac-subtitle"
 style="font-size:18px;letter-spacing:3px;color:#00d9ff;"
 >
-DIAGNÓSTICOS PRO TOOL
+HVAC PRO TOOL
 </p>
 </div>
 
@@ -224,9 +228,9 @@ style="width:140px;max-width:42%;display:block;object-fit:contain;"
 </a>
 </section>
 
-<!-- REFERENCIAS TECNICAS -->
+<!-- REFERENCIAS HVAC -->
 <section style="margin-top:34px;">
-<h2 class="references-title">📚 Referencias Técnicas</h2>
+<h2 class="references-title">📚 Referencias HVAC</h2>
 <div class="home-grid">
 <div class="home-card" id="openReferencias">❄️ Refrigeración</div>
 <div class="home-card" id="openElectricas">⚡ Eléctricas</div>
@@ -240,6 +244,18 @@ style="width:140px;max-width:42%;display:block;object-fit:contain;"
 <section style="margin-top:20px;padding-bottom:32px;">
 <button class="seg-home-btn" id="openSeguridad">
   🛡️ Seguridad — Antes de trabajar, leé esto
+</button>
+<button class="ruidos-home-btn" id="openRuidos">
+  🔊 Diagnóstico por ruidos y vibraciones
+</button>
+<button class="inst-home-btn" id="openInstalacion">
+  🔧 Errores de instalación
+</button>
+<button class="btu-home-btn" id="openBTU">
+  📐 Calculadora de dimensionamiento BTU
+</button>
+<button class="ht-home-btn" id="openHeladeraTemp">
+  🌡️ Heladera por temperatura — sin manómetro
 </button>
 </section>
 
@@ -266,6 +282,10 @@ style="width:140px;max-width:42%;display:block;object-fit:contain;"
       "openElectricas": nav("referencias"),
       "openHistorialHome": nav("historial"),
       "openSeguridad":     nav("seguridad"),
+      "openRuidos":        nav("ruidos"),
+      "openInstalacion":    nav("instalacion"),
+      "openBTU":           nav("btu"),
+      "openHeladeraTemp":   nav("heladera-temp"),
       "openPSI":        nav("pt"),
       "openPT":         nav("pt"),
       "openAMP":        nav("amp"),

@@ -1,0 +1,338 @@
+{
+  "categorias": [
+    {
+      "id": "compresor",
+      "titulo": "Ruidos del compresor",
+      "icono": "⚙️",
+      "equipo": ["split", "heladera", "comercial"],
+      "ruidos": [
+        {
+          "id": "golpe-liquido",
+          "nombre": "Golpe metálico fuerte al arrancar",
+          "descripcion": "Un golpe seco y fuerte justo cuando el compresor arranca. Puede ser uno o varios golpes rápidos.",
+          "urgencia": "CRÍTICO",
+          "causas": [
+            "Retorno de líquido refrigerante al compresor — el más grave. El líquido no se comprime y golpea las válvulas.",
+            "Sobrecalentamiento muy bajo (SH menor a 3°C) — el gas no terminó de evaporarse.",
+            "Arranque después de mucho tiempo parado — el refrigerante migró al cárter del compresor."
+          ],
+          "que_hacer": [
+            "Apagá el equipo inmediatamente — cada arranque con retorno de líquido daña las válvulas.",
+            "Medí el SH. Si es menor a 5°C, hay retorno de líquido.",
+            "Si es por migración (equipo parado mucho tiempo): encendé el calefactor de cárter si tiene, o calentá la base del compresor con una toalla caliente 20 min antes de arrancar.",
+            "Si el SH sigue bajo en régimen: revisar exceso de gas o problema de expansión."
+          ],
+          "mentor": "El golpe de líquido es lo más peligroso que le puede pasar a un compresor. Muchos 'compresores quemados' que veo son válvulas rotas por retorno de líquido repetido. Un técnico que ignora este ruido le va a cambiar el compresor al cliente en 6 meses."
+        },
+        {
+          "id": "zumbido-no-arranca",
+          "nombre": "Zumbido y no arranca (hum)",
+          "descripcion": "El compresor intenta arrancar, hace un zumbido de 1-3 segundos y se apaga. El Klixon lo protege.",
+          "urgencia": "ALTO",
+          "causas": [
+            "Capacitor muerto o muy caído — sin el capacitor, el compresor no tiene torque de arranque.",
+            "Tensión de red baja (menos de 200V) — el compresor no puede arrancar.",
+            "Compresor bloqueado mecánicamente — el motor no puede girar.",
+            "Presión de alta muy elevada — el compresor tiene que vencer demasiada presión para arrancar."
+          ],
+          "que_hacer": [
+            "Primero medí la tensión de red — si está bajo 200V, es la causa más probable.",
+            "Medí el capacitor con el capacímetro — si mide menos del 90% del nominal, reemplazalo.",
+            "Si tensión y capacitor están bien, intentá girar el eje del compresor manualmente (en compresores herméticos no se puede, en semiherméticos sí).",
+            "Si todo está ok eléctricamente y sigue bloqueado → compresor bloqueado mecánicamente."
+          ],
+          "mentor": "El 70% de los zumbidos sin arranque son capacitor. Antes de decirle al cliente que el compresor está muerto, medí el capacitor. Vi capacitores que medían 12µF cuando deberían ser 45µF — el compresor no podía ni intentar arrancar."
+        },
+        {
+          "id": "golpeteo-ritmo",
+          "nombre": "Golpeteo rítmico en funcionamiento",
+          "descripcion": "Un toc-toc-toc o clang-clang-clang regular mientras el compresor está corriendo.",
+          "urgencia": "ALTO",
+          "causas": [
+            "Válvulas del compresor dañadas — en compresores semiherméticos se pueden cambiar.",
+            "Pistón o biela con desgaste — desgaste mecánico interno.",
+            "Tornillos de montaje del compresor flojos — el compresor vibra contra la base.",
+            "Líquido refrigerante en el cárter — mezclado con aceite genera ese sonido al comprimir."
+          ],
+          "que_hacer": [
+            "Revisá primero que los tornillos de montaje estén apretados — es la causa más fácil y frecuente.",
+            "Medí el SH — si hay líquido en el cárter, el SH va a estar bajo.",
+            "En compresores herméticos: si el golpeteo es interno, el compresor está deteriorado.",
+            "En semiherméticos: evaluá reacondicionamiento de válvulas."
+          ],
+          "mentor": "El golpeteo rítmico en un hermético es casi siempre el certificado de defunción del compresor. Pero antes de condenarlo, revisá los tornillos de base — sorprende cuántas veces el 'golpeteo del compresor' era simplemente que estaba suelto."
+        },
+        {
+          "id": "silbido-arranque",
+          "nombre": "Silbido agudo al arrancar",
+          "descripcion": "Un silbido o chirrido en el momento exacto del arranque, que desaparece en pocos segundos.",
+          "urgencia": "MEDIO",
+          "causas": [
+            "Diferencial de presiones muy alto al arranque — el gas no se equilibró entre alta y baja.",
+            "Válvula de retención del compresor que chirrió momentáneamente.",
+            "Normal en algunos modelos — especialmente ON/OFF con mucho tiempo parado."
+          ],
+          "que_hacer": [
+            "Observá si ocurre en cada arranque o solo cuando el equipo estuvo parado mucho tiempo.",
+            "Si ocurre solo después de paradas largas y desaparece rápido — es normal en ON/OFF.",
+            "Si ocurre en cada arranque y es cada vez más fuerte — comenzar a monitorear el compresor."
+          ],
+          "mentor": "Un silbido breve al arranque después de que el equipo estuvo mucho tiempo parado es normal en ON/OFF. Las presiones se igualaron y el arranque es más suave las veces siguientes. Si el silbido persiste y se repite igual en cada arranque, ahí sí hay que prestar atención."
+        }
+      ]
+    },
+    {
+      "id": "ventiladores",
+      "titulo": "Ruidos de ventiladores",
+      "icono": "💨",
+      "equipo": ["split", "heladera", "comercial"],
+      "ruidos": [
+        {
+          "id": "chillido-turbina",
+          "nombre": "Chillido o chirrido del ventilador interior",
+          "descripcion": "Sonido agudo y continuo proveniente de la unidad interior. Puede ser constante o intermitente.",
+          "urgencia": "MEDIO",
+          "causas": [
+            "Rodamiento del motor del ventilador desgastado — el más común.",
+            "Pelusa o suciedad atrapada en la turbina tocando el evaporador.",
+            "Cubierta plástica rozando la turbina por deformación térmica.",
+            "Condensado goteando sobre la turbina en movimiento."
+          ],
+          "que_hacer": [
+            "Limpiá el filtro y la turbina — muchas veces la pelusa toca el evaporador y genera ese chirrido.",
+            "Con el equipo apagado, girá la turbina manualmente — ¿es suave? ¿tiene juego axial?",
+            "Si el rodamiento tiene juego o raspa: reemplazar el motor del ventilador.",
+            "Revisá que las cubiertas plásticas estén bien asentadas y no toquen la turbina."
+          ],
+          "mentor": "El chillido de turbina asusta al cliente pero en el 60% de los casos es pelusa. Antes de cotizar un motor de ventilador, limpiá la turbina bien y probá. Si el chirrido persiste con la turbina limpia y el motor girando suave a mano, ahí sí es el rodamiento."
+        },
+        {
+          "id": "traqueteo-turbina",
+          "nombre": "Traqueteo o golpeteo del ventilador interior",
+          "descripcion": "Ruido seco e irregular, como algo golpeando adentro del equipo interior.",
+          "urgencia": "MEDIO",
+          "causas": [
+            "Objeto extraño dentro del equipo (moneda, tornillo, insecto, trozo de plástico).",
+            "Aleta de la turbina rota o doblada tocando la carcasa.",
+            "Cubierta de acceso o panel plástico suelto vibrando.",
+            "Turbina desbalanceada por acumulación de suciedad de un solo lado."
+          ],
+          "que_hacer": [
+            "Apagá el equipo e inspeccioná visualmente con linterna dentro de la turbina.",
+            "Revisá que todas las cubiertas y paneles plásticos estén bien fijados.",
+            "Limpiá la turbina uniformemente — el desbalance por suciedad genera traqueteo.",
+            "Si una aleta está rota: reemplazar la turbina."
+          ],
+          "mentor": "Me llegó un equipo con 'turbina rota' y era una moneda que el nene del cliente tiró por la rejilla. Siempre mirá adentro con la linterna antes de desarmar. Te ahorra media hora de trabajo."
+        },
+        {
+          "id": "ruido-ventilador-exterior",
+          "nombre": "Ruido metálico del ventilador exterior",
+          "descripcion": "Golpeteo, raspado o vibración proveniente del ventilador de la unidad condensadora.",
+          "urgencia": "ALTO",
+          "causas": [
+            "Aleta del ventilador rozando la carcasa — por deformación, impacto o suciedad acumulada.",
+            "Tuerca del eje del ventilador floja — la hélice tiene juego.",
+            "Rodamiento del motor del ventilador exterior desgastado.",
+            "Objeto extraño (hoja, papel, plástico) atrapado en el ventilador exterior."
+          ],
+          "que_hacer": [
+            "Apagá el equipo y revisá manualmente la hélice del ventilador exterior.",
+            "Verificá que la hélice no toque la carcasa al girarla con la mano.",
+            "Apretá la tuerca del eje — frecuentemente se afloja por vibración.",
+            "Si el rodamiento tiene juego axial o no gira suave: reemplazar motor."
+          ],
+          "mentor": "Un ventilador exterior que raspa la carcasa puede parar el ventilador por completo. Sin ventilador, el condensador se sobrecalienta, la presión de alta se va al cielo y el presostato dispara. Todo porque una hoja se metió en el ventilador."
+        }
+      ]
+    },
+    {
+      "id": "cañerias",
+      "titulo": "Ruidos en cañerías y refrigerante",
+      "icono": "🔧",
+      "equipo": ["split", "heladera", "comercial"],
+      "ruidos": [
+        {
+          "id": "burbujeo-succcion",
+          "nombre": "Burbujeo o gorgoleo en la línea de succión",
+          "descripcion": "Sonido de líquido burbujando, como agua hirviendo. Proviene de la línea gruesa o del evaporador.",
+          "urgencia": "ALTO",
+          "causas": [
+            "Mezcla de vapor y líquido en la línea de succión — SC bajo, hay vapor en el líquido.",
+            "Gas insuficiente — la expansión genera burbujas antes del evaporador.",
+            "Restricción parcial en capilar o filtro — el refrigerante se expande antes de tiempo."
+          ],
+          "que_hacer": [
+            "Medí el SC (subenfriamiento) — si es bajo o negativo, hay vapor en la línea de líquido.",
+            "Si el SC está bajo con PSI de baja también bajo: probable fuga de gas.",
+            "Si el SC está bajo con PSI de baja normal: posible restricción.",
+            "Verificá que el filtro deshidratador no esté tapado — genera caída de presión localizada."
+          ],
+          "mentor": "El gorgoleo en la línea de succión casi siempre es SC bajo — hay vapor viajando en la línea de líquido. Es muy ineficiente y puede deteriorar la válvula de expansión. El sistema funciona, pero muy mal. Medí el SC y vas a tener la respuesta."
+        },
+        {
+          "id": "golpe-agua-cañeria",
+          "nombre": "Golpe de agua en la cañería (water hammer)",
+          "descripcion": "Un golpe fuerte y seco en las cañerías, especialmente al arrancar o parar el compresor.",
+          "urgencia": "MEDIO",
+          "causas": [
+            "Exceso de líquido en el sistema que se mueve bruscamente al cambiar la presión.",
+            "Cañerías sin soporte adecuado que vibran al cambiar el flujo.",
+            "Cambio brusco de dirección en la instalación sin radio de curvatura suficiente."
+          ],
+          "que_hacer": [
+            "Asegurate de que las cañerías estén correctamente soportadas y no tengan tramos largos sin sujeción.",
+            "Verificá que no haya exceso de refrigerante (SC alto es señal).",
+            "Si ocurre en cada arranque: evaluar acumulador de succión en equipos comerciales."
+          ],
+          "mentor": "El golpe de agua en cañerías suena alarmante pero rara vez es grave. Lo primero que reviso es si las cañerías están bien fijadas — una cañería sin soporte en un tramo largo golpea contra la pared en cada arranque."
+        },
+        {
+          "id": "silbido-expansion",
+          "nombre": "Silbido continuo en la línea de líquido",
+          "descripcion": "Un silbido o soplido constante que proviene de la línea fina (línea de líquido).",
+          "urgencia": "MEDIO",
+          "causas": [
+            "Vapor en la línea de líquido — mezcla que pasa por el capilar genera silbido.",
+            "Restricción parcial en el filtro deshidratador — genera caída de presión y silbido.",
+            "Válvula de servicio no totalmente abierta — genera silbido al pasar el refrigerante."
+          ],
+          "que_hacer": [
+            "Verificá que las válvulas de servicio estén completamente abiertas.",
+            "Medí diferencia de temperatura antes y después del filtro deshidratador — si hay más de 2°C de diferencia, el filtro está restringido.",
+            "Si el filtro está tapado: reemplazar filtro deshidratador."
+          ],
+          "mentor": "Un silbido en la línea de líquido con las válvulas bien abiertas casi siempre es el filtro deshidratador. Tocá el filtro: si hay diferencia de temperatura antes y después, está tapado. Es un componente barato que se pasa por alto."
+        }
+      ]
+    },
+    {
+      "id": "estructura",
+      "titulo": "Vibraciones y ruidos estructurales",
+      "icono": "🏠",
+      "equipo": ["split", "comercial"],
+      "ruidos": [
+        {
+          "id": "vibracion-pared",
+          "nombre": "Vibración que se transmite a la pared o techo",
+          "descripcion": "El equipo funciona bien pero la vibración se transmite a la estructura del edificio, generando ruido en otras habitaciones.",
+          "urgencia": "BAJO",
+          "causas": [
+            "Soporte del compresor flojo o deteriorado — el caucho antivibración está rígido.",
+            "Unidad exterior apoyada directamente en la losa sin amortiguadores.",
+            "Tornillos de la unidad exterior flojos.",
+            "Cañerías que tocan la pared sin aislación en el punto de contacto."
+          ],
+          "que_hacer": [
+            "Verificá que la unidad exterior esté nivelada y que los soportes estén bien ajustados.",
+            "Poné gomas antivibración entre la base del equipo y el soporte si no tiene.",
+            "Verificá que las cañerías no toquen la pared directamente — poné aislación en los puntos de contacto.",
+            "Apretá todos los tornillos de la unidad exterior."
+          ],
+          "mentor": "La vibración que se transmite a la pared es una pesadilla de instalación, no de servicio. El 90% de las veces es falta de gomas antivibración o cañerías mal aisladas que tocan la losa. Se soluciona con materiales de $500 y 20 minutos de trabajo."
+        },
+        {
+          "id": "traqueteo-carcasa",
+          "nombre": "Traqueteo o vibración de la carcasa plástica interior",
+          "descripcion": "El equipo vibra internamente — las cubiertas plásticas repiquetean o vibran.",
+          "urgencia": "BAJO",
+          "causas": [
+            "Tornillos de la carcasa flojos o faltantes.",
+            "Panel de acceso mal asentado.",
+            "Deformación térmica de plásticos viejos que ya no encajan bien.",
+            "Clip de fijación roto o faltante."
+          ],
+          "que_hacer": [
+            "Apretá todos los tornillos visibles de la carcasa.",
+            "Con el equipo funcionando, presioná suavemente distintas partes del plástico — si el ruido para, encontraste el panel que vibra.",
+            "Usá cinta doble faz o espuma fina entre paneles para amortiguar.",
+            "Si el clip está roto: reemplazarlo o usar tornillo auto-roscante."
+          ],
+          "mentor": "El traqueteo de carcasa es el ruido más frustrante de diagnosticar porque aparece solo con el equipo encendido. El truco es presionar con la mano diferentes partes del plástico mientras el equipo corre — cuando el ruido para, encontraste el culpable."
+        }
+      ]
+    },
+    {
+      "id": "heladera",
+      "titulo": "Ruidos específicos de heladeras",
+      "icono": "🧊",
+      "equipo": ["heladera"],
+      "ruidos": [
+        {
+          "id": "burbujeo-normal",
+          "nombre": "Burbujeo o gorgoleo después de apagar",
+          "descripcion": "Sonido de líquido o gas moviéndose en las paredes o parte trasera. Aparece cuando el compresor para.",
+          "urgencia": "NORMAL",
+          "causas": [
+            "Es completamente normal — es el refrigerante equilibrando presiones después de que el compresor para.",
+            "El gas pasa del lado de alta al lado de baja a través del capilar hasta que las presiones se igualan."
+          ],
+          "que_hacer": [
+            "No hacer nada — es normal y no indica ningún problema.",
+            "Si el cliente está preocupado: explicale que es el refrigerante equilibrándose, como el agua en los caños."
+          ],
+          "mentor": "El gorgorito después de que para el compresor es lo primero que aprende un novato a no diagnosticar como problema. Es normal en TODAS las heladeras. Si el cliente llama por eso, explicale y listo."
+        },
+        {
+          "id": "click-termostato",
+          "nombre": "Click al arrancar o parar",
+          "descripcion": "Un click seco cada vez que el compresor arranca o se apaga.",
+          "urgencia": "NORMAL",
+          "causas": [
+            "El termostato o el relay de arranque haciendo contacto — completamente normal.",
+            "En heladeras con placa electrónica: el relay de la placa al conmutar."
+          ],
+          "que_hacer": [
+            "Es normal. No requiere acción.",
+            "Si el click es muy fuerte o viene seguido de un arco eléctrico visible: ahí sí revisar el relay."
+          ],
+          "mentor": "El click es el relay o el termostato haciendo su trabajo. Si el cliente llama por el click, es que la heladera antes no lo hacía — puede que sea un relay nuevo o que cambiaron algún componente. No es un problema."
+        },
+        {
+          "id": "traqueteo-heladera",
+          "nombre": "Traqueteo o vibración excesiva",
+          "descripcion": "La heladera vibra y hace ruido, se escucha en toda la cocina.",
+          "urgencia": "BAJO",
+          "causas": [
+            "Heladera desnivelada — una pata no apoya bien en el piso.",
+            "Objetos sobre la heladera que vibran.",
+            "Compresor con soportes de caucho deteriorados — el caucho se endureció.",
+            "Condensador trasero flojo (si es de alambres) tocando la carcasa."
+          ],
+          "que_hacer": [
+            "Nivelá la heladera — girá las patas regulables o poné calzas. Una heladera nivelada vibra mucho menos.",
+            "Retirá los objetos de arriba.",
+            "Revisá que el condensador trasero no toque la carcasa.",
+            "Si el compresor vibra mucho: revisar soportes de caucho — se pueden reemplazar."
+          ],
+          "mentor": "El 80% de las heladeras que vibran están desniveladas. Es lo primero que hago antes de tocar cualquier otra cosa: nivelo la heladera con un nivel de burbuja y pruebo. Ahorra tiempo y el cliente queda satisfecho con algo simple."
+        },
+        {
+          "id": "sonido-deshielo",
+          "nombre": "Chasquidos y crujidos durante el deshielo (No Frost)",
+          "descripcion": "Sonidos de crujido o chasquido provenientes del freezer, especialmente de noche o en momentos específicos.",
+          "urgencia": "NORMAL",
+          "causas": [
+            "Completamente normal — es el evaporador expandiéndose y contrayéndose con el cambio de temperatura durante el ciclo de deshielo.",
+            "El plástico del interior también se contrae con el frío y se expande con el calor."
+          ],
+          "que_hacer": [
+            "No requiere acción — es el ciclo de deshielo funcionando correctamente.",
+            "Si los chasquidos son muy frecuentes fuera del horario de deshielo: puede ser el evaporador acumulando hielo. Verificar el sistema de deshielo."
+          ],
+          "mentor": "Los chasquidos nocturnos del No Frost son el sistema de deshielo haciendo su trabajo. El evaporador se calienta con la resistencia y el metal chasquea. Es tan normal como los chasquidos de una casa cuando cambia la temperatura."
+        }
+      ]
+    }
+  ],
+
+  "guia_rapida": {
+    "titulo": "¿De dónde viene el ruido?",
+    "pasos": [
+      "¿El ruido viene de adentro o afuera? → Interior: turbina, plásticos, evaporador. Exterior: compresor, ventilador condensador.",
+      "¿El ruido aparece cuando el compresor arranca o siempre? → Solo al arrancar: posible capacitor o presión. Siempre: mecánico o estructural.",
+      "¿El ruido es metálico o plástico? → Metálico: mecánico (compresor, ventilador). Plástico: carcasa, cubiertas.",
+      "¿El ruido mejora o empeora con el tiempo de funcionamiento? → Empeora: térmico (se expande algo). Mejora: normalización de presiones."
+    ]
+  }
+}

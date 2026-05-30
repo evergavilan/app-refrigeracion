@@ -1,0 +1,743 @@
+{
+  "categorias": [
+    {
+      "id": "cañerias",
+      "titulo": "Cañerías y conexiones",
+      "icono": "🔧",
+      "errores": [
+        {
+          "id": "flare-malo",
+          "nombre": "Flare mal ejecutado",
+          "frecuencia": "MUY FRECUENTE",
+          "consecuencia": "Fuga de gas lenta o inmediata. El equipo pierde gas y el técnico carga gas una y otra vez sin entender por qué.",
+          "como_reconocerlo": [
+            "El equipo pierde gas en días o semanas después de la instalación.",
+            "Con agua jabonosa en la tuerca del flare se ven burbujas.",
+            "El flare tiene forma irregular, grietas o bordes doblados al mirarlo con linterna."
+          ],
+          "causas": [
+            "Herramienta de flarear desgastada o mal usada — el flare queda con forma cónica irregular.",
+            "No se lijó ni limpió el corte del caño antes de flarear — la rebaba genera microfugas.",
+            "Se apretó la tuerca con demasiada fuerza — el cobre se deformó o agrietó.",
+            "Se apretó con poca fuerza — el cobre no hizo sello completo."
+          ],
+          "como_evitarlo": [
+            "Cortá el caño con cortacaños de disco, nunca con sierra — el corte debe ser perpendicular y limpio.",
+            "Limá o escariá el interior del corte para eliminar toda rebaba.",
+            "Usá herramienta de flarear en buen estado — el flare debe quedar liso, uniforme y con 45° exactos.",
+            "Par de apriete correcto: 1/4\" → 18 Nm, 3/8\" → 42 Nm, 1/2\" → 55 Nm. Con llave dinamométrica si tenés.",
+            "Aplicá aceite de refrigeración en el flare antes de apretar."
+          ],
+          "mentor": "El flare malo es la causa número uno de pérdida de gas en instalaciones nuevas en Argentina. Muchos técnicos novatos apretan a ojo y creen que 'bien apretado' es suficiente. Un flare mal hecho lo vas a estar buscando 6 meses después cuando el cliente te llama de vuelta."
+        },
+        {
+          "id": "cañeria-larga",
+          "nombre": "Cañería más larga de lo permitido sin compensar",
+          "frecuencia": "FRECUENTE",
+          "consecuencia": "El equipo pierde capacidad, el compresor trabaja más y el SH sube. En casos extremos el compresor se quema prematuramente.",
+          "como_reconocerlo": [
+            "Instalación con más de 10-15 metros de cañería sin compensación.",
+            "El equipo enfría menos de lo esperado con PSI y AMP normales.",
+            "SH alto, temperatura de descarga del compresor elevada."
+          ],
+          "causas": [
+            "Cada metro extra de cañería genera pérdida de presión y retorno de aceite al compresor.",
+            "El fabricante especifica en el manual la longitud máxima y la compensación de gas necesaria."
+          ],
+          "como_evitarlo": [
+            "Consultá el manual del equipo — cada modelo tiene una longitud máxima de cañería (normalmente 15-25m para splits domésticos).",
+            "Por cada metro adicional después de los 7-10m, se agrega gas: aprox. 20-30g por metro extra según el fabricante.",
+            "En instalaciones largas, asegurate de que la cañería de succión tenga trampa de aceite cada 10m de subida vertical.",
+            "Usá diámetro de cañería correcto — no uses cañería más fina para 'ahorrar'."
+          ],
+          "mentor": "Muchos equipos que 'no enfrían bien' con todo en rango son instalaciones largas sin compensar. El técnico carga gas, el equipo mejora un poco, y a los 6 meses vuelve a fallar. La solución es agregar la carga de gas correcta según la longitud real de la instalación."
+        },
+        {
+          "id": "trampa-aceite",
+          "nombre": "Falta de trampa de aceite en subidas verticales",
+          "frecuencia": "FRECUENTE",
+          "consecuencia": "El aceite del compresor se acumula en la línea de succión y no vuelve al compresor. A largo plazo el compresor trabaja sin lubricación suficiente.",
+          "como_reconocerlo": [
+            "Instalación con la unidad interior por encima de la exterior, con más de 3m de diferencia vertical.",
+            "Ruido de golpeteo suave en el compresor que aparece con el tiempo.",
+            "Compresor que falla prematuramente sin causa aparente en el sistema refrigerante."
+          ],
+          "causas": [
+            "En subidas verticales el aceite tiende a quedarse en la parte baja por gravedad.",
+            "Si no hay trampa de aceite, el aceite no tiene forma de volver al compresor."
+          ],
+          "como_evitarlo": [
+            "En toda subida vertical mayor a 3m, hacer trampa de aceite en la base: una curva hacia abajo y vuelta hacia arriba en la línea de succión.",
+            "En subidas de más de 10m: trampa de aceite cada 10m.",
+            "La trampa debe ser en la línea de SUCCIÓN (tubo grueso), no en la de líquido."
+          ],
+          "mentor": "La trampa de aceite es lo que más se omite en instalaciones de Argentina. El técnico ve la instalación larga y piensa solo en el largo, no en el desnivel. El compresor que muere a los 2 años 'sin razón aparente' muchas veces es falta de trampa de aceite."
+        },
+        {
+          "id": "pendiente-drenaje",
+          "nombre": "Pendiente de drenaje incorrecta",
+          "frecuencia": "MUY FRECUENTE",
+          "consecuencia": "El condensado no drena, la bandeja se llena y el agua gotea hacia adentro del local. Es el reclamo más frecuente después de una instalación.",
+          "como_reconocerlo": [
+            "El equipo gotea agua hacia adentro.",
+            "La bandeja de condensado siempre tiene agua estancada.",
+            "La cañería de drenaje sale horizontal o con pendiente hacia el equipo."
+          ],
+          "causas": [
+            "La cañería de drenaje se instaló sin pendiente o con pendiente invertida.",
+            "La cañería de drenaje tiene sifón sin agua o directamente sin sifón.",
+            "La salida del drenaje está obstruida (pelusa, hongos, insectos)."
+          ],
+          "como_evitarlo": [
+            "La cañería de drenaje debe tener mínimo 1cm de caída por cada metro de longitud horizontal.",
+            "Nunca instales el drenaje en sentido ascendente — el agua no sube sola.",
+            "En instalaciones donde el drenaje debe subir antes de bajar: usar una bomba de condensado.",
+            "Revisá siempre el drenaje vertiendo agua en la bandeja antes de terminar la instalación.",
+            "En locales con presión negativa (cocinas, locales cerrados con extractor): el drenaje necesita sifón para evitar que el aire entre por el caño y bloquee el flujo."
+          ],
+          "mentor": "El goteo por mal drenaje es el llamado más frecuente que recibo de instalaciones nuevas. Antes de irte de una instalación, tirá un vaso de agua en la bandeja y mirá que drene limpio. Son 30 segundos que te evitan volver al día siguiente."
+        },
+        {
+          "id": "aislacion-insuficiente",
+          "nombre": "Aislación insuficiente o deteriorada",
+          "frecuencia": "FRECUENTE",
+          "consecuencia": "La línea de succión suda y moja la pared o el cielorraso. Pérdida de eficiencia del sistema. En casos graves, humedad en las paredes.",
+          "como_reconocerlo": [
+            "La cañería de succión (tubo grueso) presenta condensación o goteo.",
+            "Manchas de humedad en la pared a lo largo del recorrido de la cañería.",
+            "La aislación está pinchada, aplastada o con aperturas."
+          ],
+          "causas": [
+            "Aislación demasiado fina para el diámetro de la cañería.",
+            "Aislación instalada sin pegar las uniones — el aire húmedo entra por las costuras.",
+            "Aislación expuesta al sol sin protección — se deteriora en 1-2 años.",
+            "Cañería sin aislar en el tramo dentro del equipo exterior."
+          ],
+          "como_evitarlo": [
+            "Espesor mínimo de aislación: 13mm para cañerías hasta 7/8\". Para tramos exteriores expuestos al sol: 19mm.",
+            "Pegá todas las costuras con adhesivo de contacto — las uniones sin pegar son la principal causa de sudado.",
+            "En tramos exteriores: cubrí la aislación con protección UV (cinta de aluminio o caño plástico).",
+            "Verificá que la aislación llegue hasta el equipo interior, sin dejar tramos desnudos."
+          ],
+          "mentor": "La aislación barata o mal instalada le cuesta caro al cliente en eficiencia y le arruina la pared. El espesor importa tanto como el pegado. Una aislación de 19mm mal pegada suda igual que una de 9mm. Pegá siempre las costuras."
+        },
+        {
+          "id": "diametro-incorrecto",
+          "nombre": "Diámetro de cañería incorrecto",
+          "frecuencia": "FRECUENTE",
+          "consecuencia": "Velocidad de aceite inadecuada, acumulación de aceite en cañerías largas, presión de baja anormal y pérdida de eficiencia.",
+          "como_reconocerlo": [
+            "PSI de baja más bajo de lo esperado con gas correcto.",
+            "Compresor que a veces golpea por falta de lubricación (aceite no retorna).",
+            "Cañería visualmente distinta al diámetro especificado en la plaqueta."
+          ],
+          "como_evitarlo": [
+            "Seguir siempre las especificaciones del fabricante para el diámetro según la longitud y la potencia.",
+            "Para splits: 1/4\" de líquido y 3/8\" de succión en equipos hasta 4500 FG. Para equipos mayores: 3/8\" y 1/2\" respectivamente.",
+            "Para longitudes mayores a 10m: consultar tabla de compensación de diámetro del fabricante.",
+            "Nunca usar cañería de menor diámetro 'porque era lo que había'."
+          ],
+          "causas": [
+            "El técnico usó lo que tenía disponible sin consultar las especificaciones.",
+            "Desconocimiento de las tablas de diámetro según longitud.",
+            "Instalación en equipo diferente al original sin recalcular."
+          ],
+          "mentor": "El diámetro de cañería no es opcional. Un técnico novato que pone 1/4\" en succión porque no tenía 3/8\" está armando un problema que va a aparecer en meses. El aceite no viaja bien y el compresor se empieza a desgastar sin aviso."
+        },
+        {
+          "id": "cañeria-aplastada",
+          "nombre": "Cañería aplastada o con radio de curvatura insuficiente",
+          "frecuencia": "FRECUENTE",
+          "consecuencia": "Restricción de flujo de refrigerante, presión de baja baja, SH alto y pérdida de capacidad del sistema.",
+          "como_reconocerlo": [
+            "PSI de baja más bajo de lo normal con gas correcto.",
+            "SH alto (mayor a 15°C) — el refrigerante no fluye bien.",
+            "Diferencia de temperatura antes y después de la curva (en casos severos).",
+            "Curva visible con forma ovalada o plana en lugar de circular."
+          ],
+          "como_evitarlo": [
+            "Usar doblador de caños — nunca doblar a mano libre.",
+            "Radio mínimo de curvatura: 3 veces el diámetro del caño como mínimo.",
+            "Si hay que hacer una curva pronunciada: usar codo de soldadura en lugar de doblar.",
+            "Inspeccionar visualmente todas las curvas antes de cerrar la instalación."
+          ],
+          "causas": [
+            "Doblar a mano sin herramienta adecuada.",
+            "Intentar pasar la cañería por un espacio muy estrecho.",
+            "Cañería pisada por soporte mal colocado."
+          ],
+          "mentor": "Una cañería aplastada en una curva es difícil de ver una vez instalada y revestida. Pero el sistema te lo va a decir: SH alto, PSI de baja bajo, poca capacidad. Antes de levantar todo, medí la caída de temperatura antes y después de cada curva sospechosa."
+        }
+      ]
+    },
+    {
+      "id": "ubicacion",
+      "titulo": "Ubicación y montaje",
+      "icono": "📐",
+      "errores": [
+        {
+          "id": "condensador-encerrado",
+          "nombre": "Condensador exterior sin ventilación suficiente",
+          "frecuencia": "MUY FRECUENTE",
+          "consecuencia": "Alta presión crónica, compresor que trabaja forzado, mayor consumo, falla prematura. En verano puede disparar el presostato repetidamente.",
+          "como_reconocerlo": [
+            "La unidad exterior está en un pozo de ventilación, encerrada en un cuarto técnico o muy cerca de una pared.",
+            "Alta presión elevada con condensador limpio.",
+            "El equipo dispara en los días más calurosos."
+          ],
+          "causas": [
+            "El aire caliente que expulsa el condensador recircula de vuelta a la entrada.",
+            "El espacio no tiene suficiente renovación de aire para disipar el calor."
+          ],
+          "como_evitarlo": [
+            "Espacio libre mínimo: 30cm en los costados, 60cm en la salida del ventilador, 20cm atrás.",
+            "En pozos o cuartos técnicos: asegurate de que haya entrada de aire frío por abajo y salida de aire caliente por arriba.",
+            "Nunca instales dos unidades exteriores enfrentadas — el calor de una entra a la otra.",
+            "En verano: la temperatura del aire que entra al condensador no debe superar la temperatura ambiente en más de 5°C."
+          ],
+          "mentor": "Equipos instalados en pozos de ventilación sin salida de aire caliente son tiempo bomba. En invierno andan bien. En enero con 40°C afuera y el pozo a 55°C, el presostato dispara y el cliente llama furioso. Si ya está instalado así, la solución es un extractor de calor en la parte superior del pozo."
+        },
+        {
+          "id": "evaporador-sol",
+          "nombre": "Evaporador interior con entrada de aire caliente directo",
+          "frecuencia": "FRECUENTE",
+          "consecuencia": "El equipo no puede alcanzar la temperatura de setpoint — trabaja continuo sin llegar nunca al objetivo.",
+          "como_reconocerlo": [
+            "El equipo tiene una puerta, ventana o fuente de calor directo frente a la toma de aire.",
+            "La temperatura de retorno del evaporador es mucho más alta que la temperatura del ambiente.",
+            "El equipo trabaja continuo con todo en rango."
+          ],
+          "causas": [
+            "La unidad interior está instalada frente a una ventana donde entra sol directo.",
+            "Hay una fuente de calor (horno, maquinaria) cerca de la toma de aire."
+          ],
+          "como_evitarlo": [
+            "La toma de aire del evaporador no debe enfrentar fuentes de calor directo.",
+            "Mínimo 2m de distancia de ventanas con sol directo en la orientación de la toma de aire.",
+            "Si ya está instalado: evaluá cortinas o protección solar en la ventana."
+          ],
+          "mentor": "Un equipo perfectamente instalado puede no enfriar bien si aspira aire caliente por la entrada. Mirá siempre de dónde viene el aire que entra al equipo interior antes de buscar el problema en el sistema refrigerante."
+        },
+        {
+          "id": "nivelacion",
+          "nombre": "Unidad interior mal nivelada",
+          "frecuencia": "FRECUENTE",
+          "consecuencia": "El condensado no llega a la bandeja y gotea por donde no debe. La turbina puede rozar la carcasa.",
+          "como_reconocerlo": [
+            "Goteo de agua en un extremo del equipo interior.",
+            "Ruido de roce en la turbina.",
+            "Visualmente el equipo está inclinado."
+          ],
+          "causas": [
+            "El soporte de pared se instaló sin nivel.",
+            "La pared no es plana y el soporte quedó torcido."
+          ],
+          "como_evitarlo": [
+            "Siempre usá nivel de burbuja al instalar el soporte — tanto horizontal como verticalmente.",
+            "El equipo debe quedar perfectamente horizontal o con una inclinación mínima (2mm) hacia el lado del drenaje.",
+            "Verificá con el nivel después de colgar el equipo, no solo el soporte."
+          ],
+          "mentor": "Nivelar con el ojo cuesta caro — el agua siempre encuentra la inclinación. Con un nivel de burbuja de $500 evitás el llamado de vuelta por goteo. Es la herramienta más barata que más problemas evita."
+        },
+        {
+          "id": "distancia-minima",
+          "nombre": "Unidad interior demasiado cerca del techo o pared",
+          "frecuencia": "FRECUENTE",
+          "consecuencia": "El aire frío no se distribuye correctamente. El equipo recircula aire frío sin mover el del resto del ambiente.",
+          "como_reconocerlo": [
+            "El equipo 'enfría bien' cerca pero el fondo del ambiente sigue caliente.",
+            "Menos de 10cm entre el techo y la parte superior del equipo.",
+            "El chorro de aire toca el techo inmediatamente al salir."
+          ],
+          "causas": [
+            "El equipo se instaló lo más alto posible sin respetar la distancia mínima al techo.",
+            "En locales con cielorraso bajo, no se evaluó la ubicación correcta."
+          ],
+          "como_evitarlo": [
+            "Distancia mínima al techo: 10-15cm según fabricante.",
+            "Distancia mínima a la pared lateral: 20cm.",
+            "En locales bajos: evaluá un split de piso o un cassette si el cielorraso lo permite.",
+            "Verificá siempre el ángulo y alcance del chorro de aire antes de definir la ubicación."
+          ],
+          "mentor": "El cliente que dice 'en esa esquina no llega el frío' muchas veces tiene el equipo pegado al techo. El aire frío se va directo al techo sin recircular bien. La ubicación del equipo interior es tan importante como el dimensionamiento."
+        },
+        {
+          "id": "condensador-sol-directo",
+          "nombre": "Condensador exterior bajo sol directo todo el día",
+          "frecuencia": "MUY FRECUENTE",
+          "consecuencia": "Alta presión elevada permanentemente, mayor consumo eléctrico, vida útil del compresor reducida y posible disparo del presostato de alta.",
+          "como_reconocerlo": [
+            "PSI de alta elevado en horas de sol aunque el condensador esté limpio.",
+            "Amperaje del compresor en el límite superior.",
+            "El equipo trabaja bien de noche pero mal de día — el sol es la variable."
+          ],
+          "como_evitarlo": [
+            "Orientar el condensador mirando al norte o al este (sol de la mañana, menos intenso).",
+            "Si no hay opción: instalar una marquesina o techo para dar sombra SIN obstruir el flujo de aire.",
+            "La sombra puede bajar la temperatura del aire de entrada 5-8°C y reducir el consumo un 10%.",
+            "Nunca colocar obstáculos que bloqueen el flujo de aire del condensador."
+          ],
+          "causas": [
+            "El cliente eligió el lugar 'porque quedaba más cerca'.",
+            "El técnico instaló sin evaluar la orientación solar.",
+            "Edificio o árbol que antes daba sombra y ya no está."
+          ],
+          "mentor": "En el NOA y NEA argentino esto es crítico — con 40°C a la sombra, un condensador al sol puede estar recibiendo aire a 55°C. Eso sube la presión de alta 30-40 PSI sobre lo normal. Si podés elegir la ubicación, elegí siempre al norte o con sombra."
+        },
+        {
+          "id": "drenaje-condensado-mal",
+          "nombre": "Drenaje de condensado mal orientado o sin sifón",
+          "frecuencia": "MUY FRECUENTE",
+          "consecuencia": "Goteras hacia adentro del local, humedad en paredes, daño al cielorraso y posible cortocircuito si el agua cae sobre instalación eléctrica.",
+          "como_reconocerlo": [
+            "Agua gotea por la unidad interior hacia adentro del local.",
+            "La bandeja de condensado desborda.",
+            "El caño de drenaje sale hacia adentro o tiene una pendiente incorrecta (hacia arriba).",
+            "Sifón tapado o ausente — el agua no escurre correctamente."
+          ],
+          "como_evitarlo": [
+            "El caño de drenaje debe tener pendiente mínima de 1% hacia el exterior (1cm por metro).",
+            "En locales con presión negativa (extractor): instalar sifón en el drenaje para que el aire no entre por el caño y bloquee el flujo.",
+            "El drenaje debe salir a un lugar visible — nunca dentro de una pared o ducto.",
+            "Verificar el drenaje volcando un vaso de agua en la bandeja antes de cerrar la instalación."
+          ],
+          "causas": [
+            "Falta de pendiente en el caño de drenaje.",
+            "Sifón ausente en locales con presión negativa.",
+            "Caño de drenaje demasiado largo que se tapa con el tiempo.",
+            "La unidad interior no está nivelada correctamente."
+          ],
+          "mentor": "El drenaje tapado o mal orientado es el llamado más frecuente al mes de la instalación. El cliente llama furioso porque le llueve adentro del local. El sifón en locales con extractor de aire es básico y el 80% de los novatos no lo saben. Volcá un vaso de agua en la bandeja antes de entregar — tardás 10 segundos y evitás el llamado."
+        }
+      ]
+    },
+    {
+      "id": "electrica",
+      "titulo": "Instalación eléctrica",
+      "icono": "⚡",
+      "errores": [
+        {
+          "id": "cable-fino",
+          "nombre": "Cable de alimentación subfusionado",
+          "frecuencia": "MUY FRECUENTE",
+          "consecuencia": "Sobrecalentamiento del cable, caída de tensión, arranque dificultoso del compresor. En casos extremos incendio.",
+          "como_reconocerlo": [
+            "El cable de alimentación está caliente al tacto después de funcionar.",
+            "La tensión en el equipo es menor a la de la toma — hay caída de tensión en el cable.",
+            "El cable tiene sección menor a la recomendada para la potencia del equipo."
+          ],
+          "causas": [
+            "Se usó cable más fino para ahorrar costo.",
+            "No se calculó la sección correcta para la longitud del tramo y la potencia del equipo."
+          ],
+          "como_evitarlo": [
+            "Split 2250-3000 FG: mínimo 2.5mm² (hasta 10m), 4mm² (hasta 20m).",
+            "Split 4500-6000 FG: mínimo 4mm² (hasta 10m), 6mm² (hasta 20m).",
+            "Split 7500-9000 FG: mínimo 6mm² siempre.",
+            "Siempre instalá el circuito exclusivo para el aire — nunca en el mismo circuito que otros electrodomésticos.",
+            "Incluí disyuntor termomagnético del calibre correcto en el tablero."
+          ],
+          "mentor": "El cable fino es economía falsa. Un cable 2.5mm² para un equipo de 4500 FG ahorra $2000 en la instalación y genera un incendio en 2 años. Los seguros de casa no cubren instalaciones deficientes. Calculá bien la sección y usá el correcto."
+        },
+        {
+          "id": "sin-tierra",
+          "nombre": "Sin puesta a tierra",
+          "frecuencia": "FRECUENTE",
+          "consecuencia": "Riesgo de electrocución para el usuario. La carcasa metálica del equipo puede tomar tensión si hay un defecto de aislación.",
+          "como_reconocerlo": [
+            "El tomacorriente no tiene borne de tierra.",
+            "Al medir entre la carcasa del equipo y tierra verdadera, hay tensión.",
+            "El diferencial (si tiene) dispara repetidamente."
+          ],
+          "causas": [
+            "La instalación eléctrica del local/casa no tiene puesta a tierra.",
+            "Se omitió el cable de tierra en la instalación del circuito del aire."
+          ],
+          "como_evitarlo": [
+            "Siempre instalar el tercer conductor (tierra) en el circuito del aire.",
+            "Verificar que la puesta a tierra sea efectiva midiendo resistencia: debe ser menor a 10Ω.",
+            "Si el local no tiene tierra general: instalar jabalina de tierra para el circuito del aire.",
+            "Informar al cliente por escrito si el local no tiene tierra — es responsabilidad del instalador documentarlo."
+          ],
+          "mentor": "La falta de tierra es un tema de vida o muerte, no de confort. Un equipo sin tierra con un defecto de aislación convierte la carcasa en un electrodo. En Argentina muchos edificios viejos no tienen tierra efectiva — verificá siempre antes de conectar."
+        },
+        {
+          "id": "comunicacion-dañada",
+          "nombre": "Cable de comunicación interior-exterior dañado o mal conectado",
+          "frecuencia": "FRECUENTE",
+          "consecuencia": "El equipo da error de comunicación (E6, CH67, etc.) y no funciona aunque eléctricamente todo esté bien.",
+          "como_reconocerlo": [
+            "Error de comunicación en el display inmediatamente después de la instalación.",
+            "El equipo interior enciende pero el exterior no responde.",
+            "El cable de señal tiene continuidad pero el equipo sigue en error."
+          ],
+          "causas": [
+            "Los cables de señal están invertidos (L1-L2 cambiados).",
+            "El cable de señal tiene un tramo aplastado o pellizcado en la pasatubos.",
+            "Se usó cable de una sola malla en lugar de cable apantallado para la señal.",
+            "El cable de señal corre pegado al cable de potencia generando interferencia."
+          ],
+          "como_evitarlo": [
+            "Verificá la polaridad de los cables de señal — la numeración en la placa del interior debe coincidir con el exterior.",
+            "Usá cable apantallado para la señal en instalaciones largas o con mucha interferencia.",
+            "Separá el cable de señal del cable de potencia mínimo 5cm.",
+            "No aprietes el cable de señal con las abrazaderas al mismo tiempo que el cable de potencia — puede aplastarlo."
+          ],
+          "mentor": "El error de comunicación post-instalación casi siempre es un cable invertido o aplastado en la pasatubos. Antes de pensar en la placa, verificá la continuidad de cada conductor del cable de señal por separado y revisá que la numeración coincida en ambas unidades."
+        },
+        {
+          "id": "diferencial-ausente",
+          "nombre": "Sin disyuntor diferencial dedicado",
+          "frecuencia": "MUY FRECUENTE",
+          "consecuencia": "Riesgo eléctrico para el usuario en caso de falla a tierra. En muchos municipios argentinos es obligatorio por reglamentación.",
+          "como_reconocerlo": [
+            "El equipo está conectado directamente al tablero general sin diferencial propio.",
+            "El tablero no tiene diferencial dedicado para el aire acondicionado.",
+            "El técnico que instaló usó la toma existente sin instalar circuito dedicado."
+          ],
+          "como_evitarlo": [
+            "Instalar siempre un disyuntor termomagnético + diferencial de 30mA para el circuito del aire.",
+            "El circuito debe ser exclusivo — no compartido con otros artefactos.",
+            "La sección del cable debe corresponder al amperaje del equipo (ver tabla en Funciones Técnicas → AMP).",
+            "Documentar y explicar al cliente la protección instalada."
+          ],
+          "causas": [
+            "El técnico priorizó la rapidez sobre la seguridad.",
+            "El cliente no quiso pagar el costo adicional del circuito dedicado.",
+            "Desconocimiento de la reglamentación eléctrica."
+          ],
+          "mentor": "El diferencial no es opcional — es obligatorio. Además de la seguridad, te protege a vos como técnico: si el cliente tiene un problema eléctrico y no tenía diferencial, podés tener responsabilidad. Instalalo siempre y explicale al cliente que es por su seguridad."
+        },
+        {
+          "id": "conexion-inverter-mal",
+          "nombre": "Cable de comunicación invertido o dañado (Inverter)",
+          "frecuencia": "FRECUENTE",
+          "consecuencia": "El equipo enciende pero el compresor no arranca, o arranca y se apaga inmediatamente con código de error de comunicación.",
+          "como_reconocerlo": [
+            "Código de error E6, CH67 o similar (error de comunicación) al encender.",
+            "El ventilador interior funciona pero el compresor nunca arranca.",
+            "El equipo funciona a veces y a veces no — conexión intermitente."
+          ],
+          "como_evitarlo": [
+            "Respetar el color y número de cada hilo del cable de comunicación (A, B, tierra).",
+            "No estirar ni torcer el cable de comunicación al pasar por la canaleta.",
+            "Verificar continuidad del cable de comunicación antes de energizar.",
+            "En la conexión: ajustar bien los bornes — un cable flojo genera error intermitente."
+          ],
+          "causas": [
+            "Hilos del cable de comunicación invertidos (A con B).",
+            "Cable pelado o roto al pasar por canaleta o pared.",
+            "Borne de conexión no apretado correctamente."
+          ],
+          "mentor": "El error de comunicación en un Inverter suena a problema grave pero en el 70% de los casos es el cable de comunicación. Antes de pensar en la placa, verificá continuidad en los 3 hilos del cable y que estén bien conectados en ambos extremos. Cinco minutos con el tester te ahorran cambiar una placa."
+        }
+      ]
+    },
+    {
+      "id": "refrigerante",
+      "titulo": "Carga y manipulación del refrigerante",
+      "icono": "💨",
+      "errores": [
+        {
+          "id": "sin-vacio",
+          "nombre": "Instalación sin vacío o con vacío insuficiente",
+          "frecuencia": "MUY FRECUENTE",
+          "consecuencia": "Humedad y aire en el sistema. La humedad se congela en el capilar causando bloqueos intermitentes. El aire no condensable sube la presión de alta. A largo plazo deteriora el aceite y los componentes.",
+          "como_reconocerlo": [
+            "El equipo tiene fallas intermitentes — a veces funciona, a veces no.",
+            "La presión de alta es más alta de lo normal con el condensador limpio.",
+            "En la mirilla del filtro deshidratador se ven burbujas aunque el gas esté correcto."
+          ],
+          "causas": [
+            "Se purgó con nitrógeno en lugar de hacer vacío — la purga no elimina la humedad.",
+            "Se hizo vacío con la bomba en mal estado y no se llegó a 500 micrones.",
+            "El vacío se cortó antes de tiempo."
+          ],
+          "como_evitarlo": [
+            "Vacío mínimo 30 minutos hasta 500 micrones con bomba en buen estado.",
+            "Verificá el vacío con vacuómetro, no con el manómetro del manifold.",
+            "Prueba de retención: cerrar las válvulas del manifold y esperar 5 minutos — si el vacuómetro sube, hay fuga.",
+            "Nunca purgues con gas refrigerante — contamina el sistema y el ambiente.",
+            "Cambiá el aceite de la bomba regularmente — el aceite contaminado no hace vacío profundo."
+          ],
+          "mentor": "La purga con gas en lugar del vacío es el error más común en instalaciones baratas. El técnico abre la válvula de gas un segundo para purgar el aire y cree que es suficiente. No lo es. La humedad sigue adentro y en 6 meses el capilar está bloqueado. El vacío no es opcional."
+        },
+        {
+          "id": "carga-exceso",
+          "nombre": "Carga de gas a ojo o en exceso",
+          "frecuencia": "MUY FRECUENTE",
+          "consecuencia": "Exceso de gas en el sistema. Alta presión elevada, SC alto, compresor forzado. A largo plazo daño por golpe de líquido.",
+          "como_reconocerlo": [
+            "SC alto (mayor a 10°C) en instalación nueva.",
+            "La presión de alta está por encima del rango normal con condensador limpio.",
+            "El técnico anterior cargó 'hasta que se estabilizó el manómetro' sin pesar."
+          ],
+          "causas": [
+            "Se cargó gas por presión sin pesar en balanza.",
+            "No se tomó en cuenta la longitud de la cañería para ajustar la carga.",
+            "Se recargó sin verificar si había fuga primero."
+          ],
+          "como_evitarlo": [
+            "Siempre cargá gas por peso con balanza de al menos 0.1g de resolución.",
+            "La carga base es la de la plaqueta del equipo ± compensación por longitud de cañería.",
+            "Verificá SH y SC después de cargar — son la confirmación de que la carga es correcta.",
+            "En R410A y R404A: cargar siempre en fase líquida (botella invertida)."
+          ],
+          "mentor": "Cargar gas a ojo es la diferencia entre un técnico y alguien que conecta mangueras. La balanza no es un lujo — es la única forma de saber cuánto gas pusiste. Un equipo cargado de más trabaja mal, consume más y se deteriora antes."
+        },
+        {
+          "id": "contaminacion-sistema",
+          "nombre": "Sistema contaminado con aire o humedad",
+          "frecuencia": "FRECUENTE",
+          "consecuencia": "Ácidos en el sistema que degradan el aceite y corroen el compresor internamente. El compresor puede fallar en meses aunque arranque bien al principio.",
+          "como_reconocerlo": [
+            "Aceite de color oscuro o negro al hacer análisis (en compresores semiherméticos).",
+            "Filtro deshidratador saturado — cambia de color si es con indicador.",
+            "Sistema que funcionó bien al principio y empieza a tener problemas progresivos.",
+            "En algunos casos: burbujeo en la mirilla del filtro aunque el gas esté correcto."
+          ],
+          "como_evitarlo": [
+            "Vacío mínimo de 30 minutos hasta 500 micrones o menos — esto elimina la humedad.",
+            "Nunca abrir el sistema en días de lluvia o alta humedad si se puede evitar.",
+            "Usar nitrógeno para purgar el sistema antes de cargar gas.",
+            "Reemplazar el filtro deshidratador cada vez que el sistema estuvo abierto más de 30 minutos."
+          ],
+          "causas": [
+            "Vacío insuficiente o sin vacío.",
+            "Sistema abierto mucho tiempo sin protección.",
+            "Purga de mangueras mal hecha — se cargó aire junto con el gas.",
+            "Filtro deshidratador no reemplazado al abrir el sistema."
+          ],
+          "mentor": "La contaminación con humedad es silenciosa. El equipo arranca bien, enfría bien, y 6 meses después el compresor empieza a fallar por la acidez del aceite. Cuando hago análisis de aceite en compresores 'quemados', el 40% tienen acidez alta por humedad. El vacío bien hecho es la mejor inversión en una instalación."
+        }
+      ]
+    },
+    {
+      "id": "dimensionamiento",
+      "titulo": "Dimensionamiento del equipo",
+      "icono": "📊",
+      "errores": [
+        {
+          "id": "equipo-chico",
+          "nombre": "Equipo subdimensionado para el ambiente",
+          "frecuencia": "MUY FRECUENTE",
+          "consecuencia": "El equipo trabaja continuo sin llegar nunca al setpoint. El cliente se queja de que 'no enfría'. El compresor se deteriora prematuramente por trabajo continuo.",
+          "como_reconocerlo": [
+            "El equipo corre continuo con todo en rango.",
+            "La temperatura del ambiente no baja del setpoint en días de calor.",
+            "La relación frigorías/m² está por debajo de 600 FG/m² en Buenos Aires."
+          ],
+          "causas": [
+            "Se eligió el equipo por precio sin calcular la carga térmica.",
+            "El ambiente tiene mucha ganancia de calor no considerada (sol directo, máquinas, muchas personas)."
+          ],
+          "como_evitarlo": [
+            "Regla básica Argentina: 600-700 FG por m² en zona templada (AMBA), 700-800 en zona cálida (NOA, NEA), 500-600 en zona fría (Patagonia).",
+            "Sumá extras: por cada persona extra sumar 150 FG. Por cada computadora o máquina sumar 200-300 FG. Por cada metro cuadrado de ventana con sol directo sumar 500 FG adicionales.",
+            "Usá la calculadora de BTU de la app para una estimación más precisa.",
+            "Ante la duda: el equipo más grande malgasta algo de eficiencia pero el chico nunca llega."
+          ],
+          "mentor": "El equipo chico es el error más caro para el cliente. Lo compraron para ahorrar y terminan pagando más en electricidad y en servicio técnico. Cuando un técnico dice 'lo que necesitás es un equipo más grande', el cliente no quiere escuchar — pero es la verdad."
+        },
+        {
+          "id": "equipo-grande",
+          "nombre": "Equipo sobredimensionado — ciclos cortos",
+          "frecuencia": "MENOS FRECUENTE",
+          "consecuencia": "El equipo arranca, llega rápido al setpoint y se apaga. Ciclos muy cortos no permiten que el sistema deshidrate correctamente el ambiente. Alta humedad interior aunque la temperatura sea correcta.",
+          "como_reconocerlo": [
+            "El equipo arranca y para en ciclos muy cortos (menos de 5 minutos).",
+            "El ambiente está frío pero húmedo — la gente siente frío con humedad.",
+            "Principalmente en ON/OFF — los inverter lo manejan mejor modulando la potencia."
+          ],
+          "causas": [
+            "El equipo tiene el doble o más de la capacidad necesaria para el ambiente.",
+            "Se instaló un equipo grande 'para que llegue bien' sin calcular."
+          ],
+          "como_evitarlo": [
+            "Calcular la carga térmica correctamente antes de elegir el equipo.",
+            "Preferir inverter en ambientes donde el dimensionamiento exacto es difícil — modula la potencia.",
+            "Un equipo 20-30% mayor al calculado es aceptable. El doble ya genera problemas de confort."
+          ],
+          "mentor": "El equipo grande en ON/OFF genera más problemas de humedad que de temperatura. El cliente dice 'tengo frío pero siento húmedo' — es porque el equipo no tuvo tiempo de deshidratar el aire. En inverter esto se resuelve solo porque modula. En ON/OFF es un problema de dimensionamiento."
+        },
+        {
+          "id": "muchos-ambientes",
+          "nombre": "Un solo equipo para múltiples ambientes sin ductos",
+          "frecuencia": "FRECUENTE",
+          "consecuencia": "El ambiente donde está la unidad interior enfría bien pero los otros no reciben aire frío. El cliente queda insatisfecho y el equipo trabaja al máximo constantemente.",
+          "como_reconocerlo": [
+            "El ambiente con el equipo tiene buena temperatura pero los otros no.",
+            "El equipo trabaja continuo sin alcanzar el setpoint.",
+            "El cliente pregunta '¿por qué no llega el frío al otro cuarto?'"
+          ],
+          "como_evitarlo": [
+            "Un split convencional solo enfría el ambiente donde está instalado — explicarlo claramente al cliente.",
+            "Para múltiples ambientes: evaluar multi-split, cassette con ductos, o splits individuales en cada ambiente.",
+            "Si el cliente insiste con un solo equipo: instalar el equipo en el ambiente central y dejar puertas abiertas — aclarar las limitaciones."
+          ],
+          "causas": [
+            "El cliente no entendió las limitaciones del equipo.",
+            "El técnico no explicó el alcance del equipo.",
+            "Promesa de venta exagerada del vendedor."
+          ],
+          "mentor": "El cliente que compró el equipo para 'enfriar toda la casa' con un solo split es una conversación difícil. Tenés que tenerla antes de instalar, no después. Si el técnico no aclara esto antes de instalar, el reclamo es inevitable."
+        }
+      ]
+    }
+  ],
+  "checklist_instalacion": {
+    "titulo": "Checklist de instalación — antes de entregar el trabajo",
+    "items": [
+      {
+        "id": "i1",
+        "categoria": "Cañerías",
+        "texto": "Flares verificados — sin grietas, forma uniforme y 45° correctos"
+      },
+      {
+        "id": "i2",
+        "categoria": "Cañerías",
+        "texto": "Tuercas de flare con torque correcto (no a ojo)"
+      },
+      {
+        "id": "i3",
+        "categoria": "Cañerías",
+        "texto": "Aislación pegada en todas las costuras, sin tramos desnudos"
+      },
+      {
+        "id": "i4",
+        "categoria": "Cañerías",
+        "texto": "Pendiente de drenaje correcta — verificada tirando agua en la bandeja"
+      },
+      {
+        "id": "i5",
+        "categoria": "Cañerías",
+        "texto": "Trampa de aceite instalada en subidas verticales mayores a 3m"
+      },
+      {
+        "id": "i6",
+        "categoria": "Cañerías",
+        "texto": "Longitud de cañería registrada — compensación de gas calculada"
+      },
+      {
+        "id": "i7",
+        "categoria": "Ubicación",
+        "texto": "Unidad exterior con espacio libre suficiente (30cm costados, 60cm frente)"
+      },
+      {
+        "id": "i8",
+        "categoria": "Ubicación",
+        "texto": "Unidad interior nivelada — verificado con nivel de burbuja"
+      },
+      {
+        "id": "i9",
+        "categoria": "Ubicación",
+        "texto": "Distancia al techo correcta (mínimo 10cm)"
+      },
+      {
+        "id": "i10",
+        "categoria": "Eléctrica",
+        "texto": "Sección de cable correcta para la potencia y longitud del tramo"
+      },
+      {
+        "id": "i11",
+        "categoria": "Eléctrica",
+        "texto": "Puesta a tierra verificada (resistencia menor a 10Ω)"
+      },
+      {
+        "id": "i12",
+        "categoria": "Eléctrica",
+        "texto": "Disyuntor termomagnético del calibre correcto instalado"
+      },
+      {
+        "id": "i13",
+        "categoria": "Eléctrica",
+        "texto": "Cable de señal separado del cable de potencia"
+      },
+      {
+        "id": "i14",
+        "categoria": "Refrigerante",
+        "texto": "Vacío realizado — mínimo 30 min hasta 500 micrones"
+      },
+      {
+        "id": "i15",
+        "categoria": "Refrigerante",
+        "texto": "Prueba de retención de vacío superada (5 min sin subir)"
+      },
+      {
+        "id": "i16",
+        "categoria": "Refrigerante",
+        "texto": "Gas cargado por peso con balanza — gramos registrados"
+      },
+      {
+        "id": "i17",
+        "categoria": "Verificación",
+        "texto": "Equipo probado en modo frío y modo calor (si aplica)"
+      },
+      {
+        "id": "i18",
+        "categoria": "Verificación",
+        "texto": "PSI, AMP y Delta T verificados en régimen"
+      },
+      {
+        "id": "i19",
+        "categoria": "Verificación",
+        "texto": "Sin fugas verificado con agua jabonosa en todos los flarings"
+      },
+      {
+        "id": "i20",
+        "categoria": "Verificación",
+        "texto": "Cliente informado del uso correcto y filtro explicado"
+      },
+      {
+        "id": "ci21",
+        "categoria": "⚡ Eléctrica",
+        "texto": "Instalé disyuntor termomagnético + diferencial 30mA dedicado"
+      },
+      {
+        "id": "ci22",
+        "categoria": "⚡ Eléctrica",
+        "texto": "Verifiqué continuidad del cable de comunicación interior-exterior"
+      },
+      {
+        "id": "ci23",
+        "categoria": "⚡ Eléctrica",
+        "texto": "Medí tensión de red antes de energizar (210-230V)"
+      },
+      {
+        "id": "ci24",
+        "categoria": "🔧 Cañerías",
+        "texto": "Verifiqué diámetro de cañería según especificación del fabricante"
+      },
+      {
+        "id": "ci25",
+        "categoria": "🔧 Cañerías",
+        "texto": "Inspeccioné visualmente todas las curvas — sin aplastamientos"
+      },
+      {
+        "id": "ci26",
+        "categoria": "💧 Drenaje",
+        "texto": "Comprobé pendiente del drenaje volcando agua en la bandeja"
+      },
+      {
+        "id": "ci27",
+        "categoria": "💧 Drenaje",
+        "texto": "Instalé sifón en el drenaje (si el local tiene presión negativa)"
+      },
+      {
+        "id": "ci28",
+        "categoria": "📐 Ubicación",
+        "texto": "Verifiqué que el condensador no reciba sol directo toda la jornada"
+      },
+      {
+        "id": "ci29",
+        "categoria": "💨 Gas",
+        "texto": "Reemplacé el filtro deshidratador (si el sistema estuvo abierto)"
+      },
+      {
+        "id": "ci30",
+        "categoria": "📋 Entrega",
+        "texto": "Expliqué al cliente cómo usar el control remoto y el mantenimiento básico"
+      }
+    ]
+  }
+}

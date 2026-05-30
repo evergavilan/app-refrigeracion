@@ -17,6 +17,16 @@ const NoFrostEngine = {
     const a     = Number(d.amp) || 0;
     const ampMin = 1.0, ampMax = 2.5;
 
+    // Temperaturas reales
+    const tFreezer  = d.tempFreezer  !== "" && d.tempFreezer  !== undefined ? Number(d.tempFreezer)  : null;
+    const tHeladera = d.tempHeladera !== "" && d.tempHeladera !== undefined ? Number(d.tempHeladera) : null;
+
+    const freezerBien   = tFreezer  !== null && tFreezer  < -5;
+    const freezerMal    = tFreezer  !== null && tFreezer  >= -5;
+    const heladeraBien  = tHeladera !== null && tHeladera < 12;
+    const heladeraMal   = tHeladera !== null && tHeladera >= 12;
+    const ambosTemps    = tFreezer !== null && tHeladera !== null;
+
     const psiAlto  = psi > rango.psiMax + 3;
     const psiBajo  = psi < rango.psiMin - 2;
     const psiVacio = psi < rango.psiVacio;
@@ -149,6 +159,74 @@ const NoFrostEngine = {
         "Revisá la placa de control: algunos modelos tienen modos especiales que hacen trabajar continuo.",
         "Verificá la temperatura interior real con termómetro: si no baja de setpoint, el control sigue pidiendo frío.",
         "Si el sellado y sensor están ok → posible placa o termostato fuera de calibración."
+      ],
+      alerta: null,
+      datos: { psi, a, rango }
+    });
+
+    // ═══════════════════════════════════════════════
+    // DIAGNÓSTICO POR TEMPERATURA REAL
+    // ═══════════════════════════════════════════════
+
+    // PATRÓN CLÁSICO NO FROST: freezer frío, heladera caliente — por temperatura
+    if (ambosTemps && freezerBien && heladeraMal && !d.chkEvapCongelado && !psi) return this.dx({
+      icono: "🌬️❄️",
+      titulo: `Freezer ${tFreezer}°C ✅ — Heladera ${tHeladera}°C ❌`,
+      certeza: 92,
+      causa: `El freezer está a ${tFreezer}°C (correcto), pero la heladera está a ${tHeladera}°C — mucho más caliente de lo normal (3-8°C). Este es el síntoma más clásico de falla en el sistema de deshielo del No Frost: el evaporador está congelado y bloquea la circulación de aire hacia la heladera.`,
+      pasos: [
+        "PRIMERO: deshielo manual forzado — desconectá 24-48 horas con puertas abiertas.",
+        "Si después del deshielo la heladera enfría bien aunque sea por unas horas: confirmás falla de deshielo.",
+        "Verificá en orden: resistencia de deshielo (medir en Ω), bimetal (continuidad en frío), timer o placa.",
+        "También verificá que el ventilador del evaporador gire con el compresor corriendo."
+      ],
+      alerta: "💡 Antes de abrir cualquier componente: hacé el deshielo manual. Te confirma el diagnóstico y muchas veces 'resetea' el sistema temporalmente.",
+      datos: { psi, a, rango }
+    });
+
+    // AMBOS FRÍOS — sistema ok por temperatura
+    if (ambosTemps && freezerBien && heladeraBien && !psi) return this.dx({
+      icono: "✅",
+      titulo: `Temperatures normales — Freezer ${tFreezer}°C, Heladera ${tHeladera}°C`,
+      certeza: 88,
+      causa: `Freezer a ${tFreezer}°C y heladera a ${tHeladera}°C — ambos dentro del rango normal. El sistema refrigerante y el ciclo de deshielo están funcionando correctamente.`,
+      pasos: [
+        "Si el cliente reporta problema intermitente: dejá un termómetro adentro y revisá en 24 horas.",
+        "Verificá que el ciclo de deshielo ocurra regularmente (cada 8-12 horas).",
+        "Revisá burlete de puertas como mantenimiento preventivo.",
+        "Anotá las temperaturas como baseline para futuras visitas."
+      ],
+      alerta: null,
+      datos: { psi, a, rango }
+    });
+
+    // AMBOS MAL — fuga o compresor
+    if (ambosTemps && freezerMal && heladeraMal && !psi) return this.dx({
+      icono: "❌❌",
+      titulo: `Sin frío — Freezer ${tFreezer}°C, Heladera ${tHeladera}°C`,
+      certeza: 84,
+      causa: `Ni el freezer (${tFreezer}°C) ni la heladera (${tHeladera}°C) están fríos. Cuando ambos fallan en No Frost, el problema está antes del evaporador: fuga de gas, compresor o problema eléctrico.`,
+      pasos: [
+        "Verificá que el compresor esté arrancando y corriendo.",
+        "Si corre: conectá manómetro para ver si hay gas en el sistema.",
+        "Si el PSI es muy bajo: buscar fuga antes de cargar gas.",
+        "Si el compresor no arranca: diagnóstico eléctrico (PTC, Klixon, tensión, placa)."
+      ],
+      alerta: d.gas === "R600a" ? "🔴 R600a es INFLAMABLE. Ventilá bien antes de trabajar." : null,
+      datos: { psi, a, rango }
+    });
+
+    // ESCARCHA EN PAREDES + FREEZER FRÍO — normal vs exceso humedad
+    if (d.chkEscarcha && freezerBien && heladeraBien && !psi) return this.dx({
+      icono: "❄️🚪",
+      titulo: `Escarcha con temperaturas normales — posible burlete o humedad`,
+      certeza: 76,
+      causa: `El sistema enfría bien (Freezer ${tFreezer}°C, Heladera ${tHeladera}°C) pero hay escarcha visible. Con temperaturas normales, la escarcha indica entrada de humedad por burlete deteriorado o apertura frecuente de puerta.`,
+      pasos: [
+        "Revisá el burlete de puertas en todo el perímetro — debe adherirse completamente.",
+        "Verificá que las puertas cierren bien y no queden entreabiertos por sobrestock.",
+        "En climas húmedos (costa, NEA) la escarcha es más frecuente — es normal.",
+        "Si la escarcha crece rápido y los ciclos de deshielo no la eliminan: revisar sistema de deshielo."
       ],
       alerta: null,
       datos: { psi, a, rango }
