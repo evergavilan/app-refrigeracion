@@ -3,261 +3,215 @@
     "nombre": "El Mentor",
     "descripcion": "Técnico HVAC con 25 años de experiencia en Argentina. Directo, sin vueltas, habla como se habla en el taller."
   },
-
   "frases": {
-
     "split": {
-
       "Capacitor sospechoso": {
         "frase": "Mirá, el capacitor es lo primero que falla en el calor argentino. Antes de comprar uno nuevo, medilo con el capacímetro — no lo cambies a ojo. Si das con uno de 45µF y mide 38µF, ya sabés. Pero si el capacitor está bien y el compresor sigue sin arrancar, ahí tenés que ir a los devanados.",
         "consejo_rapido": "Medí siempre antes de cambiar.",
         "error_comun": "Cambiar el capacitor sin medirlo y que el problema sea otro."
       },
-
       "Protector térmico abierto": {
         "frase": "El Klixon abierto en frío es el Klixon muerto — punto. Si el Klixon está bien y se abre solo cuando el compresor trabaja, el problema es el compresor o el condensador sucio. Limpiá el condensador primero, siempre. Si con el condensador limpio sigue disparando, ahí sí el compresor está al límite.",
         "consejo_rapido": "Klixon abierto en frío = reemplazarlo.",
         "error_comun": "Resetear el Klixon sin buscar por qué se disparó."
       },
-
       "Compresor no arranca — revisión eléctrica": {
         "frase": "Cuando el compresor no arranca, el 70% de los técnicos novatos van directo al compresor. Error. Tensión, capacitor, Klixon — en ese orden. Te ahorrás condenar compresores que están perfectos. Vi compresores 'quemados' que eran un capacitor de $500.",
         "consejo_rapido": "Tensión → capacitor → Klixon. Recién ahí el compresor.",
         "error_comun": "Condenar el compresor antes de revisar la parte eléctrica."
       },
-
       "Necesitás datos medidos": {
         "frase": "Sin manómetro y sin pinza, estás trabajando a ciegas. Yo entiendo que a veces el cliente quiere diagnóstico rápido, pero si le cambiás el gas sin saber el PSI real, podés cargar de más o de menos — y el equipo va a seguir fallando. Invertí en las herramientas básicas.",
         "consejo_rapido": "Sin datos no hay diagnóstico real.",
         "error_comun": "Diagnosticar a ojo y cargar gas sin medir."
       },
-
       "Fuga severa — gas casi agotado": {
         "frase": "Esto es lo que más veo en verano: novatos que cargan gas en un equipo que tiene fuga y al mes el cliente llama de vuelta. La fuga no se va con gas nuevo. Encontrala antes. Nitrógeno, agua jabonosa, paciencia. El gas que pusiste se fue igual.",
         "consejo_rapido": "Primero la fuga, después el gas. Siempre.",
         "error_comun": "Cargar gas sin sellar la fuga."
       },
-
       "Fuga lenta con retorno congelado": {
         "frase": "Retorno congelado con PSI bajo — esto es fuga, no airflow. El gas que queda se expande antes de llegar al evaporador y congela la línea. Mucha gente lo confunde con filtro sucio porque el síntoma visual es parecido. La diferencia la da el PSI: si está bajo, es fuga.",
         "consejo_rapido": "PSI bajo + retorno congelado = fuga. No airflow.",
         "error_comun": "Limpiar filtros cuando el problema es falta de gas."
       },
-
       "Baja presión y amperaje — dos posibles causas": {
         "frase": "Cuando el PSI y el AMP están bajos juntos, tenés dos caminos: fuga o compresor con baja compresión. El truco está en buscar la fuga primero — es más probable y más fácil de verificar. Si no encontrás fuga, ahí hacés la prueba de compresión. No al revés.",
         "consejo_rapido": "Buscá la fuga antes de pensar en el compresor.",
         "error_comun": "Ir directo al compresor sin descartar fuga."
       },
-
       "Condensador sobrecargado": {
         "frase": "PSI alto con AMP alto — lo primero que hacés es mirar el condensador exterior. Si lo tocás y quema, ya tenés la respuesta. En Argentina con el calor del verano y los condensadores que llevan años sin limpieza, esto es pan de cada día. Limpiá antes de tocar el gas.",
         "consejo_rapido": "Limpiá el condensador antes de evaluar el gas.",
         "error_comun": "Purgar gas creyendo que es exceso cuando es condensador sucio."
       },
-
       "Posible exceso de refrigerante": {
         "frase": "El exceso de gas es más común de lo que parece — pasa cuando alguien cargó a ojo o por presión sin pesar. La PSI de alta se va al cielo, el AMP sube. Antes de purgar, asegurate de que el condensador esté limpio y ventilado. Si el condensador está bien y el PSI sigue alto, ahí purgás de a poco.",
         "consejo_rapido": "Descartá condensador sucio antes de purgar gas.",
         "error_comun": "Purgar gas cuando el problema era el condensador."
       },
-
       "Problema de airflow — no es el gas": {
         "frase": "Esto me pasa todo el tiempo: el cliente dice 'no enfría' y el técnico quiere cargar gas. PSI normal, AMP normal, retorno congelado — es el filtro. El 40% de los llamados de 'no enfría' se resuelven con una limpieza. Cobrala, que es trabajo igual.",
         "consejo_rapido": "PSI y AMP normales = no toques el gas.",
         "error_comun": "Cargar gas a un equipo que solo necesita limpieza."
       },
-
       "Sistema en rango — problema no es el gas": {
         "frase": "Si el PSI y el AMP están bien, el gas no es el problema. Punto. No cedas a la presión del cliente que insiste con 'cargale gas'. Explicale: 'el sistema tiene el gas correcto, el problema es otro'. Esa honestidad te construye reputación.",
         "consejo_rapido": "No cedas a la presión de cargar gas innecesario.",
         "error_comun": "Cargar gas por presión del cliente cuando no es necesario."
       },
-
       "Sistema operando en parámetros normales": {
         "frase": "Todo en rango. Registrá estos valores — PSI, AMP, delta T. Son tu baseline. La próxima vez que vengas a este equipo vas a poder comparar y detectar tendencias antes de que falle. Eso es lo que diferencia un técnico que solo apaga incendios de uno que previene.",
         "consejo_rapido": "Registrá los valores normales como referencia futura.",
         "error_comun": "No documentar y perder el baseline del equipo."
       },
-
       "Amperaje alto con presión normal": {
         "frase": "AMP alto con PSI normal — primero revisá la tensión de red. En muchos barrios del GBA la tensión cae y el compresor consume más. Si la tensión está bien, el capacitor es lo siguiente. Un capacitor caído hace trabajar más al motor aunque el sistema tenga gas.",
         "consejo_rapido": "Tensión de red → capacitor → condensador → compresor.",
         "error_comun": "Ignorar la tensión de red como causa del amperaje alto."
       },
-
       "Amperaje bajo con presión aceptable": {
         "frase": "AMP bajo con PSI en el límite inferior — el sistema está al filo. Puede ser gas justo o puede ser que el equipo lleve poco tiempo funcionando. Siempre medí después de 15 minutos en régimen. Si el AMP sigue bajo después de ese tiempo, el gas está por debajo del nominal.",
         "consejo_rapido": "Esperá 15 minutos en régimen antes de concluir.",
         "error_comun": "Medir antes de que el sistema estabilice."
       },
-
       "Delta T bajo": {
         "frase": "Delta T bajo con PSI y AMP normales — no es el gas. El sistema transfiere poco calor al aire. Filtro, turbina, evaporador sucio. Empezá por el filtro porque es gratis y resuelve el 60% de los casos.",
         "consejo_rapido": "Delta T bajo + PSI/AMP ok = filtro o turbina.",
         "error_comun": "Agregar gas cuando el delta T bajo es problema de airflow."
       },
-
       "Alta presión sin condensador sucio": {
         "frase": "Alta presión con condensador limpio — revisá la ventilación del local donde está la unidad exterior. Un condensador limpio en un espacio cerrado sin circulación de aire trabaja igual que uno sucio. También verificá la velocidad del ventilador del condensador.",
         "consejo_rapido": "Condensador limpio pero sin ventilación = mismo problema.",
         "error_comun": "No revisar el espacio de ventilación alrededor del condensador."
       }
     },
-
     "ciclica": {
-
       "PTC / Relay de arranque": {
         "frase": "El PTC es el fusible del arranque en heladeras. Cuando falla, el compresor zumba y no arranca. Lo bueno es que cuesta poco y se reemplaza en 5 minutos. Lo malo es que si lo reemplazás sin entender por qué falló, el próximo también va a fallar. Un PTC que se quema seguido te está diciendo que el compresor está consumiendo de más.",
         "consejo_rapido": "PTC nuevo + compresor que sigue fallando = problema en el compresor.",
         "error_comun": "Cambiar el PTC repetidamente sin investigar la causa raíz."
       },
-
       "Compresor no arranca — revisión eléctrica": {
         "frase": "En heladeras el 80% de los arranques fallidos son PTC, Klixon o tensión baja. Antes de sacar el compresor, que es el trabajo más caro, verificá todo lo eléctrico. Vi cómo un técnico cobró un compresor nuevo cuando el problema era un Klixon de $200.",
         "consejo_rapido": "PTC → Klixon → tensión → recién el compresor.",
         "error_comun": "Ir directo al compresor sin verificar la parte eléctrica."
       },
-
       "Enfría arriba pero no abajo — restricción": {
         "frase": "Freezer frío, heladera caliente — esto es restricción casi seguro. El primer paso siempre es el deshielo manual. 24 horas sin corriente. Si después del deshielo enfría abajo aunque sea un día, confirmaste que era hielo tapando el capilar. Recién ahí vas al capilar o al filtro.",
         "consejo_rapido": "Deshielo manual primero. Siempre. Es gratis y confirma el diagnóstico.",
         "error_comun": "Ir al capilar sin hacer el deshielo manual primero."
       },
-
       "Sin enfriamiento — fuga severa": {
         "frase": "Sin frío en ningún lado con PSI vacío — fuga. En heladeras con R600a (isobutano) extremá los cuidados: es inflamable. Nada de fuego, nada de chispas, ventilá el espacio antes de trabajar. El R600a es más liviano que el aire pero en espacios cerrados se acumula.",
         "consejo_rapido": "R600a inflamable: ventilá antes de abrir el sistema.",
         "error_comun": "Trabajar con R600a en espacios cerrados o con llama cerca."
       },
-
       "Condensador sobrecargado": {
         "frase": "El condensador de una heladera doméstica es ese serpentín negro en la parte trasera o inferior. La gente no lo limpia nunca. Con años de pelusa acumulada, la presión sube y el compresor trabaja el doble. Muchas heladeras que 'consumen mucho' se resuelven con una limpieza de 10 minutos.",
         "consejo_rapido": "Limpiá el condensador — resuelve más problemas de los que parece.",
         "error_comun": "No revisar el condensador como primera causa de alta presión."
       },
-
       "Compresor trabajando continuo": {
         "frase": "Compresor que no para — en verano con 40°C puede ser normal. Pero si es todo el año, el termostato o el burlete están fallando. Un burlete que no sella bien es como dejar la puerta entreabierta: el compresor nunca llega a la temperatura y trabaja continuo. Revisalo con un papel.",
         "consejo_rapido": "Burlete → termostato → recién el sistema refrigerante.",
         "error_comun": "Buscar problemas en el sistema refrigerante cuando el burlete no sella."
       },
-
       "Sistema operando en rango normal": {
         "frase": "Sistema en rango. Aprovechá la visita para hacer mantenimiento preventivo: limpiá el condensador, revisá el burlete, verificá las temperaturas interiores con un termómetro. Un técnico que hace preventivo genera clientes que llaman antes de que se rompa.",
         "consejo_rapido": "Cada visita es una oportunidad de mantenimiento preventivo.",
         "error_comun": "Irse sin revisar el condensador y el burlete."
       }
     },
-
     "nofrost": {
-
       "Freezer frío — heladera sin frío (falla de deshielo)": {
         "frase": "Este es el síntoma más clásico de No Frost y el que más confunde a los novatos. El freezer enfría, la heladera no — y la gente piensa que es el gas. No. El evaporador está congelado y el aire frío no puede circular. Hacé el deshielo manual de 24 horas antes de tocar cualquier componente. Si después funciona aunque sea un par de días, ya sabés que es el sistema de deshielo.",
         "consejo_rapido": "Deshielo manual de 24 horas antes de abrir cualquier cosa.",
         "error_comun": "Diagnosticar falta de gas cuando el evaporador está congelado."
       },
-
       "Evaporador congelado — sistema de deshielo": {
         "frase": "Evaporador congelado visible — empezá por la resistencia de deshielo. Es el componente más barato y el que más falla. Medila en Ω: si da infinito, está quemada. Si está bien, vas al bimetal. Si el bimetal también está bien, el problema es el timer o la placa — ahí se complica.",
         "consejo_rapido": "Resistencia → bimetal → timer/placa. En ese orden de probabilidad.",
         "error_comun": "Ir a la placa electrónica antes de verificar la resistencia y el bimetal."
       },
-
       "Ventilador de evaporador detenido": {
         "frase": "Sin el ventilador del evaporador, el frío no circula aunque el sistema esté perfecto. Muchos modelos detienen el ventilador cuando abrís la puerta — verificá siempre con la puerta cerrada. Si el ventilador no gira con puerta cerrada y compresor corriendo, medí si tiene tensión. Si tiene tensión y no gira, el motor está muerto.",
         "consejo_rapido": "Verificá siempre con la puerta cerrada.",
         "error_comun": "Creer que el ventilador está roto porque no gira con la puerta abierta."
       },
-
       "Sin enfriamiento — fuga severa": {
         "frase": "En No Frost, la fuga más común es en el evaporador — corrosión por los ciclos de deshielo o daño mecánico. Si encontrás fuga en el evaporador, evaluá si vale la pena repararlo o reemplazarlo según la edad del equipo. Un evaporador reparado con soldadura en plástico fino dura poco.",
         "consejo_rapido": "Fuga en evaporador de No Frost: evaluá costo de reparación vs reemplazo.",
         "error_comun": "Reparar un evaporador de No Frost sin evaluar la viabilidad."
       },
-
       "Alta presión — condensador sobrecargado": {
         "frase": "Alta presión en No Frost con condensador sucio — igual que cualquier heladera. La diferencia es que en los modelos modernos el condensador a veces está abajo, a veces atrás, y mucha gente no lo encuentra. Revisá el manual del modelo o buscalo online. Limpialo y volvé a medir.",
         "consejo_rapido": "Encontrá primero dónde está el condensador en ese modelo.",
         "error_comun": "No encontrar el condensador porque está en un lugar poco obvio."
       },
-
       "Compresor continuo — verificar control y sellado": {
         "frase": "No Frost con compresor continuo — el sensor NTC es muy probable. Si el sensor da un valor incorrecto, la placa cree que la temperatura interior nunca llega al setpoint y no corta. Medí el NTC y comparalo con la tabla según la temperatura real del compartimento.",
         "consejo_rapido": "NTC mal calibrado = compresor que nunca corta.",
         "error_comun": "No considerar el sensor NTC como causa del compresor continuo."
       },
-
       "Sistema en rango normal": {
         "frase": "Sistema en rango. En No Frost verificá siempre que el ciclo de deshielo esté funcionando: el compresor debería pausar cada 8-12 horas para el deshielo. Si el cliente te dice que la heladera 'nunca para', ese puede ser el próximo problema que vas a tener que resolver.",
         "consejo_rapido": "Verificá que el ciclo de deshielo ocurra regularmente.",
         "error_comun": "No verificar el ciclo de deshielo en una visita de mantenimiento."
       }
     },
-
     "comercial": {
-
       "Capacitor — falla más frecuente en comercial": {
         "frase": "En refrigeración comercial el capacitor trabaja más que en doméstico: más horas, más calor, más ciclos. Un local que abre 14 horas por día tiene el compresor trabajando casi sin parar. Los capacitores duran la mitad. Recomendá a tus clientes cambiarlos como mantenimiento preventivo cada 3-4 años.",
         "consejo_rapido": "En comercial: mantenimiento preventivo del capacitor cada 3-4 años.",
         "error_comun": "No incluir el capacitor en el mantenimiento preventivo de equipos comerciales."
       },
-
       "Presostato de alta presión disparado": {
         "frase": "Presostato de alta disparado — antes de resetearlo, encontrá por qué se disparó. Si reseteás sin limpiar el condensador o arreglar la ventilación, va a volver a dispararse. Algunos presostatos manuales se pueden quemar si los resetean muchas veces. Resolvé la causa primero.",
         "consejo_rapido": "Nunca resetees sin resolver la causa del disparo.",
         "error_comun": "Resetear el presostato repetidamente sin eliminar la causa."
       },
-
       "Compresor no arranca — revisión completa": {
         "frase": "En comercial la secuencia eléctrica tiene más capas que en doméstico: hay contactor, relay térmico, presostatos, termostatos. Un técnico que no conoce el circuito puede tardar horas. Antes de empezar a medir, conseguí el esquema eléctrico del equipo. Te ahorra más tiempo del que creés.",
         "consejo_rapido": "Conseguí el esquema eléctrico antes de empezar a medir.",
         "error_comun": "Medir a ciegas sin tener el esquema eléctrico del equipo."
       },
-
       "Condensador sucio — causa confirmada": {
         "frase": "En locales con cocina, panadería o mucho polvo: el condensador se tapa en semanas. A esos clientes les recomendo limpieza cada 2 meses y se los cobro. Es un trabajo chico que previene compresores quemados que cuestan 10 veces más. El preventivo bien explicado se vende solo.",
         "consejo_rapido": "Locales con grasa o polvo: limpieza de condensador cada 2 meses.",
         "error_comun": "No acordar mantenimiento preventivo con el cliente del local."
       },
-
       "Alta presión sin condensador sucio": {
         "frase": "Alta presión con condensador limpio — en comercial revisá la temperatura del cuarto donde está la unidad condensadora. En locales chicos el calor del condensador se acumula y la temperatura sube 5-8°C más que el exterior. Eso solo puede ser suficiente para disparar el presostato.",
         "consejo_rapido": "Medí la temperatura real del espacio del condensador.",
         "error_comun": "No medir la temperatura ambiente real del condensador."
       },
-
       "Evaporador congelado — restricción o deshielo": {
         "frase": "Evaporador congelado en comercial — lo primero es el deshielo manual. En equipos comerciales con timer de deshielo mecánico, el timer se gasta y deja de funcionar. Es un componente barato que se pasa por alto. Si el timer no inicia el deshielo, el evaporador se congela progresivamente hasta bloquear todo el airflow.",
         "consejo_rapido": "Timer de deshielo mecánico: componente barato que se olvida.",
         "error_comun": "No verificar el timer de deshielo en equipos comerciales con evaporador congelado."
       },
-
       "Baja presión y amperaje — probable fuga": {
         "frase": "Fuga en comercial — las válvulas de servicio son las primeras sospechosas. Con el tiempo y los cambios de temperatura, las juntas de las válvulas se ablandan. Cuando conectás el manifold para medir, revisá también si la válvula de servicio en sí tiene fuga. A veces la fuga la causaste vos mismo al medir.",
         "consejo_rapido": "Revisá las válvulas de servicio — son la fuga más común en comercial.",
         "error_comun": "No revisar las válvulas de servicio como fuente de fuga."
       },
-
       "No alcanza temperatura — sistema en rango": {
         "frase": "Sistema en rango pero no llega a temperatura — en comercial esto muchas veces es subdimensionamiento. El dueño puso más producto del que el equipo puede manejar, o el local creció. Antes de decirle que el equipo está bien, verificá la carga térmica real. A veces hay que ser honesto: el equipo es chico para lo que se le pide.",
         "consejo_rapido": "Verificá si el equipo está dimensionado para la carga real del local.",
         "error_comun": "No evaluar el dimensionamiento cuando el sistema está en rango y no llega a temperatura."
       },
-
       "Sistema operando correctamente": {
         "frase": "Todo en rango. Aprovechá para registrar los valores y fijar el próximo mantenimiento preventivo. En comercial el mantenimiento programado es negocio para todos: el cliente evita paros inesperados y vos tenés trabajo fijo. Proponé un contrato de mantenimiento trimestral.",
         "consejo_rapido": "Propone mantenimiento trimestral — negocio para vos y para el cliente.",
         "error_comun": "Irse sin proponer un contrato de mantenimiento."
       }
     },
-
     "certeza_baja": {
       "frase": "Con esta información no tengo suficiente para estar seguro. Podría darte un diagnóstico, pero prefiero ser honesto: necesito más datos. Medí el PSI y el AMP si podés. Mientras más datos tenés, menos margen de error. En este trabajo las suposiciones cuestan plata — tuya o del cliente.",
       "consejo_rapido": "Más datos = menos riesgo de diagnóstico errado.",
       "error_comun": "Actuar con datos incompletos y hacer el diagnóstico equivocado."
     },
-
     "generico": [
       {
         "frase": "Antes de cargar gas, siempre preguntate: ¿descárté airflow? ¿el condensador está limpio? ¿el delta T está en rango? El gas es lo último, no lo primero.",
@@ -294,6 +248,28 @@
         "consejo_rapido": "30 minutos de vacío mínimo. No hay atajos.",
         "contexto": "vacio"
       }
-    ]
+    ],
+    "heladera-temp": {
+      "Sistema de deshielo fallado (No Frost)": {
+        "frase": "Freezer frío y heladera caliente en un No Frost — antes de abrir el equipo y medir cualquier componente, hacé el deshielo manual de 24 horas. Es gratis, no requiere herramientas y en el 85% de los casos confirma el diagnóstico. Si después del deshielo vuelve a fallar en días, tenés certeza del sistema de deshielo sin haber tocado nada.",
+        "consejo_rapido": "Deshielo manual primero. Siempre. Es gratis y confirma el diagnóstico.",
+        "error_comun": "Abrir el equipo y medir componentes sin hacer el deshielo manual previo."
+      },
+      "Condensador sobrecargado": {
+        "frase": "Un condensador sucio en heladera es la causa número uno de 'no enfría' que se resuelve sin gas. El cliente ve que la heladera no enfría y llama al técnico esperando que le carguen gas. Vos limpiás el condensador en 15 minutos y el problema se resuelve. Cobralo como corresponde — es trabajo de diagnóstico y resolución.",
+        "consejo_rapido": "Limpiá el condensador antes de evaluar el gas.",
+        "error_comun": "Cargar gas a una heladera con condensador sucio."
+      },
+      "Compresor continuo — temperaturas en rango": {
+        "frase": "Compresor que trabaja continuo con temperaturas correctas — el burlete es lo primero. Pasá un papel por todo el perímetro con la puerta cerrada. Si el papel sale sin resistencia, el burlete no sella. Un burlete flojo es como dejar la puerta entreabierta — el compresor nunca puede alcanzar la temperatura y para.",
+        "consejo_rapido": "Prueba del papel en el burlete — rápida y definitiva.",
+        "error_comun": "No revisar el burlete antes de buscar problemas en el sistema refrigerante."
+      },
+      "Sin refrigeración — posible fuga de gas": {
+        "frase": "Sin frío en ningún lado con el compresor corriendo — el diagnóstico sin manómetro es tocá el compresor. Si está tibio o frío, el compresor no está comprimiendo aunque suene. Si está muy caliente y el tubo de succión no está frío — está corriendo sin gas. En cualquier caso, buscá la fuga antes de cargar nada.",
+        "consejo_rapido": "Tocá el compresor y la succión — te dan más info que muchos instrumentos.",
+        "error_comun": "Cargar gas sin buscar la fuga primero."
+      }
+    }
   }
 }
