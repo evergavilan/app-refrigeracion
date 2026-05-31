@@ -134,130 +134,176 @@ const HVACApp = {
 
     app.innerHTML = `
 
-<header
-class="hvac-header"
-style="align-items:center;gap:18px;"
->
+<!-- ═══════════════════════════════════════════════ -->
+<!-- HEADER                                          -->
+<!-- ═══════════════════════════════════════════════ -->
 
-<img
-src="./icon-192.png"
-alt="HVAC PRO"
-style="
-width:72px;height:72px;
-border-radius:22px;
-box-shadow:0 0 20px rgba(0,217,255,.22);
-"
-/>
-
-<div>
-<h1
-class="hvac-title"
-style="font-size:42px;font-weight:900;letter-spacing:1px;margin-bottom:6px;"
->
-EVER
-<span style="color:#00d9ff;">SCANNER</span>
-</h1>
-<p
-class="hvac-subtitle"
-style="font-size:18px;letter-spacing:3px;color:#00d9ff;"
->
-HVAC PRO TOOL
-</p>
+<div class="home-header">
+  <div class="home-header-left">
+    <img src="./icon-192.png" class="home-logo" alt="Ever PRO"/>
+    <div>
+      <div class="home-app-name">EVER <span>SCANNER</span></div>
+      <div class="home-app-sub">HVAC PRO ARGENTINA</div>
+    </div>
+  </div>
+  <div class="home-status-pill">
+    <span class="home-status-dot"></span>
+    <span>Listo</span>
+  </div>
 </div>
 
-</header>
+<!-- ═══════════════════════════════════════════════ -->
+<!-- DIAGNÓSTICO PRO — sección principal             -->
+<!-- ═══════════════════════════════════════════════ -->
 
-<section class="status-card">
-<div class="status-top">
-<span class="status-label">Estado del sistema</span>
-<div class="status-badge">🟢 LISTO</div>
-</div>
-<p class="status-message">
-Sistema preparado para diagnóstico HVAC.
-</p>
-</section>
+<div class="home-section-label">DIAGNÓSTICO PRO</div>
 
-<!-- FUNCIONES TÉCNICAS -->
-<section style="margin-top:28px;">
-<h2 class="references-title">📘 Funciones Técnicas</h2>
-<div class="functions-grid">
-<div class="function-card" id="openPSI">PSI</div>
-<div class="function-card" id="openPT">PT</div>
-<div class="function-card" id="openAMP">AMP</div>
-<div class="function-card" id="openCapacitor">Capacitor</div>
-<div class="function-card" id="openQuick">Quick Start</div>
-</div>
-</section>
+<div class="home-dx-grid">
 
-<!-- SISTEMAS PRO -->
-<section style="margin-top:34px;">
-<h2 class="references-title">⚙️ Sistemas PRO</h2>
-<div class="home-grid">
-<div class="home-card" id="openSplit">❄️ Split</div>
-<div class="home-card" id="openCiclica">🧊 Cíclica</div>
-<div class="home-card" id="openNoFrost">🌬️ No Frost</div>
-<div class="home-card" id="openComercial">🏭 Comercial</div>
-</div>
-</section>
+  <button class="home-dx-card home-dx-split"   id="openSplit">
+    <span class="home-dx-ico">❄️</span>
+    <span class="home-dx-name">Split</span>
+    <span class="home-dx-sub">Aire acondicionado</span>
+  </button>
 
-<section
-class="references-card"
-style="padding:18px;display:flex;align-items:center;
-       justify-content:space-between;gap:14px;flex-wrap:nowrap;"
->
-<img
-src="./logo-dyf.png"
-alt="Refrigeración D&F"
-style="width:140px;max-width:42%;display:block;object-fit:contain;"
-/>
-<a href="https://wa.me/541168495693" target="_blank" style="text-decoration:none;flex:1;">
-<div style="display:flex;align-items:center;justify-content:center;gap:12px;
-            padding:14px;border-radius:18px;
-            background:rgba(0,217,255,.05);
-            border:1px solid rgba(0,217,255,.12);">
-<div style="font-size:32px;">📲</div>
-<div>
-<div style="font-size:13px;color:#00d9ff;font-weight:700;margin-bottom:4px;">
-¿Necesitás servicio técnico?
+  <button class="home-dx-card home-dx-ciclica"  id="openCiclica">
+    <span class="home-dx-ico">🧊</span>
+    <span class="home-dx-name">Cíclica</span>
+    <span class="home-dx-sub">Heladera doméstica</span>
+  </button>
+
+  <button class="home-dx-card home-dx-nofrost"  id="openNoFrost">
+    <span class="home-dx-ico">🌬️</span>
+    <span class="home-dx-name">No Frost</span>
+    <span class="home-dx-sub">Con deshielo auto</span>
+  </button>
+
+  <button class="home-dx-card home-dx-comercial" id="openComercial">
+    <span class="home-dx-ico">🏭</span>
+    <span class="home-dx-name">Comercial</span>
+    <span class="home-dx-sub">Refrigeración comercial</span>
+  </button>
+
 </div>
-<div style="font-size:17px;color:#fff;font-weight:800;">
-+54 11 6849 5693
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- HERRAMIENTAS — fila de íconos                  -->
+<!-- ═══════════════════════════════════════════════ -->
+
+<div class="home-section-label">HERRAMIENTAS</div>
+
+<div class="home-tools-grid">
+
+  <button class="home-tool-btn" id="openPT">
+    <span class="home-tool-ico">📊</span>
+    <span class="home-tool-label">P/T</span>
+  </button>
+
+  <button class="home-tool-btn" id="openAMP">
+    <span class="home-tool-ico">⚡</span>
+    <span class="home-tool-label">AMP</span>
+  </button>
+
+  <button class="home-tool-btn" id="openCapacitor">
+    <span class="home-tool-ico">🔋</span>
+    <span class="home-tool-label">Capacitor</span>
+  </button>
+
+  <button class="home-tool-btn" id="openPSI">
+    <span class="home-tool-ico">📉</span>
+    <span class="home-tool-label">SH / SC</span>
+  </button>
+
+  <button class="home-tool-btn" id="openNTC">
+    <span class="home-tool-ico">📡</span>
+    <span class="home-tool-label">NTC</span>
+  </button>
+
+  <button class="home-tool-btn" id="openCalc">
+    <span class="home-tool-ico">🧮</span>
+    <span class="home-tool-label">Calculadoras</span>
+  </button>
+
+  <button class="home-tool-btn" id="openBTU">
+    <span class="home-tool-ico">📐</span>
+    <span class="home-tool-label">BTU</span>
+  </button>
+
+  <button class="home-tool-btn" id="openReferencias">
+    <span class="home-tool-ico">📚</span>
+    <span class="home-tool-label">Referencias</span>
+  </button>
+
 </div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- UTILIDADES — lista compacta                     -->
+<!-- ═══════════════════════════════════════════════ -->
+
+<div class="home-section-label">UTILIDADES</div>
+
+<div class="home-utils-list">
+
+  <button class="home-util-item" id="openSeguridad">
+    <div class="home-util-left">
+      <span class="home-util-ico home-util-red">🛡️</span>
+      <div>
+        <div class="home-util-name">Seguridad</div>
+        <div class="home-util-sub">Antes de trabajar, leé esto</div>
+      </div>
+    </div>
+    <span class="home-util-arrow">›</span>
+  </button>
+
+  <button class="home-util-item" id="openRuidos">
+    <div class="home-util-left">
+      <span class="home-util-ico home-util-orange">🔊</span>
+      <div>
+        <div class="home-util-name">Ruidos y vibraciones</div>
+        <div class="home-util-sub">Diagnóstico por sonido</div>
+      </div>
+    </div>
+    <span class="home-util-arrow">›</span>
+  </button>
+
+  <button class="home-util-item" id="openInstalacion">
+    <div class="home-util-left">
+      <span class="home-util-ico home-util-yellow">🔧</span>
+      <div>
+        <div class="home-util-name">Errores de instalación</div>
+        <div class="home-util-sub">24 errores frecuentes con solución</div>
+      </div>
+    </div>
+    <span class="home-util-arrow">›</span>
+  </button>
+
+  <button class="home-util-item" id="openHistorialHome">
+    <div class="home-util-left">
+      <span class="home-util-ico home-util-blue">📋</span>
+      <div>
+        <div class="home-util-name">Historial de búsquedas</div>
+        <div class="home-util-sub">Búsquedas recientes en la biblioteca</div>
+      </div>
+    </div>
+    <span class="home-util-arrow">›</span>
+  </button>
+
 </div>
-</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- CONTACTO                                        -->
+<!-- ═══════════════════════════════════════════════ -->
+
+<a href="https://wa.me/541168495693" target="_blank" class="home-contact-card">
+  <img src="./logo-dyf.png" class="home-contact-logo" alt="D&F"/>
+  <div class="home-contact-info">
+    <div class="home-contact-label">¿Necesitás servicio técnico?</div>
+    <div class="home-contact-tel">📲 +54 11 6849 5693</div>
+  </div>
+  <span class="home-contact-arrow">›</span>
 </a>
-</section>
 
-<!-- REFERENCIAS HVAC -->
-<section style="margin-top:34px;">
-<h2 class="references-title">📚 Referencias HVAC</h2>
-<div class="home-grid">
-<div class="home-card" id="openReferencias">❄️ Refrigeración</div>
-<div class="home-card" id="openElectricas">⚡ Eléctricas</div>
-</div>
-<button class="hist-home-btn" id="openHistorialHome">
-  📋 Ver historial de búsquedas
-</button>
-</section>
-
-<!-- SEGURIDAD -->
-<section style="margin-top:20px;padding-bottom:32px;">
-<button class="seg-home-btn" id="openSeguridad">
-  🛡️ Seguridad — Antes de trabajar, leé esto
-</button>
-<button class="ruidos-home-btn" id="openRuidos">
-  🔊 Diagnóstico por ruidos y vibraciones
-</button>
-<button class="inst-home-btn" id="openInstalacion">
-  🔧 Errores de instalación
-</button>
-<button class="btu-home-btn" id="openBTU">
-  📐 Calculadora de dimensionamiento BTU
-</button>
-<button class="ht-home-btn" id="openHeladeraTemp">
-  🌡️ Heladera por temperatura — sin manómetro
-</button>
-</section>
+<div style="height:32px;"></div>
 
 `;
 
@@ -274,24 +320,29 @@ style="width:140px;max-width:42%;display:block;object-fit:contain;"
     const nav = (route) => () => Router.go(route);
 
     const bindings = {
-      "openSplit":      nav("split"),
-      "openCiclica":    nav("ciclica"),
-      "openNoFrost":    nav("nofrost"),
-      "openComercial":  nav("comercial"),
-      "openReferencias":nav("referencias"),
-      "openElectricas": nav("referencias"),
-      "openHistorialHome": nav("historial"),
+      // Diagnóstico PRO
+      "openSplit":         nav("split"),
+      "openCiclica":       nav("ciclica"),
+      "openNoFrost":       nav("nofrost"),
+      "openComercial":     nav("comercial"),
+      // Herramientas (nueva barra)
+      "openPT":            nav("pt"),
+      "openPSI":           nav("shsc"),
+      "openAMP":           nav("amp"),
+      "openCapacitor":     nav("capacitor"),
+      "openNTC":           nav("ntc"),
+      "openCalc":          nav("calc"),
+      "openBTU":           nav("btu"),
+      "openReferencias":   nav("referencias"),
+      "openElectricas":    nav("referencias"),
+      // Utilidades
       "openSeguridad":     nav("seguridad"),
       "openRuidos":        nav("ruidos"),
-      "openInstalacion":    nav("instalacion"),
-      "openBTU":           nav("btu"),
-      "openHeladeraTemp":   nav("heladera-temp"),
-      "openPSI":        nav("pt"),
-      "openPT":         nav("pt"),
-      "openAMP":        nav("amp"),
-      "openCapacitor":  nav("capacitor"),
-      "openQuick":      nav("referencias"),
-      "openReferences": nav("referencias")
+      "openInstalacion":   nav("instalacion"),
+      "openHistorialHome": nav("historial"),
+      // Legacy
+      "openQuick":         nav("referencias"),
+      "openReferences":    nav("referencias")
     };
 
     Object.entries(bindings).forEach(([id, handler]) => {
