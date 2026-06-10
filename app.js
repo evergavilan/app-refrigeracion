@@ -16,18 +16,24 @@ const Router = {
     "nofrost":    ()      => NoFrostPRO.render(),
     "comercial":  ()      => ComercialPRO.render(),
     "referencias":()      => ReferenciasHVAC.render(),
-    "amp":        ()      => FuncionesTecnicas.render("amp"),
-    "capacitor":  ()      => FuncionesTecnicas.render("capacitor"),
-    "temp":       ()      => FuncionesTecnicas.render("temp"),
-    "pt":         ()      => FuncionesTecnicas.render("pt"),
-    "calc":       ()      => FuncionesTecnicas.render("calc"),
+"amp": () => FuncionesTecnicas.render("amp"),
+"capacitor": () => FuncionesTecnicas.render("capacitor"),
+"temp": () => FuncionesTecnicas.render("temp"),
+"pt": () => FuncionesTecnicas.render("pt"),
+"shsc": () => FuncionesTecnicas.render("shsc"),
+"ntc": () => FuncionesTecnicas.render("ntc"),
+"calc": () => FuncionesTecnicas.render("calc"),
+    "shsc":      () => FuncionesTecnicas.render("shsc"),
+"ntc":       () => FuncionesTecnicas.render("ntc"),
     "historial":  ()      => Historial.render(),
     "dx-historial": ()    => DxHistorial.render(),
     "seguridad":  ()      => SeguridadPRO.render(),
     "ruidos":     ()      => RuidosDx.render(),
     "instalacion":()      => InstalacionDx.render(),
-    "btu":        ()      => BTUCalc.render(),
-    "heladera-temp":()    => HeladeraTempDx.render()
+"btu": () => BTUCalc.render(),
+"heladera-temp": () => HeladeraTempDx.render(),
+"vacio": () => VacioCarga.render(),
+// dev-tools eliminado
   },
 
   go(route) {
@@ -64,7 +70,6 @@ const Router = {
 
 const HVACApp = {
 
-  mentorTips: [],
   currentModule: null,
 
   // ===================================================
@@ -74,15 +79,6 @@ const HVACApp = {
   async init() {
 
     console.log(`✅ ${APP_CONFIG.name} v${APP_CONFIG.version}`);
-
-    // Cargar tips desde JSON (sin hardcodear en el JS)
-    try {
-      const res  = await fetch(`./mentor-tips.json`);
-      this.mentorTips = await res.json();
-    } catch(e) {
-      // Fallback offline si el JSON no carga
-      this.mentorTips = ["Revisá siempre el airflow antes de cargar gas."];
-    }
 
     // Inicializar Mentor (carga async el JSON)
     Mentor.init();
@@ -95,11 +91,6 @@ const HVACApp = {
 
     Router.init();
 
-  },
-
-  getRandomTip() {
-    if (!this.mentorTips.length) return "";
-    return this.mentorTips[Math.floor(Math.random() * this.mentorTips.length)];
   },
 
   // ===================================================
@@ -150,6 +141,8 @@ const HVACApp = {
     <span class="home-status-dot"></span>
     <span>Listo</span>
   </div>
+
+
 </div>
 
 <!-- ═══════════════════════════════════════════════ -->
@@ -244,6 +237,17 @@ const HVACApp = {
 
 <div class="home-utils-list">
 
+  <button class="home-util-item" id="openVacio">
+    <div class="home-util-left">
+      <span class="home-util-ico home-util-cyan">🔬</span>
+      <div>
+        <div class="home-util-name">Vacío y Carga</div>
+        <div class="home-util-sub">Procedimiento paso a paso con timers</div>
+      </div>
+    </div>
+    <span class="home-util-arrow">›</span>
+  </button>
+
   <button class="home-util-item" id="openSeguridad">
     <div class="home-util-left">
       <span class="home-util-ico home-util-red">🛡️</span>
@@ -336,10 +340,12 @@ const HVACApp = {
       "openReferencias":   nav("referencias"),
       "openElectricas":    nav("referencias"),
       // Utilidades
+      "openVacio":          nav("vacio"),
       "openSeguridad":     nav("seguridad"),
       "openRuidos":        nav("ruidos"),
       "openInstalacion":   nav("instalacion"),
       "openHistorialHome": nav("historial"),
+      // openDevTools eliminado
       // Legacy
       "openQuick":         nav("referencias"),
       "openReferences":    nav("referencias")

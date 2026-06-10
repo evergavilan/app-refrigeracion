@@ -296,3 +296,5 @@ const SHSCEngine = {
   }
 
 };
+
+window.SHSCEngine = SHSCEngine;

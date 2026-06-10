@@ -296,7 +296,10 @@
         "succion_normal": "10°C a 20°C",
         "descarga_normal": "60°C a 80°C",
         "descarga_max": "120°C",
-        "nota": "Gas en desuso — aún muy presente en AR"
+        "nota": "Gas en desuso — aún muy presente en AR",
+        "psi_baja_normal": "55 a 75 PSI",
+        "psi_alta_normal": "200 a 260 PSI",
+        "psi_nota": "Baja: línea gruesa (succión). Alta: línea fina (descarga)"
       },
       {
         "gas": "R410A",
@@ -305,7 +308,10 @@
         "succion_normal": "12°C a 22°C",
         "descarga_normal": "65°C a 90°C",
         "descarga_max": "130°C",
-        "nota": "Gas dominante en splits actuales"
+        "nota": "Gas dominante en splits actuales",
+        "psi_baja_normal": "115 a 140 PSI",
+        "psi_alta_normal": "380 a 440 PSI",
+        "psi_nota": "Baja: línea gruesa (succión). Alta: línea fina (descarga)"
       },
       {
         "gas": "R32",
@@ -314,7 +320,10 @@
         "succion_normal": "12°C a 22°C",
         "descarga_normal": "70°C a 95°C",
         "descarga_max": "135°C",
-        "nota": "Reemplaza R410A — mayor eficiencia. Inflamable A2L"
+        "nota": "Reemplaza R410A — mayor eficiencia. Inflamable A2L",
+        "psi_baja_normal": "120 a 145 PSI",
+        "psi_alta_normal": "400 a 460 PSI",
+        "psi_nota": "Presiones similares a R410A pero ligeramente más altas en descarga"
       }
     ],
     "heladeras": [
@@ -326,7 +335,10 @@
         "interior_freezer": "-18°C a -12°C",
         "succion": "15°C a 25°C (en compresor)",
         "descarga": "55°C a 75°C",
-        "nota": "Gas más común heladeras domésticas"
+        "nota": "Gas más común heladeras domésticas",
+        "psi_baja_normal": "0 a 10 PSI",
+        "psi_alta_normal": "100 a 140 PSI",
+        "psi_nota": "Baja puede estar cerca de 0 PSI en freezer doméstico"
       },
       {
         "gas": "R600a (Isobutano)",
@@ -336,7 +348,10 @@
         "interior_freezer": "-18°C a -14°C",
         "succion": "20°C a 30°C (en compresor)",
         "descarga": "60°C a 80°C",
-        "nota": "Altamente inflamable — NO soldar encendido. Carga típica 60-100g"
+        "nota": "Altamente inflamable — NO soldar encendido. Carga típica 60-100g",
+        "psi_baja_normal": "-5 a 5 PSI (vacío posible)",
+        "psi_alta_normal": "50 a 80 PSI",
+        "psi_nota": "Trabaja a presiones muy bajas — manómetro especial o en bar"
       },
       {
         "gas": "R404A",
@@ -345,7 +360,10 @@
         "interior": "-18°C a -5°C según uso",
         "succion": "5°C a 20°C (en compresor)",
         "descarga": "60°C a 90°C",
-        "nota": "Exhibidoras y cámaras. En etapa de reemplazo por R448A"
+        "nota": "Exhibidoras y cámaras. En etapa de reemplazo por R448A",
+        "psi_baja_normal": "15 a 35 PSI",
+        "psi_alta_normal": "200 a 280 PSI",
+        "psi_nota": "Varía según temperatura de cámara — más frío = PSI baja más bajo"
       }
     ]
   },

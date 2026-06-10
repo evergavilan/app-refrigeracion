@@ -63,7 +63,7 @@ const DxActions = {
     MarcaDx.inyectarEnResultado(modulo, datos, titulo);
 
     // Inyectar mentor contextual después de mostrar el resultado
-    Mentor.inyectarEnResultado(modulo, titulo, parseInt(certeza) || 0);
+    Mentor.inyectarEnResultado(modulo, titulo, parseInt(certeza) || 0, datos);
 
     // Evento PDF
     document.getElementById("dxDownloadPDF")?.addEventListener("click", () => {

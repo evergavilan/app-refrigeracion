@@ -110,6 +110,10 @@ const SplitPRO = {
     <input type="number" class="hvac-input" id="splitTempLiquido" placeholder="ej: 35" step="0.5"/>
   </div>
   <div class="dx-hint">💡 SH/SC opcionales pero mejoran mucho el diagnóstico. Sin instrumentos usá los síntomas de abajo.</div>
+  <div class="dx-field" style="margin-top:10px">
+    <label class="dx-label">🌡️ Temp. ambiente exterior (°C) <span style="color:#445566;font-size:10px;">ajusta rangos automáticamente</span></label>
+    <input type="number" class="hvac-input" id="splitTempAmbiente" placeholder="ej: 38" step="1" min="15" max="50"/>
+  </div>
 </div>
 
 <div class="dx-etapa-label">ETAPA 3 — Síntomas observados</div>
@@ -123,6 +127,8 @@ const SplitPRO = {
     <label class="dx-check"><input type="checkbox" id="chkCapacitor"> <span>🔋 Capacitor sospechoso</span></label>
     <label class="dx-check"><input type="checkbox" id="chkTermico"> <span>🌡️ Protector térmico disparado</span></label>
     <label class="dx-check"><input type="checkbox" id="chkContinuo"> <span>🔄 Trabaja continuo sin cortar</span></label>
+    <label class="dx-check"><input type="checkbox" id="chkTXV"> <span>🔧 TXV / válvula de expansión sospechosa</span></label>
+    <label class="dx-check"><input type="checkbox" id="chkCompBaja"> <span>📉 Compresión baja sospechada</span></label>
   </div>
 </div>
 
@@ -151,7 +157,8 @@ const SplitPRO = {
     document.getElementById("clearSplit")?.addEventListener("click", () => {
       DxActions.clearForm(["splitAmp","splitPsi","splitTempIn","splitTempOut","splitTempSuccion","splitPsiAlta","splitTempLiquido",
         "chkFrozen","chkPocofrio","chkAirflow","chkCondSucio",
-        "chkGasExceso","chkCapacitor","chkTermico","chkContinuo"]);
+        "chkGasExceso","chkCapacitor","chkTermico","chkContinuo",
+        "chkTXV","chkCompBaja"]);
       Historial.showToast("✅ Campos limpiados");
     });
   },
@@ -177,7 +184,10 @@ const SplitPRO = {
       chkGasExceso: document.getElementById("chkGasExceso").checked,
       chkCapacitor: document.getElementById("chkCapacitor").checked,
       chkTermico:   document.getElementById("chkTermico").checked,
-      chkContinuo:  document.getElementById("chkContinuo").checked
+      chkContinuo:  document.getElementById("chkContinuo").checked,
+      chkTXV:       document.getElementById("chkTXV")?.checked || false,
+      chkCompBaja:  document.getElementById("chkCompBaja")?.checked || false,
+      tempAmbiente: document.getElementById("splitTempAmbiente")?.value || ""
     };
     this.lastDatos = d;
     const result   = SplitEngine.analyze(d);

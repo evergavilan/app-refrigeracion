@@ -73,6 +73,11 @@ const NoFrostPRO = {
       <input type="number" class="hvac-input" id="nofrostAmp" placeholder="ej: 1.8" step="0.1"/>
     </div>
   </div>
+  <div class="dx-field" style="margin-top:8px;">
+    <label class="dx-label">🧊 Temp. evaporador (°C) <span style="color:#445566;font-size:10px;">si tenés acceso</span></label>
+    <input type="number" class="hvac-input" id="nofrostTempEvap" placeholder="ej: -15" step="1"/>
+    <span style="font-size:11px;color:#445566;margin-top:4px;display:block;">Normal: -20°C a -10°C. Si está cerca de 0°C o positivo → evaporador congelado o sin gas</span>
+  </div>
   <div class="dx-hint">💡 Con el termómetro solo ya podés diagnosticar la mayoría de los problemas de No Frost</div>
 </div>
 
@@ -84,11 +89,12 @@ const NoFrostPRO = {
     <label class="dx-check"><input type="checkbox" id="chkNFContinuo"> <span>🔄 Compresor trabaja continuo</span></label>
     <label class="dx-check"><input type="checkbox" id="chkNFResistencia"> <span>🔌 Resistencia de deshielo sospechosa</span></label>
     <label class="dx-check"><input type="checkbox" id="chkNFBimetal"> <span>🌡️ Bimetal sospechoso</span></label>
-    <label class="dx-check"><input type="checkbox" id="chkNFPlaca"> <span>💻 Placa con error</span></label>
+    <label class="dx-check"><input type="checkbox" id="chkNFTimer"> <span>⏱️ Timer de deshielo sospechoso</span></label>
+    <label class="dx-check"><input type="checkbox" id="chkNFNTC"> <span>🌡️💻 Sensor NTC / termistor sospechoso</span></label>
+    <label class="dx-check"><input type="checkbox" id="chkNFPlaca"> <span>💻 Placa con error o sospechosa</span></label>
     <label class="dx-check"><input type="checkbox" id="chkNFBurlete"> <span>🚪 Burlete deteriorado</span></label>
-    <label class="dx-check"><input type="checkbox" id="chkNFEscarcha"> <span>❄️ Escarcha visible en paredes del freezer</span></label>
-  </div>
-</div>
+    <label class="dx-check"><input type="checkbox" id="chkNFEscarcha"> <span>❄️ Escarcha visible en paredes</span></label>
+    <label class="dx-check"><input type="checkbox" id="chkNFInverter"> <span>⚡ Equipo Inverter (compresor variable)</span></label>
 
 <div class="dx-btn-row" id="dxBtnRow">
   <button class="hvac-btn btn-secondary" id="clearNofrost">🗑 Limpiar</button>
@@ -106,9 +112,10 @@ const NoFrostPRO = {
 
     document.getElementById("clearNofrost")?.addEventListener("click", () => {
       DxActions.clearForm([
-        "nofrostAmp","nofrostPsi","nofrostTempFreezer","nofrostTempHeladera",
+        "nofrostAmp","nofrostPsi","nofrostTempFreezer","nofrostTempHeladera","nofrostTempEvap",
         "chkNFEvapCongelado","chkNFVentDetenido","chkNFContinuo",
-        "chkNFResistencia","chkNFBimetal","chkNFPlaca","chkNFBurlete","chkNFEscarcha"
+        "chkNFResistencia","chkNFBimetal","chkNFTimer","chkNFNTC",
+        "chkNFPlaca","chkNFBurlete","chkNFEscarcha","chkNFInverter"
       ]);
       Historial.showToast("✅ Campos limpiados");
     });
@@ -119,12 +126,14 @@ const NoFrostPRO = {
   runAnalysis() {
     const tf = document.getElementById("nofrostTempFreezer").value;
     const th = document.getElementById("nofrostTempHeladera").value;
+    const te = document.getElementById("nofrostTempEvap")?.value || "";
     const d = {
       gas:          document.getElementById("nofrostGas").value,
       marca:        document.getElementById("nofrostMarca").value,
       arranca:      document.getElementById("nofrostArranca").value,
       tempFreezer:  tf,
       tempHeladera: th,
+      tempEvap:     te,
       amp:          document.getElementById("nofrostAmp").value,
       psi:          document.getElementById("nofrostPsi").value,
       freezerFrio:  tf ? Number(tf) < -5  : true,
@@ -134,9 +143,12 @@ const NoFrostPRO = {
       chkContinuo:      document.getElementById("chkNFContinuo").checked,
       chkResistencia:   document.getElementById("chkNFResistencia").checked,
       chkBimetal:       document.getElementById("chkNFBimetal").checked,
+      chkTimer:         document.getElementById("chkNFTimer")?.checked || false,
+      chkNTC:           document.getElementById("chkNFNTC")?.checked   || false,
       chkPlaca:         document.getElementById("chkNFPlaca").checked,
       chkBurlete:       document.getElementById("chkNFBurlete").checked,
-      chkEscarcha:      document.getElementById("chkNFEscarcha").checked
+      chkEscarcha:      document.getElementById("chkNFEscarcha").checked,
+      chkInverter:      document.getElementById("chkNFInverter")?.checked || false
     };
 
     const result = NoFrostEngine.analyze(d);

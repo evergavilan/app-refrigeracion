@@ -68,7 +68,6 @@ const FuncionesTecnicas = {
       case "relay":        return this.renderRelay();
       case "shsc":         return this.renderSHSC();
       case "calc":         return this.renderCalc();
-      case "shsc":         return this.renderSHSC();
       default:             return this.renderAmp();
     }
   },
@@ -196,6 +195,8 @@ ${sub === 'aires' ? this.renderTempAires() : this.renderTempHeladeras()}`;
     <span class="ft-card-title">🌡️ ${item.gas}</span>
     <span class="ft-card-badge">${item.nota.includes('desuso')?'⚠️ Viejo':'✅ Actual'}</span>
   </div>
+
+  <div class="ft-section-label">🌡️ Temperaturas de trabajo</div>
   <div class="ft-row-data">
     <div class="ft-row-item"><span class="ft-row-label">Evaporación</span><span class="ft-row-value ft-cold">${item.evaporacion_normal}</span></div>
     <div class="ft-row-item"><span class="ft-row-label">Condensación</span><span class="ft-row-value ft-hot">${item.condensacion_normal}</span></div>
@@ -203,6 +204,21 @@ ${sub === 'aires' ? this.renderTempAires() : this.renderTempHeladeras()}`;
     <div class="ft-row-item"><span class="ft-row-label">Descarga normal</span><span class="ft-row-value ft-warn">${item.descarga_normal}</span></div>
     <div class="ft-row-item"><span class="ft-row-label">Descarga máxima</span><span class="ft-row-value ft-danger">${item.descarga_max}</span></div>
   </div>
+
+  ${item.psi_baja_normal ? `
+  <div class="ft-section-label ft-section-psi">📊 Presiones normales de trabajo</div>
+  <div class="ft-row-data ft-psi-block">
+    <div class="ft-row-item ft-psi-row">
+      <span class="ft-row-label">PSI Baja <span class="ft-psi-sub">(línea gruesa)</span></span>
+      <span class="ft-row-value ft-psi-baja">${item.psi_baja_normal}</span>
+    </div>
+    <div class="ft-row-item ft-psi-row">
+      <span class="ft-row-label">PSI Alta <span class="ft-psi-sub">(línea fina)</span></span>
+      <span class="ft-row-value ft-psi-alta">${item.psi_alta_normal}</span>
+    </div>
+    <div class="ft-psi-nota">⚙️ ${item.psi_nota}</div>
+  </div>` : ""}
+
   <div class="ft-nota">💡 ${item.nota}</div>
 </div>`).join("");
   },
@@ -211,6 +227,8 @@ ${sub === 'aires' ? this.renderTempAires() : this.renderTempHeladeras()}`;
     return (this.data?.temperaturas?.heladeras || []).map(item => `
 <div class="ft-card">
   <div class="ft-card-header"><span class="ft-card-title">🌡️ ${item.gas}</span><span class="ft-card-badge">${item.tipo}</span></div>
+
+  <div class="ft-section-label">🌡️ Temperaturas de trabajo</div>
   <div class="ft-row-data">
     <div class="ft-row-item"><span class="ft-row-label">Evaporador</span><span class="ft-row-value ft-cold">${item.evaporador}</span></div>
     ${item.interior_heladera ? `
@@ -220,6 +238,21 @@ ${sub === 'aires' ? this.renderTempAires() : this.renderTempHeladeras()}`;
     <div class="ft-row-item"><span class="ft-row-label">Succión</span><span class="ft-row-value">${item.succion}</span></div>
     <div class="ft-row-item"><span class="ft-row-label">Descarga</span><span class="ft-row-value ft-warn">${item.descarga}</span></div>
   </div>
+
+  ${item.psi_baja_normal ? `
+  <div class="ft-section-label ft-section-psi">📊 Presiones normales de trabajo</div>
+  <div class="ft-row-data ft-psi-block">
+    <div class="ft-row-item ft-psi-row">
+      <span class="ft-row-label">PSI Baja</span>
+      <span class="ft-row-value ft-psi-baja">${item.psi_baja_normal}</span>
+    </div>
+    <div class="ft-row-item ft-psi-row">
+      <span class="ft-row-label">PSI Alta</span>
+      <span class="ft-row-value ft-psi-alta">${item.psi_alta_normal}</span>
+    </div>
+    <div class="ft-psi-nota">⚙️ ${item.psi_nota}</div>
+  </div>` : ""}
+
   <div class="ft-nota">💡 ${item.nota}</div>
 </div>`).join("");
   },
@@ -415,16 +448,6 @@ ${d.bimetal.map(b => `
   // SH / SC — CALCULADORAS
   // ═══════════════════════════════════════════════
 
-  renderSHSC() {
-    const sub = ["sh","sc","patron"].includes(this.activeSubTab) ? this.activeSubTab : "sh";
-    return `
-<div class="ft-subtabs">
-  <button class="ft-subtab ${sub==="sh"?"active":""}"     data-sub="sh">🌡️ SH — Sobrecalent.</button>
-  <button class="ft-subtab ${sub==="sc"?"active":""}"     data-sub="sc">❄️ SC — Subenfriamiento</button>
-  <button class="ft-subtab ${sub==="patron"?"active":""}" data-sub="patron">🔍 Patrones dx</button>
-</div>
-${this["shsc_"+sub]()}`;
-  },
 
   shsc_sh() {
     return `

@@ -456,6 +456,65 @@ font-size:13px;
   padding-top: 8px;
 }
 
+/* --- SECCIÓN PRESIONES PSI --- */
+.ft-section-label {
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: #445566;
+  margin: 10px 0 4px;
+}
+
+.ft-section-psi {
+  color: #3399aa;
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(0,217,255,.1);
+}
+
+.ft-psi-block {
+  background: rgba(0,217,255,.04);
+  border: 1px solid rgba(0,217,255,.12);
+  border-radius: 10px;
+  padding: 4px 10px;
+  margin-bottom: 2px;
+}
+
+.ft-psi-row {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(0,217,255,.07);
+}
+
+.ft-psi-row:last-of-type { border-bottom: none; }
+
+.ft-psi-sub {
+  font-size: 10px;
+  color: #334455;
+  font-weight: 400;
+  margin-left: 3px;
+}
+
+.ft-psi-baja {
+  color: #00d9ff;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.ft-psi-alta {
+  color: #ff9b42;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.ft-psi-nota {
+  font-size: 11px;
+  color: #3d5566;
+  font-style: italic;
+  padding: 6px 2px 4px;
+  line-height: 1.5;
+}
+
 /* --- TABLA P/T --- */
 .ft-table-wrapper {
   margin: 10px 16px 20px;
@@ -676,6 +735,24 @@ font-size:13px;
   font-weight: 600;
   margin-bottom: 14px;
   line-height: 1.5;
+}
+
+/* Modo crítico — retorno de líquido u otras emergencias */
+.dx-card-critico {
+  border: 2px solid rgba(255,51,51,.6) !important;
+  background: rgba(40,5,5,.85) !important;
+  box-shadow: 0 0 24px rgba(255,51,51,.15);
+}
+
+.dx-alerta-critico {
+  background: rgba(255,30,30,.12) !important;
+  border-color: rgba(255,51,51,.5) !important;
+  color: #ff4444 !important;
+}
+
+.dx-paso-critico .dx-paso-num {
+  background: rgba(255,51,51,.3) !important;
+  color: #ff6666 !important;
 }
 
 /* Pasos */
@@ -1833,6 +1910,205 @@ font-size:13px;
 .mentor-dx-error-txt {
   color: #7788aa;
 }
+
+/* Tabla de datos del Mentor */
+.mentor-dx-datos {
+  background: rgba(0,0,0,.25);
+  border-radius: 12px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border: 1px solid rgba(255,255,255,.06);
+}
+
+.mentor-dx-dato-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  font-size: 11.5px;
+}
+
+.mentor-dx-dato-label {
+  color: #5577aa;
+  font-weight: 600;
+  min-width: 110px;
+  flex-shrink: 0;
+}
+
+.mentor-dx-dato-val {
+  color: #ccd6e0;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.mentor-dx-dato-ref {
+  color: #445566;
+  font-size: 10.5px;
+  font-style: italic;
+}
+
+.mentor-dx-dato-badge {
+  font-size: 9px;
+  font-weight: 800;
+  padding: 1px 6px;
+  border-radius: 6px;
+  letter-spacing: .5px;
+}
+.mentor-badge-bajo  { background: rgba(255,68,102,.2); color: #ff4466; }
+.mentor-badge-alto  { background: rgba(255,155,66,.2); color: #ff9b42; }
+.mentor-badge-mal   { background: rgba(255,68,102,.2); color: #ff4466; }
+
+.mentor-sintomas-row {
+  border-top: 1px solid rgba(255,255,255,.05);
+  padding-top: 6px;
+  margin-top: 2px;
+  align-items: flex-start;
+}
+
+.mentor-dx-sintomas-list {
+  color: #8899bb;
+  font-size: 11px;
+  line-height: 1.6;
+  flex: 1;
+}
+
+/* ===== MENTOR V3 — MAESTRO CON VOZ PROPIA ===== */
+
+/* Frase principal — estilo de cita del maestro */
+.mentor-frase {
+  font-size: 13.5px;
+  color: #e8f0ff;
+  font-style: italic;
+  line-height: 1.7;
+  padding: 14px 16px;
+  background: rgba(0,217,255,.05);
+  border-left: 4px solid rgba(0,217,255,.6);
+  border-radius: 0 12px 12px 0;
+  margin: 4px 0 14px;
+}
+
+/* Secciones del maestro */
+.mentor-seccion {
+  margin-bottom: 10px;
+  padding: 11px 13px;
+  border-radius: 12px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.07);
+}
+
+/* Por qué pasa esto */
+.mentor-seccion-porque {
+  background: rgba(100,120,200,.06);
+  border-color: rgba(100,150,255,.15);
+}
+
+/* Cómo proceder */
+.mentor-seccion-guia,
+.mentor-seccion.mentor-guia {
+  background: rgba(0,217,255,.05);
+  border-color: rgba(0,217,255,.18);
+}
+
+/* Cómo confirmar */
+.mentor-seccion-señales,
+.mentor-seccion.mentor-señales {
+  background: rgba(0,200,100,.05);
+  border-color: rgba(0,200,100,.18);
+}
+
+.mentor-seccion-titulo {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: #6688bb;
+  margin-bottom: 7px;
+}
+
+.mentor-seccion-porque .mentor-seccion-titulo     { color: #6688cc; }
+.mentor-seccion-guia .mentor-seccion-titulo,
+.mentor-seccion.mentor-guia .mentor-seccion-titulo { color: #00c8ee; }
+.mentor-seccion-señales .mentor-seccion-titulo,
+.mentor-seccion.mentor-señales .mentor-seccion-titulo { color: #44cc88; }
+
+.mentor-seccion-body {
+  font-size: 12.5px;
+  color: #c0ceea;
+  line-height: 1.65;
+}
+
+/* Observaciones cruzadas */
+.mentor-obs-bloque {
+  margin-top: 10px;
+  padding: 10px 12px;
+  background: rgba(255,180,0,.05);
+  border: 1px solid rgba(255,180,0,.18);
+  border-radius: 12px;
+}
+
+.mentor-obs-titulo {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: #cc9900;
+  margin-bottom: 8px;
+}
+
+.mentor-obs-item {
+  font-size: 12.5px;
+  color: #ccd6ee;
+  line-height: 1.6;
+  padding: 8px 10px;
+  margin-bottom: 6px;
+  background: rgba(255,180,0,.06);
+  border-left: 3px solid rgba(255,180,0,.4);
+  border-radius: 0 8px 8px 0;
+}
+
+.mentor-obs-item:last-child { margin-bottom: 0; }
+
+.mentor-obs-item strong {
+  color: #ffc033;
+  font-weight: 700;
+}
+
+/* Footer: regla de oro + error frecuente */
+.mentor-footer {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255,255,255,.09);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mentor-footer-item {
+  font-size: 12px;
+  line-height: 1.55;
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+}
+
+.mentor-footer-label {
+  font-weight: 800;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.mentor-consejo .mentor-footer-label { color: #00d9ff; }
+.mentor-error .mentor-footer-label   { color: #ff9b42; }
+.mentor-footer-txt { color: #9aaccc; font-size: 12px; }
+
+/* Legacy backward compat */
+.mentor-dx-frase     { display: none; }
+.mentor-dx-footer    { display: none; }
+.mentor-dx-observaciones { display: none; }
+.mentor-seccion.mentor-obs { display: none; }
 
 /* ===================================================
    MÓDULO DE SEGURIDAD
@@ -3787,3 +4063,358 @@ font-size:13px;
   color: #334455;
   flex-shrink: 0;
 }
+
+/* ===================================================
+   MÓDULO VACÍO Y CARGA
+   =================================================== */
+
+/* Intro card */
+.vc-intro-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 12px 16px 4px;
+  padding: 14px 16px;
+  background: rgba(0,217,255,.06);
+  border: 1px solid rgba(0,217,255,.18);
+  border-radius: 16px;
+}
+
+.vc-intro-ico {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+.vc-intro-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #00d9ff;
+}
+
+.vc-intro-sub {
+  font-size: 11.5px;
+  color: #5577aa;
+  margin-top: 2px;
+  line-height: 1.4;
+}
+
+/* Resumen bar */
+.vc-resumen-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 10px 16px;
+  background: rgba(255,255,255,.04);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+.vc-resumen-item {
+  font-size: 12px;
+  color: #8899bb;
+  background: rgba(255,255,255,.05);
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.vc-resumen-item strong {
+  color: #ccd6ee;
+}
+
+/* Barra de progreso */
+.vc-progreso-wrap {
+  padding: 12px 16px 4px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.vc-progreso-bar {
+  flex: 1;
+  height: 4px;
+  background: rgba(255,255,255,.08);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.vc-progreso-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00d9ff, #0099cc);
+  border-radius: 4px;
+  transition: width .4s ease;
+}
+
+.vc-progreso-txt {
+  font-size: 11px;
+  color: #445566;
+  white-space: nowrap;
+}
+
+/* Tarjeta de paso */
+.vc-paso-card {
+  margin: 8px 16px;
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(7,17,31,.8);
+  border: 1.5px solid rgba(255,255,255,.1);
+}
+
+.vc-fase-prep        { border-color: rgba(150,150,150,.3); }
+.vc-fase-nitrogeno   { border-color: rgba(100,180,255,.35); }
+.vc-fase-vacio       { border-color: rgba(0,217,255,.35); }
+.vc-fase-carga       { border-color: rgba(255,155,66,.35); }
+.vc-fase-verificacion{ border-color: rgba(0,200,100,.35); }
+.vc-fase-cierre      { border-color: rgba(180,100,255,.35); }
+
+.vc-paso-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.vc-paso-ico {
+  font-size: 28px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.vc-paso-fase {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #445566;
+  margin-bottom: 4px;
+}
+
+.vc-fase-nitrogeno .vc-paso-fase    { color: #4499cc; }
+.vc-fase-vacio .vc-paso-fase        { color: #00aacc; }
+.vc-fase-carga .vc-paso-fase        { color: #cc7733; }
+.vc-fase-verificacion .vc-paso-fase { color: #33aa66; }
+.vc-fase-cierre .vc-paso-fase       { color: #9966cc; }
+
+.vc-paso-titulo {
+  font-size: 15px;
+  font-weight: 700;
+  color: #dde8ff;
+  line-height: 1.3;
+}
+
+.vc-paso-desc {
+  font-size: 13px;
+  color: #8899bb;
+  line-height: 1.65;
+  margin-bottom: 14px;
+}
+
+/* Advertencia */
+.vc-advertencia {
+  padding: 10px 13px;
+  border-radius: 10px;
+  background: rgba(255,155,66,.08);
+  border: 1px solid rgba(255,155,66,.25);
+  color: #cc8833;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+
+/* Timer */
+.vc-timer-bloque {
+  background: rgba(0,217,255,.06);
+  border: 1px solid rgba(0,217,255,.2);
+  border-radius: 14px;
+  padding: 16px;
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+.vc-timer-display {
+  font-size: 42px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: #00d9ff;
+  letter-spacing: .05em;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.vc-timer-label {
+  font-size: 11px;
+  color: #3d5566;
+  margin-bottom: 12px;
+}
+
+.vc-timer-btns {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+/* Checks */
+.vc-checks-bloque {
+  margin-bottom: 14px;
+}
+
+.vc-checks-titulo {
+  font-size: 11px;
+  font-weight: 700;
+  color: #445566;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.vc-check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,.04);
+  cursor: pointer;
+}
+
+.vc-check-item:last-child { border-bottom: none; }
+
+.vc-check-input {
+  margin-top: 2px;
+  flex-shrink: 0;
+  accent-color: #00d9ff;
+  width: 16px;
+  height: 16px;
+}
+
+.vc-check-txt {
+  font-size: 12.5px;
+  color: #99aabb;
+  line-height: 1.5;
+}
+
+/* Valor objetivo */
+.vc-valor-bloque {
+  background: rgba(255,255,255,.04);
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+}
+
+.vc-valor-label {
+  font-size: 11px;
+  color: #445566;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.vc-valor-target {
+  font-size: 16px;
+  font-weight: 800;
+  color: #00d9ff;
+  margin-bottom: 10px;
+}
+
+.vc-valor-hint {
+  font-size: 12px;
+  margin-top: 6px;
+  min-height: 18px;
+}
+
+/* Navegación */
+.vc-nav-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 16px;
+}
+
+.vc-nav-row > * { flex: 1; }
+
+/* Mapa de pasos */
+.vc-mapa-pasos {
+  display: flex;
+  gap: 6px;
+  padding: 10px 16px 20px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.vc-mapa-item {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: all .2s;
+}
+
+.vc-mapa-ok      { background: rgba(0,200,100,.15); border: 1.5px solid rgba(0,200,100,.4); }
+.vc-mapa-actual  { background: rgba(0,217,255,.15); border: 2px solid #00d9ff; transform: scale(1.1); }
+.vc-mapa-pending { background: rgba(255,255,255,.04); border: 1.5px solid rgba(255,255,255,.08); opacity:.6; }
+
+/* Final */
+.vc-final-card {
+  text-align: center;
+  padding: 32px 20px 20px;
+}
+
+.vc-final-ico {
+  font-size: 52px;
+  margin-bottom: 8px;
+}
+
+.vc-final-titulo {
+  font-size: 22px;
+  font-weight: 800;
+  color: #00cc66;
+  margin-bottom: 4px;
+}
+
+.vc-final-sub {
+  font-size: 12px;
+  color: #445566;
+}
+
+/* Resumen grid final */
+.vc-resumen-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.vc-res-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 12px;
+  background: rgba(255,255,255,.04);
+  border-radius: 10px;
+}
+
+.vc-res-highlight {
+  background: rgba(0,217,255,.07);
+  border: 1px solid rgba(0,217,255,.18);
+}
+
+.vc-res-label {
+  font-size: 10px;
+  color: #445566;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.vc-res-val {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ccd6ee;
+}
+
+.vc-res-highlight .vc-res-val {
+  color: #00d9ff;
+}
+
+/* Home button cyan */
+.home-util-cyan { background: rgba(0,217,255,.12) !important; color: #00d9ff !important; }

@@ -5,6 +5,8 @@
 
 const BTUCalc = {
 
+  BTU_DIM_HISTORIAL: "hvac_btu_historial",
+
   // Factores de carga térmica adaptados al contexto argentino
   // Fuente: normas ASHRAE adaptadas al clima local
   factores: {
@@ -164,6 +166,7 @@ const BTUCalc = {
 <button class="calc-btn" style="margin:4px 16px;width:calc(100% - 32px);" id="calcBTU">
   📐 Calcular dimensionamiento
 </button>
+<button class="calc-btn" style="margin:4px 16px;width:calc(100% - 32px);background:#555;" id="viewBTUHistory">📋 Historial</button>
 
 <div id="btuResult"></div>
 `;
@@ -174,6 +177,7 @@ const BTUCalc = {
   bindEvents() {
     document.getElementById("btuBack")?.addEventListener("click", () => Router.back());
     document.getElementById("calcBTU")?.addEventListener("click", () => this.calcular());
+    document.getElementById("viewBTUHistory")?.addEventListener("click", () => this.renderHistory());
   },
 
   calcular() {
@@ -244,6 +248,23 @@ const BTUCalc = {
     // ── RECOMENDACIÓN DE EQUIPO ──────────────────────
     const equipo = this.recomendarEquipo(totalFG);
 
+    try {
+      const historial = JSON.parse(localStorage.getItem(this.BTU_DIM_HISTORIAL) || "[]");
+      historial.unshift({
+        fecha: new Date().toISOString(),
+        zona: z.nombre,
+        superficie: Math.round(sup),
+        frigorias: Math.round(totalFG),
+        btu: Math.round(totalBTU),
+        equipo: equipo.nombre
+      });
+      localStorage.setItem(this.BTU_DIM_HISTORIAL, JSON.stringify(historial.slice(0,50)));
+    } catch(e) {}
+
+    const mentorConsejos = this.getMentorAdvice({ zona, uso, orientacion, techo, ventanas });
+    const riesgoInfo = this.evaluarRiesgos({ uso, orientacion, techo, ventanas });
+
+
     // ── DESGLOSE ────────────────────────────────────
     const desglose = [
       { label: "Paredes/radiación solar",  valor: cargaParedes,  pct: Math.round(cargaParedes / totalW * 100) },
@@ -298,6 +319,17 @@ const BTUCalc = {
     <span class="btu-desglose-w">${Math.round(d.valor)}W</span>
   </div>`).join("")}
 
+  <div class="btu-equipo-card">
+    <div class="btu-equipo-titulo">📊 Exigencia térmica</div>
+    <div class="btu-equipo-desc">${riesgoInfo.nivel}</div>
+    ${riesgoInfo.riesgos.length ? `<div class="btu-equipo-alt">⚠️ ${riesgoInfo.riesgos.join(" • ")}</div>` : ""}
+  </div>
+
+  <div class="btu-equipo-card">
+    <div class="btu-equipo-titulo">👨‍🔧 El Mentor</div>
+    <div class="btu-equipo-desc">${mentorConsejos.length ? mentorConsejos.join("<br><br>") : "Instalación dentro de parámetros normales."}</div>
+  </div>
+
   <!-- NOTAS -->
   <div class="btu-notas">
     <div class="btu-nota-titulo">📋 Consideraciones para Argentina</div>
@@ -311,7 +343,71 @@ const BTUCalc = {
 </div>`;
   },
 
-  recomendarEquipo(fg) {
+
+getMentorAdvice(ctx) {
+  const consejos = [];
+  if (ctx.orientacion === "oeste")
+    consejos.push("La orientación oeste suele ser la más exigente térmicamente durante la tarde.");
+  if (ctx.techo === "si")
+    consejos.push("Los techos expuestos al sol incrementan significativamente la carga térmica.");
+  if (ctx.uso === "gastronomia")
+    consejos.push("Las cargas internas de cocina pueden exigir capacidad adicional.");
+  if (ctx.zona === "nea" || ctx.zona === "cuyo")
+    consejos.push("En climas cálidos conviene evitar dimensionar el equipo al límite.");
+  return consejos;
+},
+
+evaluarRiesgos(ctx) {
+  const riesgos = [];
+  let score = 0;
+  if (ctx.orientacion === "oeste") { riesgos.push("Alta carga solar por orientación oeste"); score += 2; }
+  if (ctx.techo === "si") { riesgos.push("Techo o piso expuesto"); score += 2; }
+  if (ctx.ventanas >= 4) { riesgos.push("Gran superficie vidriada"); score += 2; }
+  if (ctx.uso === "gastronomia") { riesgos.push("Cargas térmicas de cocina"); score += 3; }
+  const nivel = score >= 6 ? "🔴 Alta" : score >= 3 ? "🟡 Media" : "🟢 Baja";
+  return { riesgos, nivel };
+},
+
+  
+saveHistory(item){
+    const k="hvac_btu_historial";
+    const a=JSON.parse(localStorage.getItem(k)||"[]");
+    a.unshift(item);
+    localStorage.setItem(k,JSON.stringify(a.slice(0,50)));
+  },
+
+  renderHistory(){
+    const k=this.BTU_DIM_HISTORIAL;
+    const data=JSON.parse(localStorage.getItem(k)||"[]");
+    const el=document.getElementById("btuResult");
+    if(!data.length){
+      el.innerHTML='<div class="dx-card"><h3>📋 Historial vacío</h3></div>';
+      return;
+    }
+    el.innerHTML=`<div class="dx-card">
+      <h2>📊 Historial BTU</h2>
+      <p>${data.length} cálculo(s) guardado(s)</p>
+      <button id="clearBTUHist" class="calc-btn">🗑 Limpiar historial</button>
+      ${data.map(item=>{
+        const fg=item.fg||item.frigorias||"-";
+        const fecha=item.fecha?new Date(item.fecha).toLocaleString():"Sin fecha";
+        return `<div class="dx-card" style="margin-top:12px">
+          <h3>❄️ ${fg} FG</h3>
+          <p>🔥 ${item.btu||"-"} BTU/h</p>
+          <p>📏 ${item.superficie||"-"} m²</p>
+          <p>📍 ${item.zona||"-"}</p>
+          <p>✅ ${item.equipo||"-"}</p>
+          <p>📅 ${fecha}</p>
+        </div>`;
+      }).join("")}
+    </div>`;
+    document.getElementById("clearBTUHist")?.addEventListener("click",()=>{
+      localStorage.removeItem(k);
+      this.renderHistory();
+    });
+  },
+
+recomendarEquipo(fg) {
     if (fg <= 2500) return {
       nombre: "Split 2250 FG (1/4 HP)",
       descripcion: "Ideal para dormitorios y espacios pequeños hasta 15 m². Bajo consumo.",
@@ -353,5 +449,9 @@ const BTUCalc = {
       alternativa: "Consultar con un profesional HVAC para el diseño del sistema."
     };
   }
+
+
+,
+
 
 };

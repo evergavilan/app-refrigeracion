@@ -215,7 +215,8 @@ const CiclicaEngine = {
       icono: "❌❌",
       titulo: `Sin frío — Freezer ${tFreezer}°C, Heladera ${tHeladera}°C`,
       certeza: 82,
-      causa: `Ni el freezer ni la heladera están fríos. El freezer a ${tFreezer}°C y la heladera a ${tHeladera}°C — ambos sobre la temperatura normal. Esto indica problema del compresor, fuga total de gas, o falla eléctrica.`,
+      causa: `Ni el freezer ni la heladera están fríos. El freezer a ${tFreezer}°C y la heladera a ${tHeladera}°C — ambos sobre la temperatura normal. Esto indica problema del compresor, fuga total de gas, o falla eléctrica.${d.arranca === "no" ? " Compresor NO ARRANCA — arrancá el diagnóstico eléctrico: PTC, Klixon, tensión." : " Compresor arranca pero no enfría — conectá manómetro para verificar presión."}${d.chkContinuo ? " Trabaja continuo sin enfriar — el compresor corre pero sin refrigerante eficaz." : ""}`,
+
       pasos: [
         "Verificá que el compresor esté arrancando y funcionando.",
         "Si el compresor funciona: conectá manómetro para determinar si hay gas.",
@@ -247,7 +248,8 @@ const CiclicaEngine = {
       icono: "🚪🌡️",
       titulo: `Burlete deteriorado — Heladera a ${tHeladera}°C`,
       certeza: 85,
-      causa: `La heladera está a ${tHeladera}°C con burlete deteriorado. El burlete que no sella permite la entrada constante de aire caliente — el compresor trabaja continuo sin poder bajar la temperatura.`,
+      causa: `La heladera está a ${tHeladera}°C con burlete deteriorado. El burlete que no sella permite la entrada constante de aire caliente — el compresor trabaja continuo sin poder bajar la temperatura.${d.chkContinuo ? " Trabaja continuo confirmado — cuadro típico de burlete fallado." : ""}${tFreezer !== null ? ` Freezer a ${tFreezer}°C — ${tFreezer < -5 ? "correcto, el refrigerante está bien" : "también caliente, puede haber fuga además del burlete"}.` : ""}`,
+
       pasos: [
         "Verificá el burlete en todo el perímetro: debe adherirse a la heladera cuando cerrás la puerta.",
         "Prueba del papel: cerrá la puerta sobre un papel — si sale fácil, el burlete no sella.",
