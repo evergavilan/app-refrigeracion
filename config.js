@@ -5,7 +5,7 @@
 
 const APP_CONFIG = {
 
-  version: "1.7.5",
+  version: "1.8.0",
   name: "Ever PRO Argentina",
   debug: false,
 

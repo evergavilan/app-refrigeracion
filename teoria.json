@@ -4,229 +4,845 @@
       "id": "ciclo-refrigeracion",
       "titulo": "El ciclo de refrigeración",
       "icono": "🔄",
+      "color": "#00d9ff",
       "subtitulo": "Por qué el gas enfría — el fundamento de todo",
-      "intro": "La refrigeración no es 'producir frío' — es mover calor de un lugar a otro. El refrigerante es el vehículo que transporta ese calor. Todo el diagnóstico HVAC se basa en entender esto.",
+      "intro": "La refrigeración no produce frío — mueve calor de un lugar a otro. El refrigerante es el vehículo. Todo el diagnóstico HVAC arranca de entender este ciclo.",
       "conceptos": [
         {
           "titulo": "¿Por qué el gas enfría?",
-          "detalle": "Cuando un líquido se evapora, absorbe calor del entorno. Cuando un gas se condensa, libera ese calor. El sistema de refrigeración fuerza este ciclo artificialmente usando el compresor. El evaporador es donde el refrigerante evapora y absorbe calor (interior). El condensador es donde el refrigerante condensa y libera calor (exterior)."
+          "tipo": "explicacion",
+          "detalle": "Cuando un líquido se evapora absorbe calor del entorno. Cuando un gas se condensa libera ese calor. El sistema fuerza este ciclo artificialmente con el compresor. El evaporador es donde el refrigerante evapora y absorbe calor (interior frío). El condensador es donde condensa y libera calor (exterior caliente)."
         },
         {
-          "titulo": "La presión cambia todo",
-          "detalle": "La temperatura a la que un refrigerante evapora depende de su presión. Con más presión, necesita más calor para evaporar (temperatura más alta). Con menos presión, evapora a temperatura más baja. Por eso el capilar baja la presión antes del evaporador — para que el refrigerante evapore a -5°C o -10°C y pueda absorber calor del interior a 20°C."
+          "titulo": "La presión cambia la temperatura de evaporación",
+          "tipo": "clave",
+          "detalle": "A mayor presión, el refrigerante necesita más temperatura para evaporar. A menor presión, evapora más frío. El capilar baja la presión antes del evaporador para que el R410A evapore a -3°C y pueda absorber calor de un ambiente a 25°C. Sin esa diferencia de temperatura, no hay transferencia de calor."
         },
         {
-          "titulo": "El ciclo completo",
-          "detalle": "1) El compresor toma gas frío a baja presión y lo comprime → sale gas caliente a alta presión. 2) El condensador enfría ese gas caliente → se convierte en líquido caliente a alta presión. 3) El capilar o válvula de expansión reduce drásticamente la presión → el líquido se expande y se enfría. 4) El evaporador recibe ese refrigerante frío → absorbe calor del interior → sale como gas frío. 5) El compresor lo toma de nuevo → repite."
+          "titulo": "Los 4 componentes del ciclo",
+          "tipo": "tabla",
+          "tabla": {
+            "headers": [
+              "Componente",
+              "Función",
+              "Estado del refrigerante"
+            ],
+            "filas": [
+              [
+                "Compresor",
+                "Eleva la presión del gas",
+                "Gas frío → Gas caliente a alta presión"
+              ],
+              [
+                "Condensador",
+                "Disipa calor al exterior",
+                "Gas caliente → Líquido caliente a alta presión"
+              ],
+              [
+                "Capilar / TXV",
+                "Reduce la presión",
+                "Líquido a alta presión → Líquido-gas a baja presión"
+              ],
+              [
+                "Evaporador",
+                "Absorbe calor del interior",
+                "Mezcla líquido-gas → Gas frío a baja presión"
+              ]
+            ]
+          }
         },
         {
-          "titulo": "¿Qué mide el manómetro?",
-          "detalle": "El manómetro de baja mide la presión del refrigerante en el evaporador. Baja presión → temperatura de evaporación baja → puede absorber más calor. Pero si cae demasiado → el refrigerante se expande demasiado antes de llegar al evaporador (fuga, restricción). El manómetro de alta mide la presión en el condensador. Alta presión → gas difícil de condensar → el compresor trabaja forzado."
+          "titulo": "Cómo leer el ciclo en el manómetro",
+          "tipo": "practica",
+          "detalle": "El manómetro de baja refleja lo que pasa en el evaporador. El manómetro de alta refleja el condensador. Con presión de baja normal y alta normal: el ciclo está completo. Con baja muy baja: el evaporador no tiene suficiente refrigerante (fuga o expansión mal calibrada). Con alta muy alta: el condensador no puede disipar (sucio o exceso de gas)."
         }
-      ]
+      ],
+      "valores_referencia": [
+        {
+          "label": "Temp evaporación Split",
+          "valor": "-3°C a 7°C",
+          "color": "cyan"
+        },
+        {
+          "label": "Temp condensación Split",
+          "valor": "45°C a 55°C",
+          "color": "orange"
+        },
+        {
+          "label": "Diferencia mínima útil",
+          "valor": "15°C",
+          "color": "green"
+        }
+      ],
+      "errores_comunes": [
+        "Confundir presión de baja con presión de alta — el manómetro azul siempre va en el puerto de baja (línea gruesa)",
+        "Pensar que 'más gas = más frío'. El gas excesivo sube la presión de alta y sobrecarga el compresor",
+        "No esperar 15 minutos de régimen antes de medir — en los primeros minutos los valores fluctúan"
+      ],
+      "mentor_frase": "El que entiende el ciclo de refrigeración no adivina — diagnostica. Cada valor que medís te está contando algo sobre uno de los cuatro componentes."
     },
     {
       "id": "delta-t",
       "titulo": "Delta T — el indicador más honesto",
       "icono": "🌡️",
-      "subtitulo": "Cómo leer la salud del sistema con un termómetro",
-      "intro": "El Delta T (diferencia de temperatura entre el aire que entra y el que sale del evaporador) es el indicador más confiable de que el sistema está transfiriendo calor correctamente. Podés diagnosticar mucho sin manómetro si sabés leer el Delta T.",
+      "color": "#00d9ff",
+      "subtitulo": "La diferencia de temperatura que vale más que el PSI",
+      "intro": "El Delta T es la diferencia entre la temperatura del aire que entra al evaporador y la que sale. Es el indicador más directo de si el equipo está transfiriendo calor correctamente — y no requiere manómetro.",
       "conceptos": [
         {
-          "titulo": "¿Qué es el Delta T?",
-          "detalle": "Es la diferencia de temperatura entre el aire que entra al evaporador y el que sale. Si entra a 28°C y sale a 16°C, el Delta T es 12°C. En un split funcionando correctamente, debe ser entre 8°C y 14°C."
+          "titulo": "Cómo medirlo",
+          "tipo": "practica",
+          "detalle": "Con un termómetro de contacto o infrarrojo: medí la temperatura del aire que entra a la unidad interior (a 30cm de distancia) y la temperatura del aire frío que sale. La diferencia es el Delta T. Hacelo con el equipo funcionando mínimo 15 minutos en modo FRÍO al máximo."
         },
         {
-          "titulo": "Delta T bajo (menos de 8°C)",
-          "detalle": "El sistema no está transfiriendo bien el calor del aire al refrigerante. Causas más comunes: filtro o evaporador sucio (el más frecuente), turbina con poco caudal, gas al límite inferior, o evaporador congelado que bloquea el paso de aire. Importante: Delta T bajo NO siempre es falta de gas."
+          "titulo": "Qué dice cada valor",
+          "tipo": "tabla",
+          "tabla": {
+            "headers": [
+              "Delta T",
+              "Qué indica",
+              "Causa probable"
+            ],
+            "filas": [
+              [
+                "< 6°C",
+                "Transferencia muy baja",
+                "Filtro tapado, turbina lenta, evaporador sucio o gas al límite"
+              ],
+              [
+                "6°C - 8°C",
+                "Transferencia baja",
+                "Filtro sucio o gas en límite inferior"
+              ],
+              [
+                "8°C - 14°C",
+                "✅ Normal",
+                "Sistema funcionando correctamente"
+              ],
+              [
+                "14°C - 18°C",
+                "Transferencia alta",
+                "Caudal reducido o posible exceso de gas"
+              ],
+              [
+                "> 18°C",
+                "Muy alto",
+                "Caudal muy bajo — turbina o filtro muy sucio"
+              ]
+            ]
+          }
         },
         {
-          "titulo": "Delta T alto (más de 14°C)",
-          "detalle": "El sistema está absorbiendo mucho calor del aire. Puede ser: exceso de gas, válvula de expansión mal calibrada, o muy poco caudal de aire (filtro muy tapado con baja velocidad de turbina). También puede ser normal en ambientes muy húmedos donde hay mucha carga de enfriamiento."
+          "titulo": "Delta T vs PSI — cuál creer",
+          "tipo": "clave",
+          "detalle": "El PSI puede parecer 'normal' aunque el sistema tenga problemas. El Delta T no miente sobre la transferencia real de calor. Un equipo con Delta T de 4°C está fallando aunque el PSI esté en rango. Medí siempre los dos — si discrepan, el Delta T suele ser más confiable para detectar problemas de airflow."
         },
         {
-          "titulo": "Cómo medirlo en campo",
-          "detalle": "Usá un termómetro de pinche o un infrarrojo. Medí la temperatura del aire en la entrada del filtro (retorno) y en la salida de la rejilla delantera. Dejá el equipo funcionar 15 minutos antes de medir. Tomá 3 lecturas y promediá. Con eso tenés el Delta T real del equipo."
+          "titulo": "Delta T en No Frost y heladeras",
+          "tipo": "explicacion",
+          "detalle": "En No Frost el Delta T se mide entre el aire que entra por la rejilla inferior y el aire frío que sale por la rejilla superior del compartimento. Normal: 8°C a 15°C. Un Delta T de 2-3°C con heladera caliente confirma que el evaporador está bloqueado por hielo."
         }
-      ]
+      ],
+      "valores_referencia": [
+        {
+          "label": "Split — rango normal",
+          "valor": "8°C – 14°C",
+          "color": "cyan"
+        },
+        {
+          "label": "No Frost — rango normal",
+          "valor": "8°C – 15°C",
+          "color": "cyan"
+        },
+        {
+          "label": "Mínimo aceptable",
+          "valor": "6°C",
+          "color": "orange"
+        }
+      ],
+      "errores_comunes": [
+        "Medir el Delta T con el equipo recién arrancado — esperar mínimo 15 minutos",
+        "Medir el aire de salida muy cerca de las aletas en vez de en el flujo real de salida",
+        "Ignorar el Delta T bajo porque el PSI está 'bien' — el Delta T bajo con PSI normal es airflow, no gas"
+      ],
+      "mentor_frase": "Antes de conectar el manómetro, medí el Delta T. Me dice en 30 segundos si el problema es el gas o el mantenimiento."
     },
     {
       "id": "ntc-sensores",
-      "titulo": "Sensores NTC — cómo funcionan y cómo medirlos",
+      "titulo": "Sensores NTC",
       "icono": "📡",
-      "subtitulo": "El termómetro de la placa electrónica",
-      "intro": "Los sensores NTC (Negative Temperature Coefficient) son termistores — resistencias que cambian su valor según la temperatura. Casi todos los splits y heladeras modernas usan NTC para medir temperatura. Saber medirlos ahorra cambiar placas innecesariamente.",
+      "color": "#ff9b42",
+      "subtitulo": "El termómetro que la placa usa para tomar decisiones",
+      "intro": "El NTC (coeficiente de temperatura negativo) es el termómetro del sistema. Si le miente a la placa sobre la temperatura, todo lo demás falla aunque esté en perfectas condiciones.",
       "conceptos": [
         {
-          "titulo": "¿Cómo funciona un NTC?",
-          "detalle": "A mayor temperatura → menor resistencia. A menor temperatura → mayor resistencia. Es el comportamiento opuesto a los metales comunes. Un NTC típico de 10kΩ mide exactamente 10kΩ a 25°C. A 10°C puede medir 16-20kΩ. A 40°C puede medir 6-7kΩ."
+          "titulo": "Cómo funciona el NTC",
+          "tipo": "explicacion",
+          "detalle": "El NTC es una resistencia cuyo valor cae cuando sube la temperatura (coeficiente negativo). A 25°C puede medir 10kΩ. A 0°C puede medir 30kΩ. La placa lee esa resistencia y la convierte en temperatura usando una tabla de calibración interna. Si el NTC se contamina, se daña, o se desconecta parcialmente, la placa recibe una temperatura falsa."
         },
         {
-          "titulo": "Cómo medirlo",
-          "detalle": "Desconectá el conector del sensor de la placa. Medí la resistencia entre los dos cables con el multímetro en Ω. Tomá la temperatura ambiente del lugar donde está el sensor (con otro termómetro). Comparás el valor medido con la curva del fabricante o con una tabla NTC genérica de 10kΩ."
+          "titulo": "Valores típicos por temperatura",
+          "tipo": "tabla",
+          "tabla": {
+            "headers": [
+              "Temperatura",
+              "Resistencia típica (10kΩ nominal)",
+              "Estado"
+            ],
+            "filas": [
+              [
+                "-10°C",
+                "~55 kΩ",
+                "Freezer / evaporador frío"
+              ],
+              [
+                "0°C",
+                "~32 kΩ",
+                "Punto de congelamiento"
+              ],
+              [
+                "10°C",
+                "~20 kΩ",
+                "Interior heladera"
+              ],
+              [
+                "25°C",
+                "~10 kΩ",
+                "Temperatura ambiente"
+              ],
+              [
+                "40°C",
+                "~6 kΩ",
+                "Ambiente caliente"
+              ]
+            ]
+          }
         },
         {
-          "titulo": "Valores típicos de referencia (NTC 10kΩ)",
-          "detalle": "0°C = 32kΩ aprox. 10°C = 20kΩ aprox. 20°C = 12kΩ aprox. 25°C = 10kΩ (nominal). 30°C = 8kΩ aprox. 40°C = 5.5kΩ aprox. 50°C = 3.6kΩ aprox. Si el sensor mide muy diferente a estos valores → está fallado. Si mide ∞ → circuito abierto. Si mide 0Ω → cortocircuito."
+          "titulo": "Cómo medirlo en campo",
+          "tipo": "practica",
+          "detalle": "1) Desconectá el NTC del circuito (siempre medir desconectado). 2) Con óhmetro en escala kΩ, medí entre los dos terminales. 3) Comparar con la tabla según la temperatura actual del ambiente. 4) Prueba definitiva: sumergir en agua con hielo (0°C) — la resistencia debe subir significativamente. Si no cambia → NTC muerto. Si el valor es muy diferente a la tabla → NTC descalibrado."
         },
         {
-          "titulo": "El sensor da error pero el valor es correcto",
-          "detalle": "Si el multímetro dice que el sensor está bien (resistencia correcta para la temperatura) pero la placa sigue dando error, revisá el conector. La oxidación en los pines del conector es la causa más frecuente de falsos errores de sensor. Limpiá con limpia contactos y reconectá firme."
+          "titulo": "Modos de falla y sus síntomas",
+          "tipo": "tabla",
+          "tabla": {
+            "headers": [
+              "Falla del NTC",
+              "Lo que cree la placa",
+              "Síntoma en el equipo"
+            ],
+            "filas": [
+              [
+                "NTC en cortocircuito (0Ω)",
+                "Temperatura muy alta",
+                "Compresor trabaja continuo, sobre-enfría"
+              ],
+              [
+                "NTC abierto (∞Ω)",
+                "Temperatura muy baja (o error)",
+                "Compresor no arranca o código de error"
+              ],
+              [
+                "NTC descalibrado (+)",
+                "Temperatura más alta de lo real",
+                "Equipo corta antes de llegar al setpoint"
+              ],
+              [
+                "NTC descalibrado (-)",
+                "Temperatura más baja de lo real",
+                "Equipo tarda en cortar, sobre-enfría"
+              ]
+            ]
+          }
         }
-      ]
+      ],
+      "valores_referencia": [
+        {
+          "label": "NTC 10kΩ a 25°C",
+          "valor": "~10 kΩ",
+          "color": "cyan"
+        },
+        {
+          "label": "NTC 10kΩ a 0°C",
+          "valor": "~32 kΩ",
+          "color": "cyan"
+        },
+        {
+          "label": "Tolerancia aceptable",
+          "valor": "±10%",
+          "color": "green"
+        }
+      ],
+      "errores_comunes": [
+        "Medir el NTC conectado al circuito — la placa alimenta el NTC con una pequeña tensión que interfiere con la medición",
+        "Reemplazar la placa por comportamiento errático sin verificar el NTC primero",
+        "Usar un NTC de diferente valor nominal (ej: 5kΩ en lugar de 10kΩ) — da temperaturas completamente incorrectas"
+      ],
+      "mentor_frase": "Antes de cambiar una placa: medí todos los NTC. Un NTC en cortocircuito puede quemar la entrada de sensor de la placa — si primero reemplazás el NTC quizás salvás la placa."
     },
     {
       "id": "inverter-vs-onoff",
-      "titulo": "Inverter vs ON/OFF — diferencias clave",
+      "titulo": "Inverter vs ON/OFF",
       "icono": "⚡",
-      "subtitulo": "Por qué el inverter es más complejo de diagnosticar",
-      "intro": "Los splits inverter dominan el mercado argentino actual. Entender la diferencia con el ON/OFF clásico es esencial para no diagnosticar mal y no romper lo que funciona.",
+      "color": "#ff9b42",
+      "subtitulo": "Diferencias clave para el diagnóstico",
+      "intro": "La diferencia entre inverter y ON/OFF no es solo el consumo — cambia completamente cómo se diagnostica, qué componentes tiene, y cómo se comporta bajo falla.",
       "conceptos": [
         {
-          "titulo": "Split ON/OFF — cómo funciona",
-          "detalle": "El compresor trabaja a velocidad fija (50 Hz siempre). Cuando llega a la temperatura, se apaga completamente. Cuando vuelve a subir, arranca de nuevo. El capacitor es esencial para el arranque porque la corriente de arranque es muy alta. Simple de diagnosticar: o funciona o no funciona."
+          "titulo": "Comparación fundamental",
+          "tipo": "tabla",
+          "tabla": {
+            "headers": [
+              "Característica",
+              "ON/OFF",
+              "Inverter"
+            ],
+            "filas": [
+              [
+                "Velocidad del compresor",
+                "Fija (arranca/para)",
+                "Variable (0-100%)"
+              ],
+              [
+                "Capacitor de arranque",
+                "✅ Siempre tiene",
+                "❌ No tiene"
+              ],
+              [
+                "Módulo de potencia (IPM)",
+                "❌ No tiene",
+                "✅ Siempre tiene"
+              ],
+              [
+                "Corriente de arranque",
+                "Alta (5-8x nominal)",
+                "Baja (rampa suave)"
+              ],
+              [
+                "Diagnóstico de falla",
+                "Mecánico/eléctrico simple",
+                "Códigos de error + IPM"
+              ],
+              [
+                "Trabajar continuo",
+                "Problema",
+                "Puede ser normal"
+              ],
+              [
+                "PSI estable en régimen",
+                "Más estable",
+                "Fluctúa con la velocidad"
+              ]
+            ]
+          }
         },
         {
-          "titulo": "Split Inverter — cómo funciona",
-          "detalle": "El compresor trabaja a velocidad variable (20 Hz a 120 Hz). El módulo inverter (IPM) convierte la corriente de red en corriente de frecuencia variable para el compresor. El compresor de un inverter NO lleva capacitor externo — el módulo IPM maneja el arranque internamente. Si le ponés capacitor a un compresor inverter, lo rompés."
+          "titulo": "El módulo IPM — el corazón del inverter",
+          "tipo": "clave",
+          "detalle": "El módulo IPM (Intelligent Power Module) convierte la corriente de red en corriente de frecuencia variable para el compresor. Es lo más caro del inverter. Cuando falla, el compresor no arranca. Error típico: CH38 en LG. Diagnóstico: el IPM suele tener diodos de protección que se pueden medir con óhmetro en modo diodo. Un IPM quemado suele tener uno o más diodos en cortocircuito."
         },
         {
-          "titulo": "Diferencias en el diagnóstico",
-          "detalle": "En ON/OFF: buscás capacitor, Klixon, devanados, relay. En inverter: buscás módulo IPM, sensores NTC, alimentación del módulo, comunicación entre placa y módulo. El amperaje en inverter varía según la demanda — no es fijo como en ON/OFF. Un inverter puede correr con 2A en mantenimiento y 10A en plena potencia."
+          "titulo": "Diagnóstico de un inverter que no arranca",
+          "tipo": "practica",
+          "detalle": "1) Leer el código de error (parpadeo del LED o display). 2) Verificar tensión de alimentación (220V ±10%). 3) Verificar los condensadores del bus DC del IPM (deben estar sin abombamiento). 4) NO buscar capacitor de arranque — no existe. 5) NO usar arrancador externo en el compresor inverter — puede dañar el IPM. 6) Si el IPM mide cortocircuito → reemplazo del IPM o la placa completa."
         },
         {
-          "titulo": "Error frecuente con inverter",
-          "detalle": "El error más común en campo es diagnosticar 'compresor muerto' en un inverter porque el compresor no arranca. Antes de eso: verificá el módulo IPM (tensión de entrada y salida), los sensores NTC y la comunicación entre placa y módulo. En Argentina, el 60% de los 'compresores muertos' inverter resultan ser el módulo IPM."
+          "titulo": "Lecturas de PSI en inverter — por qué fluctúan",
+          "tipo": "explicacion",
+          "detalle": "En un inverter a baja velocidad el compresor no genera tanta diferencia de presión — el PSI de baja puede subir y el de alta puede bajar comparado con lo que esperamos. Esto es NORMAL. Para una lectura representativa: esperar que el equipo lleve 20+ minutos funcionando en demanda alta (ambiente caliente, setpoint bajo). A plena velocidad los rangos son iguales a los de ON/OFF."
         }
-      ]
+      ],
+      "valores_referencia": [
+        {
+          "label": "PSI baja inverter (baja vel.)",
+          "valor": "puede ser +15 PSI",
+          "color": "orange"
+        },
+        {
+          "label": "IPM — voltaje bus DC",
+          "valor": "280-320V DC",
+          "color": "cyan"
+        },
+        {
+          "label": "Corriente arranque ON/OFF",
+          "valor": "5-8x nominal",
+          "color": "orange"
+        }
+      ],
+      "errores_comunes": [
+        "Buscar el capacitor de arranque en un inverter — no existe, el IPM lo reemplaza",
+        "Diagnosticar 'poco gas' en un inverter en baja velocidad porque el PSI está alto — es normal",
+        "Usar un arrancador externo en el compresor de un inverter — puede destruir el IPM"
+      ],
+      "mentor_frase": "Un inverter no es un ON/OFF más sofisticado — es un sistema diferente. El técnico que trata un inverter como un ON/OFF va a romper cosas."
     },
     {
       "id": "sobrecalentamiento",
       "titulo": "Sobrecalentamiento (SH)",
-      "icono": "🌡️",
-      "subtitulo": "La medición más importante de la succión",
-      "intro": "El sobrecalentamiento (SH - Superheat) te dice cuántos grados por encima de la temperatura de saturación está el gas en la línea de succión. Es el indicador más preciso del estado del evaporador y de la carga de gas. Todo técnico profesional lo mide de rutina.",
+      "icono": "🔥",
+      "color": "#ff5252",
+      "subtitulo": "El gas que llega al compresor — ¿seco o húmedo?",
+      "intro": "El SH (Superheat) mide cuántos grados de más tiene el gas cuando llega al compresor respecto a su temperatura de saturación. Es la diferencia entre 'gas listo para comprimir' y 'gas con gotas de líquido adentro'.",
       "conceptos": [
         {
-          "titulo": "¿Qué mide exactamente el SH?",
-          "detalle": "Cuando el refrigerante evapora en el evaporador, lo hace a una temperatura de saturación determinada por la presión. El SH mide cuánto calor extra absorbió el gas después de evaporarse completamente. Si el gas sale del evaporador a 15°C y la temperatura de saturación a esa presión es 5°C, el SH es 10°C."
+          "titulo": "Qué es la temperatura de saturación",
+          "tipo": "explicacion",
+          "detalle": "A cada presión le corresponde una temperatura a la cual el refrigerante cambia de estado (evapora o condensa). Esa es la temperatura de saturación. La tabla P/T (presión-temperatura) te dice cuál es. El SH es cuánto supera el gas real esa temperatura. Si el PSI de baja es 120 en R410A → la saturación es ~0°C. Si el gas en la succión mide 10°C → SH = 10°C."
         },
         {
-          "titulo": "Rango normal y qué significa",
-          "detalle": "SH normal en splits: 6°C a 12°C. Ideal: 8°C. Si el SH es muy bajo (menos de 4°C): el evaporador está inundado de líquido — riesgo de retorno de líquido al compresor, que puede destruirlo. Si el SH es muy alto (más de 15°C): el gas llega muy seco al compresor, indica falta de gas o restricción."
+          "titulo": "Rangos de SH y diagnóstico",
+          "tipo": "tabla",
+          "tabla": {
+            "headers": [
+              "SH",
+              "Diagnóstico",
+              "Acción"
+            ],
+            "filas": [
+              [
+                "< 0°C",
+                "🔴 Retorno de líquido",
+                "APAGAR URGENTE — destruye el compresor"
+              ],
+              [
+                "0°C – 5°C",
+                "⚠️ SH bajo",
+                "Riesgo de líquido — reducir carga o ajustar TXV"
+              ],
+              [
+                "5°C – 12°C",
+                "✅ Normal",
+                "Sistema correcto"
+              ],
+              [
+                "12°C – 18°C",
+                "🟡 SH alto",
+                "Falta de gas o TXV cerrada — evaluar"
+              ],
+              [
+                "> 18°C",
+                "🔴 SH muy alto",
+                "Falta de gas severa o TXV trabada — actuar"
+              ]
+            ]
+          }
         },
         {
-          "titulo": "Cómo medirlo en campo",
-          "detalle": "Necesitás: manómetro de baja (para leer el PSI de succión) y termómetro de contacto o de pinche en la línea de succión (cañería gruesa, cerca del compresor). La fórmula es: SH = Temp medida en succión − Temp de saturación según tabla P/T para ese PSI. La tabla P/T te convierte el PSI en temperatura de saturación."
+          "titulo": "Cómo calcularlo en campo",
+          "tipo": "practica",
+          "detalle": "1) Medí el PSI de baja con el manómetro. 2) Buscá en la tabla P/T la temperatura de saturación para ese PSI y ese gas. 3) Medí la temperatura real del gas en la línea de succión (caño grueso) con termómetro de contacto a 15cm de la válvula de servicio. 4) SH = Temp real − Temp saturación. Ejemplo R410A: PSI 120 → saturación 0°C. Temp caño 12°C → SH = 12°C ✅"
         },
         {
-          "titulo": "SH bajo — causa más frecuente",
-          "detalle": "SH bajo (menos de 6°C) casi siempre es una de estas dos cosas: exceso de gas (cargaron de más) o válvula de expansión termostática (TXV) abriendo de más. En sistemas con capilar fijo, si el gas está en rango y el SH es bajo, revisá la carga. En sistemas con TXV, revisá la regulación del bulbo."
+          "titulo": "SH alto + SC bajo = patrón de falta de gas",
+          "tipo": "clave",
+          "detalle": "Cuando el SH supera 12°C Y el SC está bajo o negativo, el sistema tiene menos refrigerante del necesario. El evaporador no está completamente inundado (SH alto) y el condensador no tiene suficiente masa para condensar bien (SC bajo). Este patrón confirma fuga aunque el PSI parezca 'normal'."
         },
         {
-          "titulo": "SH alto — causa más frecuente",
-          "detalle": "SH alto (más de 12°C) en splits casi siempre es falta de gas por fuga. El evaporador no tiene suficiente refrigerante para llenarse y el gas que llega al compresor está muy recalentado. También puede ser restricción en el capilar o filtro deshidratador tapado. Antes de cargar gas: buscá la fuga."
+          "titulo": "SH alto + SC alto = problema de expansión",
+          "tipo": "clave",
+          "detalle": "Cuando AMBOS están altos, no es falta de gas — hay suficiente masa en el sistema (SC alto lo confirma). El problema está en la válvula de expansión (TXV) o capilar que no deja pasar suficiente refrigerante al evaporador. Cargar gas en este caso empeora el problema."
         }
-      ]
+      ],
+      "valores_referencia": [
+        {
+          "label": "SH normal Split",
+          "valor": "5°C – 12°C",
+          "color": "cyan"
+        },
+        {
+          "label": "SH de emergencia",
+          "valor": "< 0°C",
+          "color": "red"
+        },
+        {
+          "label": "SH de alarma",
+          "valor": "> 18°C",
+          "color": "orange"
+        }
+      ],
+      "errores_comunes": [
+        "Cargar gas cuando el SH está alto sin verificar el SC — si el SC también está alto, no es falta de gas",
+        "Medir la temperatura de succión lejos de la válvula de servicio — la temperatura cambia con la distancia",
+        "No apagar el equipo cuando el SH es negativo — el retorno de líquido destruye el compresor en minutos"
+      ],
+      "mentor_frase": "El SH es el análisis de sangre del sistema. Te dice exactamente cuánto gas tiene y cómo está llegando al compresor. Aprendé a calcularlo y vas a dejar de adivinar."
     },
     {
       "id": "subenfriamiento",
       "titulo": "Subenfriamiento (SC)",
       "icono": "❄️",
-      "subtitulo": "La medición clave de la línea de líquido",
-      "intro": "El subenfriamiento (SC - Subcooling) mide cuántos grados por debajo de la temperatura de saturación está el líquido en la línea de líquido. Junto con el SH, forma el cuadro completo del estado termodinámico del sistema. Sin SC, el diagnóstico de carga de gas está incompleto.",
+      "color": "#00d9ff",
+      "subtitulo": "El líquido que sale del condensador — ¿bien condensado?",
+      "intro": "El SC (Subcooling) mide cuántos grados por debajo de su temperatura de saturación está el refrigerante líquido al salir del condensador. Es el indicador del lado de alta — te dice si el condensador está haciendo bien su trabajo.",
       "conceptos": [
         {
-          "titulo": "¿Qué mide exactamente el SC?",
-          "detalle": "Cuando el refrigerante condensa en el condensador, lo hace a una temperatura de saturación determinada por la presión de alta. El SC mide cuánto se enfrió el líquido después de condensarse. Si el líquido sale del condensador a 35°C y la temperatura de saturación a presión de alta es 45°C, el SC es 10°C."
+          "titulo": "Por qué importa el SC",
+          "tipo": "explicacion",
+          "detalle": "El refrigerante sale del condensador como líquido. Si sale exactamente a la temperatura de saturación (SC=0), hay riesgo de que el calor de la línea de líquido lo evapore parcialmente antes de llegar al expansor — llegando vapor en lugar de líquido. El SC asegura que el líquido tenga margen térmico para el viaje hasta el expansor sin evaporarse."
         },
         {
-          "titulo": "Rango normal y qué significa",
-          "detalle": "SC normal en splits: 4°C a 10°C. Ideal: 6°C. SC bajo (menos de 4°C): posible gas insuficiente o condensador con problemas. SC negativo (el líquido está más caliente que la saturación): hay vapor en la línea de líquido — el sistema no puede funcionar bien porque al capilar llega mezcla gas-líquido en vez de líquido puro. SC alto (más de 12°C): posible exceso de gas o restricción después del condensador."
+          "titulo": "Rangos de SC y diagnóstico",
+          "tipo": "tabla",
+          "tabla": {
+            "headers": [
+              "SC",
+              "Diagnóstico",
+              "Causa probable"
+            ],
+            "filas": [
+              [
+                "< 0°C (negativo)",
+                "🔴 Vapor en línea de líquido",
+                "Falta de gas severa — el condensador no condensa"
+              ],
+              [
+                "0°C – 4°C",
+                "🟡 SC bajo",
+                "Carga insuficiente o condensador sobrecargado"
+              ],
+              [
+                "4°C – 8°C",
+                "✅ Normal",
+                "Sistema correcto"
+              ],
+              [
+                "8°C – 15°C",
+                "🟡 SC alto",
+                "Posible exceso de gas"
+              ],
+              [
+                "> 15°C",
+                "🔴 SC muy alto",
+                "Exceso de gas o válvula de expansión cerrada"
+              ]
+            ]
+          }
         },
         {
-          "titulo": "Cómo medirlo en campo",
-          "detalle": "Necesitás: manómetro de alta (para leer el PSI de condensación) y termómetro de contacto en la línea de líquido (cañería fina, a la salida del condensador). La fórmula es: SC = Temp de saturación según tabla P/T para PSI de alta − Temp medida en línea de líquido."
+          "titulo": "Cómo calcularlo en campo",
+          "tipo": "practica",
+          "detalle": "1) Medí el PSI de ALTA con el manómetro. 2) Buscá en la tabla P/T la temperatura de saturación para ese PSI. 3) Medí la temperatura real de la línea de líquido (caño fino, después del condensador) con termómetro de contacto. 4) SC = Temp saturación − Temp real línea líquido. Ejemplo R410A: PSI alta 400 → saturación ~38°C. Temp línea líquido 32°C → SC = 6°C ✅"
         },
         {
-          "titulo": "SC y SH juntos — el diagnóstico completo",
-          "detalle": "La combinación SH + SC te da el cuadro completo: SH alto + SC bajo = fuga (gas insuficiente). SH bajo + SC alto = exceso de gas. SH normal + SC normal = carga correcta. SH bajo + SC bajo = condensador sobrecargado o temperatura ambiente muy alta. Esta combinación es la que usan los técnicos profesionales para confirmar si hay que cargar, purgar o buscar fuga."
-        },
-        {
-          "titulo": "Vapor en la línea de líquido — el peor escenario",
-          "detalle": "Si el SC es negativo o cercano a 0, hay vapor en la línea de líquido. Esto pasa cuando el condensador no puede terminar de condensar todo el gas (por estar sucio, por temperatura ambiente muy alta, o por falta de gas). El resultado es que al capilar o TXV llega una mezcla en vez de líquido puro — la expansión es errática y el equipo enfría mal aunque tenga 'gas suficiente'."
+          "titulo": "Leer SH y SC juntos",
+          "tipo": "tabla",
+          "tabla": {
+            "headers": [
+              "SH",
+              "SC",
+              "Diagnóstico combinado"
+            ],
+            "filas": [
+              [
+                "Alto",
+                "Bajo/negativo",
+                "🔴 Falta de gas — fuga"
+              ],
+              [
+                "Bajo/negativo",
+                "Alto",
+                "🔴 Exceso de gas o TXV muy abierta"
+              ],
+              [
+                "Alto",
+                "Alto",
+                "🟠 TXV cerrada o restricción"
+              ],
+              [
+                "Normal",
+                "Normal",
+                "✅ Sistema correcto"
+              ],
+              [
+                "Normal",
+                "Bajo",
+                "🟡 Condensador sin disipar bien"
+              ]
+            ]
+          }
         }
-      ]
+      ],
+      "valores_referencia": [
+        {
+          "label": "SC normal Split",
+          "valor": "4°C – 8°C",
+          "color": "cyan"
+        },
+        {
+          "label": "SC mínimo",
+          "valor": "3°C",
+          "color": "orange"
+        },
+        {
+          "label": "SC de alarma",
+          "valor": "< 0°C",
+          "color": "red"
+        }
+      ],
+      "errores_comunes": [
+        "Medir la temperatura de la línea de líquido en el codo o en un punto con aislante — buscar un tramo recto sin aislante",
+        "Ignorar el SC porque 'el SH está bien' — los dos juntos cuentan la historia completa",
+        "Confundir SC alto con 'el condensador enfría bien' — SC alto es exceso de masa en el condensador"
+      ],
+      "mentor_frase": "El SH te dice lo que pasa en el evaporador. El SC te dice lo que pasa en el condensador. Con los dos tenés el sistema completo."
     },
     {
       "id": "sh-sc",
-      "titulo": "Sobrecalentamiento y Subenfriamiento",
-      "icono": "🌡️",
-      "subtitulo": "Las dos métricas más importantes del sistema refrigerante",
-      "intro": "El Delta T mide el aire. El SH y el SC miden el refrigerante. Son más precisos y te dicen exactamente qué está pasando dentro del sistema. Un técnico que sabe leer SH y SC diagnostica en minutos lo que otro tarda horas en encontrar.",
+      "titulo": "SH y SC — diagnóstico combinado",
+      "icono": "📊",
+      "color": "#00d9ff",
+      "subtitulo": "Leer los dos juntos para el diagnóstico completo",
+      "intro": "El SH y el SC son dos caras del mismo ciclo. Por separado orientan — juntos diagnostican. Esta guía combina los dos para los patrones más frecuentes en campo.",
       "conceptos": [
         {
-          "titulo": "¿Qué es el Sobrecalentamiento (SH)?",
-          "detalle": "El SH es la diferencia entre la temperatura real del gas en la línea de succión y la temperatura de saturación a esa presión. Si el gas a 120 PSI de R410A satura a 2°C y vos medís 12°C en la línea de succión, el SH es 10°C — perfectamente normal. El SH te dice si el evaporador está bien inundado. Rango normal en splits: 5°C a 12°C. Medición: manómetro en la línea de baja + termómetro de contacto en la línea de succión (línea gruesa, lo más cerca posible del compresor)."
+          "titulo": "Tabla de diagnóstico combinado",
+          "tipo": "tabla",
+          "tabla": {
+            "headers": [
+              "SH",
+              "SC",
+              "PSI baja",
+              "Diagnóstico",
+              "Certeza"
+            ],
+            "filas": [
+              [
+                "> 12°C",
+                "< 4°C o negativo",
+                "Normal o bajo",
+                "Falta de gas (fuga)",
+                "⭐⭐⭐⭐⭐"
+              ],
+              [
+                "< 0°C",
+                "Alto",
+                "Normal o alto",
+                "Exceso de gas o TXV muy abierta",
+                "⭐⭐⭐⭐"
+              ],
+              [
+                "> 12°C",
+                "> 10°C",
+                "Bajo",
+                "TXV/capilar cerrado o restricción",
+                "⭐⭐⭐⭐"
+              ],
+              [
+                "< 5°C pero > 0°C",
+                "Alto",
+                "Normal",
+                "Exceso de gas leve",
+                "⭐⭐⭐"
+              ],
+              [
+                "Normal",
+                "Bajo",
+                "Normal",
+                "Condensador con baja disipación",
+                "⭐⭐⭐"
+              ],
+              [
+                "Normal",
+                "Normal",
+                "Normal",
+                "Sistema correcto",
+                "⭐⭐⭐⭐⭐"
+              ]
+            ]
+          }
         },
         {
-          "titulo": "¿Qué es el Subenfriamiento (SC)?",
-          "detalle": "El SC es la diferencia entre la temperatura de saturación a la presión de alta y la temperatura real del líquido en la línea de líquido. Si el R410A a 330 PSI satura a 38°C y el líquido está a 32°C, el SC es 6°C — normal. El SC te dice si el condensador condensó bien el gas y si hay suficiente líquido en la línea. Rango normal en splits: 4°C a 8°C. Medición: manómetro en la línea de alta + termómetro de contacto en la línea de líquido (tubo fino, después del condensador)."
+          "titulo": "El patrón más peligroso: SH < 0°C",
+          "tipo": "clave",
+          "detalle": "SH negativo significa que el gas de succión está por debajo de la temperatura de saturación — hay gotas de refrigerante líquido en la succión. El compresor no comprime líquido. Las válvulas se doblan, el pistón puede romperse. Es una emergencia. Causas: turbina del evaporador detenida, TXV muy abierta, filtro del evaporador totalmente tapado. Apagar el equipo inmediatamente."
         },
         {
-          "titulo": "SH bajo — qué significa",
-          "detalle": "SH menor a 5°C: el evaporador está inundado. Hay más refrigerante del que puede evaporar — exceso de gas, o muy poco calor (airflow insuficiente). El riesgo grave es SH negativo o cerca de cero: líquido llega al compresor (golpe de líquido). Los compresores no comprimen líquidos — si pasa, se pueden romper internamente aunque el equipo siga funcionando por un tiempo."
+          "titulo": "Cómo usar el módulo SH/SC de la app",
+          "tipo": "practica",
+          "detalle": "En cualquier diagnóstico de Split: ingresar PSI de baja, temperatura de succión (línea gruesa a 15cm de la válvula), PSI de alta y temperatura de línea de líquido (línea fina antes del equipo interior). La app calcula SH y SC automáticamente y los integra al diagnóstico principal."
         },
         {
-          "titulo": "SH alto — qué significa",
-          "detalle": "SH mayor a 12°C: el evaporador está poco inundado. Falta refrigerante (fuga), hay una restricción (capilar, filtro deshidratador, TXV mal calibrado) o el compresor no está bombeando suficiente. Si el SH es muy alto con PSI bajo, es fuga. Si el PSI está normal o alto pero el SH está alto, sospechá de restricción."
-        },
-        {
-          "titulo": "SC bajo — qué significa",
-          "detalle": "SC menor a 4°C: el condensador no terminó de condensar bien o hay poco refrigerante. Cuando el SC es negativo, hay vapor en la línea de líquido — eso hace perder mucha eficiencia porque la expansión no puede trabajar bien con mezcla líquido-vapor. Causas: gas insuficiente, condensador muy sucio o temperatura ambiente muy alta."
-        },
-        {
-          "titulo": "SC alto — qué significa",
-          "detalle": "SC mayor a 8°C: hay demasiado líquido frío en la línea. Causas posibles: exceso de gas (alguien cargó de más), o válvula de expansión (TXV) muy cerrada que no deja pasar suficiente refrigerante al evaporador. El SC alto junto con SH alto y PSI de baja baja es el patrón clásico de TXV cerrada o filtro deshidratador tapado."
-        },
-        {
-          "titulo": "Patrones de diagnóstico SH + SC",
-          "detalle": "Los valores cobran sentido combinados: SH alto + SC bajo + PSI baja bajo = fuga de gas. SH bajo + SC alto + PSI baja normal = exceso de gas. SH alto + SC alto + PSI baja baja = restricción (capilar, filtro, TXV). SH bajo + SC bajo + PSI baja alta = condensador sobrecargado. SH normal + SC normal = sistema en rango, buscá el problema en otro lado."
+          "titulo": "Instrumentos necesarios",
+          "tipo": "tabla",
+          "tabla": {
+            "headers": [
+              "Instrumento",
+              "Para qué",
+              "Precisión necesaria"
+            ],
+            "filas": [
+              [
+                "Manifold de 2 vías",
+                "PSI baja y alta",
+                "±2 PSI"
+              ],
+              [
+                "Termómetro de contacto",
+                "Temp succión y línea líquido",
+                "±1°C"
+              ],
+              [
+                "Tabla P/T o módulo de la app",
+                "Convertir PSI a temp saturación",
+                "—"
+              ]
+            ]
+          }
         }
-      ]
+      ],
+      "valores_referencia": [
+        {
+          "label": "SH normal",
+          "valor": "5°C – 12°C",
+          "color": "cyan"
+        },
+        {
+          "label": "SC normal",
+          "valor": "4°C – 8°C",
+          "color": "cyan"
+        },
+        {
+          "label": "SH crítico",
+          "valor": "< 0°C → apagar",
+          "color": "red"
+        }
+      ],
+      "errores_comunes": [
+        "Medir solo el SH y no el SC — los dos juntos dan el diagnóstico, uno solo puede engañar",
+        "Cargar gas porque el SH está alto sin medir el SC — si el SC también está alto es TXV, no gas",
+        "Medir en los primeros 5 minutos de arranque — los valores fluctúan hasta que el sistema llega a régimen"
+      ],
+      "mentor_frase": "SH y SC son los análisis de laboratorio de la refrigeración. No son para técnicos avanzados — son para cualquiera que tenga un manifold y un termómetro. Aprendelos y multiplicás tu diagnóstico."
     },
     {
       "id": "secuencia-arranque",
       "titulo": "Secuencia de arranque del split",
-      "icono": "🔄",
-      "subtitulo": "Qué enciende primero, qué después y por qué — modo frío y calor",
-      "intro": "Antes de ir a revisar un aire, tenés que saber exactamente qué tiene que pasar cuando lo encendés. Si algo no ocurre en el orden correcto o en el tiempo esperado, ya tenés la pista de dónde buscar. Esto es lo que un técnico experimentado observa en los primeros 3 minutos frente al equipo.",
+      "icono": "🔌",
+      "color": "#44cc88",
+      "subtitulo": "Qué pasa en los primeros 10 minutos",
+      "intro": "El split no arranca instantáneamente. Hay una secuencia de eventos que el técnico debe conocer para distinguir comportamiento normal de falla.",
       "conceptos": [
         {
-          "titulo": "MODO FRÍO — Secuencia completa",
-          "detalle": "1) Tensión al equipo → el display interior enciende inmediatamente. Si no enciende: problema eléctrico antes de la placa (fusible, alimentación). 2) Señal del control remoto → el equipo pitea y muestra el setpoint. Si no responde al control: batería, sensor IR o placa receptora. 3) Ventilador interior arranca → primero en velocidad baja mientras el evaporador todavía no está frío. Es normal que los primeros 30-60 segundos el aire salga tibio. 4) Compresor arranca (30-60 seg después del ventilador interior) → escuchás el cambio de sonido del equipo exterior. En ON/OFF: arranque brusco con caída de tensión momentánea. En Inverter: arranque suave y progresivo. 5) Ventilador del condensador exterior arranca junto con el compresor o pocos segundos después. 6) Presión de baja empieza a caer, presión de alta empieza a subir → el sistema toma régimen en 5-10 minutos. 7) El evaporador interior se enfría → el ventilador aumenta velocidad. 8) El aire que sale empieza a bajar de temperatura → Delta T creciendo hacia 8-14°C. 9) El equipo alcanza el setpoint → el compresor se apaga (ON/OFF) o baja a mínima velocidad (Inverter). El ventilador interior sigue corriendo unos minutos más."
+          "titulo": "Secuencia normal de arranque",
+          "tipo": "tabla",
+          "tabla": {
+            "headers": [
+              "Tiempo",
+              "Evento",
+              "Normal"
+            ],
+            "filas": [
+              [
+                "0 seg",
+                "Encendido — unidad interior arranca ventilador",
+                "Fan inmediato"
+              ],
+              [
+                "3 min",
+                "Retardo de arranque del compresor (protección)",
+                "Compresor aún no corre"
+              ],
+              [
+                "3 min +",
+                "Compresor arranca — se escucha el cambio de sonido",
+                "Zumbido suave y continuo"
+              ],
+              [
+                "3-5 min",
+                "PSI de baja baja, PSI de alta sube",
+                "Manómetros en movimiento"
+              ],
+              [
+                "10-15 min",
+                "Presiones estables en régimen",
+                "Lectura válida para diagnóstico"
+              ],
+              [
+                "20-30 min",
+                "Temperatura interior llegando al setpoint",
+                "Sistema funcionando"
+              ]
+            ]
+          }
         },
         {
-          "titulo": "MODO CALOR (bomba de calor) — Secuencia completa",
-          "detalle": "1) Display enciende, el equipo recibe la señal de calor. 2) Hay una espera de 3-5 minutos si el equipo estaba en frío — protección para no invertir el ciclo de golpe. 3) Ventilador interior NO arranca inmediatamente → espera que el evaporador (que ahora actúa de condensador) se caliente. Si el ventilador soplara frío al principio, el usuario lo rechazaría. 4) Compresor arranca en modo inverso → la válvula de 4 vías invierte el ciclo. El condensador exterior ahora actúa de evaporador (absorbe calor del aire frío exterior). 5) Ventilador interior arranca recién cuando la temperatura del serpentín supera ≈30°C → ahora el aire que sale es caliente. 6) En días muy fríos (bajo 5°C exterior): el evaporador exterior puede congelarse → el equipo entra en modo deshielo automáticamente cada cierto tiempo. Durante el deshielo: el ventilador interior se detiene, puede salir un poco de vapor por la unidad exterior — es normal. 7) El equipo alcanza el setpoint → igual que en frío, el compresor reduce o se apaga."
+          "titulo": "El retardo de 3 minutos — no es falla",
+          "tipo": "clave",
+          "detalle": "Los splits modernos (ON/OFF e Inverter) tienen un retardo de 3 minutos entre el encendido y el arranque del compresor. Es una protección del fabricante para evitar arranques rápidos sucesivos. Si el cliente dice 'arrancás y no hace nada', esperá 3 minutos. Si en 3 minutos el compresor no arranca → ahí sí hay falla."
         },
         {
-          "titulo": "Tiempos normales — qué esperar",
-          "detalle": "Ventilador interior: enciende inmediatamente en frío, espera 2-5 min en calor. Compresor: 30-60 segundos después del encendido en frío (protección anti-arranque rápido). En algunos modelos hasta 3 minutos — es normal. Régimen estable: 10-15 minutos desde el encendido para medir PSI y AMP representativos. Delta T completo: 15-20 minutos. En Inverter el compresor nunca se apaga del todo en régimen — corre a baja velocidad. En ON/OFF el ciclo de encendido/apagado del compresor es cada 5-15 minutos según la demanda."
+          "titulo": "Cómo saber si el compresor está corriendo",
+          "tipo": "practica",
+          "detalle": "1) Escuchar — el compresor genera un sonido constante diferente al ventilador. 2) Palpar la cañería de descarga (línea fina, unidad exterior) — debe estar caliente a los 2 minutos. 3) Ver la cañería de retorno (línea gruesa) — en 5-10 minutos debe empezar a enfriarse. 4) En el manifold — el PSI de baja debe bajar del valor de equilibrio hacia el rango de trabajo."
         },
         {
-          "titulo": "Señales de arranque NORMAL vs ANORMAL",
-          "detalle": "NORMAL: pitido único al encender, ventilador interior arranca suave, compresor arranca con pequeña vibración en el exterior, el display muestra temperatura ambiente y setpoint. ANORMAL: múltiples pitidos o código de error en display → la placa detectó un problema antes de arrancar. Silencio total → problema eléctrico. Ventilador interior que arranca y se detiene a los pocos segundos → protección de la placa activada. Compresor que intenta arrancar, zumba y se apaga → capacitor o problema de compresor. Compresor que arranca y se apaga a los 2-3 minutos en frío → protección de alta o baja presión activada."
-        },
-        {
-          "titulo": "La válvula de 4 vías — el corazón del bomba de calor",
-          "detalle": "En equipos con modo calor existe la válvula de 4 vías (o inversora). Es la que invierte la dirección del refrigerante para cambiar de frío a calor. Cuando esta válvula falla o no cierra bien: el equipo puede dar frío en modo calor, calor en modo frío, o temperatura ambiente en ambos modos. El síntoma típico de válvula de 4 vías fallada es PSI de alta y baja que se igualan o se acercan mucho — el ciclo no puede separar bien las presiones. En modo calor con válvula fallada parcialmente: el equipo da algo de calor pero mucho menos que lo normal, y el PSI de baja queda más alto de lo esperado."
-        },
-        {
-          "titulo": "Qué observar en los primeros 3 minutos frente al equipo",
-          "detalle": "Un técnico experimentado hace esto al llegar: 1) Enciende el equipo y mira el display — ¿hay código de error? 2) Escucha si el ventilador interior arranca y cómo suena. 3) Va a la unidad exterior y escucha el compresor arrancar — ¿arranca limpio o zumba? 4) Toca la línea de succión a los 2 minutos — ¿empieza a enfriarse? 5) Observa si el ventilador del condensador gira. Con esos 5 datos, antes de conectar el manómetro, ya tiene el 60% del diagnóstico."
+          "titulo": "Valores al arranque vs en régimen",
+          "tipo": "tabla",
+          "tabla": {
+            "headers": [
+              "Parámetro",
+              "Al arranque (0-5 min)",
+              "En régimen (15+ min)"
+            ],
+            "filas": [
+              [
+                "PSI baja R410A",
+                "130-150 PSI (equilibrio)",
+                "115-140 PSI"
+              ],
+              [
+                "PSI alta R410A",
+                "130-150 PSI (equilibrio)",
+                "350-440 PSI"
+              ],
+              [
+                "Amperaje",
+                "Pico inicial, luego baja",
+                "Estable en rango nominal"
+              ],
+              [
+                "Delta T",
+                "Bajo (aún no enfría)",
+                "8-14°C"
+              ],
+              [
+                "SH",
+                "Puede ser negativo o 0",
+                "5-12°C"
+              ],
+              [
+                "Temperatura interior",
+                "Sin cambio visible",
+                "Bajando hacia el setpoint"
+              ]
+            ]
+          }
         }
-      ]
+      ],
+      "valores_referencia": [
+        {
+          "label": "Retardo de arranque",
+          "valor": "3 minutos",
+          "color": "orange"
+        },
+        {
+          "label": "Tiempo hasta régimen",
+          "valor": "15 minutos",
+          "color": "cyan"
+        },
+        {
+          "label": "PSI equilibrio R410A",
+          "valor": "~145 PSI",
+          "color": "cyan"
+        }
+      ],
+      "errores_comunes": [
+        "Medir el PSI y el amperaje en los primeros 5 minutos — los valores no son representativos",
+        "Diagnosticar 'no arranca' antes de que pasen los 3 minutos de retardo",
+        "Diagnosticar 'exceso de gas' por PSI alto en los primeros 2 minutos — es el PSI de equilibrio"
+      ],
+      "mentor_frase": "El técnico apurado hace diagnósticos equivocados. Esperá 15 minutos. El sistema te va a contar la verdad cuando llegue a régimen."
     }
   ]
 }

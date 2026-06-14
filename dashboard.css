@@ -4418,3 +4418,975 @@ font-size:13px;
 
 /* Home button cyan */
 .home-util-cyan { background: rgba(0,217,255,.12) !important; color: #00d9ff !important; }
+
+/* ===================================================
+   REFERENCIAS — TEORÍA ENRIQUECIDA v2
+   =================================================== */
+
+/* Lista de módulos — valores preview */
+.ref-module-vals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255,255,255,.05);
+}
+
+.ref-module-val-item {
+  font-size: 11px;
+  color: #556677;
+  background: rgba(255,255,255,.04);
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.ref-module-val-item strong { color: #8899bb; }
+
+/* Chips por tipo */
+.ref-chip-explicacion { background: rgba(100,150,255,.1); color: #6699cc; }
+.ref-chip-clave       { background: rgba(255,200,0,.1);   color: #cc9900; }
+.ref-chip-practica    { background: rgba(0,200,100,.1);   color: #33aa66; }
+.ref-chip-tabla       { background: rgba(200,100,255,.1); color: #9966cc; }
+
+/* Badge de tipo en detalle */
+.ref-tipo-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+
+.ref-tipo-explicacion { background: rgba(100,150,255,.12); color: #6699cc; }
+.ref-tipo-clave       { background: rgba(255,200,0,.12);   color: #cc9900; }
+.ref-tipo-practica    { background: rgba(0,200,100,.12);   color: #33aa66; }
+
+/* Tarjeta de concepto por tipo */
+.ref-tipo-card-clave {
+  border-left: 3px solid rgba(255,200,0,.5) !important;
+  background: rgba(255,200,0,.03) !important;
+}
+
+.ref-tipo-card-practica {
+  border-left: 3px solid rgba(0,200,100,.4) !important;
+  background: rgba(0,200,100,.03) !important;
+}
+
+.ref-tipo-card-tabla {
+  padding: 14px 12px !important;
+  background: rgba(7,17,31,.6) !important;
+  border: 1px solid rgba(255,255,255,.08) !important;
+}
+
+/* Tabla */
+.ref-tabla-wrap {
+  overflow-x: auto;
+  margin-top: 4px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+.ref-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11.5px;
+  min-width: 320px;
+}
+
+.ref-tabla thead tr {
+  background: rgba(0,217,255,.08);
+}
+
+.ref-tabla th {
+  padding: 9px 10px;
+  text-align: left;
+  color: #00d9ff;
+  font-weight: 700;
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  border-bottom: 1px solid rgba(0,217,255,.15);
+  white-space: nowrap;
+}
+
+.ref-tabla td {
+  padding: 8px 10px;
+  color: #99aabb;
+  border-bottom: 1px solid rgba(255,255,255,.04);
+  line-height: 1.45;
+}
+
+.ref-tabla tbody tr:last-child td { border-bottom: none; }
+
+.ref-tabla tbody tr:hover td {
+  background: rgba(255,255,255,.03);
+  color: #ccd6ee;
+}
+
+/* Valores de referencia */
+.ref-valores-bloque {
+  margin: 4px 16px 8px;
+  padding: 14px 16px;
+  background: rgba(7,17,31,.7);
+  border: 1px solid rgba(0,217,255,.15);
+  border-radius: 16px;
+}
+
+.ref-valores-titulo {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: #334455;
+  margin-bottom: 10px;
+}
+
+.ref-valores-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.ref-valor-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 9px 11px;
+  border-radius: 10px;
+  background: rgba(255,255,255,.04);
+}
+
+.ref-valor-cyan   { border: 1px solid rgba(0,217,255,.2); }
+.ref-valor-orange { border: 1px solid rgba(255,155,66,.2); }
+.ref-valor-green  { border: 1px solid rgba(0,200,100,.2); }
+.ref-valor-red    { border: 1px solid rgba(255,80,80,.2); }
+
+.ref-valor-label {
+  font-size: 10px;
+  color: #445566;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+}
+
+.ref-valor-val {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.ref-valor-cyan .ref-valor-val   { color: #00d9ff; }
+.ref-valor-orange .ref-valor-val { color: #ff9b42; }
+.ref-valor-green .ref-valor-val  { color: #44cc88; }
+.ref-valor-red .ref-valor-val    { color: #ff5252; }
+
+/* Errores comunes */
+.ref-errores-bloque {
+  margin: 4px 16px 8px;
+  padding: 14px 16px;
+  background: rgba(255,155,66,.04);
+  border: 1px solid rgba(255,155,66,.15);
+  border-radius: 16px;
+}
+
+.ref-errores-titulo {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: #7a4a1a;
+  margin-bottom: 10px;
+}
+
+.ref-error-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(255,155,66,.07);
+  font-size: 12.5px;
+  line-height: 1.55;
+}
+
+.ref-error-item:last-child { border-bottom: none; }
+
+.ref-error-ico {
+  color: #cc6622;
+  font-weight: 800;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.ref-error-txt { color: #99aabb; }
+
+/* Mentor en detalle de teoría */
+.ref-mentor-bloque {
+  margin: 4px 16px 8px;
+  padding: 16px;
+  background: rgba(0,217,255,.04);
+  border: 1px solid rgba(0,217,255,.15);
+  border-radius: 16px;
+}
+
+.ref-mentor-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.ref-mentor-avatar { font-size: 28px; }
+
+.ref-mentor-nombre {
+  font-size: 13px;
+  font-weight: 700;
+  color: #00d9ff;
+}
+
+.ref-mentor-sub {
+  font-size: 11px;
+  color: #334455;
+}
+
+.ref-mentor-frase {
+  font-size: 13px;
+  color: #ccd6ee;
+  font-style: italic;
+  line-height: 1.65;
+  padding: 10px 14px;
+  background: rgba(0,217,255,.05);
+  border-left: 3px solid rgba(0,217,255,.5);
+  border-radius: 0 10px 10px 0;
+}
+
+/* Módulo val items en lista */
+.ref-module-val-item.ref-valor-cyan   { border-color: rgba(0,217,255,.2); }
+.ref-module-val-item.ref-valor-orange { border-color: rgba(255,155,66,.2); }
+
+/* ===================================================
+   PRESUPUESTO PRO
+   =================================================== */
+
+/* Tabs */
+.presup-tabs {
+  display: flex;
+  gap: 6px;
+  padding: 10px 16px 0;
+}
+
+.presup-tab {
+  flex: 1;
+  padding: 9px 4px;
+  border-radius: 12px 12px 0 0;
+  border: none;
+  background: rgba(255,255,255,.05);
+  color: #556677;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .2s;
+}
+
+.presup-tab-active {
+  background: rgba(0,217,255,.12);
+  color: #00d9ff;
+  border-bottom: 2px solid #00d9ff;
+}
+
+/* Config btn inline */
+.presup-config-btn {
+  float: right;
+  background: rgba(0,217,255,.1);
+  border: 1px solid rgba(0,217,255,.25);
+  color: #00d9ff;
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* Empresa preview */
+.presup-empresa-preview {
+  padding: 8px 4px;
+}
+
+.presup-empresa-nombre {
+  font-size: 15px;
+  font-weight: 700;
+  color: #ccd6ee;
+  margin-bottom: 3px;
+}
+
+.presup-empresa-datos {
+  font-size: 11.5px;
+  color: #556677;
+}
+
+.presup-aviso {
+  font-size: 12px;
+  color: #cc7733;
+  padding: 8px 4px;
+}
+
+/* Textarea */
+.presup-textarea {
+  width: 100%;
+  resize: vertical;
+  font-family: inherit;
+  line-height: 1.6;
+  min-height: 80px;
+}
+
+/* Empty state */
+.presup-empty {
+  text-align: center;
+  padding: 32px 20px;
+  color: #445566;
+}
+
+/* Items list */
+.presup-items-list {
+  margin: 4px 16px 0;
+}
+
+.presup-item-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px 14px;
+  background: rgba(255,255,255,.04);
+  border-radius: 12px;
+  margin-bottom: 6px;
+  border: 1px solid rgba(255,255,255,.06);
+}
+
+.presup-item-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.presup-item-cat {
+  font-size: 10px;
+  color: #445566;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.presup-item-desc {
+  font-size: 13px;
+  color: #ccd6ee;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.presup-item-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.presup-item-precio {
+  font-size: 13px;
+  font-weight: 700;
+  color: #00d9ff;
+}
+
+.presup-item-del {
+  background: none;
+  border: none;
+  color: #ff5252;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 4px;
+  opacity: .7;
+}
+
+/* Total */
+.presup-total-bloque {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 12px 16px;
+  padding: 14px 16px;
+  background: rgba(0,217,255,.08);
+  border: 1.5px solid rgba(0,217,255,.3);
+  border-radius: 14px;
+}
+
+.presup-total-label {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  color: #00d9ff;
+}
+
+.presup-total-val {
+  font-size: 20px;
+  font-weight: 800;
+  color: #00d9ff;
+}
+
+/* Modal */
+.presup-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.75);
+  display: flex;
+  align-items: flex-end;
+  z-index: 1000;
+  padding: 16px;
+}
+
+.presup-modal-card {
+  background: #0a1628;
+  border: 1px solid rgba(0,217,255,.25);
+  border-radius: 20px;
+  padding: 20px;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.presup-modal-titulo {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ccd6ee;
+  margin-bottom: 4px;
+}
+
+.presup-modal-sub {
+  font-size: 11.5px;
+  color: #445566;
+  margin-bottom: 16px;
+}
+
+/* Vista previa */
+.presup-preview-card {
+  margin: 12px 16px;
+  background: rgba(7,17,31,.95);
+  border: 1px solid rgba(0,217,255,.2);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.prev-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 16px 18px 12px;
+  background: rgba(0,10,25,1);
+  border-bottom: 1px solid rgba(0,217,255,.1);
+}
+
+.prev-logo-bloque {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.prev-logo-ico {
+  font-size: 28px;
+}
+
+.prev-empresa-nombre {
+  font-size: 15px;
+  font-weight: 800;
+  color: #00d9ff;
+}
+
+.prev-empresa-mat {
+  font-size: 10px;
+  color: #445566;
+}
+
+.prev-empresa-datos {
+  font-size: 10px;
+  color: #445566;
+  padding: 4px 18px 10px;
+  background: rgba(0,10,25,1);
+}
+
+.prev-nro-bloque { text-align: right; }
+
+.prev-nro-label {
+  font-size: 9px;
+  letter-spacing: .1em;
+  color: #445566;
+  text-transform: uppercase;
+}
+
+.prev-nro {
+  font-size: 20px;
+  font-weight: 800;
+  color: #00d9ff;
+}
+
+.prev-fecha {
+  font-size: 10px;
+  color: #445566;
+}
+
+.prev-section {
+  padding: 12px 18px;
+}
+
+.prev-section-label {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #00d9ff;
+  margin-bottom: 5px;
+}
+
+.prev-cliente-nombre {
+  font-size: 15px;
+  font-weight: 700;
+  color: #dde8ff;
+  margin-bottom: 2px;
+}
+
+.prev-cliente-dato {
+  font-size: 11.5px;
+  color: #556677;
+  margin-top: 2px;
+}
+
+.prev-equipo-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.prev-equipo-tag {
+  font-size: 10.5px;
+  background: rgba(0,217,255,.1);
+  color: #00d9ff;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.prev-equipo-marca {
+  font-size: 11.5px;
+  color: #8899bb;
+}
+
+.prev-diagnostico {
+  font-size: 12px;
+  color: #8899bb;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.prev-divider {
+  height: 1px;
+  background: rgba(0,217,255,.08);
+  margin: 0 18px;
+}
+
+.prev-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11.5px;
+}
+
+.prev-tabla th {
+  text-align: left;
+  padding: 6px 0;
+  color: #00d9ff;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  border-bottom: 1px solid rgba(0,217,255,.15);
+}
+
+.prev-tabla td {
+  padding: 7px 0;
+  color: #8899bb;
+  border-bottom: 1px solid rgba(255,255,255,.03);
+}
+
+.prev-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 18px;
+  background: rgba(0,217,255,.08);
+  border-top: 1.5px solid rgba(0,217,255,.2);
+}
+
+.prev-total-label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  color: #00d9ff;
+}
+
+.prev-total-val {
+  font-size: 18px;
+  font-weight: 800;
+  color: #00d9ff;
+}
+
+.prev-notas {
+  padding: 10px 18px 14px;
+  font-size: 11px;
+  color: #445566;
+  font-style: italic;
+  line-height: 1.55;
+}
+
+.prev-footer {
+  padding: 10px 18px;
+  text-align: center;
+  font-size: 10px;
+  color: #2a3a55;
+  border-top: 1px solid rgba(255,255,255,.04);
+}
+
+/* Botones de acción */
+.presup-acciones {
+  display: flex;
+  gap: 10px;
+  padding: 12px 16px 24px;
+}
+
+.presup-pdf-btn {
+  flex: 2;
+  background: linear-gradient(135deg, #0066cc, #00aadd) !important;
+}
+
+/* Home green */
+.home-util-green { background: rgba(0,200,100,.12) !important; color: #44cc88 !important; }
+
+/* ===================================================
+   IDENTIFICADOR DE GAS POR PRESIÓN DE REPOSO
+   =================================================== */
+
+/* Card del identificador */
+.ft-id-gas-card {
+  margin: 8px 16px;
+  padding: 16px;
+  background: rgba(0,217,255,.05);
+  border: 1.5px solid rgba(0,217,255,.2);
+  border-radius: 16px;
+}
+
+.ft-id-gas-titulo {
+  font-size: 14px;
+  font-weight: 700;
+  color: #00d9ff;
+  margin-bottom: 4px;
+}
+
+.ft-id-gas-sub {
+  font-size: 11.5px;
+  color: #556677;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.ft-id-gas-row {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.ft-id-gas-field {
+  flex: 1;
+  min-width: 90px;
+}
+
+.ft-id-gas-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  color: #445566;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  margin-bottom: 4px;
+}
+
+.ft-id-gas-btn {
+  flex-shrink: 0;
+  height: 40px;
+  padding: 0 16px;
+}
+
+.ft-id-gas-resultado {
+  margin-top: 12px;
+}
+
+.ft-id-error {
+  font-size: 12.5px;
+  color: #ff9b42;
+  padding: 8px 10px;
+  background: rgba(255,155,66,.08);
+  border-radius: 8px;
+}
+
+/* Card de resultado */
+.ft-id-resultado-card {
+  background: rgba(7,17,31,.9);
+  border: 1.5px solid rgba(0,217,255,.25);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.ft-id-resultado-header {
+  padding: 14px 14px 10px;
+  background: rgba(0,10,25,.6);
+}
+
+.ft-id-gas-detectado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.ft-id-gas-nombre {
+  font-size: 20px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.ft-id-certeza {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.ft-id-barra-wrap {
+  height: 5px;
+  background: rgba(255,255,255,.08);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.ft-id-barra-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width .5s ease;
+}
+
+/* Fila de mediciones */
+.ft-id-medicion-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,.06);
+}
+
+.ft-id-med-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 10px;
+  background: rgba(7,17,31,.95);
+}
+
+.ft-id-med-label {
+  font-size: 9px;
+  font-weight: 700;
+  color: #334455;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.ft-id-med-val {
+  font-size: 14px;
+  font-weight: 800;
+  color: #ccd6ee;
+}
+
+/* Conclusión */
+.ft-id-conclusion {
+  padding: 12px 14px;
+  font-size: 12.5px;
+  color: #aabbd0;
+  line-height: 1.6;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+}
+
+.ft-id-id-nota {
+  padding: 8px 14px;
+  font-size: 11.5px;
+  color: #556677;
+  font-style: italic;
+  border-bottom: 1px solid rgba(255,255,255,.04);
+}
+
+/* Advertencia inflamable */
+.ft-id-warning-inflamable {
+  margin: 8px 14px;
+  padding: 10px 12px;
+  background: rgba(255,50,50,.1);
+  border: 1px solid rgba(255,50,50,.3);
+  border-radius: 8px;
+  font-size: 12px;
+  color: #ff6666;
+  line-height: 1.5;
+}
+
+/* Candidatos alternativos */
+.ft-id-alternos-titulo {
+  padding: 8px 14px 4px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #334455;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+
+.ft-id-alternos {
+  padding: 0 14px 4px;
+}
+
+.ft-id-alt-item {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255,255,255,.04);
+  flex-wrap: wrap;
+}
+
+.ft-id-alt-item:last-child { border-bottom: none; }
+
+.ft-id-alt-gas {
+  font-size: 12px;
+  font-weight: 700;
+  color: #8899bb;
+  min-width: 60px;
+}
+
+.ft-id-alt-ref {
+  font-size: 11px;
+  color: #445566;
+}
+
+.ft-id-alt-diff {
+  font-size: 11px;
+  color: #667788;
+}
+
+.ft-id-alt-pct {
+  font-size: 10.5px;
+  font-weight: 600;
+  margin-left: auto;
+}
+
+/* Tip */
+.ft-id-tip {
+  padding: 10px 14px 12px;
+  font-size: 11px;
+  color: #445566;
+  line-height: 1.55;
+  border-top: 1px solid rgba(255,255,255,.04);
+}
+
+.ft-id-tip strong { color: #5577aa; }
+
+/* ===== PRESIÓN DE REPOSO — bloques en tarjeta de gas ===== */
+
+.ft-section-reposo {
+  color: #7755cc !important;
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(120,80,200,.15);
+}
+
+.ft-reposo-bloque {
+  background: rgba(100,60,200,.05);
+  border: 1px solid rgba(120,80,200,.18);
+  border-radius: 10px;
+  padding: 4px 10px 8px;
+  margin-bottom: 2px;
+}
+
+.ft-reposo-intro {
+  font-size: 11px;
+  color: #445566;
+  font-style: italic;
+  padding: 6px 2px 8px;
+  line-height: 1.5;
+}
+
+.ft-reposo-tabla {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(120,80,200,.15);
+}
+
+.ft-reposo-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+  background: rgba(120,80,200,.12);
+  font-size: 9.5px;
+  font-weight: 700;
+  color: #9966cc;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.ft-reposo-fila {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 10px;
+  border-bottom: 1px solid rgba(120,80,200,.07);
+}
+
+.ft-reposo-fila:last-child { border-bottom: none; }
+
+.ft-reposo-ref {
+  background: rgba(120,80,200,.1);
+}
+
+.ft-reposo-temp {
+  font-size: 12px;
+  color: #8899bb;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ft-reposo-ref-tag {
+  font-size: 9px;
+  background: rgba(120,80,200,.25);
+  color: #9966cc;
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+.ft-reposo-psi {
+  font-size: 14px;
+  font-weight: 800;
+  color: #bb88ff;
+}
+
+.ft-reposo-id {
+  font-size: 11.5px;
+  color: #667788;
+  font-style: italic;
+  padding: 8px 2px 2px;
+  border-top: 1px solid rgba(120,80,200,.1);
+  margin-top: 6px;
+  line-height: 1.5;
+}

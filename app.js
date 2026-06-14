@@ -33,6 +33,7 @@ const Router = {
 "btu": () => BTUCalc.render(),
 "heladera-temp": () => HeladeraTempDx.render(),
 "vacio": () => VacioCarga.render(),
+"presupuesto": () => PresupuestoPRO.render(),
 // dev-tools eliminado
   },
 
@@ -248,6 +249,17 @@ const HVACApp = {
     <span class="home-util-arrow">›</span>
   </button>
 
+  <button class="home-util-item" id="openPresupuesto">
+    <div class="home-util-left">
+      <span class="home-util-ico home-util-green">📄</span>
+      <div>
+        <div class="home-util-name">Presupuesto PRO</div>
+        <div class="home-util-sub">Generá y enviá presupuestos en PDF</div>
+      </div>
+    </div>
+    <span class="home-util-arrow">›</span>
+  </button>
+
   <button class="home-util-item" id="openSeguridad">
     <div class="home-util-left">
       <span class="home-util-ico home-util-red">🛡️</span>
@@ -341,6 +353,7 @@ const HVACApp = {
       "openElectricas":    nav("referencias"),
       // Utilidades
       "openVacio":          nav("vacio"),
+      "openPresupuesto":    nav("presupuesto"),
       "openSeguridad":     nav("seguridad"),
       "openRuidos":        nav("ruidos"),
       "openInstalacion":   nav("instalacion"),

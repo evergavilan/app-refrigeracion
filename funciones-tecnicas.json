@@ -299,7 +299,16 @@
         "nota": "Gas en desuso — aún muy presente en AR",
         "psi_baja_normal": "55 a 75 PSI",
         "psi_alta_normal": "200 a 260 PSI",
-        "psi_nota": "Baja: línea gruesa (succión). Alta: línea fina (descarga)"
+        "psi_nota": "Baja: línea gruesa (succión). Alta: línea fina (descarga)",
+        "psi_reposo": {
+          "20": "67",
+          "25": "77",
+          "30": "90",
+          "35": "104",
+          "40": "119"
+        },
+        "nota_reposo": "Gas en desuso. Si medís este rango → R22 confirmado.",
+        "identificacion": "Único gas con PSI de reposo menor a 100 PSI a 25°C en splits. Inconfundible."
       },
       {
         "gas": "R410A",
@@ -311,7 +320,16 @@
         "nota": "Gas dominante en splits actuales",
         "psi_baja_normal": "115 a 140 PSI",
         "psi_alta_normal": "380 a 440 PSI",
-        "psi_nota": "Baja: línea gruesa (succión). Alta: línea fina (descarga)"
+        "psi_nota": "Baja: línea gruesa (succión). Alta: línea fina (descarga)",
+        "psi_reposo": {
+          "20": "163",
+          "25": "192",
+          "30": "224",
+          "35": "258",
+          "40": "296"
+        },
+        "nota_reposo": "Gas dominante en splits actuales. Presiones de reposo muy superiores al R22.",
+        "identificacion": "Si medís 180-200 PSI a temperatura ambiente normal → casi con certeza R410A."
       },
       {
         "gas": "R32",
@@ -323,7 +341,16 @@
         "nota": "Reemplaza R410A — mayor eficiencia. Inflamable A2L",
         "psi_baja_normal": "120 a 145 PSI",
         "psi_alta_normal": "400 a 460 PSI",
-        "psi_nota": "Presiones similares a R410A pero ligeramente más altas en descarga"
+        "psi_nota": "Presiones similares a R410A pero ligeramente más altas en descarga",
+        "psi_reposo": {
+          "20": "155",
+          "25": "182",
+          "30": "213",
+          "35": "246",
+          "40": "283"
+        },
+        "nota_reposo": "Similar al R410A pero ligeramente menor. Diferencia de 8-15 PSI respecto al R410A a igual temperatura.",
+        "identificacion": "Muy parecido al R410A. La diferencia exacta requiere termómetro y tabla P/T. Revisar plaqueta siempre."
       }
     ],
     "heladeras": [
@@ -338,7 +365,16 @@
         "nota": "Gas más común heladeras domésticas",
         "psi_baja_normal": "0 a 10 PSI",
         "psi_alta_normal": "100 a 140 PSI",
-        "psi_nota": "Baja puede estar cerca de 0 PSI en freezer doméstico"
+        "psi_nota": "Baja puede estar cerca de 0 PSI en freezer doméstico",
+        "psi_reposo": {
+          "20": "26",
+          "25": "33",
+          "30": "41",
+          "35": "51",
+          "40": "62"
+        },
+        "nota_reposo": "Heladeras domésticas y comerciales medianas. Presiones bajas comparadas con gases de splits.",
+        "identificacion": "Si medís 30-35 PSI a temperatura ambiente normal en una heladera → R134a. Si medís menos de 10 PSI o vacío → R600a."
       },
       {
         "gas": "R600a (Isobutano)",
@@ -351,7 +387,16 @@
         "nota": "Altamente inflamable — NO soldar encendido. Carga típica 60-100g",
         "psi_baja_normal": "-5 a 5 PSI (vacío posible)",
         "psi_alta_normal": "50 a 80 PSI",
-        "psi_nota": "Trabaja a presiones muy bajas — manómetro especial o en bar"
+        "psi_nota": "Trabaja a presiones muy bajas — manómetro especial o en bar",
+        "psi_reposo": {
+          "20": "-1",
+          "25": "2",
+          "30": "6",
+          "35": "11",
+          "40": "17"
+        },
+        "nota_reposo": "⚠️ Gas inflamable. A temperatura ambiente puede estar muy cerca del vacío o en leve vacío. Requiere manómetro especial o en bar.",
+        "identificacion": "Si el manómetro marca vacío o casi cero en una heladera → R600a. NUNCA usar con llama cerca."
       },
       {
         "gas": "R404A",
@@ -363,7 +408,16 @@
         "nota": "Exhibidoras y cámaras. En etapa de reemplazo por R448A",
         "psi_baja_normal": "15 a 35 PSI",
         "psi_alta_normal": "200 a 280 PSI",
-        "psi_nota": "Varía según temperatura de cámara — más frío = PSI baja más bajo"
+        "psi_nota": "Varía según temperatura de cámara — más frío = PSI baja más bajo",
+        "psi_reposo": {
+          "20": "119",
+          "25": "141",
+          "30": "165",
+          "35": "191",
+          "40": "220"
+        },
+        "nota_reposo": "Equipos comerciales (exhibidoras, cámaras). PSI de reposo intermedio entre R22 y R410A.",
+        "identificacion": "Si medís 130-150 PSI a temperatura normal en un equipo comercial → probable R404A o R448A."
       }
     ]
   },

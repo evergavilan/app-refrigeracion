@@ -101,11 +101,11 @@ const ReferenciasHVAC = {
     if (!filtrados.length) return this.renderEmpty("No hay resultados para esa búsqueda en Teoría.");
 
     return filtrados.map(m => `
-<div class="ref-module-card" data-teoria="${m.id}">
+<div class="ref-module-card" data-teoria="${m.id}" style="border-left:3px solid ${m.color || '#00d9ff'}22">
 
   <div class="ref-module-header">
-    <span class="ref-module-icono">${m.icono}</span>
-    <div>
+    <span class="ref-module-icono" style="color:${m.color || '#00d9ff'}">${m.icono}</span>
+    <div style="flex:1">
       <div class="ref-module-titulo">${m.titulo}</div>
       <div class="ref-module-sub">${m.subtitulo}</div>
     </div>
@@ -115,8 +115,14 @@ const ReferenciasHVAC = {
   <div class="ref-module-preview">${m.intro}</div>
 
   <div class="ref-module-chips">
-    ${m.conceptos.map(c => `<span class="ref-chip">${c.titulo}</span>`).join("")}
+    ${m.conceptos.map(c => `<span class="ref-chip ref-chip-${c.tipo || 'explicacion'}">${c.titulo}</span>`).join("")}
   </div>
+
+  ${m.valores_referencia?.length ? `
+  <div class="ref-module-vals">
+    ${m.valores_referencia.slice(0,2).map(v => `
+    <span class="ref-module-val-item ref-valor-${v.color || 'cyan'}">${v.label}: <strong>${v.valor}</strong></span>`).join("")}
+  </div>` : ""}
 
 </div>
 `).join("");
@@ -129,35 +135,108 @@ const ReferenciasHVAC = {
     const app = document.getElementById("app");
     if (!app) return;
 
-    app.innerHTML = `
+    const accentColor = m.color || "#00d9ff";
 
+    // Render cada concepto según su tipo
+    const renderConcepto = (c, i) => {
+      const tipoLabel = {
+        explicacion: "📖 Explicación",
+        clave:       "🔑 Concepto clave",
+        practica:    "🔧 En la práctica",
+        tabla:       ""
+      }[c.tipo] || "";
+
+      const badgeHTML = tipoLabel
+        ? `<span class="ref-tipo-badge ref-tipo-${c.tipo}">${tipoLabel}</span>`
+        : "";
+
+      const contenidoHTML = c.tipo === "tabla" && c.tabla
+        ? this.renderTabla(c.tabla)
+        : `<div class="ref-concepto-detalle">${c.detalle}</div>`;
+
+      return `
+<div class="ref-concepto-card ref-tipo-card-${c.tipo || 'explicacion'}">
+  ${badgeHTML}
+  <div class="ref-concepto-titulo">${c.titulo}</div>
+  ${contenidoHTML}
+</div>`;
+    };
+
+    // Valores de referencia
+    const valoresHTML = m.valores_referencia?.length ? `
+<div class="ref-valores-bloque">
+  <div class="ref-valores-titulo">📐 Valores de referencia</div>
+  <div class="ref-valores-grid">
+    ${m.valores_referencia.map(v => `
+    <div class="ref-valor-item ref-valor-${v.color || 'cyan'}">
+      <span class="ref-valor-label">${v.label}</span>
+      <span class="ref-valor-val">${v.valor}</span>
+    </div>`).join("")}
+  </div>
+</div>` : "";
+
+    // Errores comunes
+    const erroresHTML = m.errores_comunes?.length ? `
+<div class="ref-errores-bloque">
+  <div class="ref-errores-titulo">⚠️ Errores frecuentes</div>
+  ${m.errores_comunes.map(e => `
+  <div class="ref-error-item">
+    <span class="ref-error-ico">✗</span>
+    <span class="ref-error-txt">${e}</span>
+  </div>`).join("")}
+</div>` : "";
+
+    // Mentor frase
+    const mentorHTML = m.mentor_frase ? `
+<div class="ref-mentor-bloque">
+  <div class="ref-mentor-header">
+    <span class="ref-mentor-avatar">👨‍🔧</span>
+    <div>
+      <div class="ref-mentor-nombre">El Mentor</div>
+      <div class="ref-mentor-sub">30 años en el rubro</div>
+    </div>
+  </div>
+  <div class="ref-mentor-frase">"${m.mentor_frase}"</div>
+</div>` : "";
+
+    app.innerHTML = `
 <header class="hvac-header">
   <div class="module-back" id="backRefs">←</div>
   <div>
-    <h1 class="hvac-title">${m.icono} ${m.titulo}</h1>
+    <h1 class="hvac-title" style="color:${accentColor}">${m.icono} ${m.titulo}</h1>
     <p class="hvac-subtitle">${m.subtitulo}</p>
   </div>
 </header>
 
-<div style="margin:12px 16px;">
-  <div class="ref-intro-card">${m.intro}</div>
+<div style="margin:12px 16px 4px;">
+  <div class="ref-intro-card" style="border-left-color:${accentColor}">${m.intro}</div>
 </div>
 
-${m.conceptos.map((c, i) => `
-<div class="ref-concepto-card">
-  <div class="ref-concepto-num">${i + 1}</div>
-  <div class="ref-concepto-titulo">${c.titulo}</div>
-  <div class="ref-concepto-detalle">${c.detalle}</div>
-</div>
-`).join("")}
+${m.conceptos.map(renderConcepto).join("")}
 
-<div class="mentor-card" style="margin:16px;">
-  <div class="mentor-label">HVAC MENTOR</div>
-  <p class="mentor-text">"La teoría sin práctica es vacía, pero la práctica sin teoría es ciega."</p>
-</div>
+${valoresHTML}
+${erroresHTML}
+${mentorHTML}
 
-`;
+<div style="height:24px"></div>`;
+
     document.getElementById("backRefs")?.addEventListener("click", () => this.render("teoria"));
+  },
+
+  renderTabla(tabla) {
+    if (!tabla?.headers || !tabla?.filas) return "";
+    return `
+<div class="ref-tabla-wrap">
+  <table class="ref-tabla">
+    <thead>
+      <tr>${tabla.headers.map(h => `<th>${h}</th>`).join("")}</tr>
+    </thead>
+    <tbody>
+      ${tabla.filas.map(fila => `
+      <tr>${fila.map(celda => `<td>${celda}</td>`).join("")}</tr>`).join("")}
+    </tbody>
+  </table>
+</div>`;
   },
 
   // ═══════════════════════════════════════════════

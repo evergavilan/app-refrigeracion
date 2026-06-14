@@ -184,6 +184,31 @@ ${sub === 'aires' ? this.renderCapAires() : this.renderCapHeladeras()}`;
   <button class="ft-subtab ${sub==='aires'?'active':''}" data-sub="aires">❄️ Aires</button>
   <button class="ft-subtab ${sub==='heladeras'?'active':''}" data-sub="heladeras">🧊 Heladeras</button>
 </div>
+
+<!-- IDENTIFICADOR DE GAS POR PRESIÓN DE REPOSO -->
+<div class="ft-id-gas-card">
+  <div class="ft-id-gas-titulo">🔍 Identificar gas por presión de reposo</div>
+  <div class="ft-id-gas-sub">Equipo apagado ≥ 30 minutos. Conectá el manómetro y medí.</div>
+  <div class="ft-id-gas-row">
+    <div class="ft-id-gas-field">
+      <label class="ft-id-gas-label">PSI medido</label>
+      <input type="number" class="hvac-input" id="ftIdPsi" placeholder="ej: 185" min="0" max="600"/>
+    </div>
+    <div class="ft-id-gas-field">
+      <label class="ft-id-gas-label">Temp. ambiente</label>
+      <select class="hvac-select" id="ftIdTemp">
+        <option value="20">20°C</option>
+        <option value="25" selected>25°C</option>
+        <option value="30">30°C</option>
+        <option value="35">35°C</option>
+        <option value="40">40°C</option>
+      </select>
+    </div>
+    <button class="hvac-btn btn-primary ft-id-gas-btn" id="ftIdBtnIdentificar">Identificar</button>
+  </div>
+  <div id="ftIdResultado" class="ft-id-gas-resultado" style="display:none"></div>
+</div>
+
 <div class="ft-info-badge">🌡️ Temperaturas normales de trabajo. Fuera de rango = problema</div>
 ${sub === 'aires' ? this.renderTempAires() : this.renderTempHeladeras()}`;
   },
@@ -219,6 +244,24 @@ ${sub === 'aires' ? this.renderTempAires() : this.renderTempHeladeras()}`;
     <div class="ft-psi-nota">⚙️ ${item.psi_nota}</div>
   </div>` : ""}
 
+  ${item.psi_reposo ? `
+  <div class="ft-section-label ft-section-reposo">🔌 Presión de reposo (equipo apagado)</div>
+  <div class="ft-reposo-bloque">
+    <div class="ft-reposo-intro">Con el equipo apagado y temperatura ambiente estabilizada. Sirve para identificar el gas sin etiqueta.</div>
+    <div class="ft-reposo-tabla">
+      <div class="ft-reposo-header">
+        <span>Temp. amb.</span><span>PSI reposo</span>
+      </div>
+      ${["20","25","30","35","40"].map(t => `
+      <div class="ft-reposo-fila ${t==="25"?"ft-reposo-ref":""}">
+        <span class="ft-reposo-temp">${t}°C${t==="25"?" <span class='ft-reposo-ref-tag'>ref</span>":""}</span>
+        <span class="ft-reposo-psi">${item.psi_reposo[t]} PSI</span>
+      </div>`).join("")}
+    </div>
+    ${item.identificacion ? `<div class="ft-reposo-id">🔍 ${item.identificacion}</div>` : ""}
+    ${item.nota_reposo ? `<div class="ft-psi-nota" style="margin-top:6px">⚠️ ${item.nota_reposo}</div>` : ""}
+  </div>` : ""}
+
   <div class="ft-nota">💡 ${item.nota}</div>
 </div>`).join("");
   },
@@ -251,6 +294,24 @@ ${sub === 'aires' ? this.renderTempAires() : this.renderTempHeladeras()}`;
       <span class="ft-row-value ft-psi-alta">${item.psi_alta_normal}</span>
     </div>
     <div class="ft-psi-nota">⚙️ ${item.psi_nota}</div>
+  </div>` : ""}
+
+  ${item.psi_reposo ? `
+  <div class="ft-section-label ft-section-reposo">🔌 Presión de reposo (equipo apagado)</div>
+  <div class="ft-reposo-bloque">
+    <div class="ft-reposo-intro">Con el equipo apagado y temperatura ambiente estabilizada. Sirve para identificar el gas sin etiqueta.</div>
+    <div class="ft-reposo-tabla">
+      <div class="ft-reposo-header">
+        <span>Temp. amb.</span><span>PSI reposo</span>
+      </div>
+      ${["20","25","30","35","40"].map(t => `
+      <div class="ft-reposo-fila ${t==="25"?"ft-reposo-ref":""}">
+        <span class="ft-reposo-temp">${t}°C${t==="25"?" <span class='ft-reposo-ref-tag'>ref</span>":""}</span>
+        <span class="ft-reposo-psi">${item.psi_reposo[t]} PSI</span>
+      </div>`).join("")}
+    </div>
+    ${item.identificacion ? `<div class="ft-reposo-id">🔍 ${item.identificacion}</div>` : ""}
+    ${item.nota_reposo ? `<div class="ft-psi-nota" style="margin-top:6px">⚠️ ${item.nota_reposo}</div>` : ""}
   </div>` : ""}
 
   <div class="ft-nota">💡 ${item.nota}</div>
@@ -1007,6 +1068,14 @@ ${d.fallas.map(f => `
       });
     });
 
+    // ─── IDENTIFICADOR DE GAS POR REPOSO ────────────
+    document.getElementById("ftIdBtnIdentificar")?.addEventListener("click", () => {
+      this.identificarGasPorReposo();
+    });
+    document.getElementById("ftIdPsi")?.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") this.identificarGasPorReposo();
+    });
+
 
 
     // ─── CALCULADORA SH ─────────────────────────────
@@ -1355,5 +1424,145 @@ ${d.fallas.map(f => `
         this.bindContentEvents();
       });
     });
+  },
+
+  // ═══════════════════════════════════════════════
+  // IDENTIFICADOR DE GAS POR PRESIÓN DE REPOSO
+  // Compara el PSI medido contra todos los gases
+  // con interpolación entre temperaturas
+  // ═══════════════════════════════════════════════
+  identificarGasPorReposo() {
+    const psiInput  = document.getElementById("ftIdPsi");
+    const tempSel   = document.getElementById("ftIdTemp");
+    const resultDiv = document.getElementById("ftIdResultado");
+    if (!psiInput || !tempSel || !resultDiv) return;
+
+    const psiMedido = Number(psiInput.value);
+    const tempAmb   = tempSel.value;
+
+    if (!psiMedido || psiMedido <= 0) {
+      resultDiv.style.display = "block";
+      resultDiv.innerHTML = `<div class="ft-id-error">⚠️ Ingresá el PSI medido con el equipo apagado.</div>`;
+      return;
+    }
+
+    // Todos los gases con datos de reposo
+    const aires    = this.data?.temperaturas?.aires    || [];
+    const heladeras= this.data?.temperaturas?.heladeras|| [];
+    const todos    = [...aires, ...heladeras];
+
+    // Calcular diferencia de cada gas al PSI medido
+    const resultados = todos
+      .filter(g => g.psi_reposo && g.psi_reposo[tempAmb])
+      .map(g => {
+        const psiRef = Number(g.psi_reposo[tempAmb]);
+        const diff   = Math.abs(psiMedido - psiRef);
+        const pct    = Math.round((diff / psiRef) * 100);
+        return {
+          gas:    g.gas,
+          psiRef,
+          diff,
+          pct,
+          nota:   g.nota_reposo || "",
+          id:     g.identificacion || "",
+          esCrit: g.gas.includes("R600") // inflamable
+        };
+      })
+      .sort((a, b) => a.diff - b.diff);
+
+    if (!resultados.length) {
+      resultDiv.style.display = "block";
+      resultDiv.innerHTML = `<div class="ft-id-error">⚠️ Sin datos para esa temperatura.</div>`;
+      return;
+    }
+
+    const mejor   = resultados[0];
+    const segundo = resultados[1];
+
+    // Calcular certeza
+    const certeza = mejor.pct <= 3  ? 99
+                  : mejor.pct <= 6  ? 95
+                  : mejor.pct <= 10 ? 88
+                  : mejor.pct <= 15 ? 75
+                  : mejor.pct <= 22 ? 60
+                  : 40;
+
+    const certColor = certeza >= 90 ? "#00cc66"
+                    : certeza >= 75 ? "#00d9ff"
+                    : certeza >= 60 ? "#ff9b42"
+                    : "#ff5252";
+
+    // Texto de conclusión según certeza
+    const conclusion = certeza >= 90
+      ? `✅ El PSI de ${psiMedido} PSI a ${tempAmb}°C corresponde con alta certeza a <strong>${mejor.gas}</strong>. PSI de referencia: ${mejor.psiRef} PSI (diferencia de solo ${mejor.diff} PSI = ${mejor.pct}%).`
+      : certeza >= 70
+      ? `🟡 El PSI más cercano corresponde a <strong>${mejor.gas}</strong> (${mejor.psiRef} PSI de referencia, diferencia ${mejor.diff} PSI). Pero la diferencia es significativa — puede ser variación de temperatura o gas mezclado.`
+      : `🔴 El PSI de ${psiMedido} PSI no coincide bien con ningún gas conocido (diferencia mínima de ${mejor.diff} PSI respecto a ${mejor.gas}). Verificá que el equipo lleve ≥30 min apagado y que la temperatura sea estable.`;
+
+    // Candidatos alternativos
+    const alternativosHTML = resultados.slice(1, 3).map(r => `
+      <div class="ft-id-alt-item">
+        <span class="ft-id-alt-gas">${r.gas}</span>
+        <span class="ft-id-alt-ref">${r.psiRef} PSI ref.</span>
+        <span class="ft-id-alt-diff">±${r.diff} PSI</span>
+        <span class="ft-id-alt-pct" style="color:${r.pct<=10?"#ff9b42":"#556677"}">${r.pct}% diferencia</span>
+      </div>`).join("");
+
+    // Advertencia R600a (inflamable)
+    const r600Warning = mejor.gas.includes("R600")
+      ? `<div class="ft-id-warning-inflamable">🔴 <strong>R600a (isobutano) es INFLAMABLE.</strong> No usar herramientas que generen chispa. Ventilación obligatoria. No usar manómetro no apto para gases inflamables.</div>`
+      : "";
+
+    // Mostrar resultado
+    resultDiv.style.display = "block";
+    resultDiv.innerHTML = `
+<div class="ft-id-resultado-card">
+
+  <div class="ft-id-resultado-header">
+    <div class="ft-id-gas-detectado">
+      <span class="ft-id-gas-nombre">${mejor.gas}</span>
+      <span class="ft-id-certeza" style="color:${certColor}">${certeza}% certeza</span>
+    </div>
+    <div class="ft-id-barra-wrap">
+      <div class="ft-id-barra-fill" style="width:${certeza}%;background:${certColor}"></div>
+    </div>
+  </div>
+
+  <div class="ft-id-medicion-row">
+    <div class="ft-id-med-item">
+      <span class="ft-id-med-label">PSI medido</span>
+      <span class="ft-id-med-val">${psiMedido}</span>
+    </div>
+    <div class="ft-id-med-item">
+      <span class="ft-id-med-label">PSI referencia</span>
+      <span class="ft-id-med-val" style="color:${certColor}">${mejor.psiRef}</span>
+    </div>
+    <div class="ft-id-med-item">
+      <span class="ft-id-med-label">Diferencia</span>
+      <span class="ft-id-med-val" style="color:${mejor.pct<=6?"#44cc88":"#ff9b42"}">±${mejor.diff} PSI</span>
+    </div>
+    <div class="ft-id-med-item">
+      <span class="ft-id-med-label">Temp. amb.</span>
+      <span class="ft-id-med-val">${tempAmb}°C</span>
+    </div>
+  </div>
+
+  <div class="ft-id-conclusion">${conclusion}</div>
+
+  ${mejor.id ? `<div class="ft-id-id-nota">🔍 ${mejor.id}</div>` : ""}
+
+  ${r600Warning}
+
+  ${alternativosHTML ? `
+  <div class="ft-id-alternos-titulo">Otros candidatos:</div>
+  <div class="ft-id-alternos">${alternativosHTML}</div>` : ""}
+
+  <div class="ft-id-tip">
+    💡 <strong>Para mayor precisión:</strong> Equipo apagado ≥ 30 minutos. Temperatura ambiente estable. Manómetro en puerto de baja (línea gruesa). Si el resultado no coincide con la etiqueta → probable contaminación o gas mezclado.
+  </div>
+
+</div>`;
+
   }
+
 };
