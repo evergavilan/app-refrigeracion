@@ -2177,5 +2177,314 @@
         405
       ]
     ]
+  },
+  "gases": {
+    "info": "Gases refrigerantes vigentes y en transición en Argentina. GWP = Potencial de Calentamiento Global (CO2=1). Dato clave para decidir reemplazos y procedimientos.",
+    "refrigerantes": [
+      {
+        "nombre": "R22",
+        "nombre_quimico": "Clorodifluorometano (HCFC-22)",
+        "icono": "⚠️",
+        "badge": "extincion",
+        "clase_seguridad": "A1",
+        "inflamable": false,
+        "gwp": 1810,
+        "ozono": true,
+        "uso_tipico": [
+          "Splits viejos",
+          "Comercial antiguo",
+          "Equipos pre-2010"
+        ],
+        "estado_arg": "Sin producción desde 2020 en Argentina. Solo se consigue reciclado o stock viejo. Precio elevado.",
+        "presion_baja_25c": "114 PSI (baja)",
+        "reemplazos": [
+          {
+            "gas": "R410A",
+            "tipo": "sustituto_nuevo_equipo",
+            "compatible_directo": false,
+            "label": "Reemplazo para equipo nuevo — NO mezclar",
+            "detalle": "R410A trabaja a presiones mucho más altas que R22. Los componentes (compresor, válvulas, cañerías) son incompatibles. Solo para equipo nuevo diseñado para R410A."
+          },
+          {
+            "gas": "R422D",
+            "tipo": "reemplazo_directo",
+            "compatible_directo": false,
+            "label": "Drop-in sin aceite mineral — requiere flush",
+            "detalle": "Reemplazo directo de R22 en la MISMA máquina sin cambiar el compresor. Pero requiere recuperar todo el R22, hacer flush del aceite mineral y cargar aceite POE. No se mezclan."
+          },
+          {
+            "gas": "R417A",
+            "tipo": "reemplazo_directo",
+            "compatible_directo": false,
+            "label": "Drop-in — recuperar R22 primero",
+            "detalle": "Similar al R422D. Se puede usar en el mismo equipo pero hay que recuperar el R22 original y limpiar el sistema. Compatible con aceite mineral en algunos casos — verificar."
+          }
+        ],
+        "notas_campo": [
+          "⚠️ El R22 reciclado puede tener impurezas — verificar pureza antes de cargar.",
+          "Si el equipo con R22 necesita recarga frecuente, evaluar directamente el reemplazo del equipo.",
+          "Nunca mezclar R22 con ningún otro gas — siempre recuperar primero."
+        ],
+        "mentor": "El R22 tiene los días contados. Si el cliente te llama por un equipo viejo de R22 que perdió gas, hacé los números con él: el gas sale caro, el equipo ya tiene años, y la eficiencia es baja. A veces conviene cambiar el equipo."
+      },
+      {
+        "nombre": "R410A",
+        "nombre_quimico": "Mezcla R32/R125 (50/50)",
+        "icono": "✅",
+        "badge": "vigente",
+        "clase_seguridad": "A1",
+        "inflamable": false,
+        "gwp": 2088,
+        "ozono": false,
+        "uso_tipico": [
+          "Splits residenciales",
+          "Splits comerciales",
+          "VRV/VRF"
+        ],
+        "estado_arg": "Gas dominante en splits desde 2010. En transición hacia R32 en modelos nuevos. Ampliamente disponible.",
+        "presion_baja_25c": "130 PSI (trabajo normal)",
+        "reemplazos": [
+          {
+            "gas": "R32",
+            "tipo": "sustituto_nuevo_equipo",
+            "compatible_directo": false,
+            "label": "Reemplazo en equipos nuevos — NO mezclar",
+            "detalle": "R32 reemplaza al R410A en equipos nuevos. Presiones de trabajo similares pero NO son miscibles. No mezclar bajo ninguna circunstancia. Si cargás R32 sobre R410A, el sistema queda contaminado."
+          },
+          {
+            "gas": "R454B (Opteon XL41)",
+            "tipo": "sustituto_nuevo_equipo",
+            "compatible_directo": false,
+            "label": "Reemplazo HFO — equipos diseñados nuevos",
+            "detalle": "GWP 466 — mucho más bajo que R410A. Levemente inflamable (A2L). Aún poco disponible en Argentina. Tendencia para equipos de próxima generación."
+          }
+        ],
+        "notas_campo": [
+          "💡 El R410A es mezcla azeotrópica — se carga SIEMPRE en fase líquida (cilindro invertido o con tubo).",
+          "Si cargás en fase gaseosa, el R32 y el R125 se separan y la mezcla ya no es R410A.",
+          "⚠️ GWP 2088 — está en la mira de regulaciones futuras. Los nuevos modelos ya vienen con R32."
+        ],
+        "mentor": "El R410A tiene un problema: hay que cargarlo en líquido y mucha gente lo carga en gas. Si cargás en gas, estás cambiando la proporción R32/R125 y el equipo nunca va a trabajar bien. Esto explica muchos 'poco frío' después de una recarga."
+      },
+      {
+        "nombre": "R32",
+        "nombre_quimico": "Difluorometano (HFC-32)",
+        "icono": "🌱",
+        "badge": "actual",
+        "clase_seguridad": "A2L",
+        "inflamable": true,
+        "clase_inflamabilidad": "A2L — levemente inflamable",
+        "gwp": 675,
+        "ozono": false,
+        "uso_tipico": [
+          "Splits modernos",
+          "Inverter de nueva generación",
+          "Equipos desde 2018 aprox."
+        ],
+        "estado_arg": "Tendencia creciente en modelos nuevos. Ya es el gas de la mayoría de los splits actuales de marcas japonesas y coreanas.",
+        "presion_baja_25c": "133 PSI (trabajo normal)",
+        "reemplazos": [
+          {
+            "gas": "R454B",
+            "tipo": "sustituto_nuevo_equipo",
+            "compatible_directo": false,
+            "label": "Futuro reemplazo — GWP mucho más bajo",
+            "detalle": "GWP 466 vs 675 del R32. Aún en fase de adopción. No disponible masivamente en Argentina. El R32 va a tener vida larga antes de que esto sea relevante localmente."
+          }
+        ],
+        "notas_campo": [
+          "🔥 A2L: levemente inflamable — concentración mínima de inflamabilidad alta. No requiere las mismas precauciones que el R600a, pero evitar llama directa y chispas durante la carga.",
+          "💡 Se carga en FASE LÍQUIDA igual que el R410A.",
+          "Presiones muy similares al R410A — la diferencia es de 5-15 PSI. Siempre verificar plaqueta para no confundirlos."
+        ],
+        "mentor": "El R32 es A2L — levemente inflamable. Mucha gente lo trata igual que el R410A. No es lo mismo: ventilá el área antes de trabajar y no uses herramientas que hagan chispas. Con R32 el riesgo es bajo comparado con el R600a, pero está."
+      },
+      {
+        "nombre": "R134a",
+        "nombre_quimico": "Tetrafluoroetano (HFC-134a)",
+        "icono": "❄️",
+        "badge": "vigente",
+        "clase_seguridad": "A1",
+        "inflamable": false,
+        "gwp": 1430,
+        "ozono": false,
+        "uso_tipico": [
+          "Heladeras domésticas",
+          "Exhibidoras comerciales medianas",
+          "Automotriz (reemplazado por R1234yf)"
+        ],
+        "estado_arg": "Vigente en heladeras domésticas y comerciales. En automotores está siendo reemplazado por R1234yf pero en refrigeración doméstica sigue ampliamente.",
+        "presion_baja_25c": "26-35 PSI (reposo a temperatura ambiente)",
+        "reemplazos": [
+          {
+            "gas": "R600a (Isobutano)",
+            "tipo": "sustituto_nuevo_equipo",
+            "compatible_directo": false,
+            "label": "Reemplazo ecológico — solo equipo diseñado",
+            "detalle": "GWP 3 vs 1430. Los fabricantes están migrando a R600a en heladeras nuevas. NO son compatibles — los sistemas de R134a no están diseñados para las bajas presiones del R600a."
+          },
+          {
+            "gas": "R1234yf",
+            "tipo": "sustituto_nuevo_equipo",
+            "compatible_directo": false,
+            "label": "Reemplazo automotriz — no relevante en doméstico",
+            "detalle": "Solo relevante para aire acondicionado automotriz. No aplica a refrigeración doméstica ni comercial."
+          }
+        ],
+        "notas_campo": [
+          "💡 En heladeras: presiones muy bajas. Si medís menos de 0 PSI (vacío) en una heladera, pensá en R600a antes que en fuga.",
+          "El R134a y el R600a tienen presiones de reposo completamente distintas — clave para identificar el gas sin etiqueta."
+        ],
+        "mentor": "El R134a en heladeras trabaja a presiones muy bajas. Muchos técnicos de split no están acostumbrados — el manómetro puede parecer vacío cuando en realidad está cargado. Verificar siempre qué gas tiene la heladera antes de tocarla."
+      },
+      {
+        "nombre": "R600a (Isobutano)",
+        "nombre_quimico": "Isobutano (HC-600a)",
+        "icono": "🔥",
+        "badge": "actual",
+        "clase_seguridad": "A3",
+        "inflamable": true,
+        "clase_inflamabilidad": "A3 — ALTAMENTE INFLAMABLE",
+        "gwp": 3,
+        "ozono": false,
+        "uso_tipico": [
+          "Heladeras domésticas nuevas",
+          "Freezers modernos",
+          "Refrigeración doméstica europea y asiática"
+        ],
+        "estado_arg": "Creciente en heladeras nuevas importadas. Varias marcas ya vienen de fábrica con R600a. Carga muy pequeña (50-120g).",
+        "presion_baja_25c": "2-6 PSI reposo (presiones muy bajas)",
+        "reemplazos": [],
+        "notas_campo": [
+          "🔴 A3 ALTAMENTE INFLAMABLE — límites de inflamabilidad: 1.8% a 8.5% en aire. Concentraciones alcanzables en espacios cerrados.",
+          "🔴 NUNCA soldar con llama en un sistema de R600a sin vaciarlo y purgar con nitrógeno.",
+          "🔴 Ventilación obligatoria. Sin fuentes de ignición (llamas, chispas, motores de baja tensión).",
+          "💡 La carga es muy pequeña (50-120g). Usar balanza de precisión de 1g.",
+          "💡 Manómetro especial — las presiones son tan bajas que un manómetro convencional no discrimina bien. Algunos modelos requieren manómetro en Bar."
+        ],
+        "mentor": "El R600a es el que más respeto me da. No porque sea difícil técnicamente — la carga es pequeña y las presiones son bajas. Sino porque una heladera en la cocina de alguien, con una fuga de R600a, puede acumular gas cerca del piso y explotar con el piloto de la cocina. Ventilación siempre. Sin excepciones."
+      },
+      {
+        "nombre": "R404A",
+        "nombre_quimico": "Mezcla R125/R143a/R134a",
+        "icono": "⚠️",
+        "badge": "extincion",
+        "clase_seguridad": "A1",
+        "inflamable": false,
+        "gwp": 3922,
+        "ozono": false,
+        "uso_tipico": [
+          "Exhibidoras comerciales",
+          "Cámaras frigoríficas",
+          "Transporte refrigerado"
+        ],
+        "estado_arg": "En proceso de eliminación regulatoria. GWP extremadamente alto (3922). Muchos países ya lo prohibieron. En Argentina todavía se usa pero su futuro es incierto.",
+        "presion_baja_25c": "141 PSI (reposo a 25°C)",
+        "reemplazos": [
+          {
+            "gas": "R448A (Solstice N40)",
+            "tipo": "reemplazo_directo",
+            "compatible_directo": false,
+            "label": "Mejor drop-in disponible — recuperar R404A",
+            "detalle": "GWP 1387 — 65% menos que R404A. Temperaturas y presiones similares. Requiere recuperar el R404A y cambiar el aceite POE. Compatible con los mismos compresores y válvulas. Es el reemplazo más recomendado en Argentina."
+          },
+          {
+            "gas": "R449A (Opteon XP40)",
+            "tipo": "reemplazo_directo",
+            "compatible_directo": false,
+            "label": "Drop-in alternativo — similar al R448A",
+            "detalle": "GWP 1397. Similar rendimiento al R448A. También requiere recuperar el R404A. Algunas marcas de compresores recomiendan uno u otro — verificar."
+          },
+          {
+            "gas": "R452A",
+            "tipo": "reemplazo_directo",
+            "compatible_directo": false,
+            "label": "Drop-in para bajas temperaturas",
+            "detalle": "Mejor rendimiento en aplicaciones de temperatura muy baja (-35°C o menos). GWP 2140 — menos eficiente en reducción de GWP pero buen reemplazo técnico para cámaras negativas."
+          }
+        ],
+        "notas_campo": [
+          "⚠️ GWP 3922 — el más alto de los gases en uso. Cada kg de R404A equivale a casi 4 toneladas de CO2.",
+          "💡 Al reemplazar por R448A: recuperar TODO el R404A, limpiar el sistema, cambiar aceite POE, cargar R448A.",
+          "La carga de R448A es aproximadamente un 2-5% menos que la de R404A en el mismo equipo.",
+          "⚠️ El R404A es mezcla zeótropa — se fracción al ventilar. Siempre recuperar con recuperadora."
+        ],
+        "mentor": "El R404A tiene los días contados y con razón — GWP 3922 es un disparate. Cuando tenés que intervenir un equipo de R404A, es el momento de hablar con el cliente sobre el R448A. El reemplazo es una vuelta de aceite, cambio de gas y listo. No es un cambio de equipo."
+      },
+      {
+        "nombre": "R448A",
+        "nombre_quimico": "Mezcla HFC/HFO (Solstice N40)",
+        "icono": "🌱",
+        "badge": "reemplazo",
+        "clase_seguridad": "A1",
+        "inflamable": false,
+        "gwp": 1387,
+        "ozono": false,
+        "uso_tipico": [
+          "Reemplazo de R404A",
+          "Exhibidoras comerciales nuevas",
+          "Cámaras frigoríficas modernas"
+        ],
+        "estado_arg": "Disponible en Argentina como reemplazo del R404A. Crecimiento sostenido. El reemplazo drop-in más recomendado para refrigeración comercial.",
+        "presion_baja_25c": "~150 PSI (similar a R404A, levemente mayor)",
+        "reemplazos": [],
+        "notas_campo": [
+          "💡 Contiene HFO (hidrofluoroolefina) — más sensible a la humedad. Vacío más prolongado al reemplazar.",
+          "Rendimiento energético similar o mejor al R404A en la mayoría de las aplicaciones.",
+          "Compatible con aceite POE — el mismo que usaba el R404A. Verificar que esté limpio antes de recargar.",
+          "⚠️ Es mezcla zeótropa — recuperar siempre con recuperadora, no purgar a la atmósfera."
+        ],
+        "mentor": "El R448A es la respuesta correcta cuando te preguntan qué poner en lugar del R404A. No es un parche — es una mejora real: menos GWP, mismo rendimiento, mismos compresores. El trabajo extra es el cambio de aceite, que deberías hacer igual cada ciertos años."
+      },
+      {
+        "nombre": "R422D",
+        "nombre_quimico": "Mezcla R125/R134a/R600a",
+        "icono": "🔄",
+        "badge": "reemplazo",
+        "clase_seguridad": "A1",
+        "inflamable": false,
+        "gwp": 2729,
+        "ozono": false,
+        "uso_tipico": [
+          "Reemplazo de R22 en equipos existentes",
+          "Retrofit de splits viejos"
+        ],
+        "estado_arg": "Gas de transición para equipos viejos de R22 que aún funcionan bien pero necesitan recarga. Ampliamente usado en retrofits.",
+        "presion_baja_25c": "~105 PSI (trabajo, similar a R22)",
+        "reemplazos": [],
+        "notas_campo": [
+          "💡 Diseñado específicamente como drop-in de R22 en el mismo equipo.",
+          "⚠️ NO mezclar con R22 — recuperar todo el R22 antes de cargar R422D.",
+          "Requiere cambio de aceite: el R422D no es compatible con el aceite mineral del R22. Usar aceite POE o MO/AB.",
+          "Rendimiento levemente inferior al R22 original — normal y aceptable.",
+          "La carga suele ser 5-10% menor que la carga original de R22."
+        ],
+        "mentor": "El R422D me salvó en más de un trabajo. El cliente tiene un equipo viejo de R22 que todavía funciona pero perdió gas. Con el R22 caro y escaso, el R422D es la solución: recuperás el R22 que queda, limpiás, cargás R422D y el equipo sigue. No es perfecto pero cumple."
+      },
+      {
+        "nombre": "R1234yf",
+        "nombre_quimico": "2,3,3,3-Tetrafluoropropeno (HFO)",
+        "icono": "🚗",
+        "badge": "actual",
+        "clase_seguridad": "A2L",
+        "inflamable": true,
+        "clase_inflamabilidad": "A2L — levemente inflamable",
+        "gwp": 4,
+        "ozono": false,
+        "uso_tipico": [
+          "Aire acondicionado automotriz (reemplaza R134a en autos nuevos)"
+        ],
+        "estado_arg": "Presente en autos nuevos importados desde aprox. 2017. Requiere equipamiento específico — NO compatible con herramientas de R134a.",
+        "presion_baja_25c": "~37 PSI (similar al R134a)",
+        "reemplazos": [],
+        "notas_campo": [
+          "🚗 Exclusivo de automotriz — no confundir con refrigeración doméstica/comercial.",
+          "⚠️ Requiere manifold, mangueras y recuperadora específicos para R1234yf — NO usar con herramientas de R134a.",
+          "A2L: levemente inflamable. Ventilación obligatoria al trabajar.",
+          "💡 GWP 4 — prácticamente neutro. Es el gas del futuro para automotriz."
+        ],
+        "mentor": "El R1234yf es solo para el taller de auto. Si te llega un auto nuevo con aire acondicionado, fijate en la etiqueta — si dice R1234yf necesitás el equipo específico. Con las herramientas de R134a no podés tocarlo."
+      }
+    ]
   }
 }

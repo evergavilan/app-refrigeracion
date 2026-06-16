@@ -5390,3 +5390,499 @@ font-size:13px;
   margin-top: 6px;
   line-height: 1.5;
 }
+
+/* ===================================================
+   CAÑERÍA Y TUERCAS — TAB CAÑO
+   =================================================== */
+
+/* Aviso general */
+.can-aviso {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin: 10px 16px 8px;
+  padding: 11px 13px;
+  background: rgba(255,155,66,.07);
+  border: 1px solid rgba(255,155,66,.2);
+  border-radius: 12px;
+  font-size: 12px;
+  color: #99aabb;
+  line-height: 1.55;
+}
+.can-aviso-ico { flex-shrink: 0; font-size: 15px; }
+
+/* Referencia rápida de tuercas */
+.can-ref-tuercas {
+  margin: 0 16px 10px;
+  padding: 12px 14px;
+  background: rgba(0,217,255,.05);
+  border: 1.5px solid rgba(0,217,255,.2);
+  border-radius: 14px;
+}
+.can-ref-titulo {
+  font-size: 12px;
+  font-weight: 700;
+  color: #00d9ff;
+  margin-bottom: 10px;
+}
+.can-ref-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.can-ref-item {
+  display: grid;
+  grid-template-columns: 44px 80px 72px 1fr;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 8px;
+  background: rgba(0,217,255,.04);
+  border-radius: 8px;
+  border: 1px solid rgba(0,217,255,.08);
+}
+.can-ref-pulg {
+  font-size: 14px;
+  font-weight: 800;
+  color: #00d9ff;
+}
+.can-ref-hex {
+  font-size: 12px;
+  font-weight: 700;
+  color: #ccd6ee;
+}
+.can-ref-torque {
+  font-size: 11px;
+  color: #ff9b42;
+  font-weight: 700;
+}
+.can-ref-uso {
+  font-size: 10.5px;
+  color: #556677;
+  line-height: 1.4;
+}
+
+/* Tip de torque */
+.can-torque-tip {
+  margin: 0 16px 10px;
+  padding: 11px 13px;
+  background: rgba(255,100,0,.06);
+  border: 1px solid rgba(255,100,0,.2);
+  border-radius: 12px;
+}
+.can-torque-tip-titulo {
+  font-size: 12px;
+  font-weight: 700;
+  color: #ff9b42;
+  margin-bottom: 5px;
+}
+.can-torque-tip-body {
+  font-size: 12px;
+  color: #8899bb;
+  line-height: 1.6;
+}
+.can-torque-tip-body strong { color: #ccd6ee; }
+.can-torque-tip-body em { color: #ff9b42; font-style: normal; font-weight: 600; }
+
+/* Card de cada frigoría */
+.can-card {
+  margin: 0 16px 10px;
+  background: rgba(7,17,31,.85);
+  border: 1.5px solid rgba(255,255,255,.08);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.can-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 14px 10px;
+  background: rgba(0,10,30,.6);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.can-fg {
+  font-size: 16px;
+  font-weight: 800;
+  color: #ccd6ee;
+}
+.can-btu {
+  font-size: 10.5px;
+  color: #556677;
+  margin-top: 2px;
+}
+.can-largo-max {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1px;
+}
+.can-largo-label {
+  font-size: 9px;
+  color: #334455;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: .04em;
+}
+.can-largo-val {
+  font-size: 14px;
+  font-weight: 800;
+  color: #00d9ff;
+}
+
+/* Líneas de cañería */
+.can-lineas {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: rgba(255,255,255,.04);
+}
+
+.can-linea {
+  padding: 10px 14px;
+  background: rgba(7,17,31,.9);
+}
+
+.can-linea-tipo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+.can-linea-ico { font-size: 13px; }
+.can-linea-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #99aabb;
+}
+.can-linea-sub {
+  font-size: 10px;
+  color: #334455;
+}
+
+.can-linea-datos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+.can-dato {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 7px 8px;
+  background: rgba(255,255,255,.04);
+  border-radius: 8px;
+}
+.can-dato-label {
+  font-size: 9px;
+  font-weight: 700;
+  color: #334455;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+}
+.can-dato-val {
+  font-size: 14px;
+  font-weight: 800;
+  color: #ccd6ee;
+  line-height: 1;
+}
+.can-dato-mm {
+  font-size: 9.5px;
+  color: #445566;
+  margin-top: 1px;
+}
+
+/* Colores diferenciados por línea */
+.can-linea-liq .can-dato { border-top: 2px solid rgba(0,120,220,.3); }
+.can-linea-suc .can-dato { border-top: 2px solid rgba(220,50,50,.3); }
+.can-val-liq { color: #4499ff !important; }
+.can-val-suc { color: #ff6655 !important; }
+
+/* Nota de la card */
+.can-nota {
+  padding: 9px 14px;
+  font-size: 11.5px;
+  color: #445566;
+  font-style: italic;
+  border-top: 1px solid rgba(255,255,255,.04);
+  line-height: 1.5;
+}
+
+/* Nota final */
+.can-nota-final {
+  margin: 0 16px 20px;
+  padding: 12px 14px;
+  font-size: 12px;
+  color: #7a8899;
+  background: rgba(255,255,255,.03);
+  border-radius: 10px;
+  line-height: 1.6;
+}
+.can-nota-final strong { color: #99aabb; }
+
+/* ===================================================
+   GASES — TAB COMPLETO
+   =================================================== */
+
+/* Tabla GWP comparativa */
+.gas-gwp-header {
+  margin: 10px 16px 8px;
+  padding: 14px;
+  background: rgba(7,17,31,.9);
+  border: 1px solid rgba(0,217,255,.15);
+  border-radius: 14px;
+}
+.gas-gwp-titulo {
+  font-size: 11px;
+  font-weight: 700;
+  color: #00d9ff;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.gas-gwp-barras { display: flex; flex-direction: column; gap: 5px; }
+.gas-gwp-fila {
+  display: grid;
+  grid-template-columns: 64px 1fr 48px;
+  align-items: center;
+  gap: 8px;
+}
+.gas-gwp-nombre {
+  font-size: 11px;
+  font-weight: 700;
+  color: #8899bb;
+}
+.gas-gwp-barra-wrap {
+  height: 8px;
+  background: rgba(255,255,255,.06);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.gas-gwp-barra {
+  height: 100%;
+  border-radius: 4px;
+  transition: width .6s ease;
+}
+.gas-gwp-val {
+  font-size: 11px;
+  font-weight: 700;
+  text-align: right;
+}
+
+/* Cards de gas */
+.gas-card {
+  margin: 0 16px 10px;
+  background: rgba(7,17,31,.88);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+.gas-card-header {
+  padding: 14px 16px 10px;
+  background: rgba(0,8,20,.7);
+}
+
+.gas-nombre-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+
+.gas-icono { font-size: 16px; }
+
+.gas-nombre {
+  font-size: 20px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.gas-badge {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  padding: 3px 8px;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
+.gas-inflamable-tag {
+  font-size: 10px;
+  font-weight: 700;
+  color: #ff6644;
+  background: rgba(255,80,50,.12);
+  border: 1px solid rgba(255,80,50,.3);
+  padding: 2px 7px;
+  border-radius: 6px;
+}
+
+.gas-quimico {
+  font-size: 11px;
+  color: #445566;
+  margin-bottom: 4px;
+}
+
+.gas-estado-ar,
+.gas-estado-arg {
+  font-size: 12px;
+  color: #7a9ab0;
+  line-height: 1.5;
+}
+
+/* Datos en grid */
+.gas-datos-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,.05);
+}
+
+.gas-dato {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 9px 8px;
+  background: rgba(7,17,31,.95);
+}
+
+.gas-dato-label {
+  font-size: 9px;
+  font-weight: 700;
+  color: #334455;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.gas-dato-val {
+  font-size: 13px;
+  font-weight: 800;
+  color: #ccd6ee;
+  line-height: 1.2;
+}
+
+/* Aplicaciones / uso típico */
+.gas-aplicaciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 10px 14px;
+  border-top: 1px solid rgba(255,255,255,.04);
+}
+
+.gas-app-chip {
+  font-size: 11px;
+  color: #8899bb;
+  background: rgba(255,255,255,.05);
+  padding: 3px 9px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,.07);
+}
+
+/* Reemplazos */
+.gas-reemplazos {
+  padding: 10px 14px 6px;
+  border-top: 1px solid rgba(255,255,255,.05);
+}
+
+.gas-reemplazos-titulo {
+  font-size: 10px;
+  font-weight: 800;
+  color: #445566;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  margin-bottom: 8px;
+}
+
+.gas-reemplazo-item {
+  padding: 9px 11px;
+  background: rgba(255,255,255,.04);
+  border-radius: 10px;
+  margin-bottom: 6px;
+  border: 1px solid rgba(255,255,255,.06);
+}
+
+.gas-reemplazo-header {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+
+.gas-reemplazo-gas {
+  font-size: 14px;
+  font-weight: 800;
+  color: #ccd6ee;
+}
+
+.gas-reemplazo-badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 5px;
+  border: 1px solid;
+}
+
+.gas-compatible-tag {
+  font-size: 10px;
+  color: #44cc88;
+  font-weight: 700;
+}
+
+.gas-incompatible-tag {
+  font-size: 10px;
+  color: #ff9b42;
+  font-weight: 700;
+}
+
+.gas-reemplazo-label {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #8899bb;
+  margin-bottom: 3px;
+}
+
+.gas-reemplazo-detalle {
+  font-size: 11px;
+  color: #556677;
+  line-height: 1.55;
+}
+
+/* Notas de campo */
+.gas-notas {
+  padding: 8px 14px 10px;
+  border-top: 1px solid rgba(255,255,255,.04);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.gas-nota-item {
+  font-size: 12px;
+  color: #8899bb;
+  line-height: 1.55;
+  padding: 6px 9px;
+  background: rgba(255,255,255,.03);
+  border-radius: 7px;
+  border-left: 2px solid rgba(0,217,255,.2);
+}
+
+/* Mentor */
+.gas-mentor {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 10px 14px 12px;
+  border-top: 1px solid rgba(0,217,255,.08);
+  background: rgba(0,217,255,.03);
+}
+
+.gas-mentor-ico { font-size: 20px; flex-shrink: 0; }
+
+.gas-mentor-txt {
+  font-size: 12px;
+  color: #8899cc;
+  font-style: italic;
+  line-height: 1.6;
+}

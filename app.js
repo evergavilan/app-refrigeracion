@@ -23,8 +23,11 @@ const Router = {
 "shsc": () => FuncionesTecnicas.render("shsc"),
 "ntc": () => FuncionesTecnicas.render("ntc"),
 "calc": () => FuncionesTecnicas.render("calc"),
+"gases": () => FuncionesTecnicas.render("gases"),
+"caneria": () => FuncionesTecnicas.render("caneria"),
+"relay": () => FuncionesTecnicas.render("relay"),
+"resistencias": () => FuncionesTecnicas.render("resistencias"),
     "shsc":      () => FuncionesTecnicas.render("shsc"),
-"ntc":       () => FuncionesTecnicas.render("ntc"),
     "historial":  ()      => Historial.render(),
     "dx-historial": ()    => DxHistorial.render(),
     "seguridad":  ()      => SeguridadPRO.render(),
@@ -213,6 +216,21 @@ const HVACApp = {
     <span class="home-tool-label">NTC</span>
   </button>
 
+  <button class="home-tool-btn" id="openTemp">
+    <span class="home-tool-ico">🌡️</span>
+    <span class="home-tool-label">Temperatura</span>
+  </button>
+
+  <button class="home-tool-btn" id="openGases">
+    <span class="home-tool-ico">⚗️</span>
+    <span class="home-tool-label">Gases</span>
+  </button>
+
+  <button class="home-tool-btn" id="openCaneria">
+    <span class="home-tool-ico">🔧</span>
+    <span class="home-tool-label">Cañería</span>
+  </button>
+
   <button class="home-tool-btn" id="openCalc">
     <span class="home-tool-ico">🧮</span>
     <span class="home-tool-label">Calculadoras</span>
@@ -221,6 +239,16 @@ const HVACApp = {
   <button class="home-tool-btn" id="openBTU">
     <span class="home-tool-ico">📐</span>
     <span class="home-tool-label">BTU</span>
+  </button>
+
+  <button class="home-tool-btn" id="openRelay">
+    <span class="home-tool-ico">🔴</span>
+    <span class="home-tool-label">Relay / PTC</span>
+  </button>
+
+  <button class="home-tool-btn" id="openResistencias">
+    <span class="home-tool-ico">🌀</span>
+    <span class="home-tool-label">Resistencias</span>
   </button>
 
   <button class="home-tool-btn" id="openReferencias">
@@ -244,17 +272,6 @@ const HVACApp = {
       <div>
         <div class="home-util-name">Vacío y Carga</div>
         <div class="home-util-sub">Procedimiento paso a paso con timers</div>
-      </div>
-    </div>
-    <span class="home-util-arrow">›</span>
-  </button>
-
-  <button class="home-util-item" id="openPresupuesto">
-    <div class="home-util-left">
-      <span class="home-util-ico home-util-green">📄</span>
-      <div>
-        <div class="home-util-name">Presupuesto PRO</div>
-        <div class="home-util-sub">Generá y enviá presupuestos en PDF</div>
       </div>
     </div>
     <span class="home-util-arrow">›</span>
@@ -347,13 +364,17 @@ const HVACApp = {
       "openAMP":           nav("amp"),
       "openCapacitor":     nav("capacitor"),
       "openNTC":           nav("ntc"),
+      "openTemp":          nav("temp"),
+      "openGases":         nav("gases"),
+      "openCaneria":       nav("caneria"),
       "openCalc":          nav("calc"),
       "openBTU":           nav("btu"),
+      "openRelay":         nav("relay"),
+      "openResistencias":  nav("resistencias"),
       "openReferencias":   nav("referencias"),
       "openElectricas":    nav("referencias"),
       // Utilidades
       "openVacio":          nav("vacio"),
-      "openPresupuesto":    nav("presupuesto"),
       "openSeguridad":     nav("seguridad"),
       "openRuidos":        nav("ruidos"),
       "openInstalacion":   nav("instalacion"),

@@ -47,6 +47,8 @@ const FuncionesTecnicas = {
   <button class="ft-tab ${startTab==='relay'?'active':''}"       data-tab="relay">🔴 RELAY</button>
   <button class="ft-tab ${startTab==='calc'?'active':''}"		data-tab="calc">🧮 CALC</button>
   <button class="ft-tab ${startTab==='shsc'?'active':''}"		data-tab="shsc">🌡️ SH/SC</button>
+  <button class="ft-tab ${startTab==='caneria'?'active':''}" data-tab="caneria">🔧 CAÑO</button>
+  <button class="ft-tab ${startTab==='gases'?'active':''}" data-tab="gases">⚗️ GASES</button>
 </div>
 
 <div id="ft-content">
@@ -68,6 +70,8 @@ const FuncionesTecnicas = {
       case "relay":        return this.renderRelay();
       case "shsc":         return this.renderSHSC();
       case "calc":         return this.renderCalc();
+      case "caneria":      return this.renderCaneria();
+      case "gases":         return this.renderGases();
       default:             return this.renderAmp();
     }
   },
@@ -1424,6 +1428,353 @@ ${d.fallas.map(f => `
         this.bindContentEvents();
       });
     });
+  },
+
+  // ═══════════════════════════════════════════════
+  // GASES — tipos, estado, reemplazos, compatibilidad
+  // ═══════════════════════════════════════════════
+  renderGases() {
+    const gases = this.data?.gases?.refrigerantes || [];
+    if (!gases.length) return `<div style="padding:20px;color:#445566">Sin datos de gases.</div>`;
+
+    const badgeConfig = {
+      extincion:  { label: "EN EXTINCIÓN",  color: "#ff5252", bg: "rgba(255,80,80,.15)"  },
+      vigente:    { label: "VIGENTE",        color: "#00cc66", bg: "rgba(0,200,100,.12)"  },
+      actual:     { label: "ACTUAL",         color: "#00d9ff", bg: "rgba(0,217,255,.12)"  },
+      transicion: { label: "EN TRANSICIÓN",  color: "#ff9b42", bg: "rgba(255,155,66,.15)" },
+      reemplazo:  { label: "DROP-IN",        color: "#bb88ff", bg: "rgba(150,100,255,.15)"}
+    };
+
+    const gwpColor = (gwp) =>
+      !gwp || gwp < 10  ? "#44cc88"
+      : gwp < 700       ? "#00d9ff"
+      : gwp < 1500      ? "#ff9b42"
+      : "#ff5252";
+
+    // ── Tabla GWP comparativa ──
+    const maxGWP = 4000;
+    const sortedGWP = [...gases].sort((a, b) => (a.gwp || 3) - (b.gwp || 3));
+
+    const gwpHTML = `
+<div class="gas-gwp-header">
+  <div class="gas-gwp-titulo">📊 GWP comparativo — menor es mejor para el clima</div>
+  <div class="gas-gwp-barras">
+    ${sortedGWP.map(g => {
+      const gwp   = g.gwp || 3;
+      const w     = Math.max(3, Math.round(gwp / maxGWP * 100));
+      const color = gwpColor(gwp);
+      return `<div class="gas-gwp-fila">
+        <span class="gas-gwp-nombre">${g.nombre}</span>
+        <div class="gas-gwp-barra-wrap"><div class="gas-gwp-barra" style="width:${w}%;background:${color}"></div></div>
+        <span class="gas-gwp-val" style="color:${color}">${gwp}</span>
+      </div>`;
+    }).join("")}
+  </div>
+</div>`;
+
+    // ── Cards de cada gas ──
+    const cardsHTML = gases.map(g => {
+      const badge   = badgeConfig[g.badge] || badgeConfig.vigente;
+      const gwp     = g.gwp || 3;
+      const gwpC    = gwpColor(gwp);
+
+      // Reemplazos
+      const reemplazosHTML = g.reemplazos?.length ? `
+<div class="gas-reemplazos">
+  <div class="gas-reemplazos-titulo">🔄 Reemplazos / Sustitutos</div>
+  ${g.reemplazos.map(r => `
+  <div class="gas-reemplazo-item">
+    <div class="gas-reemplazo-header">
+      <span class="gas-reemplazo-gas">${r.gas}</span>
+      <span class="gas-reemplazo-badge" style="color:${r.tipo === "reemplazo_directo" ? "#44cc88" : "#ff9b42"};border:1px solid ${r.tipo === "reemplazo_directo" ? "#44cc8844" : "#ff9b4244"};padding:2px 7px;border-radius:20px;font-size:9px;font-weight:800;">${r.tipo === "reemplazo_directo" ? "Reemplazo directo" : "Solo equipo nuevo"}</span>
+      <span style="font-size:11px;font-weight:700;color:${r.compatible_directo ? "#44cc88" : "#ff9b42"}">${r.compatible_directo ? "✅ Compatible" : "⚠️ No mezclar"}</span>
+    </div>
+    <div class="gas-reemplazo-label">${r.label}</div>
+    <div class="gas-reemplazo-detalle">${r.detalle}</div>
+  </div>`).join("")}
+</div>` : "";
+
+      // Notas de campo
+      const notasHTML = g.notas_campo?.length ? `
+<div class="gas-notas">
+  ${g.notas_campo.map(n => `<div class="gas-nota-item">${n}</div>`).join("")}
+</div>` : "";
+
+      // Mentor
+      const mentorHTML = g.mentor ? `
+<div class="gas-mentor">
+  <span class="gas-mentor-ico">👨‍🔧</span>
+  <span class="gas-mentor-txt">"${g.mentor}"</span>
+</div>` : "";
+
+      return `
+<div class="gas-card" style="border-left:3px solid ${badge.color}">
+
+  <div class="gas-card-header">
+    <div class="gas-nombre-row">
+      <span class="gas-icono">${g.icono}</span>
+      <span class="gas-nombre">${g.nombre}</span>
+      <span class="gas-badge" style="color:${badge.color};background:${badge.bg};padding:3px 9px;border-radius:20px;font-size:10px;font-weight:800;">${badge.label}</span>
+      ${g.inflamable ? `<span class="gas-inflamable-tag">🔥 ${g.clase_inflamabilidad || "INFLAMABLE"}</span>` : ""}
+    </div>
+    <div class="gas-quimico">${g.nombre_quimico || ""}</div>
+    <div class="gas-estado-arg">${g.estado_arg || ""}</div>
+  </div>
+
+  <div class="gas-datos-grid">
+    <div class="gas-dato">
+      <span class="gas-dato-label">GWP</span>
+      <span class="gas-dato-val" style="color:${gwpC}">${gwp}</span>
+    </div>
+    <div class="gas-dato">
+      <span class="gas-dato-label">Seguridad</span>
+      <span class="gas-dato-val" style="font-size:12px">${g.clase_seguridad || "—"}</span>
+    </div>
+    <div class="gas-dato">
+      <span class="gas-dato-label">Ozono</span>
+      <span class="gas-dato-val" style="color:${g.ozono ? "#ff5252" : "#44cc88"};font-size:12px">${g.ozono ? "⚠️ Sí" : "✅ No"}</span>
+    </div>
+    <div class="gas-dato">
+      <span class="gas-dato-label">PSI reposo ~25°C</span>
+      <span class="gas-dato-val" style="font-size:11px;color:#00d9ff">${g.presion_baja_25c || "—"}</span>
+    </div>
+  </div>
+
+  <div class="gas-aplicaciones">
+    ${(g.uso_tipico || []).map(a => `<span class="gas-app-chip">${a}</span>`).join("")}
+  </div>
+
+  ${reemplazosHTML}
+  ${notasHTML}
+  ${mentorHTML}
+
+</div>`;
+    }).join("");
+
+    return gwpHTML + cardsHTML;
+  },
+
+
+  // ═══════════════════════════════════════════════
+  // CAÑERÍA Y TUERCAS — por frigorías
+  // ═══════════════════════════════════════════════
+  renderCaneria() {
+
+    // Datos técnicos por frigorías (norma Argentina / ASHRAE)
+    const tabla = [
+      {
+        fg:        "2250 FG",
+        fg_btu:    "9.000 BTU",
+        modelos:   "Equipo pequeño residencial",
+        liquido:   { pulg: '1/4"',  mm: "6,35 mm",  pared: "0,76 mm" },
+        succion:   { pulg: '3/8"',  mm: "9,52 mm",  pared: "0,80 mm" },
+        tuerca_liq:{ hex: "17 mm",  torque: "18 N·m" },
+        tuerca_suc:{ hex: "22 mm",  torque: "35 N·m" },
+        largo_max: "10 m",
+        nota: "Equipo de habitación pequeña. Con más de 10m de cañería puede perder performance."
+      },
+      {
+        fg:        "3000 FG",
+        fg_btu:    "12.000 BTU",
+        modelos:   "Equipo pequeño/mediano",
+        liquido:   { pulg: '1/4"',  mm: "6,35 mm",  pared: "0,76 mm" },
+        succion:   { pulg: '3/8"',  mm: "9,52 mm",  pared: "0,80 mm" },
+        tuerca_liq:{ hex: "17 mm",  torque: "18 N·m" },
+        tuerca_suc:{ hex: "22 mm",  torque: "35 N·m" },
+        largo_max: "15 m",
+        nota: "Misma cañería que 2250 FG. Tolera algo más de longitud."
+      },
+      {
+        fg:        "4500 FG",
+        fg_btu:    "18.000 BTU",
+        modelos:   "Equipo estándar residencial",
+        liquido:   { pulg: '1/4"',  mm: "6,35 mm",  pared: "0,80 mm" },
+        succion:   { pulg: '1/2"',  mm: "12,70 mm", pared: "0,80 mm" },
+        tuerca_liq:{ hex: "17 mm",  torque: "18 N·m" },
+        tuerca_suc:{ hex: "26 mm",  torque: "55 N·m" },
+        largo_max: "20 m",
+        nota: "El más común en Argentina. La succión sube a 1/2 pulgada respecto a los modelos chicos."
+      },
+      {
+        fg:        "5500 FG",
+        fg_btu:    "22.000 BTU",
+        modelos:   "Equipo mediano",
+        liquido:   { pulg: '1/4"',  mm: "6,35 mm",  pared: "0,80 mm" },
+        succion:   { pulg: '1/2"',  mm: "12,70 mm", pared: "0,80 mm" },
+        tuerca_liq:{ hex: "17 mm",  torque: "18 N·m" },
+        tuerca_suc:{ hex: "26 mm",  torque: "55 N·m" },
+        largo_max: "20 m",
+        nota: "Misma cañería que 4500 FG. Verificar plaqueta — algunos modelos piden 5/8 pulgadas en succión."
+      },
+      {
+        fg:        "6000 FG",
+        fg_btu:    "24.000 BTU",
+        modelos:   "Equipo mediano/grande",
+        liquido:   { pulg: '3/8"',  mm: "9,52 mm",  pared: "0,80 mm" },
+        succion:   { pulg: '5/8"',  mm: "15,88 mm", pared: "1,00 mm" },
+        tuerca_liq:{ hex: "22 mm",  torque: "35 N·m" },
+        tuerca_suc:{ hex: "29 mm",  torque: "65 N·m" },
+        largo_max: "25 m",
+        nota: "La línea de líquido sube a 3/8' y la succión a 5/8. Tuercas más grandes."
+      },
+      {
+        fg:        "7500 FG",
+        fg_btu:    "30.000 BTU",
+        modelos:   "Equipo grande",
+        liquido:   { pulg: '3/8"',  mm: "9,52 mm",  pared: "0,80 mm" },
+        succion:   { pulg: '5/8"',  mm: "15,88 mm", pared: "1,00 mm" },
+        tuerca_liq:{ hex: "22 mm",  torque: "35 N·m" },
+        tuerca_suc:{ hex: "29 mm",  torque: "65 N·m" },
+        largo_max: "25 m",
+        nota: "Mismo diámetro que 6000 FG. Siempre verificar plaqueta del equipo."
+      },
+      {
+        fg:        "9000 FG",
+        fg_btu:    "36.000 BTU",
+        modelos:   "Equipo grande / multisplit",
+        liquido:   { pulg: '3/8"',  mm: "9,52 mm",  pared: "1,00 mm" },
+        succion:   { pulg: '5/8"',  mm: "15,88 mm", pared: "1,00 mm" },
+        tuerca_liq:{ hex: "22 mm",  torque: "35 N·m" },
+        tuerca_suc:{ hex: "29 mm",  torque: "70 N·m" },
+        largo_max: "30 m",
+        nota: "Pared más gruesa (1mm) por la mayor presión de trabajo. Torque de succión más alto."
+      }
+    ];
+
+    const cardsHTML = tabla.map(r => `
+<div class="can-card">
+
+  <!-- Header de la card -->
+  <div class="can-card-header">
+    <div>
+      <div class="can-fg">${r.fg}</div>
+      <div class="can-btu">${r.fg_btu} · ${r.modelos}</div>
+    </div>
+    <div class="can-largo-max">
+      <span class="can-largo-label">Largo máx.</span>
+      <span class="can-largo-val">${r.largo_max}</span>
+    </div>
+  </div>
+
+  <!-- Tabla de cañerías -->
+  <div class="can-lineas">
+
+    <!-- Línea de LÍQUIDO -->
+    <div class="can-linea can-linea-liq">
+      <div class="can-linea-tipo">
+        <span class="can-linea-ico">🔵</span>
+        <span class="can-linea-label">Línea de líquido</span>
+        <span class="can-linea-sub">caño fino · alta presión</span>
+      </div>
+      <div class="can-linea-datos">
+        <div class="can-dato">
+          <span class="can-dato-label">Diámetro</span>
+          <span class="can-dato-val can-val-liq">${r.liquido.pulg}</span>
+          <span class="can-dato-mm">${r.liquido.mm}</span>
+        </div>
+        <div class="can-dato">
+          <span class="can-dato-label">Pared</span>
+          <span class="can-dato-val">${r.liquido.pared}</span>
+        </div>
+        <div class="can-dato">
+          <span class="can-dato-label">Tuerca (hex)</span>
+          <span class="can-dato-val can-val-liq">${r.tuerca_liq.hex}</span>
+        </div>
+        <div class="can-dato">
+          <span class="can-dato-label">Torque</span>
+          <span class="can-dato-val">${r.tuerca_liq.torque}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Línea de SUCCIÓN -->
+    <div class="can-linea can-linea-suc">
+      <div class="can-linea-tipo">
+        <span class="can-linea-ico">🔴</span>
+        <span class="can-linea-label">Línea de succión</span>
+        <span class="can-linea-sub">caño grueso · baja presión</span>
+      </div>
+      <div class="can-linea-datos">
+        <div class="can-dato">
+          <span class="can-dato-label">Diámetro</span>
+          <span class="can-dato-val can-val-suc">${r.succion.pulg}</span>
+          <span class="can-dato-mm">${r.succion.mm}</span>
+        </div>
+        <div class="can-dato">
+          <span class="can-dato-label">Pared</span>
+          <span class="can-dato-val">${r.succion.pared}</span>
+        </div>
+        <div class="can-dato">
+          <span class="can-dato-label">Tuerca (hex)</span>
+          <span class="can-dato-val can-val-suc">${r.tuerca_suc.hex}</span>
+        </div>
+        <div class="can-dato">
+          <span class="can-dato-label">Torque</span>
+          <span class="can-dato-val">${r.tuerca_suc.torque}</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Nota técnica -->
+  <div class="can-nota">💡 ${r.nota}</div>
+
+</div>`).join("");
+
+    return `
+<!-- Aviso general -->
+<div class="can-aviso">
+  <span class="can-aviso-ico">⚠️</span>
+  <span>Siempre verificar la plaqueta del equipo — algunos fabricantes especifican diámetros propios. Los datos abajo son los estándares más frecuentes en Argentina.</span>
+</div>
+
+<!-- Referencia rápida de tuercas -->
+<div class="can-ref-tuercas">
+  <div class="can-ref-titulo">🔑 Referencia rápida de tuercas flare</div>
+  <div class="can-ref-grid">
+    <div class="can-ref-item">
+      <span class="can-ref-pulg">1/4"</span>
+      <span class="can-ref-hex">Hex 17 mm</span>
+      <span class="can-ref-torque">18 N·m</span>
+      <span class="can-ref-uso">Líquido 2250–5500 FG</span>
+    </div>
+    <div class="can-ref-item">
+      <span class="can-ref-pulg">3/8"</span>
+      <span class="can-ref-hex">Hex 22 mm</span>
+      <span class="can-ref-torque">35 N·m</span>
+      <span class="can-ref-uso">Suc. 2250–3000 FG / Líq. 6000–9000 FG</span>
+    </div>
+    <div class="can-ref-item">
+      <span class="can-ref-pulg">1/2"</span>
+      <span class="can-ref-hex">Hex 26 mm</span>
+      <span class="can-ref-torque">55 N·m</span>
+      <span class="can-ref-uso">Succión 4500–5500 FG</span>
+    </div>
+    <div class="can-ref-item">
+      <span class="can-ref-pulg">5/8"</span>
+      <span class="can-ref-hex">Hex 29 mm</span>
+      <span class="can-ref-torque">65–70 N·m</span>
+      <span class="can-ref-uso">Succión 6000–9000 FG</span>
+    </div>
+  </div>
+</div>
+
+<!-- Dato importante sobre torque -->
+<div class="can-torque-tip">
+  <div class="can-torque-tip-titulo">🔧 Torque correcto — clave para evitar fugas</div>
+  <div class="can-torque-tip-body">
+    El flare mal apretado es la causa #1 de fugas en instalaciones nuevas. <strong>Poco torque</strong> → fuga inmediata. <strong>Mucho torque</strong> → el cobre se fisura y la fuga aparece semanas después. Sin llave dinamométrica: <em>media vuelta más un cuarto</em> después de sentir resistencia es una regla de campo razonable para 1/2" y 5/8".
+  </div>
+</div>
+
+${cardsHTML}
+
+<!-- Nota final -->
+<div class="can-nota-final">
+  📏 <strong>Longitud máxima:</strong> superar el largo máximo recomendado requiere carga adicional de gas (~15g por metro extra). La presión cae y el compresor trabaja más. Siempre documentar la longitud real instalada.
+</div>`;
+
   },
 
   // ═══════════════════════════════════════════════
