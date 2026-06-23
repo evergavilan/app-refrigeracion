@@ -239,6 +239,15 @@ const PresupuestoPRO = {
   <button class="presup-config-btn" id="btnAgregarItem">+ Agregar</button>
 </div>
 
+<div class="presup-catalogo-link" id="btnAbrirCatalogo">
+  <span class="presup-catalogo-ico">🛒</span>
+  <div class="presup-catalogo-txt">
+    <div class="presup-catalogo-titulo">Catálogo A&P Refrigeración</div>
+    <div class="presup-catalogo-sub">Consultar precios de repuestos y kits de instalación</div>
+  </div>
+  <span class="presup-catalogo-arrow">↗</span>
+</div>
+
 ${items.length === 0
   ? `<div class="presup-empty">
       <div style="font-size:32px;margin-bottom:8px">📋</div>
@@ -1045,6 +1054,10 @@ ${items.length === 0
 
       document.getElementById("btnAgregarItem")?.addEventListener("click", () => {
         document.getElementById("presupModal").style.display = "flex";
+      });
+
+      document.getElementById("btnAbrirCatalogo")?.addEventListener("click", () => {
+        window.open("https://catalogoayp.vercel.app", "_blank");
       });
 
       document.getElementById("btnCancelarItem")?.addEventListener("click", () => {

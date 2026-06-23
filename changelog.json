@@ -1,0 +1,44 @@
+{
+  "actual": "1.8.0",
+  "versiones": [
+    {
+      "version": "1.8.0",
+      "fecha": "2024-XX-XX",
+      "titulo": "Mejoras en diagnósticos y nuevas herramientas",
+      "cambios": [
+        { "tipo": "nuevo", "texto": "Calculadora de Vacío y Carga con procedimiento paso a paso y timers integrados" },
+        { "tipo": "nuevo", "texto": "Presupuesto PRO: generación de PDF profesional con logo, diagnóstico y mediciones" },
+        { "tipo": "nuevo", "texto": "Link directo al catálogo A&P Refrigeración para consultar precios" },
+        { "tipo": "nuevo", "texto": "Tab CAÑO: medidas de cañería y tuercas flare por frigorías" },
+        { "tipo": "nuevo", "texto": "Tab GASES: reemplazos, GWP y compatibilidad de los 9 refrigerantes más usados en Argentina" },
+        { "tipo": "nuevo", "texto": "Módulo de teoría: Defrost en aires acondicionados" },
+        { "tipo": "mejora", "texto": "Diagnóstico Split: retorno de líquido, TXV, gas incorrecto y compresión baja" },
+        { "tipo": "mejora", "texto": "Diagnóstico No Frost: timer de deshielo, sensor NTC y placa con flujo propio" },
+        { "tipo": "mejora", "texto": "Diagnóstico Comercial: válvula solenoide, filtro deshidratador y presostato calibrado" },
+        { "tipo": "mejora", "texto": "El Mentor ahora explica el por qué, la guía paso a paso y cómo confirmar cada diagnóstico" },
+        { "tipo": "mejora", "texto": "Identificador de gas por presión de reposo con cálculo de certeza" },
+        { "tipo": "correccion", "texto": "Corregido bug de 'Error común: undefined' en algunos diagnósticos" },
+        { "tipo": "eliminado", "texto": "Removido módulo de Laboratorio (herramientas de desarrollo)" }
+      ]
+    },
+    {
+      "version": "1.7.0",
+      "fecha": "2024-XX-XX",
+      "titulo": "Integración SH/SC en diagnósticos",
+      "cambios": [
+        { "tipo": "mejora", "texto": "El diagnóstico de Split ahora integra automáticamente Sobrecalentamiento (SH) y Subenfriamiento (SC)" },
+        { "tipo": "mejora", "texto": "Todos los síntomas marcados se analizan en conjunto, no de forma aislada" },
+        { "tipo": "nuevo", "texto": "El Mentor hace análisis cruzado de todos los datos ingresados" }
+      ]
+    },
+    {
+      "version": "1.6.0",
+      "fecha": "2024-XX-XX",
+      "titulo": "Funciones Técnicas ampliadas",
+      "cambios": [
+        { "tipo": "nuevo", "texto": "Presiones de trabajo normales por gas (PSI baja y alta)" },
+        { "tipo": "nuevo", "texto": "Presión de reposo por temperatura ambiente para identificar gas sin etiqueta" }
+      ]
+    }
+  ]
+}

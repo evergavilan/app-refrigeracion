@@ -37,6 +37,7 @@ const Router = {
 "heladera-temp": () => HeladeraTempDx.render(),
 "vacio": () => VacioCarga.render(),
 "presupuesto": () => PresupuestoPRO.render(),
+"novedades": () => Novedades.render(),
 // dev-tools eliminado
   },
 
@@ -86,6 +87,17 @@ const HVACApp = {
 
     // Inicializar Mentor (carga async el JSON)
     Mentor.init();
+
+    // Inicializar Novedades (changelog y versión)
+    if (typeof Novedades !== "undefined") {
+      Novedades.init().then(() => {
+        // Si ya estamos en home, refrescar el badge de versión
+        const tag = document.getElementById("openNovedades");
+        if (tag && Novedades.hayNovedad()) {
+          tag.querySelector(".home-version-dot") || tag.insertAdjacentHTML("beforeend", '<span class="home-version-dot"></span>');
+        }
+      });
+    }
 
     // Inicializar MarcaDx (carga config de marcas y códigos de error)
     MarcaDx.init();
@@ -141,9 +153,12 @@ const HVACApp = {
       <div class="home-app-sub">HVAC PRO ARGENTINA</div>
     </div>
   </div>
-  <div class="home-status-pill">
-    <span class="home-status-dot"></span>
-    <span>Listo</span>
+  <div class="home-header-right">
+    <div class="home-status-pill">
+      <span class="home-status-dot"></span>
+      <span>Listo</span>
+    </div>
+    ${typeof Novedades !== "undefined" ? Novedades.renderBadgeHome() : ""}
   </div>
 
 
@@ -321,6 +336,17 @@ const HVACApp = {
     <span class="home-util-arrow">›</span>
   </button>
 
+  <button class="home-util-item" id="openCatalogoAyP">
+    <div class="home-util-left">
+      <span class="home-util-ico home-util-green">🛒</span>
+      <div>
+        <div class="home-util-name">Catálogo A&P Refrigeración</div>
+        <div class="home-util-sub">Precios de repuestos y kits de instalación</div>
+      </div>
+    </div>
+    <span class="home-util-arrow">↗</span>
+  </button>
+
 </div>
 
 <!-- ═══════════════════════════════════════════════ -->
@@ -379,6 +405,8 @@ const HVACApp = {
       "openRuidos":        nav("ruidos"),
       "openInstalacion":   nav("instalacion"),
       "openHistorialHome": nav("historial"),
+      "openCatalogoAyP":    () => window.open("https://catalogoayp.vercel.app", "_blank"),
+      "openNovedades":      nav("novedades"),
       // openDevTools eliminado
       // Legacy
       "openQuick":         nav("referencias"),

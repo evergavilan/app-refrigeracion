@@ -164,7 +164,7 @@
         {
           "n": 2,
           "titulo": "Conectar manifold",
-          "detalle": "Conectá la manguera azul en la válvula de servicio de baja (línea gruesa de succión). Conectá la manguera roja en la válvula de servicio de alta (línea fina de descarga/líquido). Abrí las válvulas del manifold despacio. Dejá que las lecturas se estabilicen 2-3 minutos."
+          "detalle": "Conectá la manguera azul en la válvula de servicio de baja (línea gruesa de succión). Conectá la manguera roja en la válvula de servicio de alta (línea fina de descarga/líquido). Las válvulas de servicio tienen pin Schrader — al conectar la manguera, la presión ya pasa sola al manómetro. Las válvulas del CUERPO del manifold (las perillas azul y roja) dejalas CERRADAS — solo hace falta abrirlas si vas a hacer pasar gas a través del manifold (cargar, recuperar, hacer vacío). Para leer presión, cerradas. Dejá que las lecturas se estabilicen 2-3 minutos."
         },
         {
           "n": 3,

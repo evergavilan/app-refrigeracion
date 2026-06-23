@@ -82,6 +82,162 @@
       "mentor_frase": "El que entiende el ciclo de refrigeración no adivina — diagnostica. Cada valor que medís te está contando algo sobre uno de los cuatro componentes."
     },
     {
+      "id": "defrost-split",
+      "titulo": "Defrost en aires acondicionados",
+      "icono": "🌀",
+      "color": "#00d9ff",
+      "subtitulo": "Cómo funciona, por qué es importante y cómo diagnosticarlo",
+      "intro": "En modo calefacción, la unidad exterior puede formar hielo en el serpentín cuando el aire frío y húmedo se condensa por debajo de 0°C. El defrost es el ciclo automático que invierte temporalmente el sistema para derretir ese hielo. No es una falla — es protección. Pero cuando el defrost falla, sí lo es.",
+      "conceptos": [
+        {
+          "titulo": "Por qué se forma hielo",
+          "tipo": "explicacion",
+          "detalle": "Cuando el aire exterior está frío y húmedo, el serpentín de la unidad exterior (que en modo calefacción actúa como evaporador) se enfría por debajo de 0°C. La humedad del aire se congela sobre las aletas. El hielo reduce el intercambio de calor — menos rendimiento, más consumo, y si se acumula demasiado, riesgo de daño al equipo."
+        },
+        {
+          "titulo": "Qué es el defrost",
+          "tipo": "explicacion",
+          "detalle": "Es un ciclo automático en el que el equipo invierte temporalmente el ciclo de refrigeración (como si pasara a modo frío) por unos minutos. El refrigerante caliente comprimido se envía al serpentín exterior, que actúa momentáneamente como condensador, derritiendo el hielo acumulado. Al terminar, el equipo vuelve a calefacción normal."
+        },
+        {
+          "titulo": "Las 3 fases del ciclo",
+          "tipo": "tabla",
+          "tabla": {
+            "headers": [
+              "Fase",
+              "Qué pasa",
+              "Estado del serpentín exterior"
+            ],
+            "filas": [
+              [
+                "1. Calefacción normal",
+                "El equipo calienta el ambiente. Puede empezar a formarse hielo",
+                "Actúa como evaporador (frío)"
+              ],
+              [
+                "2. Defrost (deshielo)",
+                "El equipo invierte el ciclo y envía refrigerante caliente al serpentín exterior",
+                "Actúa como condensador (caliente) — derrite el hielo"
+              ],
+              [
+                "3. Fin defrost",
+                "El hielo se elimina y el equipo vuelve a calentar normalmente",
+                "Vuelve a actuar como evaporador"
+              ]
+            ]
+          }
+        },
+        {
+          "titulo": "Las 6 etapas internas del ciclo de defrost",
+          "tipo": "practica",
+          "detalle": "1) El sensor NTC del serpentín exterior detecta temperatura muy baja (riesgo de hielo). 2) La placa electrónica activa el modo DEFROST. 3) La válvula de 4 vías se energiza e invierte el flujo de refrigerante. 4) El compresor sigue funcionando — el refrigerante caliente fluye al serpentín exterior derritiendo el hielo. 5) El agua generada se drena al exterior. 6) Cuando el sensor detecta que el serpentín subió lo suficiente de temperatura, se desactiva el DEFROST y el equipo vuelve a calefacción."
+        },
+        {
+          "titulo": "Duración, frecuencia y factores",
+          "tipo": "tabla",
+          "tabla": {
+            "headers": [
+              "Parámetro",
+              "Valor típico",
+              "Depende de"
+            ],
+            "filas": [
+              [
+                "Duración del ciclo",
+                "3 a 10 minutos",
+                "Modelo, temperatura exterior, cantidad de hielo"
+              ],
+              [
+                "Frecuencia",
+                "Cada 30 a 90 minutos",
+                "Temperatura exterior, humedad, tiempo de funcionamiento"
+              ],
+              [
+                "Factores que lo activan más",
+                "Baja temp. exterior, alta humedad, serpentín sucio, poco caudal de aire, sensores defectuosos",
+                "—"
+              ]
+            ]
+          }
+        },
+        {
+          "titulo": "Qué sucede durante el defrost — comportamiento normal",
+          "tipo": "clave",
+          "detalle": "El ventilador EXTERIOR normalmente se detiene durante el defrost para no enfriar el serpentín mientras se está calentando. El ventilador INTERIOR puede seguir funcionando a baja velocidad o detenerse según el modelo — por eso puede salir aire frío o a temperatura ambiente por la unidad interior durante unos minutos. Esto NO es falla, es normal."
+        },
+        {
+          "titulo": "dF en el display — no es una falla",
+          "tipo": "clave",
+          "detalle": "Si el display muestra 'dF' o 'DF' mientras la unidad funciona, significa que el defrost está activo — es un ciclo automático y normal. No confundir con códigos de error reales: E1/E2 suelen indicar error de sensor de temperatura (evaporador o condensador), y E4/F4 suelen indicar error de defrost (falla real en el sistema, no el ciclo normal)."
+        },
+        {
+          "titulo": "Fallas comunes en el defrost y su causa",
+          "tipo": "tabla",
+          "tabla": {
+            "headers": [
+              "Falla observada",
+              "Causa probable"
+            ],
+            "filas": [
+              [
+                "No entra en defrost (se forma mucho hielo)",
+                "Sensor NTC dañado, tarjeta electrónica, parámetros mal configurados"
+              ],
+              [
+                "Defrost muy largo o muy frecuente",
+                "Sensor defectuoso, problema en válvula de 4 vías, exceso de gas"
+              ],
+              [
+                "No sale del defrost (no vuelve a calentar)",
+                "Sensor de fin de defrost dañado, tarjeta electrónica defectuosa"
+              ],
+              [
+                "Hielo después del defrost",
+                "Tiempo de defrost insuficiente, falta de refrigerante, pobre flujo de aire"
+              ],
+              [
+                "Sale agua por la unidad interior",
+                "Drenaje obstruido o mal instalado"
+              ]
+            ]
+          }
+        },
+        {
+          "titulo": "Cómo diagnosticar correctamente",
+          "tipo": "practica",
+          "detalle": "1) Verificá el código de error en el display — distinguí 'dF' (normal) de E1/E2/E4/F4 (error real). 2) Medí la temperatura del serpentín exterior con el sensor NTC — comparar con el valor esperado. 3) Verificá la resistencia del sensor NTC con óhmetro (ver módulo de Sensores NTC). 4) Confirmá que la válvula de 4 vías conmute correctamente — debe escucharse/sentirse el cambio al entrar y salir del defrost. 5) Inspeccioná el ventilador exterior — debe detenerse durante el defrost. 6) Revisá la tarjeta electrónica y sus conexiones. 7) Verificá el drenaje de agua del deshielo — obstruido genera goteo o hielo en la bandeja."
+        }
+      ],
+      "valores_referencia": [
+        {
+          "label": "Duración del ciclo",
+          "valor": "3 – 10 min",
+          "color": "cyan"
+        },
+        {
+          "label": "Frecuencia",
+          "valor": "30 – 90 min",
+          "color": "cyan"
+        },
+        {
+          "label": "dF en display",
+          "valor": "Normal, no es falla",
+          "color": "green"
+        },
+        {
+          "label": "Buenas prácticas",
+          "valor": "Limpieza 2x/año",
+          "color": "orange"
+        }
+      ],
+      "errores_comunes": [
+        "Diagnosticar 'dF' en el display como una falla — es el ciclo de defrost activo, comportamiento normal",
+        "No revisar el sensor NTC del serpentín exterior cuando el defrost no entra o no sale — es la causa más común",
+        "Confundir hielo después del defrost (defrost insuficiente o falta de gas) con hielo antes del defrost (comportamiento esperado en frío y humedad)"
+      ],
+      "mentor_frase": "Cuando un cliente te dice que en invierno 'el aire tira frío de repente y después vuelve a calentar', no es falla — es el defrost actuando bien. El problema real aparece cuando el defrost NO entra (se llena de hielo) o NO sale (no vuelve a calentar). Ahí sí hay que meter mano: sensor NTC, válvula de 4 vías, o tarjeta."
+    },
+    {
       "id": "delta-t",
       "titulo": "Delta T — el indicador más honesto",
       "icono": "🌡️",

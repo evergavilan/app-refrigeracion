@@ -5886,3 +5886,215 @@ font-size:13px;
   font-style: italic;
   line-height: 1.6;
 }
+
+/* ===================================================
+   LINK AL CATÁLOGO A&P (en presupuesto e items)
+   =================================================== */
+
+.presup-catalogo-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 8px 16px 14px;
+  padding: 12px 14px;
+  background: rgba(0,200,100,.06);
+  border: 1.5px solid rgba(0,200,100,.2);
+  border-radius: 14px;
+  cursor: pointer;
+  transition: background .15s, transform .1s;
+}
+
+.presup-catalogo-link:active {
+  background: rgba(0,200,100,.12);
+  transform: scale(.98);
+}
+
+.presup-catalogo-ico {
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.presup-catalogo-txt { flex: 1; min-width: 0; }
+
+.presup-catalogo-titulo {
+  font-size: 13px;
+  font-weight: 700;
+  color: #44cc88;
+}
+
+.presup-catalogo-sub {
+  font-size: 11px;
+  color: #556677;
+  margin-top: 2px;
+}
+
+.presup-catalogo-arrow {
+  font-size: 16px;
+  color: #44cc88;
+  flex-shrink: 0;
+}
+
+/* ===================================================
+   NOVEDADES / VERSIÓN — home + módulo changelog
+   =================================================== */
+
+/* Header home — lado derecho con status + versión */
+.home-header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Tag de versión clickeable en el home */
+.home-version-tag {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 20px;
+  padding: 6px 11px;
+  cursor: pointer;
+}
+
+.home-version-tag:active {
+  background: rgba(0,217,255,.12);
+}
+
+.home-version-txt {
+  font-size: 11px;
+  font-weight: 700;
+  color: #8899bb;
+}
+
+.home-version-dot {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 9px;
+  height: 9px;
+  background: #ff5252;
+  border-radius: 50%;
+  border: 2px solid #0a1628;
+  animation: nov-pulse 1.8s infinite;
+}
+
+@keyframes nov-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(1.25); opacity: .7; }
+}
+
+/* ── Pantalla de Novedades ── */
+
+.nov-intro-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 12px 16px;
+  padding: 14px 16px;
+  background: rgba(0,217,255,.06);
+  border: 1px solid rgba(0,217,255,.18);
+  border-radius: 16px;
+}
+
+.nov-intro-ico { font-size: 28px; flex-shrink: 0; }
+
+.nov-intro-version {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ccd6ee;
+}
+.nov-intro-version strong { color: #00d9ff; }
+
+.nov-intro-sub {
+  font-size: 11.5px;
+  color: #556677;
+  margin-top: 3px;
+  line-height: 1.45;
+}
+
+/* Card de versión */
+.nov-version-card {
+  margin: 0 16px 12px;
+  padding: 16px;
+  background: rgba(7,17,31,.8);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 16px;
+}
+
+.nov-version-actual {
+  border: 1.5px solid rgba(0,217,255,.35);
+  background: rgba(0,217,255,.04);
+}
+
+.nov-version-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.nov-version-num {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nov-version-badge {
+  font-size: 15px;
+  font-weight: 800;
+  color: #ccd6ee;
+}
+
+.nov-actual-tag {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .05em;
+  color: #00d9ff;
+  background: rgba(0,217,255,.15);
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+.nov-version-fecha {
+  font-size: 10.5px;
+  color: #445566;
+}
+
+.nov-version-titulo {
+  font-size: 14px;
+  font-weight: 700;
+  color: #99aabb;
+  margin-bottom: 12px;
+}
+
+.nov-cambios-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nov-cambio-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 9px 11px;
+  background: rgba(255,255,255,.03);
+  border-radius: 10px;
+}
+
+.nov-cambio-badge {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .04em;
+  padding: 3px 8px;
+  border-radius: 20px;
+  width: fit-content;
+}
+
+.nov-cambio-txt {
+  font-size: 12.5px;
+  color: #99aabb;
+  line-height: 1.5;
+}
