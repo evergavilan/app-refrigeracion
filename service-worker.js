@@ -93,6 +93,10 @@ const FILES_TO_CACHE = [
   "./referencias-data.js",
   "./sh-sc-engine.js",
   "./temp-heladera.js",
+  "./vacio-carga.js",
+  "./presupuesto-pro.js",
+  "./novedades.js",
+  "./changelog.json",
 
   "./calculadoras.json",
   "./temp-heladera.json",
@@ -109,14 +113,21 @@ const FILES_TO_CACHE = [
 ];
 
 // =====================================================
-// INSTALL
+// INSTALL — tolera archivos faltantes individualmente
+// para que un solo 404 no rompa toda la instalación
 // =====================================================
 
 self.addEventListener("install", event => {
 
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache => {
-      return cache.addAll(FILES_TO_CACHE);
+      return Promise.all(
+        FILES_TO_CACHE.map(url =>
+          cache.add(url).catch(err => {
+            console.warn(`[SW] No se pudo cachear: ${url}`, err);
+          })
+        )
+      );
     })
   );
 
@@ -148,15 +159,28 @@ self.addEventListener("activate", event => {
 });
 
 // =====================================================
-// FETCH — Cache first, network fallback
+// FETCH — Network first, cache fallback
+// Así el técnico siempre recibe la versión más nueva
+// cuando tiene conexión, y solo usa caché sin internet.
 // =====================================================
 
 self.addEventListener("fetch", event => {
 
+  // Solo interceptar GET — dejar pasar otros métodos sin tocar
+  if (event.request.method !== "GET") return;
+
   event.respondWith(
-    caches.match(event.request).then(response => {
-      return response || fetch(event.request);
-    })
+    fetch(event.request)
+      .then(networkResponse => {
+        // Actualizar el caché con la versión fresca
+        const cloned = networkResponse.clone();
+        caches.open(CACHE_NAME).then(cache => cache.put(event.request, cloned));
+        return networkResponse;
+      })
+      .catch(() => {
+        // Sin conexión — usar lo que haya en caché
+        return caches.match(event.request);
+      })
   );
 
 });
