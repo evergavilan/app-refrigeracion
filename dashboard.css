@@ -3861,6 +3861,222 @@ font-size:13px;
   50%      { opacity: .4; }
 }
 
+/* ─── Mini manómetros animados (Alta / Baja) ─── */
+.home-manom-row {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 8px 12px 16px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.home-manom-row::-webkit-scrollbar { display: none; }
+
+.home-manom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.home-manom-svg {
+  width: 56px;
+  height: 56px;
+  overflow: visible;
+  filter: drop-shadow(0 3px 6px rgba(0,0,0,.5));
+}
+
+.home-manom-pivot {
+  fill: #aab8cc;
+  stroke: #ffffff;
+  stroke-width: .4;
+}
+
+.manom-ticks line {
+  stroke-width: 1;
+  stroke-linecap: round;
+}
+.manom-ticks-baja line { stroke: rgba(100,180,255,.55); }
+.manom-ticks-alta line { stroke: rgba(255,120,120,.55); }
+
+.home-manom-needle {
+  transform-origin: 30px 30px;
+}
+
+.home-manom-needle-baja {
+  stroke: #2db8ff;
+  filter: drop-shadow(0 0 3px rgba(45,184,255,.8));
+  animation: needle-baja 3.4s ease-in-out infinite;
+}
+
+.home-manom-needle-alta {
+  stroke: #ff5050;
+  filter: drop-shadow(0 0 3px rgba(255,80,80,.8));
+  animation: needle-alta 3.4s ease-in-out infinite;
+}
+
+/* Baja presión: oscila en un rango más acotado */
+@keyframes needle-baja {
+  0%   { transform: rotate(-35deg); }
+  25%  { transform: rotate(15deg); }
+  50%  { transform: rotate(-10deg); }
+  75%  { transform: rotate(25deg); }
+  100% { transform: rotate(-35deg); }
+}
+
+/* Alta presión: oscila más amplio y desfasado respecto a la de baja */
+@keyframes needle-alta {
+  0%   { transform: rotate(60deg); }
+  25%  { transform: rotate(95deg); }
+  50%  { transform: rotate(45deg); }
+  75%  { transform: rotate(110deg); }
+  100% { transform: rotate(60deg); }
+}
+
+.home-manom-unidad {
+  font-size: 6.5px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  margin-top: 1px;
+  opacity: .55;
+}
+.home-manom-unidad-baja { color: #4db8ff; }
+.home-manom-unidad-alta { color: #ff6b6b; }
+
+.home-manom-label {
+  font-size: 8.5px;
+  font-weight: 800;
+  letter-spacing: .08em;
+}
+.home-manom-label-baja { color: #4db8ff; }
+.home-manom-label-alta { color: #ff6b6b; }
+
+/* ─── Bomba de vacío animada ─── */
+.home-pump {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  margin-left: 4px;
+}
+
+.home-pump-svg {
+  width: 56px;
+  height: 56px;
+  overflow: visible;
+  filter: drop-shadow(0 3px 6px rgba(0,0,0,.5));
+}
+
+/* Vibración sutil del motor al trabajar */
+.home-pump-motor {
+  transform-origin: 30px 23px;
+  animation: pump-vibrate .18s ease-in-out infinite;
+}
+@keyframes pump-vibrate {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25%      { transform: translate(.4px, -.2px) rotate(-.4deg); }
+  50%      { transform: translate(0, .3px) rotate(0deg); }
+  75%      { transform: translate(-.4px, -.2px) rotate(.4deg); }
+}
+
+/* Manguera con un sutil pulso de succión */
+.home-pump-hose {
+  animation: pump-hose-pulse 1.4s ease-in-out infinite;
+}
+@keyframes pump-hose-pulse {
+  0%, 100% { opacity: .65; }
+  50%      { opacity: 1; }
+}
+
+/* Burbujas/partículas de vacío que suben y se desvanecen */
+.home-pump-vac circle {
+  fill: #2db8ff;
+  opacity: 0;
+  animation: pump-vac-rise 1.6s ease-out infinite;
+}
+.home-pump-vac circle:nth-child(1) { animation-delay: 0s; }
+.home-pump-vac circle:nth-child(2) { animation-delay: .4s; }
+.home-pump-vac circle:nth-child(3) { animation-delay: .8s; }
+
+@keyframes pump-vac-rise {
+  0%   { opacity: 0;  transform: translateY(0)    scale(.6); }
+  15%  { opacity: .8; transform: translateY(-1px) scale(1);  }
+  70%  { opacity: .4; transform: translateY(-7px)  scale(.8); }
+  100% { opacity: 0;  transform: translateY(-11px) scale(.4); }
+}
+
+.home-pump-unidad {
+  font-size: 6.5px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  margin-top: 1px;
+  opacity: .55;
+  color: #4db8ff;
+}
+
+.home-pump-label {
+  font-size: 8.5px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  color: #6fc8ff;
+}
+
+/* ─── Mini Split funcionando ─── */
+.home-split {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  margin-left: 4px;
+}
+
+.home-split-svg {
+  width: 64px;
+  height: 46px;
+  overflow: visible;
+  filter: drop-shadow(0 3px 6px rgba(0,0,0,.5));
+}
+
+/* LED parpadeando */
+.home-split-led {
+  fill: #00ff88;
+  animation: split-led-blink 1.6s ease-in-out infinite;
+}
+@keyframes split-led-blink {
+  0%, 100% { opacity: 1;  filter: drop-shadow(0 0 2px #00ff88); }
+  50%      { opacity: .3; filter: none; }
+}
+
+/* Flujo de aire frío — líneas onduladas que caen y se desvanecen */
+.home-split-flow path {
+  fill: none;
+  stroke: #5fd4ff;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  opacity: 0;
+  animation: split-flow-fall 1.8s ease-in infinite;
+}
+.home-split-flow path:nth-child(1) { animation-delay: 0s; }
+.home-split-flow path:nth-child(2) { animation-delay: .35s; }
+.home-split-flow path:nth-child(3) { animation-delay: .7s; }
+.home-split-flow path:nth-child(4) { animation-delay: 1.05s; }
+
+@keyframes split-flow-fall {
+  0%   { opacity: 0;  transform: translateY(-2px); }
+  20%  { opacity: .8; transform: translateY(0);     }
+  70%  { opacity: .5; transform: translateY(3px);   }
+  100% { opacity: 0;  transform: translateY(6px);   }
+}
+
+.home-split-label {
+  font-size: 7.5px;
+  font-weight: 800;
+  letter-spacing: .04em;
+  color: #00cc88;
+}
+
 /* ─── SECTION LABELS ─── */
 .home-section-label {
   font-size: 10px;
