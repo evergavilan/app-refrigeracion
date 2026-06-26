@@ -6314,3 +6314,11 @@ font-size:13px;
   color: #99aabb;
   line-height: 1.5;
 }
+
+/* Variante naranja para el link de precios CAR */
+.presup-catalogo-car {
+  background: rgba(255,155,66,.06) !important;
+  border-color: rgba(255,155,66,.2) !important;
+}
+.presup-catalogo-car .presup-catalogo-titulo { color: #ff9b42; }
+.presup-catalogo-car .presup-catalogo-arrow  { color: #ff9b42; }

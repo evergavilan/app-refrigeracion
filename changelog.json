@@ -1,24 +1,133 @@
 {
-  "actual": "1.8.0",
+  "actual": "1.9.1",
   "versiones": [
+    {
+      "version": "1.9.1",
+      "fecha": "2024-XX-XX",
+      "titulo": "Precios de referencia de la Cámara Argentina de Refrigeración",
+      "cambios": [
+        {
+          "tipo": "nuevo",
+          "texto": "Link directo a los precios sugeridos de mano de obra de la Cámara Argentina de Refrigeración (C.A.R.), disponible en Home → Utilidades y en Presupuesto PRO"
+        }
+      ]
+    },
+    {
+      "version": "1.9.0",
+      "fecha": "2024-XX-XX",
+      "titulo": "Correcciones críticas y nueva identidad visual",
+      "cambios": [
+        {
+          "tipo": "correccion",
+          "texto": "Corregido bug crítico en el Service Worker: archivos nuevos (Vacío y Carga, Presupuesto PRO, Novedades) no se cacheaban y rompían la actualización automática, obligando a borrar caché manualmente"
+        },
+        {
+          "tipo": "mejora",
+          "texto": "Service Worker ahora tolera archivos faltantes individualmente sin romper toda la instalación"
+        },
+        {
+          "tipo": "mejora",
+          "texto": "Estrategia de carga cambiada a 'red primero' — la app siempre busca la versión más nueva con internet disponible"
+        },
+        {
+          "tipo": "correccion",
+          "texto": "Corregido el tag de versión que no aparecía al abrir la app por primera vez (orden de carga asíncrona)"
+        },
+        {
+          "tipo": "nuevo",
+          "texto": "Animación de instrumental en el home: manómetros de alta y baja presión con aguja en movimiento"
+        },
+        {
+          "tipo": "nuevo",
+          "texto": "Animación de bomba de vacío con motor vibrando y burbujas de succión"
+        },
+        {
+          "tipo": "nuevo",
+          "texto": "Animación de mini Split funcionando con LED parpadeante y flujo de aire frío"
+        },
+        {
+          "tipo": "nuevo",
+          "texto": "Tab CAÑO: medidas de cañería y tuercas flare por frigorías con torque recomendado"
+        },
+        {
+          "tipo": "nuevo",
+          "texto": "Tab GASES: reemplazos, GWP y compatibilidad de 9 refrigerantes usados en Argentina"
+        },
+        {
+          "tipo": "nuevo",
+          "texto": "Identificador de gas por presión de reposo con cálculo de certeza"
+        },
+        {
+          "tipo": "nuevo",
+          "texto": "Módulo de teoría: Defrost en aires acondicionados"
+        },
+        {
+          "tipo": "nuevo",
+          "texto": "Link directo al catálogo A&P Refrigeración para consultar precios"
+        },
+        {
+          "tipo": "mejora",
+          "texto": "Presión de trabajo normal y presión de reposo agregadas para todos los gases"
+        }
+      ]
+    },
     {
       "version": "1.8.0",
       "fecha": "2024-XX-XX",
       "titulo": "Mejoras en diagnósticos y nuevas herramientas",
       "cambios": [
-        { "tipo": "nuevo", "texto": "Calculadora de Vacío y Carga con procedimiento paso a paso y timers integrados" },
-        { "tipo": "nuevo", "texto": "Presupuesto PRO: generación de PDF profesional con logo, diagnóstico y mediciones" },
-        { "tipo": "nuevo", "texto": "Link directo al catálogo A&P Refrigeración para consultar precios" },
-        { "tipo": "nuevo", "texto": "Tab CAÑO: medidas de cañería y tuercas flare por frigorías" },
-        { "tipo": "nuevo", "texto": "Tab GASES: reemplazos, GWP y compatibilidad de los 9 refrigerantes más usados en Argentina" },
-        { "tipo": "nuevo", "texto": "Módulo de teoría: Defrost en aires acondicionados" },
-        { "tipo": "mejora", "texto": "Diagnóstico Split: retorno de líquido, TXV, gas incorrecto y compresión baja" },
-        { "tipo": "mejora", "texto": "Diagnóstico No Frost: timer de deshielo, sensor NTC y placa con flujo propio" },
-        { "tipo": "mejora", "texto": "Diagnóstico Comercial: válvula solenoide, filtro deshidratador y presostato calibrado" },
-        { "tipo": "mejora", "texto": "El Mentor ahora explica el por qué, la guía paso a paso y cómo confirmar cada diagnóstico" },
-        { "tipo": "mejora", "texto": "Identificador de gas por presión de reposo con cálculo de certeza" },
-        { "tipo": "correccion", "texto": "Corregido bug de 'Error común: undefined' en algunos diagnósticos" },
-        { "tipo": "eliminado", "texto": "Removido módulo de Laboratorio (herramientas de desarrollo)" }
+        {
+          "tipo": "nuevo",
+          "texto": "Calculadora de Vacío y Carga con procedimiento paso a paso y timers integrados"
+        },
+        {
+          "tipo": "nuevo",
+          "texto": "Presupuesto PRO: generación de PDF profesional con logo, diagnóstico y mediciones"
+        },
+        {
+          "tipo": "nuevo",
+          "texto": "Link directo al catálogo A&P Refrigeración para consultar precios"
+        },
+        {
+          "tipo": "nuevo",
+          "texto": "Tab CAÑO: medidas de cañería y tuercas flare por frigorías"
+        },
+        {
+          "tipo": "nuevo",
+          "texto": "Tab GASES: reemplazos, GWP y compatibilidad de los 9 refrigerantes más usados en Argentina"
+        },
+        {
+          "tipo": "nuevo",
+          "texto": "Módulo de teoría: Defrost en aires acondicionados"
+        },
+        {
+          "tipo": "mejora",
+          "texto": "Diagnóstico Split: retorno de líquido, TXV, gas incorrecto y compresión baja"
+        },
+        {
+          "tipo": "mejora",
+          "texto": "Diagnóstico No Frost: timer de deshielo, sensor NTC y placa con flujo propio"
+        },
+        {
+          "tipo": "mejora",
+          "texto": "Diagnóstico Comercial: válvula solenoide, filtro deshidratador y presostato calibrado"
+        },
+        {
+          "tipo": "mejora",
+          "texto": "El Mentor ahora explica el por qué, la guía paso a paso y cómo confirmar cada diagnóstico"
+        },
+        {
+          "tipo": "mejora",
+          "texto": "Identificador de gas por presión de reposo con cálculo de certeza"
+        },
+        {
+          "tipo": "correccion",
+          "texto": "Corregido bug de 'Error común: undefined' en algunos diagnósticos"
+        },
+        {
+          "tipo": "eliminado",
+          "texto": "Removido módulo de Laboratorio (herramientas de desarrollo)"
+        }
       ]
     },
     {
@@ -26,9 +135,18 @@
       "fecha": "2024-XX-XX",
       "titulo": "Integración SH/SC en diagnósticos",
       "cambios": [
-        { "tipo": "mejora", "texto": "El diagnóstico de Split ahora integra automáticamente Sobrecalentamiento (SH) y Subenfriamiento (SC)" },
-        { "tipo": "mejora", "texto": "Todos los síntomas marcados se analizan en conjunto, no de forma aislada" },
-        { "tipo": "nuevo", "texto": "El Mentor hace análisis cruzado de todos los datos ingresados" }
+        {
+          "tipo": "mejora",
+          "texto": "El diagnóstico de Split ahora integra automáticamente Sobrecalentamiento (SH) y Subenfriamiento (SC)"
+        },
+        {
+          "tipo": "mejora",
+          "texto": "Todos los síntomas marcados se analizan en conjunto, no de forma aislada"
+        },
+        {
+          "tipo": "nuevo",
+          "texto": "El Mentor hace análisis cruzado de todos los datos ingresados"
+        }
       ]
     },
     {
@@ -36,8 +154,14 @@
       "fecha": "2024-XX-XX",
       "titulo": "Funciones Técnicas ampliadas",
       "cambios": [
-        { "tipo": "nuevo", "texto": "Presiones de trabajo normales por gas (PSI baja y alta)" },
-        { "tipo": "nuevo", "texto": "Presión de reposo por temperatura ambiente para identificar gas sin etiqueta" }
+        {
+          "tipo": "nuevo",
+          "texto": "Presiones de trabajo normales por gas (PSI baja y alta)"
+        },
+        {
+          "tipo": "nuevo",
+          "texto": "Presión de reposo por temperatura ambiente para identificar gas sin etiqueta"
+        }
       ]
     }
   ]

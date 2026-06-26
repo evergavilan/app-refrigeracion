@@ -529,6 +529,17 @@ const HVACApp = {
     <span class="home-util-arrow">↗</span>
   </button>
 
+  <button class="home-util-item" id="openPreciosCAR">
+    <div class="home-util-left">
+      <span class="home-util-ico home-util-orange">💵</span>
+      <div>
+        <div class="home-util-name">Precios sugeridos C.A.R.</div>
+        <div class="home-util-sub">Mano de obra de referencia — Cámara Argentina de Refrigeración</div>
+      </div>
+    </div>
+    <span class="home-util-arrow">↗</span>
+  </button>
+
 </div>
 
 <!-- ═══════════════════════════════════════════════ -->
@@ -588,6 +599,7 @@ const HVACApp = {
       "openInstalacion":   nav("instalacion"),
       "openHistorialHome": nav("historial"),
       "openCatalogoAyP":    () => window.open("https://catalogoayp.vercel.app", "_blank"),
+      "openPreciosCAR":     () => window.open("https://www.camaraargentinaderefrigeracion.com/precios-sugeridos-2019-2020", "_blank"),
       "openNovedades":      nav("novedades"),
       // openDevTools eliminado
       // Legacy

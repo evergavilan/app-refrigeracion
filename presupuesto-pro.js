@@ -248,6 +248,15 @@ const PresupuestoPRO = {
   <span class="presup-catalogo-arrow">↗</span>
 </div>
 
+<div class="presup-catalogo-link presup-catalogo-car" id="btnAbrirPreciosCAR">
+  <span class="presup-catalogo-ico">💵</span>
+  <div class="presup-catalogo-txt">
+    <div class="presup-catalogo-titulo">Precios sugeridos C.A.R.</div>
+    <div class="presup-catalogo-sub">Mano de obra de referencia para instalación</div>
+  </div>
+  <span class="presup-catalogo-arrow">↗</span>
+</div>
+
 ${items.length === 0
   ? `<div class="presup-empty">
       <div style="font-size:32px;margin-bottom:8px">📋</div>
@@ -1058,6 +1067,10 @@ ${items.length === 0
 
       document.getElementById("btnAbrirCatalogo")?.addEventListener("click", () => {
         window.open("https://catalogoayp.vercel.app", "_blank");
+      });
+
+      document.getElementById("btnAbrirPreciosCAR")?.addEventListener("click", () => {
+        window.open("https://www.camaraargentinaderefrigeracion.com/precios-sugeridos-2019-2020", "_blank");
       });
 
       document.getElementById("btnCancelarItem")?.addEventListener("click", () => {
