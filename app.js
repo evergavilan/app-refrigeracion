@@ -598,7 +598,7 @@ const HVACApp = {
       "openRuidos":        nav("ruidos"),
       "openInstalacion":   nav("instalacion"),
       "openHistorialHome": nav("historial"),
-      "openCatalogoAyP":    () => window.open("https://catalogoayp.vercel.app", "_blank"),
+      "openCatalogoAyP":    () => window.open("https://www.refrigeracionayp.com", "_blank"),
       "openPreciosCAR":     () => window.open("https://www.camaraargentinaderefrigeracion.com/precios-sugeridos-2019-2020", "_blank"),
       "openNovedades":      nav("novedades"),
       // openDevTools eliminado
