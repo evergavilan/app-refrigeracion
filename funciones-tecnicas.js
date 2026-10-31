@@ -49,6 +49,7 @@ const FuncionesTecnicas = {
   <button class="ft-tab ${startTab==='shsc'?'active':''}"		data-tab="shsc">🌡️ SH/SC</button>
   <button class="ft-tab ${startTab==='caneria'?'active':''}" data-tab="caneria">🔧 CAÑO</button>
   <button class="ft-tab ${startTab==='gases'?'active':''}" data-tab="gases">⚗️ GASES</button>
+  <button class="ft-tab ${startTab==='mas30'?'active':''}" data-tab="mas30">⚖️ MAS30</button>
 </div>
 
 <div id="ft-content">
@@ -72,6 +73,7 @@ const FuncionesTecnicas = {
       case "calc":         return this.renderCalc();
       case "caneria":      return this.renderCaneria();
       case "gases":         return this.renderGases();
+      case "mas30":        return this.renderMas30();
       default:             return this.renderAmp();
     }
   },
@@ -837,7 +839,7 @@ ${sub === "sh" ? this.renderSH() : sub === "sc" ? this.renderSC() : this.renderS
     return `
 <div class="ft-info-badge">
   🌡️ SH = Temp. succión medida − Temp. saturación a PSI de baja<br>
-  <span style="font-size:11px;color:#445566;">Normal en splits: 6°C a 12°C · Ideal: 8°C</span>
+  <span style="font-size:11px;color:#445566;">Normal en splits: 5°C a 12°C · Ideal: 8°C</span>
 </div>
 <div class="calc-card">
   <div class="calc-field">
@@ -873,11 +875,11 @@ ${sub === "sh" ? this.renderSH() : sub === "sc" ? this.renderSC() : this.renderS
 </div>
 <div class="calc-ref-card">
   <div class="calc-ref-title">📋 Rangos de referencia SH</div>
-  <div class="calc-ref-row"><span class="calc-ref-label">Menos de 2°C</span><span class="calc-ref-val calc-danger">🔴 CRÍTICO — Retorno de líquido</span></div>
-  <div class="calc-ref-row"><span class="calc-ref-label">2°C a 6°C</span><span class="calc-ref-val calc-warn">🟠 Bajo — Evaporador inundado</span></div>
-  <div class="calc-ref-row"><span class="calc-ref-label">6°C a 12°C</span><span class="calc-ref-val calc-ok">✅ Normal (splits)</span></div>
-  <div class="calc-ref-row"><span class="calc-ref-label">12°C a 20°C</span><span class="calc-ref-val calc-warn">🟠 Alto — Falta gas / restricción</span></div>
-  <div class="calc-ref-row"><span class="calc-ref-label">Más de 20°C</span><span class="calc-ref-val calc-danger">🔴 Muy alto — Situación crítica</span></div>
+  <div class="calc-ref-row"><span class="calc-ref-label">Menos de 0°C</span><span class="calc-ref-val calc-danger">🔴 CRÍTICO — Retorno de líquido</span></div>
+  <div class="calc-ref-row"><span class="calc-ref-label">0°C a 5°C</span><span class="calc-ref-val calc-warn">🟠 Bajo — Evaporador inundado</span></div>
+  <div class="calc-ref-row"><span class="calc-ref-label">5°C a 12°C</span><span class="calc-ref-val calc-ok">✅ Normal (splits)</span></div>
+  <div class="calc-ref-row"><span class="calc-ref-label">12°C a 17°C</span><span class="calc-ref-val calc-warn">🟠 Alto — Falta gas / restricción</span></div>
+  <div class="calc-ref-row"><span class="calc-ref-label">Más de 17°C</span><span class="calc-ref-val calc-danger">🔴 Muy alto — Situación crítica</span></div>
 </div>`;
   },
 
@@ -887,7 +889,7 @@ ${sub === "sh" ? this.renderSH() : sub === "sc" ? this.renderSC() : this.renderS
     return `
 <div class="ft-info-badge">
   ❄️ SC = Temp. saturación a PSI de alta − Temp. línea de líquido medida<br>
-  <span style="font-size:11px;color:#445566;">Normal en splits: 4°C a 10°C · Ideal: 6°C</span>
+  <span style="font-size:11px;color:#445566;">Normal en splits: 4°C a 8°C · Ideal: 6°C</span>
 </div>
 <div class="calc-card">
   <div class="calc-field">
@@ -925,9 +927,9 @@ ${sub === "sh" ? this.renderSH() : sub === "sc" ? this.renderSC() : this.renderS
   <div class="calc-ref-title">📋 Rangos de referencia SC</div>
   <div class="calc-ref-row"><span class="calc-ref-label">Negativo</span><span class="calc-ref-val calc-danger">🔴 Vapor en línea de líquido</span></div>
   <div class="calc-ref-row"><span class="calc-ref-label">0°C a 4°C</span><span class="calc-ref-val calc-warn">🟠 Bajo — Gas insuficiente</span></div>
-  <div class="calc-ref-row"><span class="calc-ref-label">4°C a 10°C</span><span class="calc-ref-val calc-ok">✅ Normal (splits)</span></div>
-  <div class="calc-ref-row"><span class="calc-ref-label">10°C a 15°C</span><span class="calc-ref-val calc-warn">🟠 Alto — Posible exceso</span></div>
-  <div class="calc-ref-row"><span class="calc-ref-label">Más de 15°C</span><span class="calc-ref-val calc-danger">🔴 Muy alto — Restricción</span></div>
+  <div class="calc-ref-row"><span class="calc-ref-label">4°C a 8°C</span><span class="calc-ref-val calc-ok">✅ Normal (splits)</span></div>
+  <div class="calc-ref-row"><span class="calc-ref-label">8°C a 13°C</span><span class="calc-ref-val calc-warn">🟠 Alto — Posible exceso</span></div>
+  <div class="calc-ref-row"><span class="calc-ref-label">Más de 13°C</span><span class="calc-ref-val calc-danger">🔴 Muy alto — Restricción</span></div>
 </div>`;
   },
 
@@ -1081,58 +1083,6 @@ ${d.fallas.map(f => `
     });
 
 
-
-    // ─── CALCULADORA SH ─────────────────────────────
-    document.getElementById("calcSH")?.addEventListener("click", async () => {
-      const gas  = document.getElementById("shGas")?.value;
-      const psi  = document.getElementById("shPsiBaja")?.value;
-      const temp = document.getElementById("shTempSuccion")?.value;
-      const el   = document.getElementById("calcSHResult");
-      if (!el) return;
-      if (!psi || !temp) { el.innerHTML = '<div class="calc-error">⚠️ Ingresá PSI de baja y temperatura de succión.</div>'; return; }
-
-      await SHSCEngine.init();
-      const result = SHSCEngine.calcSH(psi, temp, gas);
-      if (!result) { el.innerHTML = '<div class="calc-error">⚠️ PSI fuera de rango para ese gas. Verificá los datos.</div>'; return; }
-
-      const diag  = SHSCEngine.diagSH(result.sh, "split");
-      el.innerHTML = `
-        <div class="calc-result" style="border-color:${diag.color};">
-          <div class="calc-result-val" style="color:${diag.color};">${result.sh}°C</div>
-          <div class="calc-result-label">SH — Sobrecalentamiento</div>
-          <div class="calc-result-estado" style="color:${diag.color};">${diag.icono} ${diag.titulo}</div>
-          <div class="calc-ref-row" style="margin-top:12px;"><span class="calc-ref-label">T° saturación baja</span><span class="calc-ref-val" style="color:#00d9ff;">${result.tsat}°C</span></div>
-          <div class="calc-ref-row"><span class="calc-ref-label">T° succión medida</span><span class="calc-ref-val">${temp}°C</span></div>
-          <div class="calc-ref-row"><span class="calc-ref-label">Rango normal splits</span><span class="calc-ref-val">5°C a 12°C</span></div>
-          <div class="calc-result-consejo">💬 ${diag.accion}</div>
-        </div>`;
-    });
-
-    // ─── CALCULADORA SC ─────────────────────────────
-    document.getElementById("calcSC")?.addEventListener("click", async () => {
-      const gas  = document.getElementById("scGas")?.value;
-      const psi  = document.getElementById("scPsiAlta")?.value;
-      const temp = document.getElementById("scTempLiquido")?.value;
-      const el   = document.getElementById("calcSCResult");
-      if (!el) return;
-      if (!psi || !temp) { el.innerHTML = '<div class="calc-error">⚠️ Ingresá PSI de alta y temperatura de línea de líquido.</div>'; return; }
-
-      await SHSCEngine.init();
-      const result = SHSCEngine.calcSC(psi, temp, gas);
-      if (!result) { el.innerHTML = '<div class="calc-error">⚠️ PSI fuera de rango para ese gas. Verificá los datos.</div>'; return; }
-
-      const diag  = SHSCEngine.diagSC(result.sc, "split");
-      el.innerHTML = `
-        <div class="calc-result" style="border-color:${diag.color};">
-          <div class="calc-result-val" style="color:${diag.color};">${result.sc}°C</div>
-          <div class="calc-result-label">SC — Subenfriamiento</div>
-          <div class="calc-result-estado" style="color:${diag.color};">${diag.icono} ${diag.titulo}</div>
-          <div class="calc-ref-row" style="margin-top:12px;"><span class="calc-ref-label">T° saturación alta</span><span class="calc-ref-val" style="color:#00d9ff;">${result.tsat}°C</span></div>
-          <div class="calc-ref-row"><span class="calc-ref-label">T° línea líquido medida</span><span class="calc-ref-val">${temp}°C</span></div>
-          <div class="calc-ref-row"><span class="calc-ref-label">Rango normal splits</span><span class="calc-ref-val">4°C a 8°C</span></div>
-          <div class="calc-result-consejo">💬 ${diag.accion}</div>
-        </div>`;
-    });
 
     // ─── CALCULADORAS ───────────────────────────────
 
@@ -1312,7 +1262,7 @@ ${d.fallas.map(f => `
       const res = SHSCEngine.calcularSH(gas, psi, tSuc);
       if (!res) { el.innerHTML = '<div class="calc-error">⚠️ PSI fuera de rango para ese gas.</div>'; return; }
 
-      const dx = SHSCEngine.diagnosticarSH(res.sh, tipo);
+      const dx = SHSCEngine.diagnosticarSH(res.sh, tipo, gas);
       el.innerHTML = `
         <div class="calc-result" style="border-color:${dx.color};">
           <div class="calc-result-val" style="color:${dx.color};">${res.sh > 0 ? "+" : ""}${res.sh}°C</div>
@@ -1342,7 +1292,7 @@ ${d.fallas.map(f => `
       const res = SHSCEngine.calcularSC(gas, psi, tLiq);
       if (!res) { el.innerHTML = '<div class="calc-error">⚠️ PSI fuera de rango para ese gas.</div>'; return; }
 
-      const dx = SHSCEngine.diagnosticarSC(res.sc, tipo);
+      const dx = SHSCEngine.diagnosticarSC(res.sc, tipo, gas);
       el.innerHTML = `
         <div class="calc-result" style="border-color:${dx.color};">
           <div class="calc-result-val" style="color:${dx.color};">${res.sc > 0 ? "+" : ""}${res.sc}°C</div>
@@ -1378,7 +1328,7 @@ ${d.fallas.map(f => `
       const resSC = SHSCEngine.calcularSC(gas, psiAlta, tLiq);
       if (!resSH || !resSC) { el.innerHTML = '<div class="calc-error">⚠️ PSI fuera de rango para ese gas.</div>'; return; }
 
-      const analisis = SHSCEngine.analizarCombinado(resSH.sh, resSC.sc, tipo);
+      const analisis = SHSCEngine.analizarCombinado(resSH.sh, resSC.sc, tipo, gas);
       const { dxSH, dxSC, conclusion, certeza } = analisis;
       const barColor = certeza >= 85 ? "#00d9ff" : certeza >= 70 ? "#ff9b42" : "#8899aa";
 
@@ -1420,6 +1370,67 @@ ${d.fallas.map(f => `
           </div>
         </div>`;
     });
+
+    // ─── LEY DEL +30 ────────────────────────────────
+    const mas30Btn = document.getElementById("calcMas30");
+    if (mas30Btn) {
+      const pintarTabla = () => {
+        const tablaEl = document.getElementById("mas30Tabla");
+        const gas = document.getElementById("mas30Gas")?.value;
+        if (!tablaEl || !gas || !window.LeyMas30) return;
+        const filas = window.LeyMas30.generarTablaReferencia(gas, 15, 45, 5);
+        tablaEl.innerHTML = `
+          <table style="width:100%;border-collapse:collapse;text-align:center;">
+            <tr style="color:#00d9ff;"><th>T° amb.</th><th>Mín</th><th>Esperada</th><th>Máx</th></tr>
+            ${filas.map(f => `<tr><td>${f.temperatura}°C</td><td>${f.minimo}</td><td><strong>${f.psi_esperada}</strong></td><td>${f.maximo}</td></tr>`).join("")}
+          </table>
+          <div style="margin-top:8px;color:#8899aa;font-size:12px;">PSI de alta (psig). Margen ±5%. Con equipo en régimen y condensador limpio.</div>`;
+      };
+      pintarTabla();
+      document.getElementById("mas30Gas")?.addEventListener("change", pintarTabla);
+
+      mas30Btn.addEventListener("click", () => {
+        const el   = document.getElementById("mas30Result");
+        const gas  = document.getElementById("mas30Gas")?.value;
+        const temp = parseFloat(document.getElementById("mas30Temp")?.value);
+        const medRaw = document.getElementById("mas30PsiMedida")?.value;
+        if (!el) return;
+        if (!window.LeyMas30) {
+          el.innerHTML = '<div class="calc-error">⚠️ Módulo Ley del +30 no cargado. Recargá la app.</div>';
+          return;
+        }
+        if (isNaN(temp)) {
+          el.innerHTML = '<div class="calc-error">⚠️ Ingresá la temperatura ambiente.</div>';
+          return;
+        }
+        const rango = window.LeyMas30.calcularRango(gas, temp);
+        if (!rango) {
+          el.innerHTML = '<div class="calc-error">⚠️ Gas no reconocido.</div>';
+          return;
+        }
+        let html = `
+          <div class="ft-card" style="margin-top:8px;">
+            <div style="font-size:13px;color:#8899aa;">PSI de alta esperada (${gas.toUpperCase()} a ${temp}°C)</div>
+            <div style="font-size:32px;font-weight:800;color:#00d9ff;">${rango.esperado} psi</div>
+            <div style="font-size:13px;color:#8899aa;">Rango aceptable: ${rango.minimo} – ${rango.maximo} psi</div>
+          </div>`;
+        if (medRaw !== undefined && medRaw !== "" && !isNaN(parseFloat(medRaw))) {
+          const d = window.LeyMas30.diagnosticar(gas, temp, parseFloat(medRaw));
+          if (d && d.valido) {
+            const color = d.estado === "CORRECTA" ? "#44cc88"
+                        : d.estado.startsWith("LEVEMENTE") ? "#ff9b42" : "#ff4455";
+            html += `
+              <div class="ft-card" style="margin-top:8px;border-left:4px solid ${color};">
+                <div style="font-weight:800;color:${color};">${d.estado}</div>
+                <div>${d.diagnostico}</div>
+                <div style="margin-top:4px;">👉 ${d.accion}</div>
+                <div style="margin-top:4px;font-size:12px;color:#8899aa;">Diferencia: ${d.diferencia} psi (${d.porcentaje}%)</div>
+              </div>`;
+          }
+        }
+        el.innerHTML = html;
+      });
+    }
 
     document.querySelectorAll(".ft-gas-btn").forEach(btn => {
       btn.addEventListener("click", () => {
@@ -1914,6 +1925,56 @@ ${cardsHTML}
 
 </div>`;
 
+  },
+
+  // ═══════════════════════════════════════════════
+  // LEY DEL +30 — CÁLCULO DE CARGA ESPERADA
+  // ═══════════════════════════════════════════════
+
+  renderMas30() {
+    return `
+<div class="ft-info-badge">⚖️ Ley del +30 — Cálculo rápido de PSI esperada según temperatura ambiente</div>
+
+<div class="ft-card" style="background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(0, 100, 150, 0.1));">
+  <div class="ft-card-header">
+    <span class="ft-card-title">Cálculo Rápido de Carga</span>
+  </div>
+
+  <div class="ft-form-group">
+    <label>🧊 Gas Refrigerante</label>
+    <select id="mas30Gas" style="width: 100%; padding: 10px; background: #07111f; color: #00d9ff; border: 1px solid #00d9ff; border-radius: 6px;">
+      <option value="r22">R22 (Antigua) — T + 30</option>
+      <option value="r134a">R134A (Auto) — (T + 32) × 1.5</option>
+      <option value="r32">R32 (Moderno) — (T + 28) × 2</option>
+      <option value="r410a" selected>R410A (Estándar) — (T + 30) × 2</option>
+      <option value="r404a">R404A (Baja Temp) — (T + 35) × 1.8</option>
+    </select>
+  </div>
+
+  <div class="ft-form-group">
+    <label>🌡️ Temperatura Ambiente (°C)</label>
+    <input type="number" id="mas30Temp" placeholder="ej: 25" min="0" max="50" style="width: 100%; padding: 10px; background: #07111f; color: #fff; border: 1px solid #00d9ff; border-radius: 6px;">
+  </div>
+
+  <div class="ft-form-group">
+    <label>📊 PSI Alta Medida (opcional para diagnóstico)</label>
+    <input type="number" id="mas30PsiMedida" placeholder="ej: 110" style="width: 100%; padding: 10px; background: #07111f; color: #fff; border: 1px solid #00d9ff; border-radius: 6px;">
+  </div>
+
+  <button id="calcMas30" style="width: 100%; padding: 12px; background: #00d9ff; color: #07111f; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 12px;">
+    ⚖️ Calcular PSI Esperada
+  </button>
+
+  <div id="mas30Result" style="margin-top: 16px;"></div>
+</div>
+
+<div class="ft-card" style="background: rgba(0, 217, 255, 0.05); margin-top: 16px;">
+  <div class="ft-card-header">
+    <span class="ft-card-title">📋 Referencia Rápida</span>
+  </div>
+  <div id="mas30Tabla" style="font-size: 13px; line-height: 1.6;"></div>
+</div>
+`;
   }
 
 };

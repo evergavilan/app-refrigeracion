@@ -31,6 +31,8 @@ const FILES_TO_CACHE = [
   "./app.js",
   "./btu-calc.js",
   "./sh-sc.js",
+  "./validacion-shsc.js",
+  "./ley-mas-30.js",
   "./timer.js",
   "./mentor.js",
   "./marca-dx.js",
@@ -91,7 +93,6 @@ const FILES_TO_CACHE = [
 
   "./diagnostico-historial.js",
   "./referencias-data.js",
-  "./sh-sc-engine.js",
   "./temp-heladera.js",
   "./vacio-carga.js",
   "./presupuesto-pro.js",

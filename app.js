@@ -28,6 +28,7 @@ const Router = {
 "relay": () => FuncionesTecnicas.render("relay"),
 "resistencias": () => FuncionesTecnicas.render("resistencias"),
     "shsc":      () => FuncionesTecnicas.render("shsc"),
+    "mas30":     () => FuncionesTecnicas.render("mas30"),
     "historial":  ()      => Historial.render(),
     "dx-historial": ()    => DxHistorial.render(),
     "seguridad":  ()      => SeguridadPRO.render(),
@@ -96,6 +97,21 @@ const HVACApp = {
 
     // Inicializar MarcaDx (carga config de marcas y códigos de error)
     MarcaDx.init();
+
+    // ═══════════════════════════════════════════════
+    // Cargar funciones-tecnicas.json (tablas ASHRAE + rangos SH/SC)
+    // ═══════════════════════════════════════════════
+    try {
+      const res = await fetch('./funciones-tecnicas.json');
+      if (res.ok) {
+        window.FuncionesTecnicasJSON = await res.json();
+        console.log('✓ Funciones técnicas cargadas (ASHRAE 2023 + Rangos dinámicos)');
+      } else {
+        console.warn('⚠️ No se pudo cargar funciones-tecnicas.json');
+      }
+    } catch (e) {
+      console.error('✗ Error cargando funciones-tecnicas.json:', e);
+    }
 
     // Logger de errores en producción
     this._initErrorLogger();
@@ -408,6 +424,11 @@ const HVACApp = {
     <span class="home-tool-label">SH / SC</span>
   </button>
 
+  <button class="home-tool-btn" id="openMas30">
+    <span class="home-tool-ico">⚖️</span>
+    <span class="home-tool-label">Ley +30</span>
+  </button>
+
   <button class="home-tool-btn" id="openNTC">
     <span class="home-tool-ico">📡</span>
     <span class="home-tool-label">NTC</span>
@@ -580,6 +601,7 @@ const HVACApp = {
       // Herramientas (nueva barra)
       "openPT":            nav("pt"),
       "openPSI":           nav("shsc"),
+      "openMas30":         nav("mas30"),
       "openAMP":           nav("amp"),
       "openCapacitor":     nav("capacitor"),
       "openNTC":           nav("ntc"),

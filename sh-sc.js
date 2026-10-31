@@ -9,6 +9,7 @@ const SHSCEngine = {
   tablas: null,
 
   // Rangos normales por tipo de sistema
+  // Se pueden sobrescribir con rangos dinámicos desde funciones-tecnicas.json
   rangos: {
     split: {
       sh: { min: 5,  max: 12, optimo: 8 },
@@ -21,6 +22,34 @@ const SHSCEngine = {
     comercial: {
       sh: { min: 8,  max: 20, optimo: 12 },
       sc: { min: 3,  max: 8,  optimo: 5  }
+    }
+  },
+
+  // ═══════════════════════════════════════════════
+  // CARGAR RANGOS DINÁMICOS
+  // ═══════════════════════════════════════════════
+
+  cargarRangosDinamicos(gas = 'r410a', tipoEquipo = 'split') {
+    // Guardar una copia de los rangos base y restaurarla en cada llamada,
+    // para que los rangos de un gas no queden "pegados" al calcular otro.
+    if (!this._rangosBase) this._rangosBase = JSON.parse(JSON.stringify(this.rangos));
+    if (this._rangosBase[tipoEquipo]) {
+      this.rangos[tipoEquipo] = JSON.parse(JSON.stringify(this._rangosBase[tipoEquipo]));
+    }
+
+    if (!window.FuncionesTecnicasJSON || !window.FuncionesTecnicasJSON.rangos_shsc) {
+      return; // Usar rangos por defecto
+    }
+
+    const gasBuscador = String(gas).toLowerCase().replace(/[^a-z0-9]/g, '');
+    const rangoGas = window.FuncionesTecnicasJSON.rangos_shsc[gasBuscador];
+
+    if (rangoGas && rangoGas[tipoEquipo]) {
+      const nr = rangoGas[tipoEquipo];
+      this.rangos[tipoEquipo] = {
+        sh: { min: nr.sh.min, max: nr.sh.max, optimo: nr.sh.ideal },
+        sc: { min: nr.sc.min, max: nr.sc.max, optimo: nr.sc.ideal }
+      };
     }
   },
 
@@ -44,30 +73,35 @@ const SHSCEngine = {
   // Dado PSI, retorna temperatura de saturación (°C)
   // ═══════════════════════════════════════════════
 
+  // Tablas: usa las ya cargadas por init() o, si todavía no, las que app.js
+  // dejó en window.FuncionesTecnicasJSON (así nunca queda en null).
+  _getTablas() {
+    if (!this.tablas && window.FuncionesTecnicasJSON && window.FuncionesTecnicasJSON.saturacion) {
+      this.tablas = window.FuncionesTecnicasJSON.saturacion;
+    }
+    return this.tablas;
+  },
+
   psiToTsat(psi, gas) {
-    if (!this.tablas) return null;
-    const tabla = this.tablas[gas.toLowerCase().replace(/[^a-z0-9]/g, "")];
+    const tablas = this._getTablas();
+    if (!tablas || gas === undefined || gas === null) return null;
+    const tabla = tablas[String(gas).toLowerCase().replace(/[^a-z0-9]/g, "")];
     if (!tabla || !tabla.length) return null;
 
     const psiNum = Number(psi);
-    if (isNaN(psiNum)) return null;
+    if (psi === "" || psi === null || isNaN(psiNum)) return null;
 
-    // La tabla es [temp, psi] — ordenada por temperatura
-    // Buscamos el par donde el PSI ingresado cae entre dos puntos
+    // Fuera del rango de la tabla (-40 a 60 °C) no se inventa un valor
+    if (psiNum < tabla[0][1] - 0.5 || psiNum > tabla[tabla.length - 1][1] + 0.5) return null;
+
     for (let i = 0; i < tabla.length - 1; i++) {
       const [t1, p1] = tabla[i];
       const [t2, p2] = tabla[i + 1];
       if (psiNum >= p1 && psiNum <= p2) {
-        // Interpolación lineal
-        const frac = (psiNum - p1) / (p2 - p1);
-        return t1 + frac * (t2 - t1);
+        return t1 + ((psiNum - p1) / (p2 - p1)) * (t2 - t1);
       }
     }
-
-    // Fuera de rango — extrapolar si está cerca
-    if (psiNum < tabla[0][1])  return tabla[0][0];
-    if (psiNum > tabla[tabla.length-1][1]) return tabla[tabla.length-1][0];
-    return null;
+    return psiNum <= tabla[0][1] ? tabla[0][0] : tabla[tabla.length - 1][0];
   },
 
   // ═══════════════════════════════════════════════
@@ -95,10 +129,96 @@ const SHSCEngine = {
   },
 
   // ═══════════════════════════════════════════════
+  // API USADA POR LAS PANTALLAS
+  // (adaptadores sobre el MISMO cálculo: calcSH / calcSC / diagSH / diagSC)
+  // ═══════════════════════════════════════════════
+
+  psiATemp(gas, psi) { return this.psiToTsat(psi, gas); },
+
+  // Devuelven {sh|sc, tsat, tempSaturacion} (tempSaturacion = nombre que lee la pantalla)
+  calcularSH(gas, psiBaja, tempSuccion) {
+    const r = this.calcSH(psiBaja, tempSuccion, gas);
+    return r && Object.assign({}, r, { tempSaturacion: r.tsat });
+  },
+  calcularSC(gas, psiAlta, tempLiquido) {
+    const r = this.calcSC(psiAlta, tempLiquido, gas);
+    return r && Object.assign({}, r, { tempSaturacion: r.tsat });
+  },
+
+  _mentorSH: {
+    "CRÍTICO": "Esto es lo más grave que podés ver en un compresor. Líquido en la succión = golpe hidráulico = compresor muerto. Apagalo ya.",
+    "BAJO": "SH bajo con gas normal → la válvula de expansión está abriendo de más. SH bajo con gas cargado recientemente → cargaste de más.",
+    "NORMAL": "SH en rango. El evaporador absorbe calor como debe. Chequeá el SC también para tener el cuadro completo.",
+    "ALTO": "SH alto casi siempre es gas insuficiente. Antes de cargar: buscá la fuga. Si no hay fuga, el sistema perdió gas por algún lado.",
+    "MUY ALTO": "SH muy alto: el compresor está recalentándose. La temperatura de descarga va a estar por las nubes. Atendé esto urgente."
+  },
+  _mentorSC: {
+    "CRÍTICO": "SC negativo es vapor en la línea de líquido. Eso significa que al capilar llega mezcla en vez de líquido puro — la expansión va a ser errática y el equipo no va a enfriar bien.",
+    "BAJO": "SC bajo: el condensador no está terminando de condensar el gas. Revisá si está sucio o si hay muy poco gas.",
+    "NORMAL": "SC en rango. El condensador hace bien su trabajo. Junto con el SH normal, el sistema está cargado correctamente.",
+    "ALTO": "SC alto: el condensador enfría de más el líquido. Puede ser gas de más o temperatura ambiente muy baja. No purgues sin confirmar.",
+    "MUY ALTO": "SC muy alto: antes de pensar en exceso de gas, verificá el filtro deshidratador. Un filtro tapado acumula líquido en el condensador y sube el SC."
+  },
+
+  _paraPantalla(d, tabla) {
+    return Object.assign({}, d, {
+      desc:   d.descripcion || d.titulo || "",
+      mentor: d.mentor || tabla[d.estado] || ""
+    });
+  },
+
+  diagnosticarSH(sh, tipo = "split", gas = "r410a") {
+    return this._paraPantalla(this.diagSH(sh, tipo, gas), this._mentorSH);
+  },
+
+  diagnosticarSC(sc, tipo = "split", gas = "r410a") {
+    return this._paraPantalla(this.diagSC(sc, tipo, gas), this._mentorSC);
+  },
+
+  analizarCombinado(sh, sc, tipo = "split", gas = "r410a") {
+    const dxSH = this.diagnosticarSH(sh, tipo, gas);
+    const dxSC = this.diagnosticarSC(sc, tipo, gas);   // ya cargó los rangos del gas/tipo
+    const r    = this.rangos[tipo] || this.rangos.split;
+    const rSH  = r.sh, rSC = r.sc;
+
+    const shOk = sh >= rSH.min && sh <= rSH.max;
+    const scOk = sc >= rSC.min && sc <= rSC.max;
+
+    let conclusion, certeza;
+    if (shOk && scOk) {
+      conclusion = "✅ Sistema cargado correctamente. SH y SC en rango. El diagnóstico de carga de gas es normal.";
+      certeza = 95;
+    } else if (sh > rSH.max && sc < rSC.min) {
+      conclusion = "⚠️ SH alto + SC bajo = gas insuficiente. Hay fuga o el sistema perdió gas. Buscar fuga antes de cargar.";
+      certeza = 92;
+    } else if (sh < rSH.min && sc > rSC.max) {
+      conclusion = "⚠️ SH bajo + SC alto = exceso de gas o válvula de expansión cerrada de más. Verificar antes de purgar.";
+      certeza = 88;
+    } else if (sh < rSH.min && scOk) {
+      conclusion = "🟠 SH bajo con SC normal: válvula de expansión abriendo de más. Sistema con gas correcto pero expansión mal regulada.";
+      certeza = 82;
+    } else if (sh > rSH.max && scOk) {
+      conclusion = "🟠 SH alto con SC normal: posible restricción en la línea de succión o evaporador con airflow reducido.";
+      certeza = 80;
+    } else if (shOk && sc < rSC.min) {
+      conclusion = "🟠 SC bajo con SH normal: condensador con problemas de disipación. Limpiar condensador y verificar ventilación.";
+      certeza = 82;
+    } else if (shOk && sc > rSC.max) {
+      conclusion = "🟠 SC alto con SH normal: posible exceso leve de gas o temperatura ambiente baja. Monitorear.";
+      certeza = 75;
+    } else {
+      conclusion = "Condición mixta — evaluá cada parámetro por separado y considerá el contexto del equipo.";
+      certeza = 65;
+    }
+    return { dxSH, dxSC, conclusion, certeza };
+  },
+
+  // ═══════════════════════════════════════════════
   // DIAGNOSTICAR SH
   // ═══════════════════════════════════════════════
 
-  diagSH(sh, tipo = "split") {
+  diagSH(sh, tipo = "split", gas = "r410a") {
+    this.cargarRangosDinamicos(gas, tipo);
     const r = this.rangos[tipo]?.sh || this.rangos.split.sh;
 
     if (sh < 0) return {
@@ -151,7 +271,8 @@ const SHSCEngine = {
   // DIAGNOSTICAR SC
   // ═══════════════════════════════════════════════
 
-  diagSC(sc, tipo = "split") {
+  diagSC(sc, tipo = "split", gas = "r410a") {
+    this.cargarRangosDinamicos(gas, tipo);
     const r = this.rangos[tipo]?.sc || this.rangos.split.sc;
 
     if (sc < 0) return {
@@ -265,12 +386,12 @@ const SHSCEngine = {
 
     if (tieneSH) {
       shResult = this.calcSH(d.psi, d.tempSuccion, d.gas);
-      if (shResult) shDiag = this.diagSH(shResult.sh, "split");
+      if (shResult) shDiag = this.diagSH(shResult.sh, "split", d.gas);
     }
 
     if (tieneSC) {
       scResult = this.calcSC(d.psiAlta, d.tempLiquido, d.gas);
-      if (scResult) scDiag = this.diagSC(scResult.sc, "split");
+      if (scResult) scDiag = this.diagSC(scResult.sc, "split", d.gas);
     }
 
     const bloque = this.renderBloqueSHSC(shResult, scResult, shDiag, scDiag);
